@@ -10,13 +10,6 @@
       </button>
 
       <div id="navbar" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <locale-dropdown />
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li> -->
-        </ul>
-
         <ul class="navbar-nav ms-auto">
           <!-- Authenticated -->
           <li v-if="user" class="nav-item dropdown">
@@ -52,6 +45,13 @@
               </router-link>
             </li>
           </template>
+        </ul>
+        
+        <ul class="navbar-nav">
+          <locale-dropdown />
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
         </ul>
       </div>
     </div>
