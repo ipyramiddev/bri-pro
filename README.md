@@ -8,8 +8,8 @@ Backend - Laravel
 
 ## Installation by Script File
 
--Run 'start.sh' file.
--To stop installation, press 'ctrl+c'.
+- Run 'start.sh' file.
+- To stop installation, press 'ctrl+c'.
 
 ## Installation
 
