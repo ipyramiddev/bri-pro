@@ -1,5 +1,16 @@
 # Lifeanalytics Laravel-Vue Website 
 
+## About Website
+
+Frontend - Vue.JS
+
+Backend - Laravel
+
+## Installation by Script File
+
+-Run start.sh file.
+-To stop installation, press ctrl+c.
+
 ## Installation
 
 - `composer create-project --prefer-dist cretueusebiu/lifeanalytics_laravel_vue`
