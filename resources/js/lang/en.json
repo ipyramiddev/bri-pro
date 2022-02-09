@@ -35,5 +35,13 @@
   "send_verification_link": "Send Verification Link",
   "resend_verification_link": "Resend Verification Link ?",
   "failed_to_verify_email": "Failed to verify email.",
-  "verify_email_address": "We sent you an email with an the verification link."
+  "verify_email_address": "We sent you an email with an the verification link.",
+  "home_en": "Home",
+  "products_en": "Products",
+  "ias_en": "IAS",
+  "flowcal_en": "FlowCal",
+  "purchase_en": "Purchase",
+  "carrer_en": "Carrer",
+  "contact_en": "Contact Us",
+  "dealer_en": "Dealer order"
 }

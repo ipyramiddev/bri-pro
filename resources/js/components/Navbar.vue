@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container">
       <router-link :to="{ name: user ? 'home' : 'welcome' }" class="navbar-brand">
-        {{ appName }}
+        <img :src="logo" />
       </router-link>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
@@ -35,10 +35,50 @@
           <!-- Guest -->
           <template v-else>
             <li class="nav-item">
+              <router-link :to="{ name: 'home_en' }" class="nav-link" active-class="active">
+                {{ $t('home_en') }}
+              </router-link>
+            </li>
+
+            <li class="nav-item">
+              <router-link :to="{ name: 'products_en' }" class="nav-link" active-class="active">
+                {{ $t('products_en') }}
+              </router-link>
+            </li>
+
+            <div class="dropdown-menu">
+              <router-link :to="{ name: 'ias_en' }" class="nav-link" active-class="active">
+                {{ $t('catalog_en') }}
+              </router-link>
+              <router-link :to="{ name: 'flowcal_en' }" class="nav-link" active-class="active">
+                {{ $t('catalog_en') }}
+              </router-link>
+            </div>
+
+            <li class="nav-item">
+              <router-link :to="{ name: 'purchase_en' }" class="nav-link" active-class="active">
+                {{ $t('purchase_en') }}
+              </router-link>
+            </li>
+
+            <li class="nav-item">
+              <router-link :to="{ name: 'carrer_en' }" class="nav-link" active-class="active">
+                {{ $t('carrer_en') }}
+              </router-link>
+            </li>
+
+            <li class="nav-item">
+              <router-link :to="{ name: 'dealer_en' }" class="nav-link" active-class="active">
+                {{ $t('dealer_en') }}
+              </router-link>
+            </li>
+
+            <li class="nav-item">
               <router-link :to="{ name: 'login' }" class="nav-link" active-class="active">
                 {{ $t('login') }}
               </router-link>
             </li>
+
             <li class="nav-item">
               <router-link :to="{ name: 'register' }" class="nav-link" active-class="active">
                 {{ $t('register') }}
@@ -46,7 +86,7 @@
             </li>
           </template>
         </ul>
-        
+
         <ul class="navbar-nav">
           <locale-dropdown />
           <!-- <li class="nav-item">
@@ -61,6 +101,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import LocaleDropdown from './LocaleDropdown'
+import Logo from '~/assets/images/logo.png'
 
 export default {
   components: {
@@ -68,7 +109,7 @@ export default {
   },
 
   data: () => ({
-    appName: window.config.appName
+    logo: Logo
   }),
 
   computed: mapGetters({
@@ -87,14 +128,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.profile-photo {
-  width: 2rem;
-  height: 2rem;
-  margin: -.375rem 0;
-}
 
-.container {
-  max-width: 1100px;
-}
-</style>

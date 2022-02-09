@@ -19,3 +19,13 @@ export default {
   }
 }
 </script>
+
+<style>
+.container-lg {
+  max-width: 100%;
+  padding: 0 !important;
+}
+.mt-4 {
+  margin-top: 0 !important;
+}
+</style>

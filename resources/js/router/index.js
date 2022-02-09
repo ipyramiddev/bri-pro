@@ -1,12 +1,21 @@
 import Vue from 'vue'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import store from '~/store'
 import Meta from 'vue-meta'
 import routes from './routes'
 import Router from 'vue-router'
 import { sync } from 'vuex-router-sync'
 
+// Import Bootstrap an BootstrapVue CSS files (order is important)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 Vue.use(Meta)
 Vue.use(Router)
+// Make BootstrapVue available throughout your project
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 
 // The middleware for every page of the application.
 const globalMiddleware = ['locale', 'check-auth']
