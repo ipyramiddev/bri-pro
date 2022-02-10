@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  server:
+    build: .
+    command: npm run watch
+    container_name: server
+    ports:
+      - "${HTTP_PORT}:8000"
+    volumes:
+      - ./:/var/www/
+      - /var/www/vendor
+    depends_on:
+      - mysql
+    links:
+      - mysql
+  mysql:
+    image: mysql
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+      - ./mysql/init.sql:/data/application/init.sql
+      - mysql_data:/var/lib/mysql
+  client:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.node
+    container_name: client
+    volumes:
+      - ./:/var/www/
+      - /var/www/node_modules
+    depends_on:
+      - "server"
+volumes:
+  mysql_data:
