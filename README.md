@@ -1,45 +1,63 @@
-# Lifeanalytics Laravel-Vue Website 
+# About Laravel+Vuejs+Docker+Docker compose
 
-## About Website
+This project `Laravel + Vue.JS Lifeanalytics` is based on `docker and docker-compose`
 
-Frontend - Vue.JS
+# <span style="color:#007bff"> Table of content </span>
 
-Backend - Laravel
+-   [Prerequisites](#Prerequisites)
+-   [Technologies](#Technologies)
+-   [Setup Environment](#Setup-Environment)
+-   [License](#License)
+-   [Contribute]
 
-## Installation by Script File
+## Prerequisites
 
-- Run 'start.sh' file.
-- To stop installation, press 'ctrl+c'.
+---
 
-## Installation
+Make sure you have insalled the following prerequisites in your development or production machine.
 
-- `composer create-project --prefer-dist cretueusebiu/lifeanalytics_laravel_vue`
-- Edit `.env` and set your database connection details
-- (When installed via git clone or download, run `php artisan key:generate` and `php artisan jwt:secret`)
-- `php artisan migrate`
-- `npm install`
+-   `Docker` - [Download & install Docker](https://docs.docker.com/get-docker/) make sure that the latest docker version has been installed on your machine.
 
-## Usage
+### Technologies
 
-#### Development
+---
 
-```bash
-npm run dev
-```
+List of technologies which are used in this project.
 
-#### Production
+-   PHP : Version 8.x
+-   Laravel: Version 8.x
+-   MySQL: Version 8
+-   Node: Version 14.15.0
 
-```bash
-npm run build
-```
+### Setup Environment for Development:
 
-## Testing
+-   Copy `.env.example` to `.env`.
+-   Build `docker-compose build`.
+-   Run `docker-compose up -d` for development purpose.
+-   Open favourite browser and type `http://localhost`. If you wan to run on different port, you can change the `HTTP_PORT` from `.env` file.
+-   Generate key `docker exec bakend-end php artisan key:generate`
+-   If you want to install a npm package then run `docker exec front-end npm install <Package_Name>`.
+-   If you want to install compose package then run `docker exec back-end compose install <PACKAGE_NAME>`.
 
-```bash
-# Run unit and feature tests
-vendor/bin/phpunit
+### Setup Environment for Production:
 
-# Run Dusk browser tests
-php artisan dusk
-```
+-   Copy `.env.example` to `.env`.
+-   Change the necessary staff in `.env` file.
+-   Run `docker-compose -f docker-compose.production.yml up` for production.
+-   Open favourite browser and type `http://localhost`. If you wan to run on different port, you can change the `HTTP_PORT` from `.env` file.
+-   If you want to install a npm package then run `docker exec front-end npm install <Package_Name>`.
+-   If you want to install compose package then run `docker exec back-end compose install <PACKAGE_NAME>`.
 
+## Contribute
+
+Contribution are alwasy welcome! Please read the [contribution guidelines](contributing.md) first.
+
+-   Fork this project to your personal account.
+-   Create your feature branch `git checkout -b feature/foo`.
+-   Commit your changes `git commit -am 'Add some foo`.
+-   Push to the branch `git push origin feature/foo`.
+-   Create a new Pull Request.
+
+## License
+
+The theme is available as open source under the terms of the [MIT License](LICENSE.txt).
