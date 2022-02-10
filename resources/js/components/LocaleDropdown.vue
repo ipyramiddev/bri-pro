@@ -1,5 +1,6 @@
 <template>
   <li v-if="Object.keys(locales).length > 1" class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button"
        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
     >
       {{ locales[locale] }}
@@ -35,3 +36,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.nav-item .nav-link {
+    color: #007FED;
+}
+.nav-item .nav-link:hover {
+    color: #000;
+}
+.dropdown-item:hover {
+  color: #007FED;
+}
+</style>

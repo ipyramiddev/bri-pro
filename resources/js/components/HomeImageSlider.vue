@@ -22,22 +22,22 @@ export default {
             carouselItems: [
                 {
                     id: 1,
-                    image: "/images/slider/slider-1.jpg"
+                    image: "/images/slider/slide_1.png"
                 },{
                     id: 2,
-                    image: "/images/slider/slider-2.png"
+                    image: "/images/slider/slide_2.png"
                 },{
                     id: 3,
-                    image: "/images/slider/slider-3.jpg"
+                    image: "/images/slider/slide_3.png"
                 },{
                     id: 4,
-                    image: "/images/slider/slider-4.jpg"
+                    image: "/images/slider/slide_4.png"
                 },{
                     id: 5,
-                    image: "/images/slider/slider-5.jpg"
+                    image: "/images/slider/slide_5.png"
                 },{
                     id: 6,
-                    image: "/images/slider/slider-6.png"
+                    image: "/images/slider/slide_6.png"
                 },
             ]
         }

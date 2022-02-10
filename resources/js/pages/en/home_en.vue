@@ -1,7 +1,7 @@
 <template>
-  <section class="imageslider">
+  <div>
     <Imageslider />
-  </section>
+  </div>
 </template>
 
 <script>

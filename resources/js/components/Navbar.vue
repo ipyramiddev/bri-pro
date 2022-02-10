@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container">
       <router-link :to="{ name: user ? 'home' : 'welcome' }" class="navbar-brand">
-        <img :src="logo" />
+        <img :src="logo" style="width: 80%"/>
       </router-link>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
@@ -68,22 +68,28 @@
             </li>
 
             <li class="nav-item">
+              <router-link :to="{ name: 'contact_en' }" class="nav-link" active-class="active">
+                {{ $t('contact_en') }}
+              </router-link>
+            </li>
+
+            <li class="nav-item">
               <router-link :to="{ name: 'dealer_en' }" class="nav-link" active-class="active">
                 {{ $t('dealer_en') }}
               </router-link>
             </li>
 
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <router-link :to="{ name: 'login' }" class="nav-link" active-class="active">
                 {{ $t('login') }}
               </router-link>
-            </li>
+            </li>-->
 
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <router-link :to="{ name: 'register' }" class="nav-link" active-class="active">
                 {{ $t('register') }}
               </router-link>
-            </li>
+            </li>-->
           </template>
         </ul>
 
@@ -127,5 +133,18 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.nav-item {
+  padding: 0 10px;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #007FED;
+    font-size: 17px;
+}
+.navbar-light .navbar-nav .nav-link:hover{
+    color: #000;
+}
+</style>
 
 
