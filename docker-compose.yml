@@ -1,8 +1,21 @@
 version: "3.8"
 services:
-  server:
-    build: .
+  client:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.node
     command: npm run watch
+    container_name: client
+    volumes:
+      - ./:/var/www/
+      - /var/www/node_modules
+    depends_on:
+      - server
+  server:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    command: composer install
     container_name: server
     ports:
       - "${HTTP_PORT}:8000"
@@ -11,6 +24,7 @@ services:
       - /var/www/vendor
     depends_on:
       - mysql
+      - client
     links:
       - mysql
   mysql:
@@ -27,15 +41,5 @@ services:
     volumes:
       - ./mysql/init.sql:/data/application/init.sql
       - mysql_data:/var/lib/mysql
-  client:
-    build:
-      context: .
-      dockerfile: ./Dockerfile.node
-    container_name: client
-    volumes:
-      - ./:/var/www/
-      - /var/www/node_modules
-    depends_on:
-      - "server"
 volumes:
   mysql_data:

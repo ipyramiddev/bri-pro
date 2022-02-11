@@ -31,13 +31,10 @@ COPY ./.env.example ./.env
 RUN composer install
 
 RUN php artisan key:generate --ansi
+RUN php artisan jwt:secret
 
 RUN php artisan storage:link
 
-COPY ./script/php_script.sh /tmp
-
-RUN chmod +x /tmp/php_script.sh
-
-ENTRYPOINT ["sh","/tmp/php_script.sh"]
+RUN php artisan serve
 
 EXPOSE 8000

@@ -7,7 +7,6 @@ This project `Laravel + Vue.JS Lifeanalytics` is based on `docker and docker-com
 -   [Prerequisites](#Prerequisites)
 -   [Technologies](#Technologies)
 -   [Setup Environment](#Setup-Environment)
--   [License](#License)
 -   [Contribute]
 
 ## Prerequisites
@@ -15,6 +14,10 @@ This project `Laravel + Vue.JS Lifeanalytics` is based on `docker and docker-com
 ---
 
 Make sure you have insalled the following prerequisites in your development or production machine.
+
+-   `PHP v8.x` - [Download & install PHP](https://www.php.net/downloads.php) make sure that the PHP 8.x version has been installed on your machine.
+
+-   `Node v14` - [Download & install Node](https://nodejs.org/download/) make sure that the Nodejs 14.15 version has been installed on your machine.
 
 -   `Docker` - [Download & install Docker](https://docs.docker.com/get-docker/) make sure that the latest docker version has been installed on your machine.
 
@@ -26,18 +29,14 @@ List of technologies which are used in this project.
 
 -   PHP : Version 8.x
 -   Laravel: Version 8.x
--   MySQL: Version 8
+-   MySQL: Version 7
 -   Node: Version 14.15.0
 
 ### Setup Environment for Development:
 
--   Copy `.env.example` to `.env`.
 -   Build `docker-compose build`.
 -   Run `docker-compose up -d` for development purpose.
 -   Open favourite browser and type `http://localhost`. If you wan to run on different port, you can change the `HTTP_PORT` from `.env` file.
--   Generate key `docker exec bakend-end php artisan key:generate`
--   If you want to install a npm package then run `docker exec front-end npm install <Package_Name>`.
--   If you want to install compose package then run `docker exec back-end compose install <PACKAGE_NAME>`.
 
 ### Setup Environment for Production:
 
@@ -45,8 +44,6 @@ List of technologies which are used in this project.
 -   Change the necessary staff in `.env` file.
 -   Run `docker-compose -f docker-compose.production.yml up` for production.
 -   Open favourite browser and type `http://localhost`. If you wan to run on different port, you can change the `HTTP_PORT` from `.env` file.
--   If you want to install a npm package then run `docker exec front-end npm install <Package_Name>`.
--   If you want to install compose package then run `docker exec back-end compose install <PACKAGE_NAME>`.
 
 ## Contribute
 
@@ -57,7 +54,3 @@ Contribution are alwasy welcome! Please read the [contribution guidelines](contr
 -   Commit your changes `git commit -am 'Add some foo`.
 -   Push to the branch `git push origin feature/foo`.
 -   Create a new Pull Request.
-
-## License
-
-The theme is available as open source under the terms of the [MIT License](LICENSE.txt).
