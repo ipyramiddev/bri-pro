@@ -21,6 +21,9 @@ export default {
 </script>
 
 <style>
+.main-layout {
+  background-color: #fff;
+}
 .container-lg {
   max-width: 100%;
   padding: 0 !important;
