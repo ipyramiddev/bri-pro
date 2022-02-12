@@ -1,15 +1,15 @@
 version: "3.8"
 services:
-  client:
-    build:
-      context: .
-      dockerfile: ./Dockerfile.node
-    container_name: client
-    volumes:
-      - ./:/var/www/
-      - /var/www/node_modules
-    depends_on:
-      - server
+#  client:
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile.node
+#    container_name: client
+#    volumes:
+#      - ./:/var/www/
+#     - /var/www/node_modules
+#    depends_on:
+#      - server
   server:
     build:
       context: .
@@ -22,7 +22,7 @@ services:
       - /var/www/vendor
     depends_on:
       - mysql
-      - client
+#      - client
     links:
       - mysql
   mysql:
