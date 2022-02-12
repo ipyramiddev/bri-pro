@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile.node
-    command: npm run watch
     container_name: client
     volumes:
       - ./:/var/www/
@@ -15,10 +14,9 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile.dev
-    command: composer install
     container_name: server
     ports:
-      - "${HTTP_PORT}:8000"
+      - "8000:80"
     volumes:
       - ./:/var/www/
       - /var/www/vendor
@@ -33,11 +31,11 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: lifeanalytics
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: 
     ports:
-      - ${MYSQL_PORT}:3306
+      - 8989:3306
     volumes:
       - ./mysql/init.sql:/data/application/init.sql
       - mysql_data:/var/lib/mysql
