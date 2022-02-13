@@ -42,11 +42,11 @@
 
 <style scoped>
 .fields {
-  padding: 30px 0;
+  padding: 50px 0;
 }
 .fields .title {
   text-align: center;
-  padding: 10px 0;
+  padding: 40px 0;
 }
 .fields .body .body-pannel {
   padding: 0.2rem 2.5rem;

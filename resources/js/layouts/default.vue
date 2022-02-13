@@ -5,17 +5,21 @@
     <div class="container-lg mt-4">
       <child />
     </div>
+
+    <footerbar />
   </div>
 </template>
 
 <script>
 import Navbar from '~/components/Navbar'
+import footerbar from '~/components/en/Footer'
 
 export default {
   name: 'MainLayout',
 
   components: {
-    Navbar
+    Navbar,
+    footerbar
   }
 }
 </script>

@@ -56,7 +56,4 @@ export default {
 .carousel-caption {
     bottom: 55%;
 }
-.carousel-caption > h3 {
-    font-size: 3.75rem;
-}
 </style>

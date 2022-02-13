@@ -6,7 +6,7 @@
       <div class="body row">
         <div class="body-pannel col-md-3 col-sm-12">
           <div class="subimage">
-            <img >
+            <b-icon icon="list-task"></b-icon>
           </div>
           <div class="subtitle">
             <h5>Cloud web app</h5>
@@ -17,7 +17,7 @@
         </div>
         <div class="body-pannel col-md-3 col-sm-12">
           <div class="subimage">
-            <img />
+            <b-icon icon="alarm-fill"></b-icon>
           </div>
           <div class="subtitle">
             <h5>Support various formats</h5>
@@ -28,7 +28,7 @@
         </div>
         <div class="body-pannel col-md-3 col-sm-12">
           <div class="subimage">
-            <img />
+            <b-icon icon="phone"></b-icon>
           </div>
           <div class="subtitle">
             <h5>Support deep and machine learning</h5>
@@ -39,7 +39,7 @@
         </div>
         <div class="body-pannel col-md-3 col-sm-12">
           <div class="subimage">
-            <img />
+            <b-icon icon="pencil"></b-icon>
           </div>
           <div class="subtitle">
             <h5>Subscrition sale</h5>
@@ -54,17 +54,22 @@
 
 <style scoped>
 .features {
-  padding: 30px 0;
+  padding: 50px 0;
 }
 .features .title {
   text-align: center;
-  padding: 10px 0;
+  padding: 40px 0;
 }
 .features .body .body-pannel {
   padding: 0.2rem 2.5rem;
 }
 .features .body .subtitle {
   padding: 0.3rem 0;
+}
+.features .body .subimage svg {
+  fill: #007FED;
+  width: 35px;
+  height: 35px;
 }
 .features .body .subtitle >h5 {
   line-height: 1.4;
