@@ -22,6 +22,9 @@
 
     <!-- New Infomation -->
     <Informationsection />
+
+    <!-- Footer -->
+    <Footer />
   </div>
 </template>
 
@@ -34,6 +37,7 @@ import Introductionsection from '~/components/en/home/Introduction'
 import Subscriptionsection from '~/components/en/home/Subscription'
 import Contactsection from '~/components/en/home/Contact'
 import Informationsection from '~/components/en/home/Information'
+import Footer from '~/components/en/Footer'
 export default {
   components: {
       Imageslider,
@@ -43,7 +47,8 @@ export default {
       Introductionsection,
       Subscriptionsection,
       Contactsection,
-      Informationsection
+      Informationsection,
+      Footer
   }
 }
 </script>

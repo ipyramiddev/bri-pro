@@ -12,7 +12,7 @@
 
 <script>
 import Navbar from '~/components/Navbar'
-import footerbar from '~/components/en/Footer'
+import footerbar from '~/components/en/Foot'
 
 export default {
   name: 'MainLayout',
