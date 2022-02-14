@@ -2,15 +2,28 @@
     <div>
         <b-carousel
             id="carousel-fade"
-            style="text-shadow: 0px 0px 2px #000"
             fade
             indicators
         >
+            <div class="welcome">
+                <div class="title">
+                    <h1>Welcome to Life Analytics</h1>
+                </div>
+                <div class="content">
+                    <h5>Remote analysis for all researches & developments</h5>
+                </div>
+                <div class="button">
+                    <b-button variant="outline-primary" :to="{ name: 'products_en' }">Product Details</b-button>
+                    <b-button variant="outline-primary" :to="{ name: 'purchase_en' }">Subscribe</b-button>
+                </div>
+            </div>
+            <div class="background-color-overlay">
+            </div>
             <b-carousel-slide
-            caption="Welcome to Life Analytics"
             v-for="item in carouselItems" :key="item.id" :img-src="item.image"
             ></b-carousel-slide>
         </b-carousel>
+        
     </div>
 </template>
 
@@ -47,6 +60,39 @@ export default {
 </script>
 
 <style>
+.welcome {
+    z-index: 900;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    padding: 18% 0;
+}
+.welcome .title {
+    padding: 10px 0;
+}
+.welcome .title h1 {
+    color: white;
+    font-weight: 600;
+}
+.welcome .content {
+    padding: 5px 0;
+}
+.welcome .content h5 {
+    color: white;
+}
+.welcome .button {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+.welcome .button .btn-outline-primary {
+    border-radius: 20px;
+    border-color: #fff;
+    color: #fff;
+}
+.welcome .button .btn-outline-primary:hover {
+    border-color: #007FED;
+}
 .carousel-inner {
     max-height: 600px;
 }
@@ -55,5 +101,16 @@ export default {
 }
 .carousel-caption {
     bottom: 55%;
+}
+.background-color-overlay {
+    background-color: #000000;
+    opacity: 0.5;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 100;
 }
 </style>
