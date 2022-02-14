@@ -9,7 +9,7 @@
             <h5>Life Science</h5>
           </div>
           <div class="image">
-            <img src="/images/applications/life science.jpeg" />
+            <img src="/images/fields/life science.jpeg" />
           </div>
         </div>
         <div class="body-pannel col-md-3 col-sm-12">
@@ -17,7 +17,7 @@
             <h5>Medical</h5>
           </div>
           <div class="image">
-            <img src="/images/applications/medical.png" />
+            <img src="/images/fields/medical.png" />
           </div>
         </div>
         <div class="body-pannel col-md-3 col-sm-12">
@@ -25,7 +25,7 @@
             <h5>Industrial</h5>
           </div>
           <div class="image">
-            <img src="/images/applications/industrial.jpg" />
+            <img src="/images/fields/industrial.jpg" />
           </div>
         </div>
         <div class="body-pannel col-md-3 col-sm-12">
@@ -33,7 +33,7 @@
             <h5>Drone</h5>
           </div>
           <div class="image">
-            <img src="/images/applications/drone.png" />
+            <img src="/images/fields/drone.png" />
           </div>
         </div>
       </div>

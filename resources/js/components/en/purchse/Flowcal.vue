@@ -1,0 +1,43 @@
+<template>
+    <div class="container flowcal">
+        <div class="title">
+            <h2>FlowCal flowcytomery analysis Web Application</h2>
+        </div>
+        <div class="body row">
+            <div class="text col-md-9 col-sm-12">
+                <h1>Coming Soon</h1>
+                <h5>It will be in beta, But please contact us if you would like to evaluate it.</h5>
+            </div>
+            <div class="button col-md-3 col-sm-12">
+                <b-button variant="outline-primary" :to="{ name: 'contact_en' }">Contact Us</b-button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+.flowcal {
+  padding: 20px 0;
+  min-height: 30rem;
+}
+.flowcal .title {
+  padding: 40px 0 20px 0;
+}
+.flowcal .body {
+  padding: 20px 0;
+}
+.flowcal .body .text h1{
+  font-weight: 600;
+}
+.flowcal .body .text h5{
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.flowcal .body .button {
+    text-align: center;
+    padding-top: 4rem;
+}
+.flowcal .body .button .btn-outline-primary {
+    border-radius: 15px;
+}
+</style>
