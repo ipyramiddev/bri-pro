@@ -3,13 +3,13 @@
     <a class="nav-link dropdown-toggle" href="#" role="button"
        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
     >
-      {{ locales[locale] }}
+      {{ $t(locales[locale]) }}
     </a>
     <div class="dropdown-menu">
       <a v-for="(value, key) in locales" :key="key" class="dropdown-item" href="#"
          @click.prevent="setLocale(key)"
       >
-        {{ value }}
+        {{ $t(value) }}
       </a>
     </div>
   </li>

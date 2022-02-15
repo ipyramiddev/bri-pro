@@ -21,7 +21,7 @@
                 </div>
                 <div class="foot">
                     <div class="button">
-                        <span>subscribe</span>
+                        <b-button variant="outline-primary">Subscribe</b-button>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="foot">
                     <div class="button">
-                        <span>subscribe</span>
+                        <b-button variant="outline-primary">Subscribe</b-button>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="foot">
                     <div class="button">
-                        <span>subscribe</span>
+                        <b-button variant="outline-primary">Subscribe</b-button>
                     </div>
                 </div>
             </div>
@@ -89,6 +89,11 @@
 .subscription .body .body-pannel .pannel {
   box-shadow: 0 1.5px 12px 2px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
+  transition: 0.3S
+}
+.subscription .body .body-pannel .pannel:hover {
+  box-shadow: 0 1.5px 12px 2px rgba(0, 0, 0, 0.74);
+  transition: 0.3S
 }
 .subscription .body .body-pannel .pannel .head {
   background-color: #EEEEEE;
@@ -105,20 +110,16 @@
   padding: 5rem 1rem 1rem 1rem;
 }
 .subscription .body .body-pannel .pannel .foot {
-    padding: 16px !important;
+    text-align: center;
+    padding-bottom: 3rem;
 }
-.subscription .body .body-pannel .pannel .foot .button {
-    text-align:center;
-    height: 50px;
-    padding: 8px 16px;
-    color: #007FED;
-    font-weight: 600;
-    border: 1px solid #008FED;
-    min-width: 100% !important;
-    border-radius: 10px;
-    font-size: 20px;
+.subscription .body .body-pannel .pannel .foot .btn-outline-primary {
+  color: #fff;
+  background-color: #007FED;
+  border-radius: 10px;
 }
-.subscription .body .body-pannel .pannel .foot .button:hover {
-    background-color: #EEEEEE;
+.subscription .body .body-pannel .pannel .foot .btn-outline-primary:hover {
+  color: #007FED;
+  background-color: #FFF;
 }
 </style>

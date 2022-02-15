@@ -65,7 +65,7 @@ export default {
     text-align: center;
     position: absolute;
     width: 100%;
-    padding: 18% 0;
+    padding: 15% 0;
 }
 .welcome .title {
     padding: 10px 0;
