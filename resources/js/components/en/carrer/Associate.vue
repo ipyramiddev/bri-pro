@@ -97,7 +97,7 @@
     display: flex;
     align-items: center;
 }
-.associate .body .body-pannel .button .button-outline-primary {
+.associate .body .body-pannel .button .btn-outline-primary {
   border-radius: 5px;
 }
 </style>
