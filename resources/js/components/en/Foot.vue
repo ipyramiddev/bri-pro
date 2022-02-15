@@ -33,6 +33,7 @@
 <style scoped>
 
 .foot {
+  padding-top: 20px;
   padding-bottom: 30px;
 }
 .foot .link-menu {
