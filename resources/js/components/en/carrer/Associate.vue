@@ -86,13 +86,13 @@
 }
 .associate .body .body-pannel .content {
     padding-top: 5px 5px;
-    width: 80%;
+    width: 75%;
 }
 .associate .body .body-pannel .content h4 {
     padding: 10px 0;
 }
 .associate .body .body-pannel .button {
-    padding-left: 10px;
+    padding-left: 5px;
     width: 20%;
     display: flex;
     align-items: center;
