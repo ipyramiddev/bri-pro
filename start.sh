@@ -1,5 +1,3 @@
-cd "$(dirname "$0")"
-
 echo :::::::::::::::: Project Pull :::::::::::::::::
 git pull
 
@@ -8,14 +6,10 @@ npm install
 npm run build
 
 echo :::::::::::::: Starting Backend :::::::::::::::
-#composer install
-#cp ./.env.example ./.env
+"C:\xampp\php\php.exe" "C:\ProgramData\ComposerSetup\bin\composer.phar" install
+cp ./.env.example ./.env
 
-#php artisan key:generate --ansi
-#php artisan jwt:secret
-
-#php artisan storage:link
-
-#php artisan serve
-
-docker-compose build
+"C:\xampp\php\php.exe" artisan key:generate
+#"C:\xampp\php\php.exe" artisan jwt:secret
+"C:\xampp\php\php.exe" artisan storage:link
+"C:\xampp\php\php.exe" artisan serve
