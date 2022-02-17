@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container">
-            <div class="ias_description row">
+            <div class="flowcal_description row">
                 <div class="span col-md-6 col-sm-12">
                     <div class="row">
                         <div class="col-md-3">
@@ -11,8 +11,8 @@
                         </div>
                         <div class="col-md-9">
                             <div class="text">
-                                <h4>supports various metadata</h4>
-                                <h6>Supports multidimensional data and complex big data by supoorting metafiles from various microcope manufactures.</h6>
+                                <h4>supports various analysis methods</h4>
+                                <h6>It also supports high-demensional analysis such as v-NSE analysis, SPADE analysis, FLowSOM, and CITRUS.</h6>
                             </div>
                         </div>
                     </div>
@@ -41,8 +41,8 @@
                         </div>
                         <div class="col-md-9">
                             <div class="text">
-                                <h4>ai equipped with functions</h4>
-                                <h6>Complicated analysis can be easily performed by incorporating deep learning and machine learning functions.</h6>
+                                <h4>equipped with ai functions</h4>
+                                <h6>Deep learning and machine learning functions can be introduced at low cost for subscription sales.</h6>
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                         <div class="col-md-9">
                             <div class="text">
                                 <h4>remote device operation(optional)</h4>
-                                <h6>Business dfficiency can he improved by connecting the target device to the API and performing remote control.</h6>
+                                <h6>Business efficiency can he improved by connecting the target device to the API and performing remote control.</h6>
                             </div>
                         </div>
                     </div>
@@ -68,24 +68,24 @@
 </template>
 
 <style>
-.ias_description {
+.flowcal_description {
     width: 100%;
     padding: 5rem 0;
 }
-.ias_description .span {
+.flowcal_description .span {
     display: flex;
     justify-content: space-around;
     padding: 30px 10px;
 }
-.ias_description .span .icon,
-.ias_description .span .text {
+.flowcal_description .span .icon,
+.flowcal_description .span .text {
     padding-left: 5px 0;
 }
-.ias_description .span .row {
+.flowcal_description .span .row {
     display: flex;
     align-items: center;
 }
-.ias_description .span .icon {
+.flowcal_description .span .icon {
     width: 90px;
     height: 90px;
     display: table-cell;
@@ -96,15 +96,15 @@
     color: #4054B2;
     transition: 0.3s
 }
-.ias_description .span .icon:hover {
+.flowcal_description .span .icon:hover {
     color: #fff;
     background-color: #4054B2;
     transition: 0.3s
 }
-.ias_description .span .icon svg {
+.flowcal_description .span .icon svg {
     font-size: 2rem;
 }
-.ias_description .span .text h4 {
+.flowcal_description .span .text h4 {
     font-weight: 500;
     text-transform: uppercase;
 }

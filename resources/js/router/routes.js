@@ -6,7 +6,7 @@ export default [
   { path: '/', name: 'home_en', component: page('en/home_en.vue') },
   { path: '/en/product', name: 'products_en', component: page('en/products_en.vue') },
   { path: '/en/product/IAS', name: 'ias_en', component: page('en/ias_en.vue') },
-  { path: '/en/product/FloaCal', name: 'flowcal_en', component: page('en/flowcal_en.vue') },
+  { path: '/en/product/FlowCal', name: 'flowcal_en', component: page('en/flowcal_en.vue') },
   { path: '/en/catalog', name: 'catalog_en', component: page('en/catalog_en.vue') },
   { path: '/en/purchase', name: 'purchase_en', component: page('en/purchase_en.vue') },
   { path: '/en/carrer', name: 'carrer_en', component: page('en/carrer_en.vue') },

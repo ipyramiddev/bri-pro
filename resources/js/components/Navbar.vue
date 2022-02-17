@@ -41,10 +41,28 @@
                 </router-link>
               </li>
 
-              <li class="nav-item">
+              <!-- <li class="nav-item" @mouseover="onOver" @mouseleave="onLeave">
                 <router-link :to="{ name: 'products_en' }" class="nav-link" active-class="active">
                   {{ $t('products_en') }}
                 </router-link>
+                <b-dropdown id="dropdown-1" text="Dropdown Button" ref="dropdown" class="hide m-md-2">
+                  <b-dropdown-item>{{ $t('ias_en') }}</b-dropdown-item>
+                  <b-dropdown-item>{{ $t('flowcal_en') }}</b-dropdown-item>
+                </b-dropdown>
+              </li> -->
+
+              <li class="nav-item dropdown" @mouseover="onOver" @mouseleave="onLeave" ref="dropdown">
+                <router-link :to="{ name: 'products_en' }"  class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  active-class="active">
+                  {{ $t('products_en') }}
+                </router-link>
+                <div class="dropdown-menu">
+                  <router-link :to="{ name: 'ias_en' }" class="nav-link dropdown-item" active-class="active">
+                  {{ $t('ias_en') }}
+                  </router-link>
+                  <router-link :to="{ name: 'flowcal_en' }" class="nav-link dropdown-item" active-class="active">
+                    {{ $t('flowcal_en') }}
+                </router-link>
+                </div>
               </li>
 
               <div class="dropdown-menu">
@@ -134,6 +152,12 @@ export default {
 
       // Redirect to login.
       this.$router.push({ name: 'login' })
+    },
+    onOver() {
+      this.$refs.dropdown.visible = true;
+    },
+    onLeave() {
+      this.$refs.dropdown.visible = false;
     }
   }
 }

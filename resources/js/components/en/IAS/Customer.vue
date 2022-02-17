@@ -6,12 +6,12 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <h6 class="ias_description">It is wasier to use than conventional analysis software and can produce results. I used to analyze it in the laboratory until late, but since it is a web applicationm I can analyze it after I srt home, witch is comfortable.</h6>
+                    <h6 class="ias_des">It is wasier to use than conventional analysis software and can produce results. I used to analyze it in the laboratory until late, but since it is a web applicationm I can analyze it after I srt home, witch is comfortable.</h6>
                     <h6 class="ias_subtitle">academia immunology</h6>
                     <span>Reseacher</span>
                 </div>
                 <div class="col-md-6 col-sm-12">                
-                    <h6 class="ias_description">Microscopes from various manufactures are mixed in the laboratory, and each analysis I had to learn the software. With this software, you can analyze all the data in the laboratory!</h6>
+                    <h6 class="ias_des">Microscopes from various manufactures are mixed in the laboratory, and each analysis I had to learn the software. With this software, you can analyze all the data in the laboratory!</h6>
                     <h6 class="ias_subtitle">academia refeneraltive medicine</h6>
                     <span>Reseacher</span>
                 </div>
@@ -33,7 +33,7 @@
     text-transform: uppercase;
     padding-bottom: 50px;
 }
-.ias_customer .row .ias_description {
+.ias_customer .row .ias_des {
     line-height: 1.9em;
     font-style: italic;
 }
