@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="col-md-3 col-sm-12">
-                <b-button variant="outline-primary">Contact Us</b-button>
+                <b-button variant="outline-primary" :to="{ name: 'contact_en'}">Contact Us</b-button>
             </div>
         </div>
     </div>
