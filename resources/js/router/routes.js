@@ -3,7 +3,8 @@ function page (path) {
 }
 
 export default [
-  { path: '/', name: 'home_en', component: page('en/home_en.vue') },
+  // English Routes
+  { path: '/en', name: 'en', component: page('en/home_en.vue') },
   { path: '/en/product', name: 'products_en', component: page('en/products_en.vue') },
   { path: '/en/product/IAS', name: 'ias_en', component: page('en/ias_en.vue') },
   { path: '/en/product/FlowCal', name: 'flowcal_en', component: page('en/flowcal_en.vue') },
@@ -12,6 +13,18 @@ export default [
   { path: '/en/carrer', name: 'carrer_en', component: page('en/carrer_en.vue') },
   { path: '/en/contact', name: 'contact_en', component: page('en/contact_en.vue') },
   { path: '/en/dealer', name: 'dealer_en', component: page('en/dealer_en.vue') },
+
+  // Japanese Routes
+  { path: '/', name: 'jp', component: page('jp/home_jp.vue') },
+  { path: '/product', name: 'products_jp', component: page('jp/products_jp.vue') },
+  { path: '/product/IAS', name: 'ias_jp', component: page('jp/ias_jp.vue') },
+  { path: '/product/FlowCal', name: 'flowcal_jp', component: page('jp/flowcal_jp.vue') },
+  { path: '/catalog', name: 'catalog_jp', component: page('jp/catalog_jp.vue') },
+  { path: '/purchase', name: 'purchase_jp', component: page('jp/purchase_jp.vue') },
+  { path: '/carrer', name: 'carrer_jp', component: page('jp/carrer_jp.vue') },
+  { path: '/contact', name: 'contact_jp', component: page('jp/contact_jp.vue') },
+  { path: '/dealer', name: 'dealer_jp', component: page('jp/dealer_jp.vue') },
+
 
 
   // { path: '/', name: 'welcome', component: page('welcome.vue') },

@@ -1,27 +1,27 @@
 <template>
     <div>
         <div class="header">
-            <h6>Job Opennings</h6>
-            <h1>Employment Information</h1>
+            <h6>{{$t('carrer.job')}}</h6>
+            <h1>{{$t('carrer.title')}}</h1>
         </div>
         <div class="container">
             <!-- Join us Today -->
             <div class="join">
-                <h4>Join Us Today</h4>
+                <h4>{{$t('carrer.job_title')}}</h4>
                 <div class="row">
                     <div class="col-md-3 col-sm-12">
                         <div class="title">
-                            <span>The Right Place For You</span>
+                            <span>{{$t('carrer.job_des_title')}}</span>
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-12">
                         <div class="content">
-                            <h6>Lorem ipsum dolor sit amet, conetur adiping elit Lorem ipsum dolor sit amet, cons ectetur adipiscing elit Lorem ipsum dolor sit altmet, conse ctetur adipiscing elit aloma lomiur off </h6>
+                            <h6>{{$t('carrer.job_des_1')}}</h6>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-12">
                         <div class="content">
-                            <h6>silder tolos. Lorem ipsum dolor sitlor amet, conetur adiping elit Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h6>
+                            <h6>{{$t('carrer.job_des_2')}}</h6>
                         </div>
                     </div>
                 </div>

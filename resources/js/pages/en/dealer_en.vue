@@ -3,11 +3,11 @@
         <!-- Campaign Information -->        
         <div class="container campaign">
             <div class="title">
-                <h2>Campaign Information</h2>
+                <h2>{{$t('dealer.campaign_title')}}</h2>
             </div>
             <div class="body row">
                 <div class="text col-md-12 col-sm-12">
-                    <h5>Information for argents, such as campaign information, will be included.</h5>
+                    <h5>{{$t('dealer.campaign_con')}}</h5>
                 </div>
             </div>
         </div>
@@ -15,14 +15,14 @@
         <!-- Brochure Information -->
         <div class="container brochure">
             <div class="title">
-                <h2>Brochure Information</h2>
+                <h2>{{$t('dealer.brochure_title')}}</h2>
             </div>
             <div class="body row">
                 <div class="text col-md-9 col-sm-12">
-                    <h5>Brochure can be downloaded here.</h5>
+                    <h5>{{$t('dealer.brochure_con')}}</h5>
                 </div>
                 <div class="button col-md-3 col-sm-12">
-                    <b-button variant="outline-primary">Brochure here</b-button>
+                    <b-button variant="outline-primary">{{$t('dealer.brochure_button')}}</b-button>
                 </div>
             </div>
         </div>

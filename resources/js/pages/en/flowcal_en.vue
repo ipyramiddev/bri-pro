@@ -7,11 +7,11 @@
         >
             <div class="flowcal_welcome">
                 <div class="title">
-                    <h1>flowcal, a web app for flow cytometry</h1>
+                    <h1>{{$t('flowcal.title')}}</h1>
                 </div>
                 <div class="button">
-                    <b-button variant="outline-primary" :to="{ name: 'products_en' }" class="purchase">Purchase</b-button>
-                    <b-button variant="outline-primary" :to="{ name: 'catalog_en' }" class="catalog">Catalog</b-button>
+                    <b-button variant="outline-primary" :to="{ name: $t('purchase.url') }" class="purchase">{{$t('purchase.text')}}</b-button>
+                    <b-button variant="outline-primary" :to="{ name: $t('catalog.url') }" class="catalog">{{$t('catalog.text')}}</b-button>
                 </div>
             </div>
             <div class="color-overlay">

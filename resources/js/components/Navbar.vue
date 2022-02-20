@@ -2,7 +2,7 @@
   <VueScrollFixedNavbar>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container">
-        <router-link :to="{ name: user ? 'home' : 'welcome' }" class="navbar-brand">
+        <router-link :to="{ name: $t('home.url') }" class="navbar-brand">
           <img :src="logo" />
         </router-link>
 
@@ -36,65 +36,46 @@
             <!-- Guest -->
             <template v-else>
               <li class="nav-item">
-                <router-link :to="{ name: 'home_en' }" class="nav-link" active-class="active">
-                  {{ $t('home_en') }}
+                <router-link :to="{ name: $t('home.url') }" class="nav-link" active-class="active">
+                  {{ $t('home.text') }}
                 </router-link>
               </li>
 
-              <!-- <li class="nav-item" @mouseover="onOver" @mouseleave="onLeave">
-                <router-link :to="{ name: 'products_en' }" class="nav-link" active-class="active">
-                  {{ $t('products_en') }}
+              <li class="nav-item dropdown" @mouseover="productOver" @mouseleave="productLeave">
+                <router-link :to="{ name: $t('products.url') }"  class="nav-link dropdown-toggle" active-class="active">
+                  {{ $t('products.text') }}
                 </router-link>
-                <b-dropdown id="dropdown-1" text="Dropdown Button" ref="dropdown" class="hide m-md-2">
-                  <b-dropdown-item>{{ $t('ias_en') }}</b-dropdown-item>
-                  <b-dropdown-item>{{ $t('flowcal_en') }}</b-dropdown-item>
-                </b-dropdown>
-              </li> -->
-
-              <li class="nav-item dropdown" @mouseover="onOver" @mouseleave="onLeave" ref="dropdown">
-                <router-link :to="{ name: 'products_en' }"  class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  active-class="active">
-                  {{ $t('products_en') }}
-                </router-link>
-                <div class="dropdown-menu">
-                  <router-link :to="{ name: 'ias_en' }" class="nav-link dropdown-item" active-class="active">
-                  {{ $t('ias_en') }}
+                <div class="dropdown-menu" :style="{ display: productShow ? 'block' : 'none' } ">
+                  <router-link :to="{ name: $t('ias.url') }" class="nav-link dropdown-item">
+                    {{ $t('ias.text') }}
                   </router-link>
-                  <router-link :to="{ name: 'flowcal_en' }" class="nav-link dropdown-item" active-class="active">
-                    {{ $t('flowcal_en') }}
+                  <router-link :to="{ name: $t('flowcal.url') }" class="nav-link dropdown-item">
+                    {{ $t('flowcal.text') }}
                 </router-link>
                 </div>
               </li>
 
-              <div class="dropdown-menu">
-                <router-link :to="{ name: 'ias_en' }" class="nav-link" active-class="active">
-                  {{ $t('catalog_en') }}
-                </router-link>
-                <router-link :to="{ name: 'flowcal_en' }" class="nav-link" active-class="active">
-                  {{ $t('catalog_en') }}
-                </router-link>
-              </div>
-
               <li class="nav-item">
-                <router-link :to="{ name: 'purchase_en' }" class="nav-link" active-class="active">
-                  {{ $t('purchase_en') }}
+                <router-link :to="{ name: $t('purchase.url') }" class="nav-link" active-class="active">
+                  {{ $t('purchase.text') }}
                 </router-link>
               </li>
 
               <li class="nav-item">
-                <router-link :to="{ name: 'carrer_en' }" class="nav-link" active-class="active">
-                  {{ $t('carrer_en') }}
+                <router-link :to="{ name: $t('carrer.url') }" class="nav-link" active-class="active">
+                  {{ $t('carrer.text') }}
                 </router-link>
               </li>
 
               <li class="nav-item">
-                <router-link :to="{ name: 'contact_en' }" class="nav-link" active-class="active">
-                  {{ $t('contact_en') }}
+                <router-link :to="{ name: $t('contact.url') }" class="nav-link" active-class="active">
+                  {{ $t('contact.text') }}
                 </router-link>
               </li>
 
               <li class="nav-item">
-                <router-link :to="{ name: 'dealer_en' }" class="nav-link" active-class="active">
-                  {{ $t('dealer_en') }}
+                <router-link :to="{ name: $t('dealer.url') }" class="nav-link" active-class="active">
+                  {{ $t('dealer.text') }}
                 </router-link>
               </li>
 
@@ -138,7 +119,8 @@ export default {
 
   data: () => ({
     logo: Logo,
-    fixed: false
+    fixed: false,
+    productShow: false
   }),
 
   computed: mapGetters({
@@ -153,24 +135,28 @@ export default {
       // Redirect to login.
       this.$router.push({ name: 'login' })
     },
-    onOver() {
-      this.$refs.dropdown.visible = true;
+    productOver() {
+      this.productShow = true;
     },
-    onLeave() {
-      this.$refs.dropdown.visible = false;
+    productLeave() {
+      this.productShow = false;
     }
   }
 }
 </script>
 
 <style scoped>
+.navbar {
+  font-weight: 500;
+}
 .kRFLgj .nav-item {
-  padding: 0 10px;
-    transition: all 0.3s cubic-bezier(.46,.03,.52,.96);
+  padding: 0 7px;
+  transition: all 0.3s cubic-bezier(.46,.03,.52,.96);
+  padding-bottom: 10px
 }
 .kRFLgj .navbar-light .navbar-nav .nav-link {
     color: #007FED;
-    font-size: 17px;
+    font-size: 18px;
 }
 .kRFLgj .navbar-light .navbar-nav .nav-link:hover{
     color: #000;

@@ -1,114 +1,114 @@
 <template>
     <div class="container dealer_ias">
         <div class="title">
-            <h2>IAS Image Analysis web Application</h2>
-            <h6>When ordering, please select the following items. Please note that hte prices are excclusive of tax. When you click on the "Order" button, the user information entry form will be displayed. Once the order is placed, an invoice will be sent ti your company and user license information will be sent to thr user via e-mail. Please note htat the order cannot be cnacelled after it has been placed. Also, please note that prices and specifications are subject to change without notice.</h6>
+            <h2>{{$t('ias_title')}}</h2>
+            <h6>{{$t('dealer.ias_des')}}</h6>
         </div>
         <div class="body row">
             <div class="body-pannel col-md-3 col-sm-12">
                 <div class="pannel">
                     <div class="head">
-                        <h4>IAS 1 MONTH PLAN</h4>
+                        <h4>{{$t('ias_1_month')}}</h4>
                         <h6>500G</h6>
                     </div>
                     <div class="cost">
-                        <h2>US$306</h2>
+                        <h2>{{$t('306$')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
-                            <li><b-icon icon="check-circle"></b-icon>1 license</li>
-                            <li><b-icon icon="check-circle"></b-icon>500GB server</li>
-                            <li><b-icon icon="check-circle"></b-icon>Chat support</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_license')}}</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_500server')}}</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_chat')}}</li>
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary">Order Now</b-button>
+                        <b-button variant="outline-primary">{{$t('order_button')}}</b-button>
                     </div>
                     <div class="discount">
-                        <h4>15% discount of</h4>
-                        <h3>US$360</h3>
+                        <h4>{{$t('15%_discount')}}</h4>
+                        <h3>{{$t('360$')}}</h3>
                     </div>
                 </div>
             </div>
             <div class="body-pannel col-md-3 col-sm-12">
                 <div class="pannel">
                     <div class="head">
-                        <h4>IAS 3 MONTH PLAN</h4>
+                        <h4>{{$t('ias_3_month')}}</h4>
                         <h6>500G</h6>
                     </div>
                     <div class="cost">
-                        <h2>US$850</h2>
+                        <h2>{{$t('850$')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
-                            <li><b-icon icon="check-circle"></b-icon>1 license</li>
-                            <li><b-icon icon="check-circle"></b-icon>500GB server</li>
-                            <li><b-icon icon="check-circle"></b-icon>Chat support</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_license')}}</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_500server')}}</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_chat')}}</li>
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary">Order Now</b-button>
+                        <b-button variant="outline-primary">{{$t('order_button')}}</b-button>
                     </div>
                     <div class="discount">
-                        <h4>15% discount of</h4>
-                        <h3>US$1,000</h3>
+                        <h4>{{$t('15%_discount')}}</h4>
+                        <h3>{{$t('1,000$')}}</h3>
                     </div>
                 </div>
             </div>
             <div class="body-pannel col-md-3 col-sm-12">
                 <div class="pannel">
                     <div class="head">
-                        <h4>IAS 1 YEAR PLAN</h4>
+                        <h4>{{$t('ias_1_year')}}</h4>
                         <h6>500G</h6>
                     </div>
                     <div class="cost">
-                        <h2>US$3,060</h2>
+                        <h2>{{$t('3060$')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
-                            <li><b-icon icon="check-circle"></b-icon>1 license</li>
-                            <li><b-icon icon="check-circle"></b-icon>500GB server</li>
-                            <li><b-icon icon="check-circle"></b-icon>Chat support</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_license')}}</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_500server')}}</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_chat')}}</li>
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary">Order Now</b-button>
+                        <b-button variant="outline-primary">{{$t('order_button')}}</b-button>
                     </div>
                     <div class="discount">
-                        <h4>15% discount of</h4>
-                        <h3>US$3,600</h3>
+                        <h4>{{$t('15%_discount')}}</h4>
+                        <h3>{{$t('3,600$')}}</h3>
                     </div>
                 </div>
             </div>
             <div class="body-pannel col-md-3 col-sm-12">
                 <div class="pannel">
                     <div class="head">
-                        <h4>IAS 1 YEAR PLAN SPECIAL</h4>
+                        <h4>{{$t('ias_1_year_special')}}</h4>
                         <h6>2T</h6>
                     </div>
                     <div class="cost">
-                        <h2>US$12,240</h2>
+                        <h2>{{$t('12240$')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
-                            <li><b-icon icon="check-circle"></b-icon>1 license</li>
-                            <li><b-icon icon="check-circle"></b-icon>2TB server</li>
-                            <li><b-icon icon="check-circle"></b-icon>Chat support</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_license')}}</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_2Tserver')}}</li>
+                            <li><b-icon icon="check-circle"></b-icon>{{$t('ias_chat')}}</li>
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary">Order Now</b-button>
+                        <b-button variant="outline-primary">{{$t('order_button')}}</b-button>
                     </div>
                     <div class="discount">
-                        <h4>15% discount of</h4>
-                        <h3>US$14,400</h3>
+                        <h4>{{$t('15%_discount')}}</h4>
+                        <h3>{{$t('14,400$')}}</h3>
                     </div>
                 </div>
             </div>
         </div>
         <div class="description">
-            <h6>If you have any requests for additional features, please contact us from the Contact Us page with your user information.</h6>
-            <b-button variant="outline-primary" :to="{ name: 'contact_en'}">Contact Us</b-button>
+            <h6>{{$t('dealer.ias_con')}}</h6>
+            <b-button variant="outline-primary" :to="{ name: $t('contact.url')}">{{$t('contact.text')}}</b-button>
         </div>
     </div>
 </template>

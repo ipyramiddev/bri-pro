@@ -7,14 +7,14 @@
         >
             <div class="welcome">
                 <div class="title">
-                    <h1>Welcome to Life Analytics</h1>
+                    <h1>{{ $t('welcome_to_lifeanalytics' )}}</h1>
                 </div>
                 <div class="content">
-                    <h5>Remote analysis for all researches & developments</h5>
+                    <h5>{{ $t('welcome_description') }}</h5>
                 </div>
                 <div class="button">
-                    <b-button variant="outline-primary" :to="{ name: 'products_en' }">Product Details</b-button>
-                    <b-button variant="outline-primary" :to="{ name: 'purchase_en' }">Subscribe</b-button>
+                    <b-button variant="outline-primary" :to="{ name: $t('products.url') }">{{ $t('products.text') }}</b-button>
+                    <b-button variant="outline-primary" :to="{ name: $t('purchase.url') }">{{ $t('subscribe') }}</b-button>
                 </div>
             </div>
             <div class="background-color-overlay">
@@ -22,8 +22,7 @@
             <b-carousel-slide
             v-for="item in carouselItems" :key="item.id" :img-src="item.image"
             ></b-carousel-slide>
-        </b-carousel>
-        
+        </b-carousel>        
     </div>
 </template>
 

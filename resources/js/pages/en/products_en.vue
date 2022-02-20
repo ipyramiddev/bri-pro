@@ -2,7 +2,7 @@
     <div>
         <!-- Description -->
         <div class="container description">
-            <h5>Cloud-based web applications allow anyone to perform complex perations and analytics with intutive experience that supports each manufacture's APIs and formats, regardless of location or environment.</h5>
+            <h5>{{$t('products.description')}}</h5>
         </div>
 
         <!-- List of Applications -->

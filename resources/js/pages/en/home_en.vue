@@ -37,7 +37,7 @@ import Introductionsection from '~/components/en/home/Introduction'
 import Subscriptionsection from '~/components/en/home/Subscription'
 import Contactsection from '~/components/en/home/Contact'
 import Informationsection from '~/components/en/home/Information'
-import Footer from '~/components/en/Footer'
+import Footer from '~/components/Footer'
 export default {
   components: {
       Imageslider,

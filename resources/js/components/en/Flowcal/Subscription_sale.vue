@@ -2,29 +2,29 @@
     <div class="ias_subscription">
         <div class="container">
             <div class="title">
-                <h2>Subscription sale</h2>
+                <h2>{{$t('flowcal.subscription_title')}}</h2>
             </div>
             <div class="description">
-                <h5>Low initial investment and can be used with the latest version</h5>
+                <h5>{{$t('flowcal.subscription_des')}}</h5>
             </div>
             <div class="body row">
                 <div class="body-pannel col-md-4 col-sm-12">
                     <div class="white-pannel">
                         <div class="head">
-                            <h3>1 month<br/> plan</h3>
+                            <h3>{{$t('flowcal.1_month')}}<br/>{{$t('flowcal.plan')}}</h3>
                             <h6>F L O W C A L</h6>
                             <hr />
                         </div>
                         <div class="content">
                             <ul>
-                                <li><b-icon icon="check"></b-icon>1 user</li>
-                                <li><b-icon icon="check"></b-icon>500GB server</li>
-                                <li><b-icon icon="check"></b-icon>Chat support</li>
+                                <li><b-icon icon="check"></b-icon>{{$t('flowcal.user')}}</li>
+                                <li><b-icon icon="check"></b-icon>{{$t('flowcal.500server')}}</li>
+                                <li><b-icon icon="check"></b-icon>{{$t('flowcal.chat')}}</li>
                             </ul>
                         </div>
                         <div class="foot">
                             <div class="button">
-                                <b-button variant="outline-primary">Subscribe</b-button>
+                                <b-button variant="outline-primary">{{$t('subscibe')}}</b-button>
                             </div>
                         </div>
                     </div>
@@ -32,20 +32,20 @@
                 <div class="body-pannel col-md-4 col-sm-12">
                     <div class="blue-pannel">
                         <div class="head">
-                            <h3>3 month<br/>  plan</h3>
+                            <h3>{{$t('flowcal.3_month')}}<br/>{{$t('flowcal.plan')}}</h3>
                             <h6>F L O W C A L</h6>
                             <hr />
                         </div>
                         <div class="content">
                             <ul>
-                                <li><b-icon icon="check"></b-icon>1 user</li>
-                                <li><b-icon icon="check"></b-icon>500GB server</li>
-                                <li><b-icon icon="check"></b-icon>Chat support</li>
+                                <li><b-icon icon="check"></b-icon>{{$t('flowcal.user')}}</li>
+                                <li><b-icon icon="check"></b-icon>{{$t('flowcal.500server')}}</li>
+                                <li><b-icon icon="check"></b-icon>{{$t('flowcal.chat')}}</li>
                             </ul>
                         </div>
                         <div class="foot">
                             <div class="button">
-                                <b-button variant="outline-primary">Subscribe</b-button>
+                                <b-button variant="outline-primary">{{$t('subscibe')}}</b-button>
                             </div>
                         </div>
                     </div>
@@ -53,20 +53,20 @@
                 <div class="body-pannel col-md-4 col-sm-12">
                     <div class="white-pannel">
                         <div class="head">
-                            <h3>Annual<br/>amount plan</h3>
+                            <h3>{{$t('flowcal.annual')}}<br/>{{$t('flowcal.plan')}}</h3>
                             <h6>F L O W C A L</h6>
                             <hr />
                         </div>
                         <div class="content">
                             <ul>
-                                <li><b-icon icon="check"></b-icon>1 user</li>
-                                <li><b-icon icon="check"></b-icon>500GB server</li>
-                                <li><b-icon icon="check"></b-icon>Chat support</li>
+                                <li><b-icon icon="check"></b-icon>{{$t('flowcal.user')}}</li>
+                                <li><b-icon icon="check"></b-icon>{{$t('flowcal.500server')}}</li>
+                                <li><b-icon icon="check"></b-icon>{{$t('flowcal.chat')}}</li>
                             </ul>
                         </div>
                         <div class="foot">
                             <div class="button">
-                                <b-button variant="outline-primary">Subscribe</b-button>
+                                <b-button variant="outline-primary">{{$t('subscibe')}}</b-button>
                             </div>
                         </div>
                     </div>
