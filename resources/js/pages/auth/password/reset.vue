@@ -38,6 +38,10 @@
               <v-button :loading="form.busy">
                 {{ $t('reset_password') }}
               </v-button>
+
+              <router-link :to="{ name: 'login' }">
+                {{ $t('back') }}
+              </router-link>
             </div>
           </div>
         </form>
@@ -82,3 +86,13 @@ export default {
   }
 }
 </script>
+<style scoped>
+.m-auto {
+  padding-top: 40px;
+}
+.ms-md-auto {
+  display: flex;
+  justify-content: space-around;
+  margin-right: auto !important;
+}
+</style>

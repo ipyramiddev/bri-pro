@@ -3,6 +3,9 @@ function page (path) {
 }
 
 export default [
+
+  { path: '/', name: 'home', component: page('jp/home_jp.vue') },
+
   // English Routes
   { path: '/en', name: 'en', component: page('en/home_en.vue') },
   { path: '/en/product', name: 'products_en', component: page('en/products_en.vue') },
@@ -25,18 +28,15 @@ export default [
   { path: '/contact', name: 'contact_jp', component: page('jp/contact_jp.vue') },
   { path: '/dealer', name: 'dealer_jp', component: page('jp/dealer_jp.vue') },
 
-
-
-  // { path: '/', name: 'welcome', component: page('welcome.vue') },
-
   { path: '/login', name: 'login', component: page('auth/login.vue') },
   { path: '/register', name: 'register', component: page('auth/register.vue') },
+  { path: '/register/customer', name: 'registerCustomer', component: page('auth/registerCustomer.vue') },
+  { path: '/register/agency', name: 'registerAgency', component: page('auth/registerAgency.vue') },
   { path: '/password/reset', name: 'password.request', component: page('auth/password/email.vue') },
   { path: '/password/reset/:token', name: 'password.reset', component: page('auth/password/reset.vue') },
   { path: '/email/verify/:id', name: 'verification.verify', component: page('auth/verification/verify.vue') },
   { path: '/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
 
-  { path: '/home', name: 'home', component: page('home.vue') },
   {
     path: '/settings',
     component: page('settings/index.vue'),

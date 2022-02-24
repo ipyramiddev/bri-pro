@@ -2,7 +2,7 @@
   <div class="main-layout">
     <navbar />
 
-    <div class="container-lg mt-4">
+    <div class="container-lg mt-4 min-height">
       <child />
     </div>
 
@@ -23,6 +23,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.min-height {
+  min-height: 500px;
+}
+</style>
 
 <style>
 .main-layout {

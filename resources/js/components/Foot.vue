@@ -37,7 +37,6 @@
   padding-bottom: 30px;
 }
 .foot .link-menu {
-  border-top: 1px solid #007FED;
   padding-top: 20px;
 }
 .foot .link-menu ul {

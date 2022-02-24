@@ -53,3 +53,8 @@ export default {
   })
 }
 </script>
+<style scoped>
+.m-auto {
+  padding-top: 40px;
+}
+</style>

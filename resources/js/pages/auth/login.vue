@@ -42,8 +42,9 @@
                 {{ $t('login') }}
               </v-button>
 
-              <!-- GitHub Login Button -->
-              <login-with-github />
+              <b-button variant="outline-primary" :to="{ name: registername ? 'registerCustomer' : 'registerAgency' }">
+                {{$t('register')}}
+              </b-button>
             </div>
           </div>
         </form>
@@ -104,6 +105,19 @@ export default {
         this.$router.push({ name: 'home' })
       }
     }
+  },
+
+  props: {
+    registername: {default: true}
   }
 }
 </script>
+
+<style scoped>
+.m-auto {
+  padding-top: 40px;
+}
+.d-flex {
+  justify-content: space-between;
+}
+</style>

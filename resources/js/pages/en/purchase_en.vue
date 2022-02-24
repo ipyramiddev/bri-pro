@@ -1,21 +1,42 @@
 <template>
     <div>
-        <!-- IAS Image analysis web application -->
-        <IAS />
+        <!-- If Authentification -->
+        <div v-if="user">
+            
+            <div v-if="user.role == 'agency'">
+                <Alertsection />
+            </div>
 
-        <!-- FlowCal flowcytomery analysis Web application -->
-        <Flowcal />
+            <div v-else>
+                <!-- IAS Image analysis web application -->
+                <IAS />
+
+                <!-- FlowCal flowcytomery analysis Web application -->
+                <Flowcal />
+            </div>
+        </div>
+        <div v-else>
+            <Loginsection :registername='true'/>
+        </div>
     </div>
 </template>
 
 <script>
 import IAS from '~/components/en/purchse/IAS'
 import Flowcal from '~/components/en/purchse/Flowcal'
+import Loginsection from '~/pages/auth/login'
+import Alertsection from '~/components/Alert'
+import { mapGetters } from 'vuex'
 
 export default {
     components: {
         IAS,
-        Flowcal
-    }
+        Flowcal,
+        Loginsection,
+        Alertsection
+    },
+    computed: mapGetters({
+        user: 'auth/user'
+    }),
 }
 </script>

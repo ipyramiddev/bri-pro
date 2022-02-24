@@ -19,6 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->BigInteger('phone')->nullable();
+            $table->string('photo_url')->nullable();
+            $table->enum('role', ['admin', 'customer', 'agency', 'user'])->default('customer');
+            $table->enum('permission', ['approved', 'suspend', 'deny'])->default('suspend');
             $table->rememberToken();
             $table->timestamps();
         });

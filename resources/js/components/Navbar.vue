@@ -1,6 +1,16 @@
 <template>
   <VueScrollFixedNavbar>
+    <!-- Authenticated -->
+    <div v-if="user" class="login-dropdown" @mouseover="profileOver" @mouseleave="profileLeave">
+      <img :src="user.photo_url" class="rounded-circle profile-photo me-1">
+      <b-dropdown id="dropdown-right" right :text="user.name" size="small" variant="none" split-variant="none" ref="dropdown">
+        <b-dropdown-item :to="{ name: 'settings.profile' }" ><fa icon="cog" fixed-width />{{ $t('settings') }}</b-dropdown-item>
+        <b-dropdown-item href="#" @click.prevent="logout"><fa icon="sign-out-alt" fixed-width />{{ $t('logout') }}</b-dropdown-item>
+      </b-dropdown>
+    </div>
+    <!-- Guest -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      
       <div class="container">
         <router-link :to="{ name: $t('home.url') }" class="navbar-brand">
           <img :src="logo" />
@@ -12,85 +22,61 @@
 
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto">
-            <!-- Authenticated -->
-            <li v-if="user" class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-dark"
-                href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              >
-                <img :src="user.photo_url" class="rounded-circle profile-photo me-1">
-                {{ user.name }}
-              </a>
-              <div class="dropdown-menu">
-                <router-link :to="{ name: 'settings.profile' }" class="dropdown-item ps-3">
-                  <fa icon="cog" fixed-width />
-                  {{ $t('settings') }}
-                </router-link>
+            <li class="nav-item">
+              <router-link :to="{ name: $t('home.url') }" class="nav-link" active-class="active">
+                {{ $t('home.text') }}
+              </router-link>
+            </li>
 
-                <div class="dropdown-divider" />
-                <a href="#" class="dropdown-item ps-3" @click.prevent="logout">
-                  <fa icon="sign-out-alt" fixed-width />
-                  {{ $t('logout') }}
-                </a>
+            <li class="nav-item dropdown" @mouseover="productOver" @mouseleave="productLeave">
+              <router-link :to="{ name: $t('products.url') }"  class="nav-link dropdown-toggle" active-class="active">
+                {{ $t('products.text') }}
+              </router-link>
+              <div class="dropdown-menu" :style="{ display: productShow ? 'block' : 'none' } ">
+                <router-link :to="{ name: $t('ias.url') }" class="nav-link dropdown-item">
+                  {{ $t('ias.text') }}
+                </router-link>
+                <router-link :to="{ name: $t('flowcal.url') }" class="nav-link dropdown-item">
+                  {{ $t('flowcal.text') }}
+              </router-link>
               </div>
             </li>
-            <!-- Guest -->
-            <template v-else>
-              <li class="nav-item">
-                <router-link :to="{ name: $t('home.url') }" class="nav-link" active-class="active">
-                  {{ $t('home.text') }}
-                </router-link>
-              </li>
 
-              <li class="nav-item dropdown" @mouseover="productOver" @mouseleave="productLeave">
-                <router-link :to="{ name: $t('products.url') }"  class="nav-link dropdown-toggle" active-class="active">
-                  {{ $t('products.text') }}
-                </router-link>
-                <div class="dropdown-menu" :style="{ display: productShow ? 'block' : 'none' } ">
-                  <router-link :to="{ name: $t('ias.url') }" class="nav-link dropdown-item">
-                    {{ $t('ias.text') }}
-                  </router-link>
-                  <router-link :to="{ name: $t('flowcal.url') }" class="nav-link dropdown-item">
-                    {{ $t('flowcal.text') }}
-                </router-link>
-                </div>
-              </li>
+            <li class="nav-item">
+              <router-link :to="{ name: $t('purchase.url') }" class="nav-link" active-class="active">
+                {{ $t('purchase.text') }}
+              </router-link>
+            </li>
 
-              <li class="nav-item">
-                <router-link :to="{ name: $t('purchase.url') }" class="nav-link" active-class="active">
-                  {{ $t('purchase.text') }}
-                </router-link>
-              </li>
+            <li class="nav-item">
+              <router-link :to="{ name: $t('carrer.url') }" class="nav-link" active-class="active">
+                {{ $t('carrer.text') }}
+              </router-link>
+            </li>
 
-              <li class="nav-item">
-                <router-link :to="{ name: $t('carrer.url') }" class="nav-link" active-class="active">
-                  {{ $t('carrer.text') }}
-                </router-link>
-              </li>
+            <li class="nav-item">
+              <router-link :to="{ name: $t('contact.url') }" class="nav-link" active-class="active">
+                {{ $t('contact.text') }}
+              </router-link>
+            </li>
 
-              <li class="nav-item">
-                <router-link :to="{ name: $t('contact.url') }" class="nav-link" active-class="active">
-                  {{ $t('contact.text') }}
-                </router-link>
-              </li>
+            <li class="nav-item">
+              <router-link :to="{ name: $t('dealer.url') }" class="nav-link" active-class="active">
+                {{ $t('dealer.text') }}
+              </router-link>
+            </li>
 
-              <li class="nav-item">
-                <router-link :to="{ name: $t('dealer.url') }" class="nav-link" active-class="active">
-                  {{ $t('dealer.text') }}
-                </router-link>
-              </li>
+            <!--<li class="nav-item">
+              <router-link :to="{ name: 'login' }" class="nav-link" active-class="active">
+                {{ $t('login') }}
+              </router-link>
+            </li>-->
 
-              <!--<li class="nav-item">
-                <router-link :to="{ name: 'login' }" class="nav-link" active-class="active">
-                  {{ $t('login') }}
-                </router-link>
-              </li>-->
-
-              <!--<li class="nav-item">
-                <router-link :to="{ name: 'register' }" class="nav-link" active-class="active">
-                  {{ $t('register') }}
-                </router-link>
-              </li>-->
-            </template>
+            <!-- <li class="nav-item">
+              <router-link :to="{ name: 'register' }" class="nav-link" active-class="active">
+                {{ $t('register') }}
+              </router-link>
+            </li> -->
           </ul>
 
           <ul class="navbar-nav">
@@ -133,19 +119,34 @@ export default {
       await this.$store.dispatch('auth/logout')
 
       // Redirect to login.
-      this.$router.push({ name: 'login' })
+      this.$router.push({ name: 'home' })
     },
     productOver() {
       this.productShow = true;
     },
     productLeave() {
       this.productShow = false;
+    },
+    profileOver() {
+      this.$refs.dropdown.visible = true;
+    },
+    profileLeave() {
+      this.$refs.dropdown.visible = false;
     }
   }
 }
 </script>
 
 <style scoped>
+.kRFLgj .login-dropdown {
+  text-align: right;
+  background-color: white;
+}
+.kRFLgj .sticky .login-dropdown {
+  text-align: right;
+  background-color: white;
+  display: none;
+}
 .navbar {
   font-weight: 500;
 }
