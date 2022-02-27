@@ -29,7 +29,7 @@ class RegistrationController extends Controller
             'name' => 'required|max:50',
             'organization' => 'required',
             'deaprtment' => 'required',
-            'phone' => 'numeric|required',
+            'phone' => 'required',
             'zip' => 'required',
             'address_1' => 'required',
             'address_2' => 'required',
@@ -51,11 +51,10 @@ class RegistrationController extends Controller
 
         if ($check) {
             $lastInsertedID = $check->id;
-            $user_permission = $check->permission;
             $keys = array_keys($data);
             foreach($keys as $key){
-                if($key != '_token' && $key != "password" && $key != "password_confirmation" && $data[$key] != "" ){
-                    DB::table('usermetas')->insert([
+                if($key != '_token' && $key != "password" && $key != "password_confirmation" && $key != "role" && $key != "permission" && $data[$key] != "" ){
+                    DB::table('customermetas')->insert([
                         'user_id'=>$lastInsertedID,
                         'key'=>$key,
                         'value'=>$data[$key],
@@ -65,5 +64,52 @@ class RegistrationController extends Controller
         }
 
     }
+    /**
+     * Agency Registration Function
+     */
+    public function agencyRegister(Request $request) {
+        $data = $request->all();
+        Validator::make($data, [
+            'company_name' => 'required|max:50',
+            'seo_name' => 'required|max:50',
+            'name' => 'required|max:50',
+            // 'address_1' => 'required',
+            // 'deaprtment' => 'required',
+            // 'phone' => 'required',
+            // 'zip' => 'required',
+            // 'company_site' => 'required',
+            // 'transaction_con' => 'required',
+            // 'deposit_amount' => 'numeric|required',
+            'email' => 'required|email:filter|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ])->validate();
 
+        $data['role'] = 'agency';
+        $data['permission'] = 'suspend';
+
+        $check = DB::table('users')->insert([
+            'name'=>$data['name'],
+            'email'=>$data['email'],
+            'password'=>bcrypt($data['password']),
+            'phone'=>$data['phone'],
+            'role'=>$data['role'],
+            'permission'=>$data['permission']
+        ]);
+        
+
+        if ($check) {
+            $lastInsertedID = DB::getPdo()->lastInsertId();
+            $keys = array_keys($data);
+            foreach($keys as $key){
+                if($key != '_token' && $key != "password" && $key != "password_confirmation" && $key != "role" && $key != "permission" && $data[$key] != "" ){
+                    DB::table('agencymetas')->insert([
+                        'user_id'=>$lastInsertedID,
+                        'key'=>$key,
+                        'value'=>$data[$key],
+                    ]);
+                }
+            }
+            return true;
+        }
+    }
 }

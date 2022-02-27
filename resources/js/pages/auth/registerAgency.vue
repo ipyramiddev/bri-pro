@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="cus_reg_title">
-        <h1>{{$t('customer_register')}}</h1>
+        <h1>{{$t('agency_register')}}</h1>
     </div>
     <div class="col-lg-9 m-auto">
       <card v-if="mustVerifyEmail">
@@ -11,21 +11,21 @@
       </card>
       <card v-else>
         <form @submit.prevent="register" @keydown="form.onKeydown($event)">
-          <!-- First Name -->
+          <!-- Company Name -->
           <div class="mb-3 row">
-            <label class="col-md-3 col-form-label text-md-end">{{ $t('first_name') }}</label>
+            <label class="col-md-3 col-form-label text-md-end">{{ $t('company_name') }}</label>
             <div class="col-md-7">
-              <input v-model="form.first_name" :class="{ 'is-invalid': form.errors.has('first_name') }" class="form-control" type="text" name="first_name" :placeholder="$t('first_name')">
-              <has-error :form="form" field="first_name" />
+              <input v-model="form.company_name" :class="{ 'is-invalid': form.errors.has('company_name') }" class="form-control" type="text" name="company_name" :placeholder="$t('company_name')">
+              <has-error :form="form" field="company_name" />
             </div>
           </div>
 
-          <!-- Last Name -->
+          <!-- SEO/Person -->
           <div class="mb-3 row">
-            <label class="col-md-3 col-form-label text-md-end">{{ $t('last_name') }}</label>
+            <label class="col-md-3 col-form-label text-md-end">{{ $t('seo_name') }}</label>
             <div class="col-md-7">
-              <input v-model="form.last_name" :class="{ 'is-invalid': form.errors.has('last_name') }" class="form-control" type="text" name="last_name" :placeholder="$t('last_name')">
-              <has-error :form="form" field="last_name" />
+              <input v-model="form.seo_name" :class="{ 'is-invalid': form.errors.has('seo_name') }" class="form-control" type="text" name="seo_name" :placeholder="$t('seo_name')">
+              <has-error :form="form" field="seo_name" />
             </div>
           </div>
 
@@ -47,21 +47,12 @@
             </div>
           </div>
 
-          <!-- Organization -->
+          <!-- Address 1 -->
           <div class="mb-3 row">
-            <label class="col-md-3 col-form-label text-md-end">{{ $t('organization') }}</label>
+            <label class="col-md-3 col-form-label text-md-end">{{ $t('address_1') }}</label>
             <div class="col-md-7">
-              <input v-model="form.organization" :class="{ 'is-invalid': form.errors.has('organization') }" class="form-control" type="text" name="organization" :placeholder="$t('organization')">
-              <has-error :form="form" field="organization" />
-            </div>
-          </div>
-
-          <!-- Department -->
-          <div class="mb-3 row">
-            <label class="col-md-3 col-form-label text-md-end">{{ $t('deaprtment') }}</label>
-            <div class="col-md-7">
-              <input v-model="form.deaprtment" :class="{ 'is-invalid': form.errors.has('deaprtment') }" class="form-control" type="text" name="deaprtment" :placeholder="$t('deaprtment')">
-              <has-error :form="form" field="deaprtment" />
+              <input v-model="form.address_1" :class="{ 'is-invalid': form.errors.has('address_1') }" class="form-control" type="text" name="address_1" :placeholder="$t('address_1')">
+              <has-error :form="form" field="address_1" />
             </div>
           </div>
 
@@ -83,51 +74,44 @@
             </div>
           </div>
 
-          <!-- Country --> 
+          <!-- Company Website -->
           <div class="mb-3 row">
-            <label class="col-md-3 col-form-label text-md-end">{{ $t('country') }}</label>
+            <label class="col-md-3 col-form-label text-md-end">{{ $t('company_site') }}</label>
             <div class="col-md-7">
-              <Countryselect countryClass="form-control" countryName="country" @selected="changeCountry" @statesList="changeStates" />
+              <input v-model="form.company_site" :class="{ 'is-invalid': form.errors.has('company_site') }" class="form-control" type="text" name="company_site" :placeholder="$t('company_site')">
+              <has-error :form="form" field="company_site" />
             </div>
           </div>
 
-          <!-- State/County -->
+          <!-- Transaction Condition(Please note that we may not be able to meet your request) -->
           <div class="mb-3 row">
-            <label class="col-md-3 col-form-label text-md-end">{{ $t('state') }}</label>
-            <div class="col-md-7">              
-              <Stateselect stateClass="form-control" stateName="state" :selectedCountry="selectedCountry" :stateList="stateList" />
+            <label class="col-md-3 col-form-label text-md-end">{{ $t('transaction_con') }}</label>
+            <div class="col-md-7">
+              <textarea v-model="form.transaction_con" :class="{ 'is-invalid': form.errors.has('transaction_con') }" class="form-control" type="text" name="transaction_con" :placeholder="$t('transaction_con_des')"></textarea>
+              <has-error :form="form" field="transaction_con" />
             </div>
           </div>
 
-          <!-- Country City/Town -->
+          <!-- Deposit amount -->
           <div class="mb-3 row">
-            <label class="col-md-3 col-form-label text-md-end">{{ $t('city') }}</label>
+            <label class="col-md-3 col-form-label text-md-end">{{ $t('deposit_amount') }}</label>
             <div class="col-md-7">
-              <input v-model="form.city" class="form-control" type="text" name="city">
+              <input v-model="form.deposit_amount" :class="{ 'is-invalid': form.errors.has('deposit_amount') }" class="form-control" type="number" name="deposit_amount" :placeholder="$t('deposit_amount')">
+              <has-error :form="form" field="deposit_amount" />
             </div>
           </div>
 
-          <!-- Address 1 -->
+          <!-- Department of the Company -->
           <div class="mb-3 row">
-            <label class="col-md-3 col-form-label text-md-end">{{ $t('address_1') }}</label>
+            <label class="col-md-3 col-form-label text-md-end">{{ $t('deaprtment') }}</label>
             <div class="col-md-7">
-              <input v-model="form.address_1" :class="{ 'is-invalid': form.errors.has('address_1') }" class="form-control" type="text" name="address_1" :placeholder="$t('address_1')">
-              <has-error :form="form" field="address_1" />
-            </div>
-          </div>
-
-          <!-- Address 2 -->
-          <div class="mb-3 row">
-            <label class="col-md-3 col-form-label text-md-end">{{ $t('address_2') }}</label>
-            <div class="col-md-7">
-              <input v-model="form.address_2" :class="{ 'is-invalid': form.errors.has('address_2') }" class="form-control" type="text" name="address_2" :placeholder="$t('address_2')">
-              <has-error :form="form" field="address_2" />
+              <input v-model="form.deaprtment" :class="{ 'is-invalid': form.errors.has('deaprtment') }" class="form-control" type="text" name="deaprtment" :placeholder="$t('deaprtment')">
+              <has-error :form="form" field="deaprtment" />
             </div>
           </div>
 
           <!-- Password -->
           <div class="mb-3 row">
-              
             <label class="col-md-3 col-form-label text-md-end">{{ $t('password') }}</label>
             <div class="col-md-7">
               <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" :placeholder="$t('password')">
@@ -149,7 +133,7 @@
             <div class="col-md-7 offset-md-3 d-flex">
               <!-- Submit Button -->
               <v-button :loading="form.busy">
-                {{ $t('register') }}
+                {{ $t('application') }}
               </v-button>
 
               <!-- GitHub Register Button -->
@@ -164,71 +148,83 @@
 
 <script>
 import Form from 'vform'
-import Countryselect from '~/components/Countries'
-import Stateselect from '~/components/States'
+import swal from 'sweetalert2/dist/sweetalert2.js'
 import LoginWithGithub from '~/components/LoginWithGithub'
 
 export default {
   components: {
-    LoginWithGithub,
-    Countryselect,
-    Stateselect
+    LoginWithGithub
   },
 
   middleware: 'guest',
 
   metaInfo () {
-    return { title: this.$t('customer_register') }
+    return { title: this.$t('agency_register') }
   },
 
   data: () => ({
     form: new Form({
-        first_name: '',
-        last_name: '',        
+        company_name: '',
+        seo_name: '',        
         name: '',
         email: '',
-        organization: '',
+        address_1: '',
         deaprtment: '',
         phone: '',
         zip: '',
-        city: '',
-        address_1: '',
-        address_2: '',
+        company_site: '',
+        transaction_con: '',
+        deposit_amount: '',
         password: '',
         password_confirmation: ''
     }),
-    selectedCountry: "",
-    stateList: [],
     mustVerifyEmail: false
   }),
 
   methods: {
     async register () {
-      // Register the user.
-      const { data } = await this.form.post('/api/customerregister')
+        // Register the user.
+        const { data } = await this.form.post('/api/agencyregister')
+        if (data) {
+            swal.fire({
+                icon: 'success',
+                title: this.$t('register_success_title'),
+                text: this.$t('agency_register_success_text'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            }).then(() => {
+                this.$router.push({ name: 'home' })
+            })
+        } else {
+            swal.fire({
+                icon: 'warning',
+                title: this.$t('register_failure_title'),
+                text: this.$t('agency_register_faiure_text'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            }).then(() => {
+                this.$router.push({ name: 'registerAgency' })
+            })
+        }
       // Must verify email first.
-      if (data.status) {
-        this.mustVerifyEmail = true
-      } else {
+    //  if (data.status) {
+    //    this.mustVerifyEmail = true
+    //  } else {
         // Log in the user.
-        const { data: { token } } = await this.form.post('/api/login')
+    //    const { data: { token } } = await this.form.post('/api/login')
 
         // Save the token.
-        this.$store.dispatch('auth/saveToken', { token })
+    //    this.$store.dispatch('auth/saveToken', { token })
 
         // Update the user.
-        await this.$store.dispatch('auth/updateUser', { user: data })
+    //    await this.$store.dispatch('auth/updateUser', { user: data })
 
         // Redirect home.
-        this.$router.push({ name: 'home' })
-      }
+    //    this.$router.push({ name: 'home' })
+    //  }
     },
-    changeCountry(value) {
-      this.selectedCountry = value;
-    },
-    changeStates(value) {
-      this.stateList = value;
-    }
   }
 }
 </script>

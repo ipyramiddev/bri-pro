@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -24,22 +25,31 @@ class LoginController extends Controller
     /**
      * Attempt to log the user into the application.
      */
-    protected function attemptLogin(Request $request): bool
-    {
-        $token = $this->guard()->attempt($this->credentials($request));
+    protected function attemptLogin(Request $request)
+    {      
+        $token = $this->guard('web')->attempt($this->credentials($request));
 
         if (! $token) {
-            return false;
+            return response()->json(['status' => 'error', 'msg' => trans('auth.non_register')]);
         }
 
         $user = $this->guard()->user();
-        if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
-            return false;
+
+        if ($user->permission == 'suspend') {
+            return response()->json(['status' => 'error', 'msg' => trans('auth.suspending')]);
+        }
+        
+        if ($user->permission == 'deny') {
+            return response()->json(['status' => 'error', 'msg' => trans('auth.deny')]);
         }
 
+        if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
+            return response()->json(['status' => 'error', 'msg' => trans('auth.email_verify')]);
+        }
+        
         $this->guard()->setToken($token);
 
-        return true;
+        return response()->json(['status' => 'success', 'msg' => trans('auth.success')]);
     }
 
     /**
@@ -47,6 +57,7 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
+        $request->session()->regenerate();
         $this->clearLoginAttempts($request);
 
         $token = (string) $this->guard()->getToken();

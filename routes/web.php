@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/welcome', function () {
 //     return view('welcome');
 // });
+/* Admin dashboard Routes */
+
+Route::group(['prefix'=>'/admin', 'namespace'=> 'App\\Http\\Controllers'], function() {
+    Route::get('/dashboard', 'AdminController@index');
+});
