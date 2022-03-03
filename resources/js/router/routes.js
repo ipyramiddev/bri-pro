@@ -1,6 +1,9 @@
 function page (path) {
   return () => import(/* webpackChunkName: '' */ `~/pages/${path}`).then(m => m.default || m)
 }
+function adminpage (path) {
+  return () => import(/* webpacjChunkName: '' */ `~/admin/${path}`).then(m => m.default || m)
+}
 
 export default [
 
@@ -36,6 +39,10 @@ export default [
   { path: '/password/reset/:token', name: 'password.reset', component: page('auth/password/reset.vue') },
   { path: '/email/verify/:id', name: 'verification.verify', component: page('auth/verification/verify.vue') },
   { path: '/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
+
+  //Admin Dashboard
+  { path: '/admin/dashboard', name: 'dashboard', component: adminpage('dashboard.vue') },
+
 
   {
     path: '/settings',

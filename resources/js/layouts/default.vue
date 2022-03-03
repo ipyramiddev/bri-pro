@@ -1,12 +1,19 @@
 <template>
   <div class="main-layout">
-    <navbar />
+    <!-- user frontend -->
+    <div v-if="adminDashboardShow==false">
+      <navbar @dashboardShow="value" />
 
-    <div class="container-lg mt-4 min-height">
-      <child />
+      <div class="container-lg mt-4 min-height">
+        <child />
+      </div>
+
+      <footerbar />
     </div>
 
-    <footerbar />
+    <!-- admin dashboard -->
+    <div v-if="adminDashboardShow==true">
+    </div>
   </div>
 </template>
 
@@ -20,6 +27,14 @@ export default {
   components: {
     Navbar,
     footerbar
+  },
+  data: () => ({
+    adminDashboardShow: false
+  }),
+  methods: {
+    dashboardShow(value) {
+      adminDashboardShow: value
+    }
   }
 }
 </script>

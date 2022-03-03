@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Auth;
+use DB;
 
 class LoginController extends Controller
 {
@@ -25,31 +26,31 @@ class LoginController extends Controller
     /**
      * Attempt to log the user into the application.
      */
-    protected function attemptLogin(Request $request)
+    protected function attemptLogin(Request $request): bool
     {      
-        $token = $this->guard('web')->attempt($this->credentials($request));
+        $token = $this->guard()->attempt($this->credentials($request));
 
         if (! $token) {
-            return response()->json(['status' => 'error', 'msg' => trans('auth.non_register')]);
+            return false;
         }
 
         $user = $this->guard()->user();
 
         if ($user->permission == 'suspend') {
-            return response()->json(['status' => 'error', 'msg' => trans('auth.suspending')]);
+            return false;
         }
         
         if ($user->permission == 'deny') {
-            return response()->json(['status' => 'error', 'msg' => trans('auth.deny')]);
+            return false;
         }
 
         if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
-            return response()->json(['status' => 'error', 'msg' => trans('auth.email_verify')]);
+            return false;
         }
         
         $this->guard()->setToken($token);
 
-        return response()->json(['status' => 'success', 'msg' => trans('auth.success')]);
+        return true;
     }
 
     /**
@@ -57,7 +58,6 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
-        $request->session()->regenerate();
         $this->clearLoginAttempts($request);
 
         $token = (string) $this->guard()->getToken();
