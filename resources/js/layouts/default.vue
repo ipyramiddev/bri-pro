@@ -1,7 +1,7 @@
 <template>
   <div class="main-layout">
     <!-- user frontend -->
-    <div v-if="userFrontendShow">
+    <div v-if="userFrontendShow===true">
       <navbar @user_admin="showchange" />
 
       <div class="container-lg mt-4 min-height">
@@ -31,11 +31,20 @@ export default {
     dashboard
   },
   data: () => ({
-    userFrontendShow: true
+    userFrontendShow: ''
   }),
   methods: {
     showchange(value) {
       this.userFrontendShow = value
+    }
+  },
+  created() {
+    var pathname = window.location.pathname
+    var path = pathname.split('/')
+    if (path[1]=='admin'){
+      this.userFrontendShow=false
+    } else {
+      this.userFrontendShow=true
     }
   }
 }

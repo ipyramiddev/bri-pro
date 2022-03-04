@@ -43,10 +43,9 @@ export default [
 
   //Admin Dashboard
   { path: '/admin/dashboard', name: 'dashboard', component: adminpage('dashboard.vue'), meta: {middleware: admin} },
-  { path: '/admin/dashboard/buttons', name: 'buttons', component: adminpage('buttons.vue'), meta: {middleware: admin} },
-  { path: '/admin/dashboard/cards', name: 'cards', component: adminpage('cards.vue'), meta: {middleware: admin} },
-
-
+  { path: '/admin/buttons', name: 'buttons', component: adminpage('buttons.vue'), meta: {middleware: admin} },
+  { path: '/admin/cards', name: 'cards', component: adminpage('cards.vue'), meta: {middleware: admin} },
+  
   {
     path: '/settings',
     component: page('settings/index.vue'),
