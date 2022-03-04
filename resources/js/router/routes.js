@@ -1,3 +1,4 @@
+import admin from '~/middleware/admin.js'
 function page (path) {
   return () => import(/* webpackChunkName: '' */ `~/pages/${path}`).then(m => m.default || m)
 }
@@ -41,7 +42,9 @@ export default [
   { path: '/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
 
   //Admin Dashboard
-  { path: '/admin/dashboard', name: 'dashboard', component: adminpage('dashboard.vue') },
+  { path: '/admin/dashboard', name: 'dashboard', component: adminpage('dashboard.vue'), meta: {middleware: admin} },
+  { path: '/admin/dashboard/buttons', name: 'buttons', component: adminpage('buttons.vue'), meta: {middleware: admin} },
+  { path: '/admin/dashboard/cards', name: 'cards', component: adminpage('cards.vue'), meta: {middleware: admin} },
 
 
   {
