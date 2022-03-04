@@ -19,7 +19,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <router-link class="nav-link" to="/admin">
+        <router-link class="nav-link" to="/admin/dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></router-link
         >
@@ -69,7 +69,7 @@
           aria-controls="collapseUtilities"
         >
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
+          <span>Blogs</span>
         </a>
         <div
           id="collapseUtilities"
@@ -91,55 +91,6 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider" />
-
-      <!-- Heading -->
-      <div class="sidebar-heading">Addons</div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a
-          class="nav-link collapsed"
-          href="#"
-          data-toggle="collapse"
-          data-target="#collapsePages"
-          aria-expanded="true"
-          aria-controls="collapsePages"
-        >
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div
-          id="collapsePages"
-          class="collapse"
-          aria-labelledby="headingPages"
-          data-parent="#accordionSidebar"
-        >
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Other Pages:</h6>
-            <router-link class="collapse-item" to="/admin/pages/page-not-found">404 Page</router-link>
-            <router-link class="collapse-item" to="/admin/pages/blank">Blank Page</router-link>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <router-link class="nav-link" to="/admin/charts">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></router-link
-        >
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <router-link class="nav-link" to="/admin/tables">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></router-link
-        >
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block" />
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
