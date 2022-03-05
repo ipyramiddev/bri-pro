@@ -23,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('photo_url')->nullable();
             $table->enum('role', ['admin', 'customer', 'agency', 'user'])->default('customer');
             $table->enum('permission', ['approved', 'suspend', 'deny'])->default('suspend');
-            $table->longtext('token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,9 +2,6 @@ import admin from '~/middleware/admin.js'
 function page (path) {
   return () => import(/* webpackChunkName: '' */ `~/pages/${path}`).then(m => m.default || m)
 }
-function adminpage (path) {
-  return () => import(/* webpacjChunkName: '' */ `~/admin/${path}`).then(m => m.default || m)
-}
 
 export default [
 
@@ -41,11 +38,14 @@ export default [
   { path: '/email/verify/:id', name: 'verification.verify', component: page('auth/verification/verify.vue') },
   { path: '/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
 
+<<<<<<< HEAD
   //Admin Dashboard
   { path: '/admin/dashboard', name: 'dashboard', component: adminpage('dashboard.vue'), meta: {middleware: admin} },
   { path: '/admin/buttons', name: 'buttons', component: adminpage('buttons.vue'), meta: {middleware: admin} },
   { path: '/admin/cards', name: 'cards', component: adminpage('cards.vue'), meta: {middleware: admin} },
   
+=======
+>>>>>>> parent of 6b2f303 (fix)
   {
     path: '/settings',
     component: page('settings/index.vue'),

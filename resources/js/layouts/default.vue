@@ -1,19 +1,24 @@
 <template>
   <div class="main-layout">
+<<<<<<< HEAD
     <!-- user frontend -->
     <div v-if="userFrontendShow===true">
       <navbar @user_admin="showchange" />
+=======
+    <navbar />
+>>>>>>> parent of 6b2f303 (fix)
 
-      <div class="container-lg mt-4 min-height">
-        <child />
-      </div>
-
-      <footerbar />
+    <div class="container-lg mt-4 min-height">
+      <child />
     </div>
 
+<<<<<<< HEAD
     <!-- admin dashboard -->
     <dashboard v-else @user_admin="showchange" />
 
+=======
+    <footerbar />
+>>>>>>> parent of 6b2f303 (fix)
   </div>
 </template>
 
@@ -27,6 +32,7 @@ export default {
 
   components: {
     Navbar,
+<<<<<<< HEAD
     footerbar,
     dashboard
   },
@@ -46,6 +52,9 @@ export default {
     } else {
       this.userFrontendShow=true
     }
+=======
+    footerbar
+>>>>>>> parent of 6b2f303 (fix)
   }
 }
 </script>

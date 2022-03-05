@@ -5,7 +5,11 @@
       <div v-if="user.role=='admin'" class="login-dropdown" @mouseover="profileOver" @mouseleave="profileLeave">
         <img :src="user.photo_url" class="rounded-circle profile-photo me-1">
         <b-dropdown id="dropdown-right" right :text="user.name" size="small" variant="none" split-variant="none" ref="dropdown">
+<<<<<<< HEAD
           <b-dropdown-item @click="adminDashboardShow"><fa icon="cog" fixed-width />{{ $t('dashboard') }}</b-dropdown-item>
+=======
+          <b-dropdown-item href="/admin/dashboard"><fa icon="cog" fixed-width />{{ $t('dashboard') }}</b-dropdown-item>
+>>>>>>> parent of 6b2f303 (fix)
           <b-dropdown-item href="#" @click.prevent="logout"><fa icon="sign-out-alt" fixed-width />{{ $t('logout') }}</b-dropdown-item>
         </b-dropdown>
       </div>   
@@ -141,10 +145,13 @@ export default {
     },
     profileLeave() {
       this.$refs.dropdown.visible = false;
+<<<<<<< HEAD
     },
     adminDashboardShow() {
       this.$emit("user_admin", false);
       this.$router.push({name: 'dashboard'})
+=======
+>>>>>>> parent of 6b2f303 (fix)
     }
   }
 }
