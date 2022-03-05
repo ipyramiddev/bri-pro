@@ -1,0 +1,16 @@
+FROM node:14.15.1
+
+RUN sudo apt-get install curl
+RUN curl -sl https://deb.nodesource.com/setup_14.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs
+
+
+WORKDIR /var/www
+
+COPY package.json ./
+
+RUN npm install
+
+COPY . .
+
+CMD npm run watch -- --watch-poll
