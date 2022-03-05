@@ -16,7 +16,7 @@
             </div>
         </div>
         <div v-else>
-            <Loginsection :registername='true'/>
+            <Loginsection :registername='true' />
         </div>
     </div>
 </template>

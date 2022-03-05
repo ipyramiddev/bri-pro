@@ -1,34 +1,71 @@
 <template>
     <div>
-        <!-- Campaign Information -->        
-        <div class="container campaign">
-            <div class="title">
-                <h2>{{$t('dealer.campaign_title')}}</h2>
+        <!-- IF Authentification -->
+        <div v-if="user">
+
+            <div v-if="user.role=='customer'">
+                <Alertsection />
             </div>
-            <div class="body row">
-                <div class="text col-md-12 col-sm-12">
-                    <h5>{{$t('dealer.campaign_con')}}</h5>
+
+            <div v-else>
+                <!-- Campaign Information -->        
+                <div class="container campaign">
+                    <div class="title">
+                        <h2>{{$t('dealer.campaign_title')}}</h2>
+                    </div>
+                    <div class="body row">
+                        <div class="text col-md-12 col-sm-12">
+                            <h5>{{$t('dealer.campaign_con')}}</h5>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Brochure Information -->
+                <div class="container brochure">
+                    <div class="title">
+                        <h2>{{$t('dealer.brochure_title')}}</h2>
+                    </div>
+                    <div class="body row">
+                        <div class="text col-md-9 col-sm-12">
+                            <h5>{{$t('dealer.brochure_con')}}</h5>
+                        </div>
+                        <div class="button col-md-3 col-sm-12">
+                            <b-button variant="outline-primary">{{$t('dealer.brochure_button')}}</b-button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IAS -->
+                <IAS />
+
+                <!-- Flowcal -->
+                <Flowcal />
             </div>
         </div>
 
-        <!-- IAS -->
-        <IAS />
-
-        <!-- Flowcal -->
-        <Flowcal />
+        <div v-else>
+            <Loginsection :registername='false' />
+        </div>        
     </div>
 </template>
 
 <script>
-import IAS from '~/components/jp/dealer-order/IAS'
-import Flowcal from '~/components/jp/dealer-order/Flowcal'
+import IAS from '~/components/en/dealer-order/IAS'
+import Flowcal from '~/components/en/dealer-order/Flowcal'
+import Loginsection from '~/pages/auth/login'
+import Alertsection from '~/components/Alert'
+import {mapGetters } from 'vuex'
 
 export default {
     components: {
         IAS,
-        Flowcal
-    }
+        Flowcal,
+        Loginsection,
+        Alertsection
+    },
+    computed: mapGetters({
+        user: 'auth/user'
+    }),
 }
 </script>
 

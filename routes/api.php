@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\OAuthController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Auth\VerificationController;
@@ -33,8 +33,10 @@ Route::group(['middleware' => 'auth:api'], function () {
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
+    
     Route::post('login', [LoginController::class, 'login']);
-    Route::post('register', [RegistrationController::class, 'customerRegister']);
+    Route::post('customerregister', [RegistrationController::class, 'customerRegister']);
+    Route::post('agencyregister', [RegistrationController::class, 'agencyRegister']);
 
     Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail']);
     Route::post('password/reset', [ResetPasswordController::class, 'reset']);

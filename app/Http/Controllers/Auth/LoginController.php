@@ -8,6 +8,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Auth;
+use DB;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,7 @@ class LoginController extends Controller
      * Attempt to log the user into the application.
      */
     protected function attemptLogin(Request $request): bool
-    {
+    {      
         $token = $this->guard()->attempt($this->credentials($request));
 
         if (! $token) {
@@ -33,10 +35,19 @@ class LoginController extends Controller
         }
 
         $user = $this->guard()->user();
-        if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
+
+        if ($user->permission == 'suspend') {
+            return false;
+        }
+        
+        if ($user->permission == 'deny') {
             return false;
         }
 
+        if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
+            return false;
+        }
+        
         $this->guard()->setToken($token);
 
         return true;

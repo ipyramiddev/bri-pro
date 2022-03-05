@@ -5,6 +5,9 @@ import Meta from 'vue-meta'
 import routes from './routes'
 import Router from 'vue-router'
 import { sync } from 'vuex-router-sync'
+import Toasted from "vue-toasted";
+import Chart from "chart.js";
+
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -16,6 +19,8 @@ Vue.use(Router)
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+Vue.use(Toasted);
+
 
 // The middleware for every page of the application.
 const globalMiddleware = ['locale', 'check-auth']
