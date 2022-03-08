@@ -21,8 +21,8 @@
       <li class="nav-item active">
         <router-link class="nav-link" to="/admin/dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></router-link
-        >
+          <span>Dashboard</span>
+          </router-link>
       </li>
 
       <!-- Divider -->
@@ -33,29 +33,10 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a
-          class="nav-link collapsed"
-          href="#"
-          data-toggle="collapse"
-          data-target="#collapseTwo"
-          aria-expanded="true"
-          aria-controls="collapseTwo"
-        >
-          <i class="fas fa-fw fa-cog"></i>
+        <router-link class="nav-link" to="/admin/users">
+          <i class="fas fa-fw fa-user"></i>
           <span>users</span>
-        </a>
-        <div
-          id="collapseTwo"
-          class="collapse"
-          aria-labelledby="headingTwo"
-          data-parent="#accordionSidebar"
-        >
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <router-link class="collapse-item" to="/admin/components/buttons">Buttons</router-link>
-            <router-link class="collapse-item" to="/admin/components/cards">Cards</router-link>
-          </div>
-        </div>
+        </router-link>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
