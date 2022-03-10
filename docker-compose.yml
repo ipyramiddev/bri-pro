@@ -1,50 +1,72 @@
-version: "3.7"
+version: '3.1'
 services:
+
+  #PHP Service
   app:
     build:
-      args:
-        user: sammy
-        uid: 1000
-      context: ./
-      dockerfile: Dockerfile
-    image: lifeanalytics
-    container_name: lifeanalytics-app
-    restart: unless-stopped
-    working_dir: /var/www/
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: lifeanalytics
+    restart: always
+    tty: true
+    environment:
+      SERVICE_NAME: lifeanalytics
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+       - ./:/var/www
+       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: lifeanalytics-webserver
+    restart: always
+    tty: true
+    ports:
+      - "8008:80"
+        #  - "4431:443"
     volumes:
       - ./:/var/www
-      - /var/www/vendor
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
-      - lifeanalytics
+      - app-network
 
+  #MySQL Service
   db:
-    image: mysql:5.7
+    image: mysql:8.0.17
     container_name: lifeanalytics-db
-    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    tty: true
+    ports:
+      - "3307:3306"
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: 123456
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
-      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - dbdata:/var/lib/mysql
     networks:
-      - lifeanalytics
+      - app-network
 
-  nginx:
-    image: nginx:alpine
-    container_name: lifeanalytics-nginx
+  #adminer for db access
+  adminer:
+    image: adminer:latest
     restart: unless-stopped
     ports:
-      - "8000:8000"
-    volumes:
-      - ./:/var/www
-      - ./docker-compose/nginx:/etc/nginx/conf.d
-    networks:
-      - lifeanalytics
+      - 8080:8080
 
+#Docker Networks
 networks:
-  lifeanalytics:
+  app-network:
     driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local 
+
