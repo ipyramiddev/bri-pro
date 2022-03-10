@@ -100,10 +100,11 @@
             small
             @filtered="onFiltered"
             >
+                <template v-slot:cell(index)="data">
+                    {{data.index + 1}}
+                </template>
                 <template #cell(email)="data">
-                    <router-link to="#">
-                        {{ data.value }}
-                    </router-link>
+                    <router-link :to="{name: 'user-profile', params: {id: data.item.id}}">{{data.value}}</router-link>
                 </template>
             </b-table>
 
@@ -150,11 +151,12 @@
             return {
                 items: '',
                 fields: [
+                { key: 'index', label: ''},
                 { key: 'name', label: 'Name'},
                 { key: 'email', label: 'Email Address'},
                 { key: 'role', label: 'Role'},
                 { key: 'permission', label: 'Permission'},
-                { key: 'phone', label: 'Phone'},
+                { key: 'phone', label: 'Phone'}
                 ],
                 totalRows: 1,
                 currentPage: 1,
@@ -177,6 +179,9 @@
             async getUsers () {
                 const { data } = await axios.get('/api/get/users')
                 this.items = data
+            },
+            removeRow(index) {
+                this.items.splice(index, 1)
             }
         },        
         created() {

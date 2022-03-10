@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Settings\PasswordController;
 use App\Http\Controllers\Settings\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login', [FrontendController::class], 'index');
+
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', [LoginController::class, 'logout']);
 
@@ -33,6 +36,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::patch('settings/password', [PasswordController::class, 'update']);
     //fetch users
     Route::get('get/users', [AdminController::class, 'fetch_users']);
+    Route::get('/login', [FrontendController::class], 'index');
 });
 
 Route::group(['middleware' => 'guest:api'], function () {

@@ -128,7 +128,10 @@ export default {
       await this.$store.dispatch('auth/logout')
 
       // Redirect to login.
-      this.$router.push({ name: 'home' })
+      //this.$router.push({ name: 'home' })
+
+      // Redirect to login.
+      window.location.href='/'
     },
     productOver() {
       this.productShow = true;

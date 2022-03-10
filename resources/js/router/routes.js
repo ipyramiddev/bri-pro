@@ -1,4 +1,4 @@
-import admin from '~/middleware/admin.js'
+import auth from '~/middleware/auth.js'
 function page (path) {
   return () => import(/* webpackChunkName: '' */ `~/pages/${path}`).then(m => m.default || m)
 }
@@ -8,7 +8,7 @@ function adminpage (path) {
 
 export default [
 
-  { path: '/', name: 'home', component: page('jp/home_jp.vue') },
+  { path: '/', name: 'home', rediredt: '/', component: page('jp/home_jp.vue') },
 
   // English Routes
   { path: '/en', name: 'en', component: page('en/home_en.vue') },
@@ -42,11 +42,12 @@ export default [
   { path: '/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
 
   //Admin Dashboard
-  { path: '/admin/dashboard', name: 'dashboard', component: adminpage('dashboard.vue'), meta: {middleware: admin} },
-  { path: '/admin/users', name: 'admin.users', component: adminpage('user/index.vue'), meta: {middleware: admin} },
-  { path: '/admin/buttons', name: 'buttons', component: adminpage('buttons.vue'), meta: {middleware: admin} },
-  { path: '/admin/cards', name: 'cards', component: adminpage('cards.vue'), meta: {middleware: admin} },
-  { path: '/admin/tables', name: 'tables', component: adminpage('tables.vue'), meta: {middleware: admin} },
+  { path: '/admin/dashboard', name: 'dashboard', component: adminpage('dashboard.vue'), meta: {requiresAuth: true} },
+  { path: '/admin/users', name: 'admin.users', component: adminpage('user/index.vue'), meta: {middleware: auth} },
+  { path: '/admin/user-profile/:id', name: 'user-profile', component: adminpage('user/profiles.vue'), meta: {middleware: auth}},
+  { path: '/admin/buttons', name: 'buttons', component: adminpage('buttons.vue'), meta: {middleware: auth} },
+  { path: '/admin/cards', name: 'cards', component: adminpage('cards.vue'), meta: {middleware: auth} },
+  { path: '/admin/tables', name: 'tables', component: adminpage('tables.vue'), meta: {middleware: auth} },
   
   {
     path: '/settings',
