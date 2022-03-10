@@ -12,103 +12,23 @@
         </div>
 
         <!-- Page body -->
-        <div class='content'>
-            <div class='md-layout'>
-                <div class="md-layout-item md-medium-size-100 md-size-66">
-                    <form>
-                        <md-card>
-                        <md-card-header :data-background-color="dataBackgroundColor">
-                            <h4 class="title">Edit Profile</h4>
-                            <p class="category">Complete your profile</p>
-                        </md-card-header>
-
-                        <md-card-content>
-                            <div class="md-layout">
-                            <div class="md-layout-item md-small-size-100 md-size-33">
-                                <md-field>
-                                <label>Company (disabled)</label>
-                                <md-input v-model="disabled" disabled></md-input>
-                                </md-field>
-                            </div>
-                            <div class="md-layout-item md-small-size-100 md-size-33">
-                                <md-field>
-                                <label>User Name</label>
-                                <md-input v-model="username" type="text"></md-input>
-                                </md-field>
-                            </div>
-                            <div class="md-layout-item md-small-size-100 md-size-33">
-                                <md-field>
-                                <label>Email Address</label>
-                                <md-input v-model="emailadress" type="email"></md-input>
-                                </md-field>
-                            </div>
-                            <div class="md-layout-item md-small-size-100 md-size-50">
-                                <md-field>
-                                <label>First Name</label>
-                                <md-input v-model="firstname" type="text"></md-input>
-                                </md-field>
-                            </div>
-                            <div class="md-layout-item md-small-size-100 md-size-50">
-                                <md-field>
-                                <label>Last Name</label>
-                                <md-input v-model="lastname" type="text"></md-input>
-                                </md-field>
-                            </div>
-                            <div class="md-layout-item md-small-size-100 md-size-100">
-                                <md-field>
-                                <label>Adress</label>
-                                <md-input v-model="address" type="text"></md-input>
-                                </md-field>
-                            </div>
-                            <div class="md-layout-item md-small-size-100 md-size-33">
-                                <md-field>
-                                <label>City</label>
-                                <md-input v-model="city" type="text"></md-input>
-                                </md-field>
-                            </div>
-                            <div class="md-layout-item md-small-size-100 md-size-33">
-                                <md-field>
-                                <label>Country</label>
-                                <md-input v-model="country" type="text"></md-input>
-                                </md-field>
-                            </div>
-                            <div class="md-layout-item md-small-size-100 md-size-33">
-                                <md-field>
-                                <label>Postal Code</label>
-                                <md-input v-model="code" type="number"></md-input>
-                                </md-field>
-                            </div>
-                            <div class="md-layout-item md-size-100">
-                                <md-field maxlength="5">
-                                <label>About Me</label>
-                                <md-textarea v-model="aboutme"></md-textarea>
-                                </md-field>
-                            </div>
-                            <div class="md-layout-item md-size-100 text-right">
-                                <md-button class="md-raised md-success">Update Profile</md-button>
-                            </div>
-                            </div>
-                        </md-card-content>
-                        </md-card>
-                    </form>
-                </div>
-                <div class="md-layout-item md-medium-size-100 md-size-33">
-                    <md-card class="md-card-profile">
-                        <div class="md-card-avatar">
-                        <img class="img" />
+        <div class="row" style="margin-bottom: 20px;">
+            <!-- profile pannel -->
+            <div class="col-sm-8">
+                <div class="profile_pan">
+                    <div class="header-flex">
+                        <div class="profile_header">
+                            <h5>User profile</h5>
                         </div>
+                    </div>
+                    <div class="content-flex">
 
-                        <md-card-content>
-                        <h6 class="category text-gray">CEO / Co-Founder</h6>
-                        <h4 class="card-title">Alec Thompson</h4>
-                        <p class="card-description">
-                            Don't be scared of the truth because we need to restart the human
-                            foundation in truth And IOyou like Kanye loves Kanye IORick
-                            Owens’ bed design but the back is...
-                        </p>
-                        <md-button class="md-round md-success">Follow</md-button>
-                        </md-card-content>
-                    </md-card>
+                    </div>
+                </div>
+            </div>
+            <!-- photo pannel -->
+            <div class="col-sm-4">
+                <div class="photo_pan">
                 </div>
             </div>
         </div>
@@ -117,6 +37,7 @@
 
 
 <script>
+import axios from 'axios'
 export default {
   props: {
     dataBackgroundColor: {
@@ -139,6 +60,42 @@ export default {
         "Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.",
     };
   },
+  created() {
+        var user_id=this.$route.params.id
+        this.getUserById(user_id)
+  },
+  methods: {      
+    async getUserById (user_id) {
+        const { data } = await axios.get('/api/get/user/'+user_id)
+        console.log(data)
+    },
+  }
 };
 </script>
-<style></style>
+<style>
+.profile_pan,
+.photo_pan {
+    background-color: #fff;
+    min-height: 200px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.header-flex {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: -15px;
+}
+.profile_header {
+    background-color: #0d6efd;
+    border-radius: 3px;
+    width: 95%;
+    min-height: 30%;
+    text-align: left;
+}
+.profile_header h5 {
+    padding: 10px 0 10px 10px;
+    color: #fff;
+}
+</style>

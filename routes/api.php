@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::patch('settings/password', [PasswordController::class, 'update']);
     //fetch users
     Route::get('get/users', [AdminController::class, 'fetch_users']);
-    Route::get('/login', [FrontendController::class], 'index');
+    Route::get('get/user/{id}', [AdminController::class, 'fetch_user_id']);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
