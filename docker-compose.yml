@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
-    container_name: lifeanalytics
+    container_name: lifeanalytics-app
     restart: always
     tty: true
     environment:

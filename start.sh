@@ -6,10 +6,13 @@ npm install
 npm run build
 
 echo :::::::::::::: Starting Backend :::::::::::::::
-"C:\xampp\php\php.exe" "C:\ProgramData\ComposerSetup\bin\composer.phar" install
-cp ./.env.example ./.env
+docker compose build
+docker compose up -d
+docker compose run app composer install
+docker compose run app cp .env.example .env
+docker compose run app php artisan key:generate
+docker compose run app php artisan migrate
+docker compose run app php artisan db:seed
+docker compose run app php artisan jwt:secret
 
-"C:\xampp\php\php.exe" artisan key:generate
-#"C:\xampp\php\php.exe" artisan jwt:secret
-"C:\xampp\php\php.exe" artisan storage:link
-"C:\xampp\php\php.exe" artisan serve
+echo :::::::::::::: Started server at http://localhost:8008 :::::::::::::::
