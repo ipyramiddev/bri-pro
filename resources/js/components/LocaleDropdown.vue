@@ -62,4 +62,7 @@ export default {
 .dropdown-item:hover {
   color: #007FED;
 }
+.nav-item .dropdown-menu {
+  margin-top: -5px;
+}
 </style>

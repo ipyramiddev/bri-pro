@@ -193,6 +193,10 @@ export default {
 .kRFLgj .sticky .bg-white {
     background-color:#007FED;
 }
+.kRFLgj .nav-item .dropdown-menu,
+.nav-item .dropdown-menu {
+  margin-top: -5px;
+}
 </style>
 
 
