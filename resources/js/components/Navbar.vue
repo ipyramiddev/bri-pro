@@ -158,6 +158,11 @@ export default {
   text-align: right;
   background-color: white;
 }
+.kRFLgj .login-dropdown img {
+  margin-top: 5px;
+  width: 35px:
+  height: 35px;
+}
 .kRFLgj .sticky .login-dropdown {
   text-align: right;
   background-color: white;
@@ -194,7 +199,7 @@ export default {
     background-color:#007FED;
 }
 .kRFLgj .nav-item .dropdown-menu,
-.nav-item .dropdown-menu {
+.kRFLgj .sticky .nav-item .dropdown-menu {
   margin-top: -5px;
 }
 </style>
