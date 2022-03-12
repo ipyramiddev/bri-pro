@@ -39,6 +39,13 @@
         </router-link>
       </li>
 
+      <li class="nav-item">
+        <router-link class="nav-link" to="/admin/applications">
+          <i class="fas fa-list fa-sm fa-fw"></i>
+          <span>Appllications</span>
+        </router-link>
+      </li>
+
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a

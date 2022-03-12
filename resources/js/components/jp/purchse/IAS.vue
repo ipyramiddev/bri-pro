@@ -11,7 +11,7 @@
                         <h6>500G</h6>
                     </div>
                     <div class="cost">
-                        <h2>{{$t('360$')}}</h2>
+                        <h2>{{$t('360')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
@@ -32,7 +32,7 @@
                         <h6>500G</h6>
                     </div>
                     <div class="cost">
-                        <h2>{{$t('1000$')}}</h2>
+                        <h2>{{$t('1000')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
@@ -53,7 +53,7 @@
                         <h6>500G</h6>
                     </div>
                     <div class="cost">
-                        <h2>{{$t('3600$')}}</h2>
+                        <h2>{{$t('3600')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
@@ -74,7 +74,7 @@
                         <h6>2T</h6>
                     </div>
                     <div class="cost">
-                        <h2>{{$t('14400$')}}</h2>
+                        <h2>{{$t('14400')}}</h2>
                     </div>
                     <div class="content">
                         <ul>

@@ -48,6 +48,7 @@ export default [
   { path: '/admin/dashboard', name: 'dashboard', component: adminpage('dashboard.vue'), meta: {requiresAuth: true} },
   { path: '/admin/users', name: 'admin.users', component: adminpage('user/index.vue'), meta: {middleware: auth} },
   { path: '/admin/user-profile/:id', name: 'user-profile', component: adminpage('user/profiles.vue'), meta: {middleware: auth}},
+  { path: '/admin/applications', name: 'admin.applications', component: adminpage('Applications/index.vue'), meta: {middleware: auth} },
   { path: '/admin/buttons', name: 'buttons', component: adminpage('buttons.vue'), meta: {middleware: auth} },
   { path: '/admin/cards', name: 'cards', component: adminpage('cards.vue'), meta: {middleware: auth} },
   { path: '/admin/tables', name: 'tables', component: adminpage('tables.vue'), meta: {middleware: auth} },

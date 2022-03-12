@@ -50,8 +50,8 @@
 </template>
 
 <script>
-import IAS from '~/components/en/dealer-order/IAS'
-import Flowcal from '~/components/en/dealer-order/Flowcal'
+import IAS from '~/components/jp/dealer-order/IAS'
+import Flowcal from '~/components/jp/dealer-order/Flowcal'
 import Loginsection from '~/pages/auth/login'
 import Alertsection from '~/components/Alert'
 import {mapGetters } from 'vuex'

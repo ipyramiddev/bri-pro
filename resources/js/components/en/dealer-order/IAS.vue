@@ -12,7 +12,7 @@
                         <h6>500G</h6>
                     </div>
                     <div class="cost">
-                        <h2>{{$t('306$')}}</h2>
+                        <h2>{{$t('306')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="discount">
                         <h4>{{$t('15%_discount')}}</h4>
-                        <h3>{{$t('360$')}}</h3>
+                        <h3>{{$t('360')}}</h3>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                         <h6>500G</h6>
                     </div>
                     <div class="cost">
-                        <h2>{{$t('850$')}}</h2>
+                        <h2>{{$t('850')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="discount">
                         <h4>{{$t('15%_discount')}}</h4>
-                        <h3>{{$t('1,000$')}}</h3>
+                        <h3>{{$t('1000')}}</h3>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                         <h6>500G</h6>
                     </div>
                     <div class="cost">
-                        <h2>{{$t('3060$')}}</h2>
+                        <h2>{{$t('3060')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="discount">
                         <h4>{{$t('15%_discount')}}</h4>
-                        <h3>{{$t('3,600$')}}</h3>
+                        <h3>{{$t('3600')}}</h3>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                         <h6>2T</h6>
                     </div>
                     <div class="cost">
-                        <h2>{{$t('12240$')}}</h2>
+                        <h2>{{$t('12240')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
@@ -101,7 +101,7 @@
                     </div>
                     <div class="discount">
                         <h4>{{$t('15%_discount')}}</h4>
-                        <h3>{{$t('14,400$')}}</h3>
+                        <h3>{{$t('14400')}}</h3>
                     </div>
                 </div>
             </div>
