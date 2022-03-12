@@ -8,12 +8,12 @@
                 <div v-for="item in listdatas" :key="item.id">
                     <b-card no-body class="mb-1">
                     <b-card-header header-tag="header" class="p-1" role="tab">
-                        <div class="list" v-b-toggle.col-1 variant="info"><b-icon icon="caret-right-fill"></b-icon>{{ item.title }}</div>
+                        <div class="list" v-b-toggle="'collapse_'+item.id" variant="info"><b-icon icon="caret-right-fill"></b-icon>{{ item.title }}</div>
                     </b-card-header>
-                    <b-collapse id="col-1" visible accordion="my-accordion" role="tabpanel">
+                    <b-collapse :id="'collapse_'+item.id" accordion="my-accordion" role="tabpanel">
                         <b-card-body>
-                        <b-card-text>{{ item.text }}</b-card-text>
-                        <b-card-text>{{ item.image }}</b-card-text>
+                            <b-card-text>{{ item.text }}</b-card-text>
+                            <img :src="item.image" />
                         </b-card-body>
                     </b-collapse>
                     </b-card>
