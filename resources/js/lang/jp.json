@@ -327,5 +327,13 @@
   "flowcal_1_year": "FlowCal　１年プラン",
   "flowcal_license": " １ライセンス",
   "flowcal_250server": " 250GB容量",
-  "flowcal_chat": " チャットサポート"
+  "flowcal_chat": " チャットサポート",
+  "Admin": "Administrator",
+  "Customer": "Customer",
+  "Dealer": "Dealer",
+  "role": "Role",
+  "permission": "Permission",
+  "Approve": "approved",
+  "Suspend": "suspend",
+  "Deny": "deny"
 }

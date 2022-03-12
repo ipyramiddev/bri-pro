@@ -21,7 +21,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'checkout', query: {app_id: '1', cat_id: '1'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>

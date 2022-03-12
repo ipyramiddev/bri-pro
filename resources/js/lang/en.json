@@ -331,5 +331,13 @@
   "flowcal_license": "1 license",
   "flowcal_250server": "250BG server",
   "flowcal_2Tserver": "2TB server",
-  "flowcal_chat": "Chat support"
+  "flowcal_chat": "Chat support",
+  "Admin": "Administrator",
+  "Customer": "Customer",
+  "Dealer": "Dealer",
+  "role": "Role",
+  "permission": "Permission",
+  "Approve": "approved",
+  "Suspend": "suspend",
+  "Deny": "deny"
 }

@@ -32,6 +32,9 @@ export default [
   { path: '/contact', name: 'contact_jp', component: page('jp/contact_jp.vue') },
   { path: '/dealer', name: 'dealer_jp', component: page('jp/dealer_jp.vue') },
 
+  //Purchase routes
+  { path: '/ckeckout', name: 'checkout', component: page('purchase/checkout.vue') },
+
   { path: '/login', name: 'login', component: page('auth/login.vue') },
   { path: '/register', name: 'register', component: page('auth/register.vue') },
   { path: '/register/customer', name: 'registerCustomer', component: page('auth/registerCustomer.vue') },

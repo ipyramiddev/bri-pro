@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     //fetch users
     Route::get('get/users', [AdminController::class, 'fetch_users']);
     Route::get('get/user/{id}', [AdminController::class, 'fetch_user_id']);
+
+    Route::post('user/role_update/{id}', [AdminController::class, 'user_role_update']);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
