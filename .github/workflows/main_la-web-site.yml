@@ -35,7 +35,11 @@ jobs:
         run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
 
       - name: run laravel commands
-        run: php artisan migrate --force
+        run: |
+          php artisan clear-compiled 
+          composer dump-autoload
+          php artisan optimize
+          php artisan migrate --force
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
