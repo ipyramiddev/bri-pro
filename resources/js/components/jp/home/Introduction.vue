@@ -16,11 +16,36 @@
           </div>
         </div>
         <div class="video col-md-6 col-sm-12">
-            <div data-id="fbbb76e" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/youtu.be\/VYYqGkiKFkQ&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;,&quot;aspect_ratio&quot;:&quot;169&quot;}" data-widget_type="video.default"></div>
+          <youtube :video-id="videoId" @ready="ready" @playing="playing" player-width="100%" player-height="100%"></youtube>
+          <!-- <div data-id="fbbb76e" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/youtu.be\/VYYqGkiKFkQ&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;,&quot;aspect_ratio&quot;:&quot;169&quot;}" data-widget_type="video.default"></div> -->
         </div>
       </div>
     </div>
 </template>
+
+<script>
+  export default {
+    data: () => ({
+      videoId: 'videoId',
+    }),
+    methods: {
+      ready (event) {
+        this.player = event.target
+      },
+      palying (event) {
+      },
+      change () {
+        this.videoId = this.$youtubr.getIdFromURL('https://youtu.be/VYYqGkiKFkQ')
+      },
+      stop () {
+        this.player.stopVideo()
+      },
+      pause () {
+        this.player.pauseVideo()
+      }
+    }
+  }
+</script>
 
 <style scoped>
 .introduction {

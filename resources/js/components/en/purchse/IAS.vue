@@ -42,7 +42,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'checkout', query: {app_id: '1', cat_id: '2'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'checkout', query: {app_id: '1', cat_id: '3'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'checkout', query: {app_id: '1', cat_id: '4'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>
@@ -95,63 +95,65 @@
     </div>
 </template>
 
-<style scoped>
-.ias {
-  padding: 20px 0;
-}
-.ias .title {
-  padding: 40px 0 20px 0;
-}
-.ias .description {
-  padding: 10px 0 10px 30px;
-}
-.ias .body {
-  padding: 20px 0;
-}
-.ias .body .body-pannel {
-  padding: 0.2rem 1rem;
-}
-.ias .body .body-pannel .pannel {
-  border-radius: 6px;
-  background-color: #F9F9F9;
-  transition: 0.3S
-}
-.ias .body .body-pannel .pannel:hover {
-  box-shadow: 0 1.5px 12px 2px rgba(0, 0, 0, 0.74);
-  transition: 0.3S
-}
-.ias .body .body-pannel .pannel .head {
-  text-align: center;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  padding: 20px 10px 10px 10px;
-  min-height:8rem;
-}
-.ias .body .body-pannel .pannel .head h4 {
-  font-weight: 600;
-}
-.ias .body .body-pannel .pannel .cost {
-  text-align: center;
-}
-.ias .body .body-pannel .pannel .cost h2 {
-  font-weight: 700;
-}
-.ias .body .body-pannel .pannel .content {
-  line-height: 2rem;
-  padding: 1rem;
-}
-.ias .body .body-pannel .pannel .content li {
-  list-style-type: none;
-}
-.ias .body .body-pannel .pannel .content li svg {
-  width: 3.5rem;
-}
-.ias .body .body-pannel .pannel .foot {
-    padding: 0.5rem 4rem 2rem 4rem;
-    text-align: center;
-}
-.ias .body .body-pannel .pannel .foot .btn-outline-primary {
-    border-radius: 10px;
-}
+<script>
+</script>
 
+<style scoped>
+    .ias {
+    padding: 20px 0;
+    }
+    .ias .title {
+    padding: 40px 0 20px 0;
+    }
+    .ias .description {
+    padding: 10px 0 10px 30px;
+    }
+    .ias .body {
+    padding: 20px 0;
+    }
+    .ias .body .body-pannel {
+    padding: 0.2rem 1rem;
+    }
+    .ias .body .body-pannel .pannel {
+    border-radius: 6px;
+    background-color: #F9F9F9;
+    transition: 0.3S
+    }
+    .ias .body .body-pannel .pannel:hover {
+    box-shadow: 0 1.5px 12px 2px rgba(0, 0, 0, 0.74);
+    transition: 0.3S
+    }
+    .ias .body .body-pannel .pannel .head {
+    text-align: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding: 20px 10px 10px 10px;
+    min-height:8rem;
+    }
+    .ias .body .body-pannel .pannel .head h4 {
+    font-weight: 600;
+    }
+    .ias .body .body-pannel .pannel .cost {
+    text-align: center;
+    }
+    .ias .body .body-pannel .pannel .cost h2 {
+    font-weight: 700;
+    }
+    .ias .body .body-pannel .pannel .content {
+    line-height: 2rem;
+    padding: 1rem;
+    }
+    .ias .body .body-pannel .pannel .content li {
+    list-style-type: none;
+    }
+    .ias .body .body-pannel .pannel .content li svg {
+    width: 3.5rem;
+    }
+    .ias .body .body-pannel .pannel .foot {
+        padding: 0.5rem 4rem 2rem 4rem;
+        text-align: center;
+    }
+    .ias .body .body-pannel .pannel .foot .btn-outline-primary {
+        border-radius: 10px;
+    }
 </style>

@@ -3,18 +3,153 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Applications</h1>
-            <a
-            href="#"
+            <router-link
+            :to="{name: 'admin.application.create'}"
             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-            >Create New Application</a
-            >
+            >Create New Application</router-link>
         </div>
 
         <!-- Page Content -->
+        
+        <b-container fluid>
+            <!-- User Interface controls -->
+            <b-row>
+
+                <b-col md="3" class="my-1">
+                    <b-form-group
+                    label="Per page"
+                    label-for="per-page-select"
+                    label-cols-lg="4"
+                    label-align-sm="center"
+                    label-size="sm"
+                    class="mb-0"
+                    >
+                        <b-form-select
+                            id="per-page-select"
+                            v-model="perPage"
+                            :options="pageOptions"
+                            size="sm"
+                        ></b-form-select>
+                    </b-form-group>
+                </b-col>
+
+                <b-col md="6"></b-col>
+
+                <b-col md="3" class="my-1">
+                    <b-pagination
+                    v-model="currentPage"
+                    :total-rows="totalRows"
+                    :per-page="perPage"
+                    align="fill"
+                    size="sm"
+                    class="my-0"
+                    ></b-pagination>
+                </b-col>
+            </b-row>
+
+            <!-- Main table element -->
+            <b-table
+            striped hover
+            :items="items"
+            :fields="fields"
+            :current-page="currentPage"
+            :per-page="perPage"
+            stacked="md"
+            show-empty
+            small
+            >
+                <template #cell(index)="data">
+                    {{data.index + 1}}
+                </template>
+                <template #cell(category_tab)="data">
+                    <router-link :to="{name: 'app-update', params: {id: data.item.id}}">{{data.value}}</router-link>
+                </template>
+                <template #cell(price)="data">
+                    {{$t(data.item.price)}}
+                </template>
+                <template #cell(discount)="data">
+                    {{data.item.discount}} %
+                </template>
+                <template #cell(discount_price)="data">
+                    {{$t(data.item.discount_price)}}
+                </template>
+                <template #cell(period_date)="data">
+                    {{data.item.period_date}} days
+                </template>
+                <template #cell(capacity)="data">
+                    {{data.item.capacity}}{{data.item.capacity_unit}}
+                </template>
+            </b-table>
+
+            <b-row> 
+                <b-col md="3" class="my-1">
+                    <b-form-group
+                    label="Per page"
+                    label-for="per-page-select"
+                    label-cols-lg="4"
+                    label-align-sm="center"
+                    label-size="sm"
+                    class="mb-0"
+                    >
+                        <b-form-select
+                            id="per-page-select"
+                            v-model="perPage"
+                            :options="pageOptions"
+                            size="sm"
+                        ></b-form-select>
+                    </b-form-group>
+                </b-col>
+
+                <b-col md="6"></b-col>
+
+                <b-col md="3" class="my-1">
+                    <b-pagination
+                    v-model="currentPage"
+                    :total-rows="totalRows"
+                    :per-page="perPage"
+                    align="fill"
+                    size="sm"
+                    class="my-0"
+                    ></b-pagination>
+                </b-col>
+            </b-row>
+        </b-container>
     </div>
 </template>
 
 <script>
+    import axios from 'axios'
+    export default {
+        data() {
+            return {
+                items: '',
+                fields: [
+                { key: 'index', label: ''},
+                { key: 'app_name', label: 'App Name'},
+                { key: 'cat_id', label: 'Cat ID'},
+                { key: 'category_tab', label: 'Category_tab'},
+                { key: 'price', label: 'Price'},
+                { key: 'discount', label: 'Discount'},
+                { key: 'discount_price', label: 'Discount Price'},
+                { key: 'period_date', label: 'Period Date'},
+                { key: 'capacity', label: 'Capacity'}
+                ],
+                totalRows: 1,
+                currentPage: 1,
+                perPage: 5,
+                pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }]
+            }
+        },
+        methods: {
+            async getApplications () {
+                const { data } = await axios.get('/api/get/applications')
+                this.items=data
+            }
+        },        
+        created() {
+            this.getApplications()
+        }
+    }
 </script>
 
 <style scoped>

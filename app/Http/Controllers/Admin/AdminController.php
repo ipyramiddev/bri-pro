@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use DB;
 
 class AdminController extends Controller
@@ -25,5 +26,45 @@ class AdminController extends Controller
 
     public function user_role_update(Request $request, $id) {
         print_r($request->all());
+    }
+
+    public function fetch_applications() {
+        $apps = DB::table('applications')->get();
+        return response()->json($apps);
+    }
+
+    public function application_create(Request $request) {
+        $data = $request->all();
+        Validator::make($data, [
+            'app_name' => 'required',
+            'cat_id' => 'required|numeric',
+            'cat_tab' => 'required',
+            'currency' => 'required',
+            'price' => 'required|numeric',
+            'period_date' => 'required|numeric',
+            'capacity' => 'required|numeric',
+            'capacity_unit' => 'required'
+        ])->validate();
+        
+        if ($data['currency']=='¥') {
+            $data['price'] = $data['price']/100;
+            if ($data['discount_price']!='' && $data['discount_price']!='0') {
+                $data['discount_price'] = $data['discount_price']/100;
+            }
+        }
+
+        $check = DB::table('applications')->insert([
+            'app_name' => $data['app_name'],
+            'cat_id' => $data['cat_id'],
+            'category_tab' => $data['cat_tab'],
+            'period_date' => $data['period_date'],
+            'capacity' => $data['capacity'],
+            'capacity_unit' => $data['capacity_unit'],
+            'price' => $data['price'],
+            'discount' => $data['discount'],
+            'discount_price' => $data['discount_price']
+        ]);
+
+        return $check;
     }
 }

@@ -7,6 +7,7 @@ import Router from 'vue-router'
 import { sync } from 'vuex-router-sync'
 import Toasted from "vue-toasted";
 import Chart from "chart.js";
+import VueYoutubeEmned from 'vue-youtube-embed'
 
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
@@ -20,6 +21,8 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 Vue.use(Toasted);
+//use youtube
+Vue.use(VueYoutubeEmned);
 
 
 // The middleware for every page of the application.

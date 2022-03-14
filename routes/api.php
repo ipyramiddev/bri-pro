@@ -37,8 +37,15 @@ Route::group(['middleware' => 'auth:api'], function () {
     //fetch users
     Route::get('get/users', [AdminController::class, 'fetch_users']);
     Route::get('get/user/{id}', [AdminController::class, 'fetch_user_id']);
+    //Application
+    Route::get('get/applications', [AdminController::class, 'fetch_applications']);
+    Route::post('application/create', [AdminController::class, 'application_create']);
 
     Route::post('user/role_update/{id}', [AdminController::class, 'user_role_update']);
+
+    //Get others Datas
+    Route::get('get/ias/cat_id', [FrontendController::class, 'get_ias_cat_id']);
+    Route::get('get/checkout/category/{app_id}/{cat_id}', [FrontendController::class, 'get_checkout_category']);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
