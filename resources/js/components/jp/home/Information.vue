@@ -7,7 +7,7 @@
         <div class="body-pannel col-md-4 col-sm-12">
             <div class="pannel">
                 <div class="head">
-                    <h5>We have been selected for Microsoft for Startups, a start-up support profram of Microsoft Corporation</h5>
+                    <h5>年間契約で機能追加キャンペーン /ご機能の画像解析ツールを無償で追加作成</h5>
                 </div>
                 <div class="content">
                     <h6>Promotion of technology urilization in collaboration with Microsoft Japan, improvement of service quality and development of new functions.</h6>
@@ -16,7 +16,23 @@
                     <a href="#">read more>></a>
                 </div>
                 <div class="date">
-                    <h6>11/04/2021</h6>
+                    <h6>11/05/2021</h6>
+                </div>
+            </div>
+        </div>
+        <div class="body-pannel col-md-4 col-sm-12">
+            <div class="pannel">
+                <div class="head">
+                    <h5>マイクロソフト社のスタートアップ支援プログラム「Microsoft for Startups」に採択されました</h5>
+                </div>
+                <div class="content">
+                    <h6>Promotion of technology urilization in collaboration with Microsoft Japan, improvement of service quality and development of new functions.</h6>
+                </div>
+                <div class="read">
+                    <a href="#">read more>></a>
+                </div>
+                <div class="date">
+                    <h6>11/03/2021</h6>
                 </div>
             </div>
         </div>
