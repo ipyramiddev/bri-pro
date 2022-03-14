@@ -32,7 +32,7 @@ jobs:
         run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
 
       - name: run laravel commands
-        run: php artisan migrate
+        run: php artisan migrate --no-interaction
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
