@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="header">
-            <h1>{{$t('checkout.title')}}</h1>
+            <h1>{{$t('checkout_title')}}</h1>
         </div>
         <div class="container">
             <div class="content">
@@ -12,7 +12,7 @@
                         <h6>{{$t('category_select_description')}} <span class="category">{{category.category_tab}}</span>.</h6>
                         <h6>{{$t('category_price_description')}} <span class="category">{{$t(category.price)}}</span>.</h6>
                         <h6>{{$t('category_capacity_description')}} <span class="category">{{category.capacity}}{{category.capacity_unit}}</span>.</h6>
-                        <h6>{{$t('category_period_description')}} <span class="category">{{category.period_date}}{{$t('days')}}</span>.</h6>
+                        <h6>{{$t('category_period_description')}} <span class="category">{{category.period_date}} {{$t('days')}}</span>.</h6>
                     </div>
                 </div>
                 <div class="division"></div>
@@ -21,19 +21,19 @@
                     <div class="row" style="padding-left: 20px;">
                         <div class="col-md-5">
                             <label class="col-form-label text-md-end">
-                                <input type="radio" id="stripe" name="payment_method" checked/>
+                                <input type="radio" id="stripe" name="payment_method" v-model="form_display" value="stripe" />
                                 <img src="images/credit-payment-logo.png" />
                             </label>
                         </div>
                         <div class="col-md-4">
                             <label class="col-form-label text-md-end">
-                                <input type="radio" id="paypal" name="payment_method" />
+                                <input type="radio" id="paypal" name="payment_method" v-model="form_display" value="paypal" />
                                 <img src="images/paypal-payment-logo.png" />
                             </label>
                         </div>
                         <div class="col-md-3">
                             <label class="col-form-label text-md-end">
-                            <input type="radio" id="transfer" name="payment_method" />
+                            <input type="radio" id="transfer" name="payment_method" v-model="form_display" value="transfer" />
                                 <img src="images/transfer-payment-logo.png" />
                             </label>
                         </div>
@@ -41,42 +41,95 @@
                 </div>
 
                 <!-- payment information form -->
-                <form @submit.prevent="stripe_payment_post" method="post">
-                    <div class="payment_information_form" style="padding-top: 15px;">
-                        <h4>{{$t('payment_information_title')}}</h4>
-                        <div style="padding-left: 20px;">
-                            <div class="mb-3 row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">{{ $t('email') }}</label>
-                                    <input v-model="email" class="form-control" type="email" name="email">
+                <!-- stripe payment -->
+                <div id="stripe_payment" v-show="form_display === 'stripe'">
+                    <form @submit.prevent="stripe_payment_post" method="post">
+                        <div class="payment_information_form" style="padding-top: 15px;">
+                            <h4>{{$t('payment_information_title')}}</h4>
+                            <div style="padding-left: 20px;">
+                                <div class="mb-3 row">
+                                    <div class="col-md-4">
+                                        <label class="col-form-label">{{ $t('email') }}</label>
+                                        <input v-model="email" class="form-control" type="email" name="email">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="col-form-label">{{ $t('card_number') }}</label>
+                                        <input v-model="card_number" class="form-control" type="text" name="card_number">
+                                    </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <label class="col-form-label">{{ $t('card_number') }}</label>
-                                    <input v-model="card_number" class="form-control" type="text" name="card_number">
+                                <div class="mb-3 row">
+                                    <div class="col-md-6">
+                                        <label class="col-form-label">{{ $t('expire_date') }}</label>
+                                        <input v-model="expire_date" class="form-control" type="date" name="expire_date">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="col-form-label">{{ $t('cvc') }}</label>
+                                        <input v-model="cvc" class="form-control" type="number" name="cvc">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <div class="col-md-6">
-                                    <label class="col-form-label">{{ $t('expire_date') }}</label>
-                                    <input v-model="expire_date" class="form-control" type="date" name="expire_date">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="col-form-label">{{ $t('cvc') }}</label>
-                                    <input v-model="cvc" class="form-control" type="number" name="cvc">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <div class="col-md-12 d-flex">
-                                    <!-- Submit Button -->
-                                    <b-button type="submit" variant="primary" :disabled="loading">
-                                        <b-spinner small :hidden="!loading"></b-spinner>
-                                        {{ $t('create') }}
-                                    </b-button>
+                                <div class="mb-3 row">
+                                    <div class="col-md-12 d-flex">
+                                        <!-- Submit Button -->
+                                        <b-button type="submit" variant="primary" :disabled="loading">
+                                            <b-spinner small :hidden="!loading"></b-spinner>
+                                            {{ $t('submit_stripe_checkout') }}
+                                        </b-button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <!-- paypal payment -->
+                <div id="paypal_payment"  v-show="form_display === 'paypal'">
+                    <form @submit.prevent="paypal_payment_post" method="post">
+                        <div class="payment_information_form" style="padding-top: 15px;">
+                            <h4>{{$t('payment_information_title')}}</h4>
+                            <div style="padding-left: 20px;">
+                                <div class="mb-3 row">
+                                    <div class="col-md-12">
+                                        <label class="col-form-label">{{ $t('email') }}</label>
+                                        <input v-model="email" class="form-control" type="email" name="email">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <div class="col-md-12 d-flex">
+                                        <!-- Submit Button -->
+                                        <b-button type="submit" variant="primary" :disabled="loading">
+                                            <b-spinner small :hidden="!loading"></b-spinner>
+                                            {{ $t('submit_paypal_checkout') }}
+                                        </b-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- transfer payment -->
+                <div id="transfer_payment"  v-show="form_display === 'transfer'">
+                    <form @submit.prevent="transfer_payment_post" method="post">
+                        <div class="payment_information_form" style="padding-top: 15px;">
+                            <h4>{{$t('payment_information_title')}}</h4>
+                            <div style="padding-left: 20px;">
+                                <div class="mb-3 row">
+                                    <div class="col-md-12">
+                                        <label class="col-form-label">{{ $t('email') }}</label>
+                                        <input v-model="email" class="form-control" type="email" name="email">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <div class="col-md-12 d-flex">
+                                        <!-- Submit Button -->
+                                        <b-button type="submit" variant="primary" :disabled="loading">
+                                            <b-spinner small :hidden="!loading"></b-spinner>
+                                            {{ $t('submit_transfer_checkout') }}
+                                        </b-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -92,22 +145,41 @@ export default {
         card_number: '',
         expire_date: '',
         cvc: '',
-        loading: false
+        loading: false,
+        //payment form display
+        form_display: 'stripe'
     }),
     methods: {
         async getCategorydata(app_id, cat_id) {
             const {data} = await axios.get('/api/get/checkout/category/'+app_id+'/'+cat_id)
-            console.log(data);
             this.category = data;
         },
         async stripe_payment_post() {
-            var {data} = await axios.post('/api/checkout/stripe/send', {
+            this.loading = true
+            var {data} = await axios.post('/api/payment/stripe/checkout/send', {
                 email: this.email,
                 price: this.category.price,
                 card_number: this.card_number,
                 expire_date: this.expire_date,
                 cvc: this.cvc
             })
+            this.loading = false
+        },
+        async paypal_payment_post() {
+            this.loading = true
+            var {data} = await axios.post('/api/payment/paypal/checkout/send', {
+                email: this.email,
+                price: this.category.price
+            })
+            this.loading = false
+        },
+        async transfer_payment_post() {
+            this.loading = true
+            var {data} = await axios.post('/api/payment/transfer/checkout/send', {
+                email: this.email,
+                price: this.category.price
+            })
+            this.loading = false
         }
     },
     created() {

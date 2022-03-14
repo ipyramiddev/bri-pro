@@ -124,7 +124,7 @@
                                     <option>{{profiledata.role}}</option>
                                     <option value="admin">{{$t('Admin')}}</option>
                                     <option value="customer">{{$t('Customer')}}</option>
-                                    <option value="dealer">{{$t('Dealer')}}</option>
+                                    <option value="agency">{{$t('Agency')}}</option>
                                 </select>
                             </div>
                         </div>

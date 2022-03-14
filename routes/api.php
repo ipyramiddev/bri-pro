@@ -12,6 +12,7 @@ use App\Http\Controllers\Settings\PasswordController;
 use App\Http\Controllers\Settings\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +47,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     //Get others Datas
     Route::get('get/ias/cat_id', [FrontendController::class, 'get_ias_cat_id']);
     Route::get('get/checkout/category/{app_id}/{cat_id}', [FrontendController::class, 'get_checkout_category']);
+
+    //payment and checkout apis
+    Route::post('payment/stripe/checkout/send', [PaymentController::class, 'stripe_checkout']);
+    Route::post('payment/paypal/checkout/send', [PaymentController::class, 'paypal_checkout']);
+    Route::post('payment/transfer/checkout/send', [PaymentController::class, 'transfer_checkout']);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
