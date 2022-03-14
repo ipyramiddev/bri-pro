@@ -31,11 +31,24 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'true'
         run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
 
+      - name: run laravel commands
+        run: php artisan migrate
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: php-app
           path: .
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build
 
   deploy:
     runs-on: ubuntu-latest
