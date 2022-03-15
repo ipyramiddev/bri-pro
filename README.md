@@ -60,8 +60,16 @@ Contribution are alwasy welcome! Please read the [contribution guidelines](contr
 The test server uses Azure.
 Uploaded data url: https://la-web-site.azurewebsites.net/
 
--  ID: daisukekubota@outlook.jp
--  Pass: Kubo@1973
+-  Azure ID: daisukekubota@outlook.jp
+-  Azure Pass: Kubo@1973
+
+## test server log in Infomation
+
+dealer and customer test log in ID and Pass
+
+- test server url : https://la-web-site.azurewebsites.net/
+- ID : daisukekubota@outlook.jp
+- Pass : emjoyimaging@lifeanalytics.org
 
 ## About design
 
