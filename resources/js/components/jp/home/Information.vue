@@ -19,6 +19,8 @@
                     <h6>03/15/2022</h6>
                 </div>
             </div>
+        </div>
+        <div class="body-pannel col-md-4 col-sm-12">
             <div class="pannel">
                 <div class="head">
                     <h5>年間契約で機能追加キャンペーン /ご機能の画像解析ツールを無償で追加作成</h5>
@@ -33,6 +35,8 @@
                     <h6>11/05/2021</h6>
                 </div>
             </div>
+        </div>
+        <div class="body-pannel col-md-4 col-sm-12">
             <div class="pannel">
                 <div class="head">
                     <h5>マイクロソフト社のスタートアップ支援プログラム「Microsoft for Startups」に採択されました</h5>
