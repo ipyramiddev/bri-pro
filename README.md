@@ -66,13 +66,13 @@ Uploaded data url: https://la-web-site.azurewebsites.net/
 ## About design
 
 1) Make it the same design and backend function as the following wordpress website.
-2) Create two commerces, an agency and a customer user.
+2) Create two Ecommerces, an agency and a customer user.
 3) Create a billing function to the agency
 4) Link the subscription web application with customer data.
 
 -  Ecommerce meterial link: https://drive.google.com/file/d/1WN3JRPdzGehnQn7DCiQP0bGPJz_lC73N/view?usp=sharing
 -  Website links that have the same design: https://lifeanalytics.org
--  Websites with the same design are created with wordpress. Link to that wordpress, login ID and Pass:
+-  Websites with the same design are created with wordpress. Link to that wordpress, login ID and Pass:<br>
      wordpress : https://lifeanalytics.org/wp-login.php?redirect_to=https%3A%2F%2Flifeanalytics.org%2Fwp-admin%2F&reauth=1<br>
      ID : daisukekubota@outlook.jp<br>
      Pass : emjoyimaging@lifeanalytics.org
