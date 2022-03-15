@@ -73,6 +73,6 @@ Uploaded data url: https://la-web-site.azurewebsites.net/
 -  Ecommerce meterial link: https://drive.google.com/file/d/1WN3JRPdzGehnQn7DCiQP0bGPJz_lC73N/view?usp=sharing
 -  Website links that have the same design: https://lifeanalytics.org
 -  Websites with the same design are created with wordpress. Link to that wordpress, login ID and Pass:
-     wordpress : https://lifeanalytics.org/wp-login.php?redirect_to=https%3A%2F%2Flifeanalytics.org%2Fwp-admin%2F&reauth=1
-     ID : daisukekubota@outlook.jp
+     wordpress : https://lifeanalytics.org/wp-login.php?redirect_to=https%3A%2F%2Flifeanalytics.org%2Fwp-admin%2F&reauth=1<br>
+     ID : daisukekubota@outlook.jp<br>
      Pass : emjoyimaging@lifeanalytics.org
