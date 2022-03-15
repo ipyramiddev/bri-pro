@@ -55,7 +55,7 @@ Contribution are alwasy welcome! Please read the [contribution guidelines](contr
 -   Push to the branch `git push origin feature/foo`.
 -   Create a new Pull Request.
 
-##Azure information
+## Azure information
 
 The test server uses Azure.
 Uploaded data url: https://la-web-site.azurewebsites.net/
