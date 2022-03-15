@@ -13,7 +13,7 @@
                     <h6>Life Analytics provides a cloud-based image analysis tool that utilizes AI.</h6>
                 </div>
                 <div class="read">
-                    <a href="#">read more>></a>
+                    <a href="03152022en.vue">read more>></a>
                 </div>
                 <div class="date">
                     <h6>11/05/2021</h6>
@@ -27,7 +27,7 @@
                     <h6>Promotion of technology urilization in collaboration with Microsoft Japan, improvement of service quality and development of new functions.</h6>
                 </div>
                 <div class="read">
-                    <a href="#">read more>></a>
+                    <a href="11042021en.vue">read more>></a>
                 </div>
                 <div class="date">
                     <h6>11/04/2021</h6>

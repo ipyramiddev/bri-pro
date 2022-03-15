@@ -13,7 +13,7 @@
                     <h6>横浜市が主催のビジネスピッチコンテストにて優秀賞を受賞しました</h6>
                 </div>
                 <div class="read">
-                    <a href="#">read more>></a>
+                    <a href="03152022jp.vue">read more>></a>
                 </div>
                 <div class="date">
                     <h6>03/15/2022</h6>
@@ -27,7 +27,7 @@
                     <h6>Life Analytics では，AI を活用したクラウド型画像解析ツールを提供しています．</h6>
                 </div>
                 <div class="read">
-                    <a href="#">read more>></a>
+                    <a href="11052021jp.vue">read more>></a>
                 </div>
                 <div class="date">
                     <h6>11/05/2021</h6>
@@ -41,7 +41,7 @@
                     <h6>〜日本マイクロソフト社との協業でテクノロジー活用を推進、サービス品質向上や新機能を開発〜</h6>
                 </div>
                 <div class="read">
-                    <a href="#">read more>></a>
+                    <a href="11032021jp.vue">read more>></a>
                 </div>
                 <div class="date">
                     <h6>11/03/2021</h6>
