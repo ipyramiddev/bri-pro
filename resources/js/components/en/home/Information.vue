@@ -16,7 +16,7 @@
                     <a href="#">read more>></a>
                 </div>
                 <div class="date">
-                    <h6>11/04/2021</h6>
+                    <h6>11/05/2021</h6>
                 </div>
             </div>
              <div class="pannel">
