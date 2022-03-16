@@ -7,16 +7,44 @@
         <div class="body-pannel col-md-4 col-sm-12">
             <div class="pannel">
                 <div class="head">
-                    <h5>We have been selected for Microsoft for Startups, a start-up support profram of Microsoft Corporation</h5>
+                    <h5>横浜ビジネスグランプリ2022にて優秀賞を獲得しました</h5>
                 </div>
                 <div class="content">
-                    <h6>Promotion of technology urilization in collaboration with Microsoft Japan, improvement of service quality and development of new functions.</h6>
+                    <h6>横浜市が主催のビジネスピッチコンテストにて優秀賞を受賞しました</h6>
                 </div>
                 <div class="read">
-                    <a href="#">read more>></a>
+                    <a href="03152022jp.vue">read more>></a>
                 </div>
                 <div class="date">
-                    <h6>11/04/2021</h6>
+                    <h6>03/15/2022</h6>
+                </div>
+            </div>
+            <div class="pannel">
+                <div class="head">
+                    <h5>年間契約で機能追加キャンペーン /ご機能の画像解析ツールを無償で追加作成</h5>
+                </div>
+                <div class="content">
+                    <h6>Life Analytics では，AI を活用したクラウド型画像解析ツールを提供しています．</h6>
+                </div>
+                <div class="read">
+                    <a href="11052021jp.vue">read more>></a>
+                </div>
+                <div class="date">
+                    <h6>11/05/2021</h6>
+                </div>
+            </div>
+            <div class="pannel">
+                <div class="head">
+                    <h5>マイクロソフト社のスタートアップ支援プログラム「Microsoft for Startups」に採択されました</h5>
+                </div>
+                <div class="content">
+                    <h6>〜日本マイクロソフト社との協業でテクノロジー活用を推進、サービス品質向上や新機能を開発〜</h6>
+                </div>
+                <div class="read">
+                    <a href="11032021jp.vue">read more>></a>
+                </div>
+                <div class="date">
+                    <h6>11/03/2021</h6>
                 </div>
             </div>
         </div>

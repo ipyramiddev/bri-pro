@@ -7,13 +7,27 @@
         <div class="body-pannel col-md-4 col-sm-12">
             <div class="pannel">
                 <div class="head">
+                    <h5>Additional function campaign with annual contract / Create additional image analysis tool for your function free of charge</h5>
+                </div>
+                <div class="content">
+                    <h6>Life Analytics provides a cloud-based image analysis tool that utilizes AI.</h6>
+                </div>
+                <div class="read">
+                    <a href="03152022en.vue">read more>></a>
+                </div>
+                <div class="date">
+                    <h6>11/05/2021</h6>
+                </div>
+            </div>
+             <div class="pannel">
+                <div class="head">
                     <h5>We have been selected for Microsoft for Startups, a start-up support profram of Microsoft Corporation</h5>
                 </div>
                 <div class="content">
                     <h6>Promotion of technology urilization in collaboration with Microsoft Japan, improvement of service quality and development of new functions.</h6>
                 </div>
                 <div class="read">
-                    <a href="#">read more>></a>
+                    <a href="11042021en.vue">read more>></a>
                 </div>
                 <div class="date">
                     <h6>11/04/2021</h6>
