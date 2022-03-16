@@ -4,14 +4,18 @@
             <h2>{{$t('catalog.ias_title')}}</h2>
         </div>
         <div class="body row">
-            <div class="body-pannel col-md-3 col-sm-12">
+            <div class="body-pannel col-md-4 col-sm-12">
                 <div class="pannel">
-
+                  <a href="/upload/pdf/ias_campain_en.pdf" target="_black">
+                    <img src="/upload/img/ias_campain_en.png" />
+                  </a>
                 </div>
             </div>
-            <div class="body-pannel col-md-3 col-sm-12">
-                <div class="pannel">
-                
+            <div class="body-pannel col-md-4 col-sm-12">
+                <div class="pannel">                
+                  <a href="/upload/pdf/ias_catalog_4_06 _en_ver1.7.pdf" target="_black">
+                    <img src="/upload/img/ias_catalog_4_06 _en_ver1.7.png" />
+                  </a>                
                 </div>
             </div>
         </div>
@@ -39,5 +43,9 @@
   border-radius: 6px;
   background-color: #F9F9F9;
   transition: 0.3S
+}
+.catalog_ias .body .body-pannel .pannel img {
+  width: 100%;
+  padding: 30px;
 }
 </style>
