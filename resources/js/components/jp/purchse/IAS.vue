@@ -117,11 +117,11 @@
     .ias .body .body-pannel .pannel {
     border-radius: 6px;
     background-color: #F9F9F9;
-    transition: 0.3S
+    transition: 0.3S;
     }
     .ias .body .body-pannel .pannel:hover {
     box-shadow: 0 1.5px 12px 2px rgba(0, 0, 0, 0.74);
-    transition: 0.3S
+    transition: 0.3S;
     }
     .ias .body .body-pannel .pannel .head {
     text-align: center;

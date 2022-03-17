@@ -13,6 +13,7 @@ use App\Http\Controllers\Settings\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\NewinformationsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,6 +53,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('payment/stripe/checkout/send', [PaymentController::class, 'stripe_checkout']);
     Route::post('payment/paypal/checkout/send', [PaymentController::class, 'paypal_checkout']);
     Route::post('payment/transfer/checkout/send', [PaymentController::class, 'transfer_checkout']);
+
+    //new information post route    
+    Route::post('new_information/create', [NewinformationsController::class, 'new_information_create']);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
@@ -69,3 +73,7 @@ Route::group(['middleware' => 'guest:api'], function () {
     Route::post('oauth/{driver}', [OAuthController::class, 'redirect']);
     Route::get('oauth/{driver}/callback', [OAuthController::class, 'handleCallback'])->name('oauth.callback');
 });
+
+//Routes New Informations
+Route::get('get/new_informations/{lang}', [NewinformationsController::class, 'get_informations']);
+Route::get('get/information/detail/{id}', [NewinformationsController::class, 'get_info_detail_data']);

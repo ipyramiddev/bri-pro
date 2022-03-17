@@ -138,7 +138,6 @@
 <script>
 import axios from 'axios'
 import { mapGetters } from 'vuex'
-import From from 'vform'
 export default {
     data: () => ({
         category: '', 

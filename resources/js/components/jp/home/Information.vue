@@ -2,59 +2,56 @@
     <div class="container information">
       <div class="title">
         <h2>{{$t('homepage.info_title')}}</h2>
+        <router-link :to="{name: $t('informations.url')}" class="infos_link_css">{{$t('homepage.infos_link_des')}}</router-link>
       </div>
       <div class="body row">
-        <div class="body-pannel col-md-4 col-sm-12">
-            <div class="pannel">
-                <div class="head">
-                    <h5>横浜ビジネスグランプリ2022にて優秀賞を獲得しました</h5>
-                </div>
-                <div class="content">
-                    <h6>横浜市が主催のビジネスピッチコンテストにて優秀賞を受賞しました</h6>
-                </div>
-                <div class="read">
-                    <a href="03152022jp.vue">read more>></a>
-                </div>
-                <div class="date">
-                    <h6>03/15/2022</h6>
-                </div>
-            </div>
-        </div>
-        <div class="body-pannel col-md-4 col-sm-12">
-            <div class="pannel">
-                <div class="head">
-                    <h5>年間契約で機能追加キャンペーン /ご機能の画像解析ツールを無償で追加作成</h5>
-                </div>
-                <div class="content">
-                    <h6>Life Analytics では，AI を活用したクラウド型画像解析ツールを提供しています．</h6>
-                </div>
-                <div class="read">
-                    <a href="11052021jp.vue">read more>></a>
-                </div>
-                <div class="date">
-                    <h6>11/05/2021</h6>
-                </div>
-            </div>
-        </div>
-        <div class="body-pannel col-md-4 col-sm-12">
-            <div class="pannel">
-                <div class="head">
-                    <h5>マイクロソフト社のスタートアップ支援プログラム「Microsoft for Startups」に採択されました</h5>
-                </div>
-                <div class="content">
-                    <h6>〜日本マイクロソフト社との協業でテクノロジー活用を推進、サービス品質向上や新機能を開発〜</h6>
-                </div>
-                <div class="read">
-                    <a href="11032021jp.vue">read more>></a>
-                </div>
-                <div class="date">
-                    <h6>11/03/2021</h6>
-                </div>
-            </div>
+        <div v-for="info in informations" :key="info.id" class="body-pannel col-md-4 col-sm-12">
+          <div class="pannel">
+              <div class="head">
+                  <h5>
+                    <router-link :to="{name: 'information_detail_jp', query: {id: info.id, author: info.name}}">
+                        {{info.title}}
+                    </router-link>
+                  </h5>
+              </div>
+              <div class="date">
+                  <h6>{{info.created_at}}</h6>
+              </div>
+              <div class="content">
+                  <h6>{{info.content}}</h6>
+              </div>
+              <div class="read">
+                  <h6>
+                      <router-link :to="{name: 'information_detail_jp', query: {id: info.id, author: info.name}}">
+                          詳細を読む >>
+                      </router-link>
+                  </h6>
+              </div>
+          </div>
         </div>
       </div>
     </div>
 </template>
+
+<script>
+    import axios from 'axios'
+    
+    export default{
+        data: () => ({
+            informations: '',
+        }),
+        methods: {
+            async getInformations(lang) {
+                var new_info_datas = await axios.get('/api/get/new_informations/'+lang)
+                this.informations = new_info_datas.data
+            }
+        },
+        created() {
+            var lang = 'jp'
+            this.getInformations(lang)
+        }
+    }
+</script>
 
 <style scoped>
 .information {
@@ -63,6 +60,11 @@
 .information .title {
   text-align: center;
   padding: 40px 0;
+}
+.information .title .infos_link_css {
+  padding-left: 5px;
+  font-size: 12px;
+  color: #007EFD;
 }
 .information .body {
   padding: 20px 0;
@@ -78,10 +80,12 @@
 .information .body .body-pannel .pannel .head {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-  padding: 20px 16px 10px 16px;
+  padding: 30px 16px 10px 16px;
 }
 .information .body .body-pannel .pannel .head h5 {
-    line-height: 1.5rem;
+  line-height: 2rem;
+  word-break: break-all;    
+  padding: 0 25px; 
 }
 .information .body .body-pannel .pannel .content,
 .information .body .body-pannel .pannel .read,
@@ -91,5 +95,12 @@
 .information .body .body-pannel .pannel .content h6 {
   line-height: 1.5rem;
   padding: 10px 16px;
+  word-break: break-all;     
+}
+.information .body .body-pannel .pannel .read {
+  text-align: right;
+}
+.information .body .body-pannel .pannel .date {
+  text-align: right;
 }
 </style>

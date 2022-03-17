@@ -4,14 +4,14 @@
             <h2>{{$t('catalog.ias_title')}}</h2>
         </div>
         <div class="body row">
-            <div class="body-pannel col-md-4 col-sm-12">
+            <div class="body-pannel col-md-3 col-sm-12">
                 <div class="pannel">
                   <a href="/upload/pdf/ias_campain_jp.pdf" target="_black">
                     <img src="/upload/img/ias_campain_jp.png" />
                   </a>
                 </div>
             </div>
-            <div class="body-pannel col-md-4 col-sm-12">
+            <div class="body-pannel col-md-3 col-sm-12">
                 <div class="pannel">
                   <a href="/upload/pdf/ias_catalog_ver1.7_jp.pdf" target="_black">
                     <img src="/upload/img/ias_catalog_ver1.7_jp.png" />

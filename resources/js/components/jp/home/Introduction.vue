@@ -3,7 +3,7 @@
       <div class="title">
         <h2>{{$t('homepage.intro_title')}}</h2>
       </div>
-      <div class="body row">
+      <div class="body row" style="height: 20rem;">
         <div class="text col-md-6 col-sm-12">
           <div class="subtitle">
             <h4>{{$t('homepage.intro_subtitle')}}</h4>

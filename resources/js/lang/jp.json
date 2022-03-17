@@ -264,6 +264,7 @@
     "field_drone": "ドローン",
 
     "info_title": "新着情報",
+    "infos_link_des": "すべての新しい情報を見る",
 
     "intro_title": "新製品のご紹介",
     "intro_subtitle": "画像解析WebアプリIAS",
@@ -372,5 +373,9 @@
   "cvc":"CVC",
   "submit_stripe_checkout":"クレジットカードでチェックアウト",
   "submit_paypal_checkout":"ペイパルチェックアウト",
-  "submit_transfer_checkout":"銀行振込でチェックアウト"
+  "submit_transfer_checkout":"銀行振込でチェックアウト",
+  "informations": {
+    "title": "新しい情報",
+    "url": "informations_jp"
+  }
 }

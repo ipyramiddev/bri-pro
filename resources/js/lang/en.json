@@ -267,6 +267,7 @@
     "field_drone": "Drone",
 
     "info_title": "New information",
+    "infos_link_des": "See all New Informations",
 
     "intro_title": "Introduction of Products",
     "intro_subtitle": "Image analysis web app-IAS",
@@ -376,5 +377,9 @@
   "cvc":"CVC",
   "submit_stripe_checkout":"Check out by credit card",
   "submit_paypal_checkout":"Paypal check out",
-  "submit_transfer_checkout":"Check out by bank transfer"
+  "submit_transfer_checkout":"Check out by bank transfer",
+  "informations": {
+    "title": "New Informations",
+    "url": "informations_en"
+  }
 }

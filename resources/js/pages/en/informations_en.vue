@@ -1,0 +1,204 @@
+<template>
+    <div>
+        <div class="header">
+            <h1>{{$t('informations.title')}}</h1>
+        </div>
+        <div class="container content">
+            <div class="no_datas" v-if="informations.length == '0'">
+                <h5>There is no new Information</h5>
+                <h6>(Please edit New Information)</h6>
+            </div>
+            <div v-else class="datas row">
+                <div v-for="info in informations" :key="info.id" class="pannels col-md-3 col-sm-12">
+                    <div class="pannel">
+                        <div class="info_title">
+                            <h4>
+                                <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.name}}">
+                                    {{info.title}}
+                                </router-link>
+                            </h4>
+                        </div>
+                        <div class="info_date">
+                            <h6>{{info.created_at}}</h6>
+                            <h6>Author: <a href="#"><i>{{info.name}}</i></a></h6>
+                        </div>
+                        <div class="info_content">
+                            <h5>{{info.content}}</h5>
+                        </div>
+                        <div class="info_readmore">
+                            <h6>
+                                <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.name}}">
+                                    read details >>
+                                </router-link>
+                            </h6>
+                        </div> 
+                    </div>
+                </div>
+            </div>             
+
+            <!-- edit new information form section -->
+            <div v-if="user" class="info_post_content">
+                <div class="new_info_form">
+                    <div class="form-title">
+                        <h4>Please complete information details fields.</h4>
+                    </div>
+                    <form @submit.prevent="new_information_post" method="post">
+                        <div class="mb-3 row">
+                            <div class="col-md-6">
+                                <label class="col-form-label">Please select Language of information</label>
+                                <select v-model="lang" class="form-control" name="lang">
+                                    <option value="en">English</option>
+                                    <option value="jp">Japanese</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="col-form-label">Please select Homepage</label>
+                                <select v-model="display_page" class="form-control" name="display_page">
+                                    <option value="top">Homepage</option>
+                                    <option value="customer">Customer</option>
+                                    <option value="dealer">Dealer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-12">
+                                <label class="col-form-label">Title</label>
+                                <input v-model="title" class="form-control" type="title" name="title">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-12">
+                                <label class="col-form-label">Content</label>
+                                <textarea v-model="content" class="form-control" type="text" name="content"></textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-md-12 d-flex">
+                                <!-- Submit Button -->
+                                <b-button type="submit" variant="primary" :disabled="loading">
+                                    <b-spinner small :hidden="!loading"></b-spinner>
+                                    Create New Information
+                                </b-button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div v-else class="info_post_content">
+                <h5>To edit New Information, please <router-link :to="{name: 'login'}">{{ $t('login') }}</router-link>.</h5>
+            </div>            
+        </div>
+    </div>
+</template>
+
+<script>
+    import axios from 'axios'
+    import { mapGetters } from 'vuex'
+    
+    export default{
+        data: () => ({
+            informations: '',
+            loading: false,
+            title: '',
+            content: '',
+            lang: '',
+            display_page: '',
+            user_id: ''
+        }),
+        methods: {
+            async getInformations(lang) {
+                var new_info_datas = await axios.get('/api/get/new_informations/'+lang)
+                this.informations = new_info_datas.data
+            },
+            async new_information_post() {
+                this.loading = true
+                var {data} = await axios.post('/api/new_information/create', {
+                    user_id: this.userid,
+                    lang_page: this.lang,
+                    display_page: this.display_page,
+                    title: this.title,
+                    content: this.content
+                })
+                this.loading = false
+            },
+        },
+        computed: mapGetters({
+            user: 'auth/user'
+        }),
+        created() {
+            var lang = 'en'
+            this.getInformations(lang)
+            this.user_id = this.user.id       
+        }
+    }
+</script>
+
+<style scoped>
+    .header {
+        width: 100%;
+        background-color: #211F40;
+        height: 150px;
+    }
+    .header h1 {
+        padding-top: 3rem;
+        text-align: center;
+        color: #fff;
+        font-weight: 600;
+    }
+    .content .no_datas {
+        text-align: center;
+        padding-top: 30px;
+    }
+    .content .datas {
+        padding-top: 30px;
+    }
+    .content .datas .pannels .pannel {
+        padding: 0 10px;
+        border-radius: 6px;
+        background-color: #F9F9F9;
+        transition: 0.3S;
+        max-height: 400px;
+    }
+    .content .datas .pannels .pannel:hover {
+        box-shadow: 0 1.5px 12px 2px rgba(0, 0, 0, 0.74);
+        transition: 0.3S;
+    }
+    .content .datas .pannels .pannel .info_title {
+        text-align: center; 
+        padding: 20px 5px 10px 5px;       
+    }    
+    .content .datas .pannels .pannel .info_title h4 {
+        word-break: break-all;     
+    }  
+    .content .datas .pannels .pannel .info_date {
+        text-align: left; 
+        padding: 10px 5px 10px 20px;       
+    }
+    .content .datas .pannels .pannel .info_content {
+        text-align: left; 
+        padding: 10px 5px;       
+    }
+    .content .datas .pannels .pannel .info_content h5 {
+        word-break: break-all;
+        display: inline-block     
+    }
+    .content .datas .pannels .pannel .info_readmore {
+        text-align: right; 
+        padding: 10px;       
+    }
+    .content .info_post_content {
+        padding: 10px 0;
+    }
+    .content .info_post_content .new_info_form .form-title {
+        text-align:center;
+        padding: 20px 0;
+        color: #007FED;
+    }
+    .content .info_post_content .new_info_form {
+        padding: 20px 30px;
+        background-color: #E6E6E6;
+    }
+    .content .info_post_content .new_info_form .d-flex {
+        justify-content: end;
+    }
+</style>
