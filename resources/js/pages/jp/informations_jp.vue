@@ -39,9 +39,10 @@
             <div v-if="user" class="info_post_content">
                 <div class="new_info_form">
                     <div class="form-title">
-                        <h4>Please complete information details fields.</h4>
+                        <h4>情報詳細フィールドに入力してください。</h4>
                     </div>
                     <form @submit.prevent="new_information_post" method="post">
+                        <input type="hidden" v-model="userid" name="userid" />
                         <div class="mb-3 row">
                             <div class="col-md-6">
                                 <label class="col-form-label">情報の言語を選択してください</label>
@@ -93,6 +94,7 @@
 <script>
     import axios from 'axios'
     import { mapGetters } from 'vuex'
+    import swal from 'sweetalert2/dist/sweetalert2.js'
     
     export default{
         data: () => ({
@@ -101,7 +103,7 @@
             title: '',
             content: '',
             lang: '',
-            display_page: ''
+            display_page: '',
         }),
         methods: {
             async getInformations(lang) {
@@ -118,6 +120,27 @@
                     content: this.content
                 })
                 this.loading = false
+                if (data) {
+                    swal.fire({
+                        icon: 'success',
+                        title: this.$t('successTitle'),
+                        text: this.$t('successText'),
+                        reverseButtons: true,
+                        confirmButtonText: this.$t('ok'),
+                        cancelButtonText: this.$t('cancel')
+                    }).then(() => {
+                        this.$router.push({ name: $t('home.url') })
+                    })
+                } else {                
+                    swal.fire({
+                        icon: 'warning',
+                        title: this.$t('warningTitle'),
+                        text: this.$t('warningText'),
+                        reverseButtons: true,
+                        confirmButtonText: this.$t('ok'),
+                        cancelButtonText: this.$t('cancel')
+                    })
+                }
             },
         },
         computed: mapGetters({
@@ -125,10 +148,11 @@
         }),
         created() {
             var lang = 'jp'
-            this.getInformations(lang)
-            if(user){
-                this.user_id = this.user.id
-            }  
+            this.getInformations(lang)   
+            this.userid = this.user.id 
+        },
+        mounted() {
+            this.userid = user.id
         }
     }
 </script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use DB;
 
 class NewinformationsController extends Controller
@@ -18,6 +19,22 @@ class NewinformationsController extends Controller
     }
 
     public function new_information_create(Request $request) {
-        print_r($request->all());
+        $data = $request->all();
+        Validator::make($data, [
+            'lang_page' => 'required',
+            'display_page' => 'required',
+            'title' => 'required',
+            'content' => 'required'
+        ])->validate();
+
+        $check = DB::table('new_informations')->insert([
+            'user_id' => $data['user_id'],
+            'lang_page' => $data['lang_page'],
+            'display_page' => $data['display_page'],
+            'title' => $data['title'],
+            'content' => $data['content']
+        ]);
+
+        return $check;
     }
 }
