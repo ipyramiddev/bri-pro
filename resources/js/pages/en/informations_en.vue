@@ -45,14 +45,14 @@
                     <form @submit.prevent="new_information_post" method="post">
                         <input type="hidden" v-model="userid" name="userid" />
                         <div class="mb-3 row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="col-form-label">Please select Language of information</label>
                                 <select v-model="lang" class="form-control" name="lang">
                                     <option value="en">English</option>
                                     <option value="jp">Japanese</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="col-form-label">Please select Homepage</label>
                                 <select v-model="display_page" class="form-control" name="display_page">
                                     <option value="top">Homepage</option>
@@ -60,11 +60,15 @@
                                     <option value="dealer">Dealer</option>
                                 </select>
                             </div>
+                            <div class="col-md-4">                                
+                                <label class="col-form-label">Date</label>
+                                <input v-model="date" class="form-control" type="date" name="date">
+                            </div>
                         </div>
                         <div class="mb-3 row">
                             <div class="col-md-12">
                                 <label class="col-form-label">Title</label>
-                                <input v-model="title" class="form-control" type="title" name="title">
+                                <input v-model="title" class="form-control" type="text" name="title">
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -105,6 +109,7 @@
             content: '',
             lang: '',
             display_page: '',
+            date: '',
         }),
         methods: {
             async getInformations(lang) {
@@ -117,6 +122,7 @@
                     user_id: this.userid,
                     lang_page: this.lang,
                     display_page: this.display_page,
+                    date: this.date,
                     title: this.title,
                     content: this.content
                 })

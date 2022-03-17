@@ -10,6 +10,7 @@ class NewinformationsController extends Controller
 {
     public function get_informations($lang) {
         $data = DB::table('new_informations')->where('lang_page', $lang)->leftJoin('users', 'new_informations.user_id', '=', 'users.id')->select('new_informations.*', 'users.name', 'users.email')->get();
+        
         return response()->json($data);
     }
 
@@ -27,14 +28,25 @@ class NewinformationsController extends Controller
             'content' => 'required'
         ])->validate();
 
+        if($data['date']=="") {
+            $data['date'] = date("Y-m-d h:i:s");
+        }
+
         $check = DB::table('new_informations')->insert([
             'user_id' => $data['user_id'],
             'lang_page' => $data['lang_page'],
             'display_page' => $data['display_page'],
             'title' => $data['title'],
-            'content' => $data['content']
+            'content' => $data['content'],
+            'created_at' => $data['date']
         ]);
 
         return $check;
+    }
+
+    public function get_dealer_informations($lang) {
+        $data = DB::table('new_informations')->where('display_page', 'dealer')->where('lang_page', $lang)->leftJoin('users', 'new_informations.user_id', '=', 'users.id')->select('new_informations.*', 'users.name', 'users.email')->get();
+        
+        return response()->json($data);
     }
 }

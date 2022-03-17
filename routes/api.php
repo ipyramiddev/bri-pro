@@ -54,6 +54,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('payment/paypal/checkout/send', [PaymentController::class, 'paypal_checkout']);
     Route::post('payment/transfer/checkout/send', [PaymentController::class, 'transfer_checkout']);
 
+    //dealer page new informations get
+    Route::get('get/new_informations/dealer/{lang}', [NewinformationsController::class, 'get_dealer_informations']);
+
     //new information post route    
     Route::post('new_information/create', [NewinformationsController::class, 'new_information_create']);
 });

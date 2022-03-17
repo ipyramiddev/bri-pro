@@ -44,20 +44,24 @@
                     <form @submit.prevent="new_information_post" method="post">
                         <input type="hidden" v-model="userid" name="userid" />
                         <div class="mb-3 row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="col-form-label">情報の言語を選択してください</label>
                                 <select v-model="lang" class="form-control" name="lang">
                                     <option value="en">英語</option>
                                     <option value="jp">日本語</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="col-form-label">ホームページを選択してください</label>
                                 <select v-model="display_page" class="form-control" name="display_page">
                                     <option value="top">ホーム</option>
                                     <option value="customer">お客様</option>
                                     <option value="dealer">ディーラー</option>
                                 </select>
+                            </div>
+                            <div class="col-md-4">                                
+                                <label class="col-form-label">日にち</label>
+                                <input v-model="date" class="form-control" type="date" name="date">
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -104,6 +108,7 @@
             content: '',
             lang: '',
             display_page: '',
+            date: '',
         }),
         methods: {
             async getInformations(lang) {
@@ -116,6 +121,7 @@
                     user_id: this.userid,
                     lang_page: this.lang,
                     display_page: this.display_page,
+                    date: this.date,
                     title: this.title,
                     content: this.content
                 })
