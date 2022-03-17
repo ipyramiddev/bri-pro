@@ -130,7 +130,7 @@
                         confirmButtonText: this.$t('ok'),
                         cancelButtonText: this.$t('cancel')
                     }).then(() => {
-                        this.$router.push({ name: $t('home.url') })
+                        this.$router.push({ name: 'en' })
                     })
                 } else {                
                     swal.fire({
