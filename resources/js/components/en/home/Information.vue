@@ -10,7 +10,7 @@
               <div class="head">
                   <h5>
                     <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.name}}">
-                        {{info.title}}
+                        {{info.title != null && info.title.length>40 ? info.title.slice(0,40)+'...' : info.title}}
                     </router-link>
                   </h5>
               </div>
@@ -18,7 +18,7 @@
                   <h6>{{info.created_at}}</h6>
               </div>
               <div class="content">
-                  <h6>{{info.content}}</h6>
+                  <h6>{{info.content != null && info.content.length>80 ? info.content.slice(0,80)+'...' : info.content}}</h6>
               </div>
               <div class="read">
                   <h6>
@@ -70,7 +70,7 @@
   padding: 20px 0;
 }
 .information .body .body-pannel {
-  padding: 0.2rem 2.5rem;
+  padding: 1rem 2.5rem 2rem 2.5rem;
 }
 .information .body .body-pannel .pannel {
   box-shadow: 0 1.5px 12px 2px rgba(0, 0, 0, 0.06);

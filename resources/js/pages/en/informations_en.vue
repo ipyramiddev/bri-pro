@@ -14,7 +14,7 @@
                         <div class="info_title">
                             <h4>
                                 <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.name}}">
-                                    {{info.title}}
+                                    {{info.title != null && info.title.length>40 ? info.title.slice(0,40)+'...' : info.title}}
                                 </router-link>
                             </h4>
                         </div>
@@ -23,7 +23,7 @@
                             <h6>Author: <a href="#"><i>{{info.name}}</i></a></h6>
                         </div>
                         <div class="info_content">
-                            <h5>{{info.content}}</h5>
+                            <h5>{{info.content != null && info.content.length>80 ? info.content.slice(0,80)+'...' : info.content}}</h5>
                         </div>
                         <div class="info_readmore">
                             <h6>
@@ -177,12 +177,16 @@
     .content .datas {
         padding-top: 30px;
     }
+    .content .datas .pannels {
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
     .content .datas .pannels .pannel {
-        padding: 0 10px;
+        padding: 0px 10px;
         border-radius: 6px;
         background-color: #F9F9F9;
         transition: 0.3S;
-        max-height: 400px;
+        height: 100%;
     }
     .content .datas .pannels .pannel:hover {
         box-shadow: 0 1.5px 12px 2px rgba(0, 0, 0, 0.74);
@@ -212,7 +216,7 @@
         padding: 10px;       
     }
     .content .info_post_content {
-        padding: 10px 0;
+        padding: 4rem 0 10px 0;
     }
     .content .info_post_content .new_info_form .form-title {
         text-align:center;
