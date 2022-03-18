@@ -368,6 +368,9 @@
   "category_application_description":"You have this Application: ",
   "category_select_description":"Application Category Level that you have selected is ",
   "category_price_description":"The price for category level is ",
+  "category_discount_price_description":"This category level discount for agency. ",
+  "category_discount_rate_description":"Discount Rate: ",
+  "category_discounted_price_description":"Discounted Price: ",
   "category_capacity_description":"The capacity for category level is ",
   "category_period_description":"This category level expires after ",
   "choose_payment_method_title":"Choose Your Payment Method",
@@ -381,5 +384,14 @@
   "informations": {
     "title": "New Informations",
     "url": "informations_en"
-  }
+  },
+
+  "your_information_details": "Your Information details",
+  "your_email_address_des": "Your E-mail address is ",
+  "your_deposit_amount": "Your remain deposit amount is ",
+  "dealer_application_information_title": "Application Information ",
+  "applicant_email": "Applicant E-mail Address ",
+  "application_button": "Application"
+
+
 }

@@ -25,4 +25,14 @@ class FrontendController extends Controller
         $category_data = DB::table('applications')->where('app_name', $app_name)->where('cat_id', $cat_id)->first();
         return response()->json($category_data);
     }
+
+    public function get_dealer_checkout_category($app_id, $cat_id) {
+        switch ($app_id) {
+            case '1':
+                $app_name = 'IAS';
+                break;
+        }
+        $category_data = DB::table('applications')->where('app_name', $app_name)->where('cat_id', $cat_id)->first();
+        return response()->json($category_data);
+    }
 }

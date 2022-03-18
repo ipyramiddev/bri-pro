@@ -48,11 +48,13 @@ Route::group(['middleware' => 'auth:api'], function () {
     //Get others Datas
     Route::get('get/ias/cat_id', [FrontendController::class, 'get_ias_cat_id']);
     Route::get('get/checkout/category/{app_id}/{cat_id}', [FrontendController::class, 'get_checkout_category']);
+    Route::get('get/dealer_checkout/category/{app_id}/{cat_id}', [FrontendController::class, 'get_dealer_checkout_category']);
 
     //payment and checkout apis
     Route::post('payment/stripe/checkout/send', [PaymentController::class, 'stripe_checkout']);
     Route::post('payment/paypal/checkout/send', [PaymentController::class, 'paypal_checkout']);
     Route::post('payment/transfer/checkout/send', [PaymentController::class, 'transfer_checkout']);
+    Route::post('payment/dealer/checkout/application/send', [PaymentController::class, 'dealer_application_checkout']);
 
     //dealer page new informations get
     Route::get('get/new_informations/dealer/{lang}', [NewinformationsController::class, 'get_dealer_informations']);

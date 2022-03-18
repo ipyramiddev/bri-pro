@@ -18,4 +18,8 @@ class PaymentController extends Controller
     public function transfer_checkout(Request $request) {
         print_r($request->all());
     }
+
+    public function dealer_application_checkout(Request $request) {
+        print_r($request->all());
+    }
 }

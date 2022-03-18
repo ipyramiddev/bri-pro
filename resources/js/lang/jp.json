@@ -284,19 +284,19 @@
     "subscription_highly_secure": " セキュリティの高いデータ管理" 
   },
   "applications": {
-    "create_title": "Create Application",
-    "app_id": "Application ID",
-    "app_name": "Application Name",
-    "cat_id": "Category ID",
-    "cat_tab": "Category Tab",
-    "price": "Price",
-    "discount": "Discount",
-    "discount_price": "Discount Price",
-    "period_date": "Period",
-    "capacity": "Capacity"
+    "create_title": "アプリケーションの作成",
+    "app_id": "アプリケーションID",
+    "app_name": "アプリケーション名",
+    "cat_id": "カテゴリID",
+    "cat_tab": "カテゴリタブ",
+    "price": "価格",
+    "discount": "割引",
+    "discount_price": "割引価格",
+    "period_date": "限目",
+    "capacity": "容量"
   },
-  "back": "Back",
-  "create": "Create",
+  "back": "戻る",
+  "create": "作成",
   "comming_soon": "Coming Soon",
   "researcher": "Researcher",
   "360": "¥36,000",
@@ -364,6 +364,9 @@
   "category_application_description":"あなたはこのアプリケーションを持っています: ",
   "category_select_description":"選択したアプリケーションカテゴリレベルは ",
   "category_price_description":"カテゴリレベルの価格は ",
+  "category_discount_price_description":"代理店向けのこのカテゴリレベルの割引. ",
+  "category_discount_rate_description":"割引率: ",
+  "category_discounted_price_description":"割引価格: ",
   "category_capacity_description":"カテゴリレベルの容量は ",
   "category_period_description":"このカテゴリレベルは、 ",
   "choose_payment_method_title":"お支払方法を選択してください",
@@ -377,5 +380,12 @@
   "informations": {
     "title": "新しい情報",
     "url": "informations_jp"
-  }
+  },
+
+  "your_information_details": "あなたの情報の詳細",
+  "your_email_address_des": "あなたのメールアドレスは ",
+  "your_deposit_amount": "デポジット額は ",
+  "dealer_application_information_title": "アプリケーション情報 ",
+  "applicant_email": "申請者の電子メールアドレス ",
+  "application_button": "申し込み"
 }

@@ -26,7 +26,7 @@ export default [
   { path: '/en/information/detail', name: 'information_detail_en', component: page('en/information_detail_en.vue') },
 
 
-  
+
   // Japanese Routes
   { path: '/', name: 'jp', component: page('jp/home_jp.vue') },
   { path: '/product', name: 'products_jp', component: page('jp/products_jp.vue') },
@@ -43,7 +43,9 @@ export default [
   { path: '/information/detail', name: 'information_detail_jp', component: page('jp/information_detail_jp.vue') },
 
   //Purchase routes
-  { path: '/ckeckout', name: 'checkout', component: page('purchase/checkout.vue') },
+  { path: '/checkout', name: 'checkout', component: page('purchase/checkout.vue') },
+  { path: '/agency/checkout', name: 'agency_checkout', component: page('purchase/agency_checkout.vue') },
+
 
   { path: '/login', name: 'login', component: page('auth/login.vue') },
   { path: '/register', name: 'register', component: page('auth/register.vue') },
