@@ -16,7 +16,10 @@
           </div>
         </div>
         <div class="video col-md-6 col-sm-12">
-          <youtube :video-id="videoId" @ready="ready" @playing="playing" player-width= "480" player-height="270"></youtube>
+          <div>
+            <iframe src="https://www.youtube.com/embed/VYYqGkiKFkQ" width="480" height="270"> </iframe>
+          </div>
+          <!-- <youtube :video-id="videoId" @ready="ready" @playing="playing" player-width= "480" player-height="270"></youtube> -->
         </div>
       </div>
     </div>
