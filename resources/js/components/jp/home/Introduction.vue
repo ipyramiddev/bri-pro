@@ -34,7 +34,7 @@
       palying (event) {
       },
       change () {
-        this.videoId = this.$youtube.getIdFromURL('https://www.youtube.com/embed/VYYqGkiKFkQ')
+        this.videoId = this.$youtube.getIdFromURL('https://www.youtube.com/embed/51BIfNZQIFc')
       },
       stop () {
         this.player.stopVideo()
