@@ -16,8 +16,7 @@
           </div>
         </div>
         <div class="video col-md-6 col-sm-12">
-          <youtube :video-id="videoId" @ready="ready" @playing="playing" player-width="100%" player-height="100%"></youtube>
-          <!-- <div data-id="fbbb76e" data-element_type="widget" data-settings="{&quot;youtube_url&quot;:&quot;https:\/\/youtu.be\/VYYqGkiKFkQ&quot;,&quot;video_type&quot;:&quot;youtube&quot;,&quot;controls&quot;:&quot;yes&quot;,&quot;aspect_ratio&quot;:&quot;169&quot;}" data-widget_type="video.default"></div> -->
+          <youtube :video-id="videoId" @ready="ready" @playing="playing"></youtube>
         </div>
       </div>
     </div>
@@ -35,7 +34,7 @@
       palying (event) {
       },
       change () {
-        this.videoId = this.$youtubr.getIdFromURL('https://youtu.be/VYYqGkiKFkQ')
+        this.videoId = this.$youtube.getIdFromURL('https://youtu.be/VYYqGkiKFkQ')
       },
       stop () {
         this.player.stopVideo()
@@ -61,7 +60,7 @@
 .introduction .body .subtitle {
   padding: 1rem 0;
 }
-.introduction .body .subtitle >h5 {
+.introduction .body .subtitle h4 {
   line-height: 1.4;
 }
 .introduction .body .button {
@@ -69,5 +68,10 @@
 }
 .introduction .body .button .btn-outline-primary {
   border-radius: 10px;
+}
+.introduction .body .video div {
+  width: 100%;
+  height: 100%;
+  text-align:center; 
 }
 </style>

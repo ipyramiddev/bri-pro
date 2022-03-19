@@ -12,23 +12,23 @@
                 <div v-for="info in informations" :key="info.id" class="pannels col-md-3 col-sm-12">
                     <div class="pannel">
                         <div class="info_title">
-                            <h4>
+                            <h5>
                                 <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.name}}">
-                                    {{info.title != null && info.title.length>40 ? info.title.slice(0,40)+'...' : info.title}}
+                                    {{info.title != null && info.title.length>80 ? info.title.slice(0,80)+'...' : info.title}}
                                 </router-link>
-                            </h4>
+                            </h5>
                         </div>
                         <div class="info_date">
-                            <h6>{{info.created_at}}</h6>
-                            <h6>Author: <a href="#"><i>{{info.name}}</i></a></h6>
+                            <span>{{info.created_at}}</span><br/>
+                            <span>Author: <a href="#"><i>{{info.name}}</i></a></span>
                         </div>
                         <div class="info_content">
-                            <h5>{{info.content != null && info.content.length>80 ? info.content.slice(0,80)+'...' : info.content}}</h5>
+                            <h6>{{info.content != null && info.content.length>120 ? info.content.slice(0,120)+'...' : info.content}}</h6>
                         </div>
                         <div class="info_readmore">
                             <h6>
                                 <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.name}}">
-                                    read details >>
+                                    read details
                                 </router-link>
                             </h6>
                         </div> 
@@ -184,13 +184,14 @@
         padding-top: 30px;
     }
     .content .datas .pannels {
-        padding-top: 30px;
-        padding-bottom: 20px;
+        padding: 30px 20px 20px 20px;
+        min-height: 400px;
     }
     .content .datas .pannels .pannel {
         padding: 0px 10px;
         border-radius: 6px;
         background-color: #F9F9F9;
+        box-shadow: 0 1.5px 12px 2px rgba(0, 0, 0, 0.27);
         transition: 0.3S;
         height: 100%;
     }
@@ -199,27 +200,30 @@
         transition: 0.3S;
     }
     .content .datas .pannels .pannel .info_title {
-        text-align: center; 
-        padding: 20px 5px 10px 5px;       
+        text-align: left; 
+        padding: 20px 5px 7px 5px;       
     }    
-    .content .datas .pannels .pannel .info_title h4 {
+    .content .datas .pannels .pannel .info_title h5 {
         word-break: break-all;     
     }  
     .content .datas .pannels .pannel .info_date {
         text-align: left; 
-        padding: 10px 5px 10px 20px;       
+        padding: 7px 5px;       
+    } 
+    .content .datas .pannels .pannel .info_date span {
+        font-size: 13px;      
     }
     .content .datas .pannels .pannel .info_content {
         text-align: left; 
-        padding: 10px 5px;       
+        padding: 7px 5px;       
     }
-    .content .datas .pannels .pannel .info_content h5 {
+    .content .datas .pannels .pannel .info_content h6 {
         word-break: break-all;
         display: inline-block     
     }
     .content .datas .pannels .pannel .info_readmore {
-        text-align: right; 
-        padding: 10px;       
+        text-align: left; 
+        padding: 7px;       
     }
     .content .info_post_content {
         padding: 4rem 0 10px 0;

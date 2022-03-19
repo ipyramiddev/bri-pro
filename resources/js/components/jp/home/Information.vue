@@ -10,15 +10,12 @@
               <div class="head">
                   <h5>
                     <router-link :to="{name: 'information_detail_jp', query: {id: info.id, author: info.name}}">
-                        {{info.title != null && info.title.length>40 ? info.title.slice(0,40)+'...' : info.title}}
+                        {{info.title != null && info.title.length>80 ? info.title.slice(0,80)+'...' : info.title}}
                     </router-link>
                   </h5>
               </div>
-              <div class="date">
-                  <h6>{{info.created_at}}</h6>
-              </div>
               <div class="content">
-                  <h6>{{info.content != null && info.content.length>80 ? info.content.slice(0,80)+'...' : info.content}}</h6>
+                  <h6>{{info.content != null && info.content.length>60 ? info.content.slice(0,60)+'...' : info.content}}</h6>
               </div>
               <div class="read">
                   <h6>
@@ -26,6 +23,9 @@
                           詳細を読む >>
                       </router-link>
                   </h6>
+              </div>
+              <div class="date">
+                  <h6>{{info.created_at}}</h6>
               </div>
           </div>
         </div>
@@ -70,37 +70,39 @@
   padding: 20px 0;
 }
 .information .body .body-pannel {
-  padding: 1rem 2.5rem 2rem 2.5rem;
+  padding: 1rem 3.5rem 2rem 3.5rem;
+  min-height: 400px;
 }
 .information .body .body-pannel .pannel {
-  box-shadow: 0 1.5px 12px 2px rgba(0, 0, 0, 0.06);
-  border-radius: 12px;
+  box-shadow: 0 1.5px 12px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
   height: 100%;
 }
 .information .body .body-pannel .pannel .head {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-  padding: 30px 16px 10px 16px;
+  padding: 30px 15px 7px 15px;
 }
 .information .body .body-pannel .pannel .head h5 {
-  line-height: 2rem;
+  line-height: 1.8rem;
   word-break: break-all;    
-  padding: 0 25px; 
+  padding: 0 10px; 
 }
-.information .body .body-pannel .pannel .content,
-.information .body .body-pannel .pannel .read,
-.information .body .body-pannel .pannel .date {
-  padding: 10px 16px;
+.information .body .body-pannel .pannel .content {
+  padding: 7px 15px;
 }
 .information .body .body-pannel .pannel .content h6 {
-  line-height: 1.5rem;
-  padding: 10px 16px;
+  line-height: 1.2rem;
+  padding: 0 10px;
   word-break: break-all;     
 }
 .information .body .body-pannel .pannel .read {
-  text-align: right;
+  text-align: left;
+  padding: 7px 25px;
+  text-transform: uppercase; 
 }
 .information .body .body-pannel .pannel .date {
-  text-align: right;
+  text-align: left;
+  padding: 7px 25px;
 }
 </style>
