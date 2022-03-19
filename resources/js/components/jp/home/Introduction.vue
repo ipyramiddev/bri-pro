@@ -3,7 +3,7 @@
       <div class="title">
         <h2>{{$t('homepage.intro_title')}}</h2>
       </div>
-      <div class="body row" style="height: 20rem;">
+      <div class="body row" style="height: 20rem">
         <div class="text col-md-6 col-sm-12">
           <div class="subtitle">
             <h4>{{$t('homepage.intro_subtitle')}}</h4>
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="video col-md-6 col-sm-12">
-          <youtube :video-id="videoId" @ready="ready" @playing="playing"></youtube>
+          <youtube :video-id="videoId" @ready="ready" @playing="playing" player-width= "480" player-height="270"></youtube>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
       palying (event) {
       },
       change () {
-        this.videoId = this.$youtube.getIdFromURL('https://youtu.be/51BIfNZQIFc')
+        this.videoId = this.$youtube.getIdFromURL('https://www.youtube.com/embed/VYYqGkiKFkQ')
       },
       stop () {
         this.player.stopVideo()
@@ -73,5 +73,6 @@
   width: 100%;
   height: 100%;
   text-align:center;
+  padding: 15px; 
 }
 </style>
