@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="video col-md-6 col-sm-12">
-          <youtube :video-id="videoId" @ready="ready" @playing="playing"></youtube>
+          <youtube :video-id="videoId" @ready="ready" @playing="playing" player-width= "480" player-height="270"></youtube>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
       palying (event) {
       },
       change () {
-        this.videoId = this.$youtube.getIdFromURL('https://youtu.be/VYYqGkiKFkQ')
+        this.videoId = this.$youtube.getIdFromURL('https://www.youtu.be/VYYqGkiKFkQ')
       },
       stop () {
         this.player.stopVideo()
@@ -72,6 +72,7 @@
 .introduction .body .video div {
   width: 100%;
   height: 100%;
-  text-align:center; 
+  text-align:center;
+  padding: 15px; 
 }
 </style>
