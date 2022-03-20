@@ -19,6 +19,10 @@ class PaymentController extends Controller
         print_r($request->all());
     }
 
+    public function furikomi_checkout(Request $request) {
+        print_r($request->all());
+    }
+
     public function dealer_application_checkout(Request $request) {
         print_r($request->all());
     }

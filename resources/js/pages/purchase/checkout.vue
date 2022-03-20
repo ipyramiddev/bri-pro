@@ -25,16 +25,22 @@
                                 <img src="images/credit-payment-logo.png" />
                             </label>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label class="col-form-label text-md-end">
                                 <input type="radio" id="paypal" name="payment_method" v-model="form_display" value="paypal" />
                                 <img src="images/paypal-payment-logo.png" />
                             </label>
                         </div>
-                        <div class="col-md-3">
+                        <div v-if="locale=='en'" class="col-md-4">
                             <label class="col-form-label text-md-end">
                             <input type="radio" id="transfer" name="payment_method" v-model="form_display" value="transfer" />
                                 <img src="images/transfer-payment-logo.png" />
+                            </label>
+                        </div>
+                        <div v-if="locale=='jp'" class="col-md-4">
+                            <label class="col-form-label text-md-end">
+                            <input type="radio" id="furikomi" name="payment_method" v-model="form_display" value="furikomi" />
+                                <img src="images/furikomi-payment-logo.png" />
                             </label>
                         </div>
                     </div>
@@ -106,7 +112,7 @@
                     </form>
                 </div>
                 <!-- transfer payment -->
-                <div id="transfer_payment"  v-show="form_display === 'transfer'">
+                <div id="transfer_payment" v-if="locale=='en'"  v-show="form_display === 'transfer'">
                     <form @submit.prevent="transfer_payment_post" method="post">
                         <div class="payment_information_form" style="padding-top: 15px;">
                             <h4>{{$t('payment_information_title')}}</h4>
@@ -122,7 +128,32 @@
                                         <!-- Submit Button -->
                                         <b-button type="submit" variant="primary" :disabled="loading">
                                             <b-spinner small :hidden="!loading"></b-spinner>
-                                            {{ $t('submit_transfer_checkout') }}
+                                            Check out by bank transfer
+                                        </b-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- furikomi payment -->
+                <div id="furikomi_payment" v-if="locale=='jp'"  v-show="form_display === 'furikomi'">
+                    <form @submit.prevent="furikomi_payment_post" method="post">
+                        <div class="payment_information_form" style="padding-top: 15px;">
+                            <h4>{{$t('payment_information_title')}}</h4>
+                            <div style="padding-left: 20px;">
+                                <div class="mb-3 row">
+                                    <div class="col-md-12">
+                                        <label class="col-form-label">{{ $t('email') }}</label>
+                                        <input v-model="email" class="form-control" type="email" name="email">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <div class="col-md-12 d-flex">
+                                        <!-- Submit Button -->
+                                        <b-button type="submit" variant="primary" :disabled="loading">
+                                            <b-spinner small :hidden="!loading"></b-spinner>
+                                            フリコミによるチェックアウト
                                         </b-button>
                                     </div>
                                 </div>
@@ -179,6 +210,14 @@ export default {
                 price: this.category.price
             })
             this.loading = false
+        },
+        async furikomi_payment_post() {
+            this.loading = true
+            var {data} = await axios.post('/api/payment/furikomi/checkout/send', {
+                email: this.email,
+                price: this.category.price
+            })
+            this.loading = false
         }
     },
     created() {
@@ -186,13 +225,11 @@ export default {
         var cat_id = this.$route.query.cat_id;
         this.getCategorydata(app_id, cat_id)
         this.email = this.user.email
+        this.locale = this.$root.$i18n.locale
     },
     computed: mapGetters({
         user: 'auth/user'
-    }),
-    mounted() {
-        this.email = user.email
-    }
+    })
 }
 </script>
 

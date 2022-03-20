@@ -217,7 +217,8 @@
     "your_name": "Your Name",
     "your_email": "Your E-mail",
     "phone_number": "Phone Number",
-    "your_text": "Your Text"
+    "your_text": "Your Text",
+    "attach_file": "Choose your attach file..."
   },
   "dealer": {
     "text": "Dealer order",
@@ -380,7 +381,6 @@
   "cvc":"CVC",
   "submit_stripe_checkout":"Check out by credit card",
   "submit_paypal_checkout":"Paypal check out",
-  "submit_transfer_checkout":"Check out by bank transfer",
   "informations": {
     "title": "New Informations",
     "url": "informations_en"

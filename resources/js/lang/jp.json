@@ -217,7 +217,8 @@
     "your_name": "あなたの名前",
     "your_email": "あなたのEメール",
     "phone_number": "電話番号",
-    "your_text": "あなたのテキスト"
+    "your_text": "あなたのテキスト",
+    "attach_file": "添付ファイルを選択してください..."
   },
   "dealer": {
     "text": "代理店用",
@@ -376,7 +377,6 @@
   "cvc":"CVC",
   "submit_stripe_checkout":"クレジットカードでチェックアウト",
   "submit_paypal_checkout":"ペイパルチェックアウト",
-  "submit_transfer_checkout":"銀行振込でチェックアウト",
   "informations": {
     "title": "新しい情報",
     "url": "informations_jp"

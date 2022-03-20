@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\NewinformationsController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +55,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('payment/stripe/checkout/send', [PaymentController::class, 'stripe_checkout']);
     Route::post('payment/paypal/checkout/send', [PaymentController::class, 'paypal_checkout']);
     Route::post('payment/transfer/checkout/send', [PaymentController::class, 'transfer_checkout']);
+    Route::post('payment/furikomi/checkout/send', [PaymentController::class, 'furikomi_checkout']);
     Route::post('payment/dealer/checkout/application/send', [PaymentController::class, 'dealer_application_checkout']);
 
     //dealer page new informations get
@@ -82,3 +84,6 @@ Route::group(['middleware' => 'guest:api'], function () {
 //Routes New Informations
 Route::get('get/new_informations/{lang}', [NewinformationsController::class, 'get_informations']);
 Route::get('get/information/detail/{id}', [NewinformationsController::class, 'get_info_detail_data']);
+
+//Contact Route
+Route::post('contact/send', [ContactController::class, 'contact_store_send']);

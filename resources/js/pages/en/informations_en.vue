@@ -37,7 +37,7 @@
             </div>             
 
             <!-- edit new information form section -->
-            <div v-if="user" class="info_post_content">
+            <div v-if="user && user.role=='admin'" class="info_post_content">
                 <div class="new_info_form">
                     <div class="form-title">
                         <h4>Please complete information details fields.</h4>
@@ -89,7 +89,7 @@
                     </form>
                 </div>
             </div>
-            <div v-else class="info_post_content">
+            <div v-else-if="!user" class="info_post_content">
                 <h5>To edit New Information, please <router-link :to="{name: 'login'}">{{ $t('login') }}</router-link>.</h5>
             </div>            
         </div>

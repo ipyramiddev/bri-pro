@@ -4,43 +4,86 @@
         <h1>{{$t('contact.title')}}</h1>
       </div>
       <div class="body row">
-        <div class="col-md-6 col-sm-12">
-          <div class="body-pannel">
-            <b-form-input :placeholder="$t('contact.your_name')"></b-form-input>
+        <form @submit.prevent="contact_submit" method="post" enctype="multipart/form-data">
+          <div class="col-md-12 row">
+            <div class="col-md-6 col-sm-12">
+              <div class="body-pannel">
+                <b-form-input type="text" v-model="name" :placeholder="$t('contact.your_name')" required></b-form-input>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="body-pannel">
+                <b-form-input type="email" v-model="email" :placeholder="$t('contact.your_email')" required></b-form-input>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="body-pannel">
-            <b-form-input :placeholder="$t('contact.your_email')"></b-form-input>
+          <div class="col-md-12 row">
+            <div class="col-md-6 col-sm-12">
+              <div class="body-pannel">
+                <b-form-input type="text" v-model="phone" :placeholder="$t('contact.phone_number')" required></b-form-input>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="body-pannel">
+                <b-form-file v-model="file" :placeholder="$t('contact.attach_file')"></b-form-file>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="body-pannel">
-            <b-form-input :placeholder="$t('contact.phone_number')"></b-form-input>
+          <div class="col-md-12 row">
+            <div class="col-md-12 col-sm-12">
+              <div class="body-pannel">
+                <b-form-textarea 
+                type="text"
+                v-model="message"            
+                :placeholder="$t('contact.your_text')" 
+                rows="3" 
+                max-rows="6"
+                ></b-form-textarea>
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+              <div class="body-pannel" style="text-align:right;">
+                <b-button type="submit" variant="primary" :disabled="loading">
+                  <b-spinner small :hidden="!loading"></b-spinner>
+                  {{$t('send')}}
+                </b-button>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="body-pannel">
-            <b-form-file></b-form-file>
-          </div>
-        </div>
-        <div class="col-md-12 col-sm-12">
-          <div class="body-pannel">
-            <b-form-textarea             
-             :placeholder="$t('contact.your_text')" 
-             rows="3" 
-             max-rows="6"
-            ></b-form-textarea>
-          </div>
-        </div>
-        <div class="col-md-12 col-sm-12">
-          <div class="body-pannel" style="text-align:right;">
-            <b-button variant="outline-primary">{{$t('send')}}</b-button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
 </template>
+
+<script>
+  import axios from 'axios'
+  export default {
+    data: () => ({
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+      file: null,
+      loading: false,
+    }),
+    methods: {
+      async contact_submit() {
+        var form = new FormData();
+        form.set('email', this.email);
+        form.set('name', this.name);
+        form.set('phone', this.phone);
+        form.set('message', this.message);
+        form.set('file', this.file);
+        
+        this.loading = true
+        var {data} = await axios.post('/api/contact/send', form)
+        this.loading = false
+        console.log(data)
+      },
+    }
+
+  }
+</script>
 
 <style scoped>
 .contact {
