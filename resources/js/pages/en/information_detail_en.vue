@@ -26,22 +26,40 @@
                 </div>
             </div>  
         </div>
+
+        <!-- Information List -->
+        <InformationSection @selected="selectInfo" />
+
+        <!-- Comment section -->
+        <CommentSection :send_id="id" />
     </div>
 </template>
 
 <script>
     import axios from 'axios'
     import { mapGetters } from 'vuex'
+    import InformationSection from '~/components/NewInformations'
+    import CommentSection from '~/components/Comment'
     
     export default{
         data: () => ({
             detail_data: '',
             author: '',
+            info_id: ''
         }),
+        components: {
+           InformationSection,
+           CommentSection
+        },
         methods: {
             async getInfoDetailData(id) {
                 var info_detail_data = await axios.get('/api/get/information/detail/'+id)
                 this.detail_data = info_detail_data.data
+                this.info_id = id
+            },
+            selectInfo(value) {
+                this.getInfoDetailData(value[0])               
+                this.author = value[1]
             }
         },
         computed: mapGetters({

@@ -46,8 +46,8 @@
                 this.informations = new_info_datas.data
             }
         },
-        created() {
-            var lang = 'jp'
+        created() {            
+            var lang = this.$root.$i18n.locale
             this.getInformations(lang)
         }
     }

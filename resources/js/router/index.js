@@ -25,6 +25,7 @@ Vue.use(Toasted);
 Vue.use(VueYoutubeEmned);
 
 
+
 // The middleware for every page of the application.
 const globalMiddleware = ['locale', 'check-auth']
 

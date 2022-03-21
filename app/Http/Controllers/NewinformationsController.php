@@ -9,7 +9,7 @@ use DB;
 class NewinformationsController extends Controller
 {
     public function get_informations($lang) {
-        $data = DB::table('new_informations')->where('lang_page', $lang)->leftJoin('users', 'new_informations.user_id', '=', 'users.id')->select('new_informations.*', 'users.name', 'users.email')->get();
+        $data = DB::table('new_informations')->where('lang_page', $lang)->leftJoin('users', 'new_informations.user_id', '=', 'users.id')->select('new_informations.*', 'users.name', 'users.email', 'users.photo_url')->get();
         
         return response()->json($data);
     }

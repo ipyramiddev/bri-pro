@@ -47,7 +47,7 @@
             }
         },
         created() {
-            var lang = 'en'
+            var lang = this.$root.$i18n.locale
             this.getInformations(lang)
         }
     }

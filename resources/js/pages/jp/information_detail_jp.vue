@@ -26,27 +26,37 @@
                 </div>
             </div>            
         </div>
+
+        <!-- Information List -->
+        <Informations @selected="selectInfo" />
     </div>
 </template>
 
 <script>
     import axios from 'axios'
+    import Informations from '~/components/NewInformations'
     
     export default{
         data: () => ({
             detail_data: '',
             author: '',
         }),
+        components: {
+           Informations 
+        },
         methods: {
             async getInfoDetailData(id) {
                 var info_detail_data = await axios.get('/api/get/information/detail/'+id)
                 this.detail_data = info_detail_data.data
+            },
+            selectInfo(value) {
+                this.getInfoDetailData(value[0])               
+                this.author = value[1]
             }
         },
         created() {
             var id = this.$route.query.id
             this.author = this.$route.query.author
-            console.log(this.author)
             this.getInfoDetailData(id)
         }
     }
