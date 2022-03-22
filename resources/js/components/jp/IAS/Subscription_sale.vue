@@ -24,7 +24,7 @@
                         </div>
                         <div class="foot">
                             <div class="button">
-                                <b-button variant="outline-primary">{{$t('subscribe')}}</b-button>
+                                <b-button variant="outline-primary" :to="{ name: $t('purchase.url') }">{{$t('subscribe')}}</b-button>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="foot">
                             <div class="button">
-                                <b-button variant="outline-primary">{{$t('subscribe')}}</b-button>
+                                <b-button variant="outline-primary" :to="{ name: $t('purchase.url') }">{{$t('subscribe')}}</b-button>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                         </div>
                         <div class="foot">
                             <div class="button">
-                                <b-button variant="outline-primary">{{$t('subscribe')}}</b-button>
+                                <b-button variant="outline-primary" :to="{ name: $t('purchase.url') }">{{$t('subscribe')}}</b-button>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="foot">
                             <div class="button">
-                                <b-button variant="outline-primary">{{$t('subscribe')}}</b-button>
+                                <b-button variant="outline-primary" :to="{ name: $t('purchase.url') }">{{$t('subscribe')}}</b-button>
                             </div>
                         </div>
                     </div>

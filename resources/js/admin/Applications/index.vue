@@ -62,7 +62,7 @@
                     {{data.index + 1}}
                 </template>
                 <template #cell(category_tab)="data">
-                    <router-link :to="{name: 'app-update', params: {id: data.item.id}}">{{data.value}}</router-link>
+                    <router-link :to="{name: 'app-update', query: {id: data.item.id}}">{{data.value}}</router-link>
                 </template>
                 <template #cell(price)="data">
                     {{$t(data.item.price)}}

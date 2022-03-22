@@ -30,11 +30,13 @@ class ContactController extends Controller
         if($file) {
             $file_name = time()."_".$file->getClientOriginalName();
             $input['file'] = $file_name;
+        } else {
+
         }
 
         $contact = Contact::create($input);
 
-        if($contact&&$file_name) {
+        if($contact && $file) {
             $destinationPath = public_path('upload/contact');
             $file->move($destinationPath, $file_name);
         }

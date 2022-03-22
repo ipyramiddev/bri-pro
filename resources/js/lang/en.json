@@ -289,6 +289,7 @@
   },
   "applications": {
     "create_title": "Create Application",
+    "update_title": "Update Application",
     "app_id": "Application ID",
     "app_name": "Application Name",
     "cat_id": "Category ID",

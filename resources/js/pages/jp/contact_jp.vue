@@ -8,19 +8,19 @@
           <div class="col-md-12 row">
             <div class="col-md-6 col-sm-12">
               <div class="body-pannel">
-                <b-form-input type="text" v-model="name" :placeholder="$t('contact.your_name')" required></b-form-input>
+                <b-form-input type="text" ref="your_name" v-model="name" :placeholder="$t('contact.your_name')" required></b-form-input>
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="body-pannel">
-                <b-form-input type="email" v-model="email" :placeholder="$t('contact.your_email')" required></b-form-input>
+                <b-form-input type="email" ref="your_email" v-model="email" :placeholder="$t('contact.your_email')" required></b-form-input>
               </div>
             </div>
           </div>
           <div class="col-md-12 row">
             <div class="col-md-6 col-sm-12">
               <div class="body-pannel">
-                <b-form-input type="text" v-model="phone" :placeholder="$t('contact.phone_number')" required></b-form-input>
+                <b-form-input type="text" ref="phone_number" v-model="phone" :placeholder="$t('contact.phone_number')" required></b-form-input>
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
@@ -33,7 +33,8 @@
             <div class="col-md-12 col-sm-12">
               <div class="body-pannel">
                 <b-form-textarea 
-                type="text"
+                type="text" 
+                ref="message"
                 v-model="message"            
                 :placeholder="$t('contact.your_text')" 
                 rows="3" 
@@ -68,6 +69,22 @@
     }),
     methods: {
       async contact_submit() {
+        if (this.$refs.your_name.value == '') {
+          this.$refs.your_name.focus()
+          return false
+        }
+        if (this.$refs.your_email.value == '') {
+          this.$refs.your_email.focus()
+          return false
+        }
+        if (this.$refs.phone_number.value == '') {
+          this.$refs.phone_number.focus()
+          return false
+        }
+        if (this.$refs.message.value == '') {
+          this.$refs.message.focus()
+          return false
+        }
         var form = new FormData();
         form.set('email', this.email);
         form.set('name', this.name);
@@ -78,7 +95,6 @@
         this.loading = true
         var {data} = await axios.post('/api/contact/send', form)
         this.loading = false
-        console.log(data)
       },
     }
 

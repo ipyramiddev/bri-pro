@@ -15,6 +15,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\NewinformationsController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,7 +43,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('get/user/{id}', [AdminController::class, 'fetch_user_id']);
     //Application
     Route::get('get/applications', [AdminController::class, 'fetch_applications']);
+    Route::get('get/application/{id}', [AdminController::class, 'fetch_application_by_id']);
     Route::post('application/create', [AdminController::class, 'application_create']);
+    Route::post('application/update', [AdminController::class, 'application_update']);
 
     Route::post('user/role_update/{id}', [AdminController::class, 'user_role_update']);
 
@@ -63,6 +66,10 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //new information post route    
     Route::post('new_information/create', [NewinformationsController::class, 'new_information_create']);
+
+    //comment post route
+    Route::get('get/comments/{id}', [CommentController::class, 'get_comments_by_infoid']);
+    Route::post('comment/post', [CommentController::class, 'comment_post']);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {

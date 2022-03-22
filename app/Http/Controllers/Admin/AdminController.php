@@ -33,6 +33,11 @@ class AdminController extends Controller
         return response()->json($apps);
     }
 
+    public function fetch_application_by_id($id) {
+        $app = DB::table('applications')->where('id', $id)->first();
+        return response()->json($app);
+    }
+
     public function application_create(Request $request) {
         $data = $request->all();
         Validator::make($data, [
@@ -46,7 +51,7 @@ class AdminController extends Controller
             'capacity_unit' => 'required'
         ])->validate();
         
-        if ($data['currency']=='¥') {
+        if ($data['currency']=='jp') {
             $data['price'] = $data['price']/100;
             if ($data['discount_price']!='' && $data['discount_price']!='0') {
                 $data['discount_price'] = $data['discount_price']/100;
@@ -56,6 +61,29 @@ class AdminController extends Controller
         $check = DB::table('applications')->insert([
             'app_name' => $data['app_name'],
             'cat_id' => $data['cat_id'],
+            'category_tab' => $data['cat_tab'],
+            'period_date' => $data['period_date'],
+            'capacity' => $data['capacity'],
+            'capacity_unit' => $data['capacity_unit'],
+            'price' => $data['price'],
+            'discount' => $data['discount'],
+            'discount_price' => $data['discount_price']
+        ]);
+
+        return $check;
+    }
+
+    public function application_update(Request $request) {
+        $data = $request->all();
+        Validator::make($data, [
+            'cat_tab' => 'required',
+            'price' => 'required|numeric',
+            'period_date' => 'required|numeric',
+            'capacity' => 'required|numeric',
+            'capacity_unit' => 'required'
+        ])->validate();
+
+        $check = DB::table('applications')->where('id', $data['app_id'])->update([
             'category_tab' => $data['cat_tab'],
             'period_date' => $data['period_date'],
             'capacity' => $data['capacity'],
