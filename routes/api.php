@@ -38,9 +38,11 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::patch('settings/profile', [ProfileController::class, 'update']);
     Route::patch('settings/password', [PasswordController::class, 'update']);
+
     //fetch users
     Route::get('get/users', [AdminController::class, 'fetch_users']);
     Route::get('get/user/{id}', [AdminController::class, 'fetch_user_id']);
+
     //Application
     Route::get('get/applications', [AdminController::class, 'fetch_applications']);
     Route::get('get/application/{id}', [AdminController::class, 'fetch_application_by_id']);
@@ -67,9 +69,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     //new information post route    
     Route::post('new_information/create', [NewinformationsController::class, 'new_information_create']);
 
-    //comment post route
-    Route::get('get/comments/{id}', [CommentController::class, 'get_comments_by_infoid']);
+    //comment routes
     Route::post('comment/post', [CommentController::class, 'comment_post']);
+    Route::post('comment/edit', [CommentController::class, 'comment_edit_post']);
+    Route::post('reply/post', [CommentController::class, 'reply_post']);
+    Route::get('comment/delete/{info_id}/{comment_id}', [CommentController::class, 'delete_comment_byid']);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
@@ -94,3 +98,7 @@ Route::get('get/information/detail/{id}', [NewinformationsController::class, 'ge
 
 //Contact Route
 Route::post('contact/send', [ContactController::class, 'contact_store_send']);
+
+//comment get routes
+Route::get('get/comments/{id}', [CommentController::class, 'get_comments_by_infoid']);
+Route::get('get/answers/{comment_id}', [CommentController::class, 'get_answers_get_commentid']);

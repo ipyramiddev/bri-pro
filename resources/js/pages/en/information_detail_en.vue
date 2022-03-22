@@ -31,7 +31,7 @@
         <InformationSection @selected="selectInfo" />
 
         <!-- Comment section -->
-        <CommentSection :send_id="id" />
+        <CommentSection :send-id="info_id" />
     </div>
 </template>
 
@@ -55,7 +55,7 @@
             async getInfoDetailData(id) {
                 var info_detail_data = await axios.get('/api/get/information/detail/'+id)
                 this.detail_data = info_detail_data.data
-                this.info_id = id
+                this.info_id = info_detail_data.data.id
             },
             selectInfo(value) {
                 this.getInfoDetailData(value[0])               

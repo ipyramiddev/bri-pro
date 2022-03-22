@@ -392,7 +392,20 @@
   "your_deposit_amount": "Your remain deposit amount is ",
   "dealer_application_information_title": "Application Information ",
   "applicant_email": "Applicant E-mail Address ",
-  "application_button": "Application"
+  "application_button": "Application",
+
+  "edit": "Edit",
+  "delete" : "Delete",
+  "view": "View",
+  "answers_view": "Answer view",
+  "reply": "Reply",
+  "all_answers": "All Answers",
+  "all_answers_no_data_des": "There is no answers.",
+  "must_login_content": "To reply, you have to login.",
+  "post_comment": "Post comment",
+  "comment": "Comment",
+  "comment_title": "Comments"
+  
 
 
 }

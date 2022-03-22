@@ -388,5 +388,17 @@
   "your_deposit_amount": "デポジット額は ",
   "dealer_application_information_title": "アプリケーション情報 ",
   "applicant_email": "申請者の電子メールアドレス ",
-  "application_button": "申し込み"
+  "application_button": "申し込み",
+
+  "edit": "編集",
+  "delete" : "削除",
+  "view": "表示",
+  "answers_view": "回答ビュー",
+  "reply": "返信",
+  "all_answers": "すべての回答",
+  "all_answers_no_data_des": "回答はありません。",
+  "must_login_content": "返信するには、ログインする必要があります。",  
+  "post_comment": "コメントを投稿",
+  "comment": "コメント",
+  "comment_title": "コメント"
 }

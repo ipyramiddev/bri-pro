@@ -158,7 +158,7 @@
             this.userid = this.user.id 
         },
         mounted() {
-            this.userid = user.id
+            this.userid = this.user.id
         }
     }
 </script>
