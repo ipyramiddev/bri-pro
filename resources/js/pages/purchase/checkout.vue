@@ -49,42 +49,30 @@
                 <!-- payment information form -->
                 <!-- stripe payment -->
                 <div id="stripe_payment" v-show="form_display === 'stripe'">
-                    <form @submit.prevent="stripe_payment_post" method="post">
-                        <div class="payment_information_form" style="padding-top: 15px;">
-                            <h4>{{$t('payment_information_title')}}</h4>
-                            <div style="padding-left: 20px;">
-                                <div class="mb-3 row">
-                                    <div class="col-md-4">
-                                        <label class="col-form-label">{{ $t('email') }}</label>
-                                        <input v-model="email" class="form-control" type="email" name="email">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <label class="col-form-label">{{ $t('card_number') }}</label>
-                                        <input v-model="card_number" class="form-control" type="text" name="card_number">
-                                    </div>
+                    <div class="payment_information_form" style="padding-top: 15px;">
+                        <h4>{{$t('payment_information_title')}}</h4>
+                        <div style="padding-left: 20px;">
+                            <div class="mb-3 row">
+                                <div class="col-md-12">
+                                    <label class="col-form-label">{{ $t('card_info') }}</label>
+                                    <div id="card-element"></div>
                                 </div>
-                                <div class="mb-3 row">
-                                    <div class="col-md-6">
-                                        <label class="col-form-label">{{ $t('expire_date') }}</label>
-                                        <input v-model="expire_date" class="form-control" type="date" name="expire_date">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="col-form-label">{{ $t('cvc') }}</label>
-                                        <input v-model="cvc" class="form-control" type="number" name="cvc">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <div class="col-md-12 d-flex">
-                                        <!-- Submit Button -->
-                                        <b-button type="submit" variant="primary" :disabled="loading">
-                                            <b-spinner small :hidden="!loading"></b-spinner>
-                                            {{ $t('submit_stripe_checkout') }}
-                                        </b-button>
-                                    </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="col-md-12 d-flex">
+                                    <!-- Submit Button -->
+                                    <b-button 
+                                    @click="processPayment"
+                                    variant="primary" 
+                                    :disabled="paymentProcessing"
+                                    >
+                                        <b-spinner small :hidden="!paymentProcessing"></b-spinner>
+                                        {{ paymentProcessing ? 'Processing' : $t('submit_stripe_checkout') }}
+                                    </b-button>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <!-- paypal payment -->
                 <div id="paypal_payment"  v-show="form_display === 'paypal'">
@@ -95,14 +83,14 @@
                                 <div class="mb-3 row">
                                     <div class="col-md-12">
                                         <label class="col-form-label">{{ $t('email') }}</label>
-                                        <input v-model="email" class="form-control" type="email" name="email">
+                                        <input v-model="customer.email" class="form-control" type="email" name="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <div class="col-md-12 d-flex">
                                         <!-- Submit Button -->
-                                        <b-button type="submit" variant="primary" :disabled="loading">
-                                            <b-spinner small :hidden="!loading"></b-spinner>
+                                        <b-button type="submit" variant="primary" :disabled="paymentProcessing">
+                                            <b-spinner small :hidden="!paymentProcessing"></b-spinner>
                                             {{ $t('submit_paypal_checkout') }}
                                         </b-button>
                                     </div>
@@ -120,14 +108,14 @@
                                 <div class="mb-3 row">
                                     <div class="col-md-12">
                                         <label class="col-form-label">{{ $t('email') }}</label>
-                                        <input v-model="email" class="form-control" type="email" name="email">
+                                        <input v-model="customer.email" class="form-control" type="email" name="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <div class="col-md-12 d-flex">
                                         <!-- Submit Button -->
-                                        <b-button type="submit" variant="primary" :disabled="loading">
-                                            <b-spinner small :hidden="!loading"></b-spinner>
+                                        <b-button type="submit" variant="primary" :disabled="paymentProcessing">
+                                            <b-spinner small :hidden="!paymentProcessing"></b-spinner>
                                             Check out by bank transfer
                                         </b-button>
                                     </div>
@@ -145,14 +133,14 @@
                                 <div class="mb-3 row">
                                     <div class="col-md-12">
                                         <label class="col-form-label">{{ $t('email') }}</label>
-                                        <input v-model="email" class="form-control" type="email" name="email">
+                                        <input v-model="customer.email" class="form-control" type="email" name="email">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <div class="col-md-12 d-flex">
                                         <!-- Submit Button -->
-                                        <b-button type="submit" variant="primary" :disabled="loading">
-                                            <b-spinner small :hidden="!loading"></b-spinner>
+                                        <b-button type="submit" variant="primary" :disabled="paymentProcessing">
+                                            <b-spinner small :hidden="!paymentProcessing"></b-spinner>
                                             フリコミによるチェックアウト
                                         </b-button>
                                     </div>
@@ -169,62 +157,123 @@
 <script>
 import axios from 'axios'
 import { mapGetters } from 'vuex'
+import { loadStripe } from '@stripe/stripe-js'
+import swal from 'sweetalert2/dist/sweetalert2.js'
+
 export default {
     data: () => ({
-        category: '', 
-        card_number: '',
-        expire_date: '',
-        cvc: '',
-        loading: false,
+        stripe: {},
+        cardElement: {},
+        customer: {
+            name : '',
+            email: '',
+            //first_name: '',
+            //last_name: '',
+            //email: '',
+            //address: '',
+            //city: '',
+            //state: '',
+            //zip_code: ''
+        },
+        category: '',
+        paymentProcessing: false,
         //payment form display
         form_display: 'stripe'
     }),
+    async mounted() {
+        this.stripe = await loadStripe(process.env.STRIPE_KEY)
+
+        const elements = this.stripe.elements()
+        this.cardElement = elements.create('card', {
+            classes: {
+                base: 'bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 p-3 leading-8 transition-colors duration-200 ease-in-out'
+            }
+        })
+
+        this.cardElement.mount('#card-element')
+    },
     methods: {
         async getCategorydata(app_id, cat_id) {
             const {data} = await axios.get('/api/get/checkout/category/'+app_id+'/'+cat_id)
             this.category = data;
         },
-        async stripe_payment_post() {
-            this.loading = true
-            var {data} = await axios.post('/api/payment/stripe/checkout/send', {
-                email: this.email,
-                price: this.category.price,
-                card_number: this.card_number,
-                expire_date: this.expire_date,
-                cvc: this.cvc
-            })
-            this.loading = false
+        
+        //card stripe payment
+        async processPayment() {
+            this.paymentProcessing = true
+
+            const {paymentMethod, error} = await this.stripe.createPaymentMethod(
+                'card', this.cardElement, {
+                    billing_details: {
+                        name: this.customer.name,
+                        email: this.customer.email
+                    }
+                }
+            )
+
+            if (error) {
+                this.paymentProcessing = false
+                console.error(error)
+                swal.fire({
+                    icon: 'warning',
+                    title: this.$t('warningTitle'),
+                    text: this.$t('warningText'),
+                    reverseButtons: true,
+                    confirmButtonText: this.$t('ok'),
+                    cancelButtonText: this.$t('cancel')
+                })
+            } else {
+                console.log(paymentMethod);
+                this.customer.payment_method_id = paymentMethod.id;
+                this.customer.amount = this.category.price
+
+                axios.post('/api/payment/creditcard/checkout/send', this.customer)
+                    .then((response) => {
+                        this.paymentProcessing = false;
+                        console.log(response);
+
+                        //this.$store.commit('updateOrder', response.data);
+                        //this.$store.dispatch('clearCart');
+
+                        //this.$router.push({ name: 'order.summary' });
+                    })
+                    .catch((error) => {
+                        this.paymentProcessing = false;
+                        console.error(error);
+                    });
+            }
         },
         async paypal_payment_post() {
-            this.loading = true
+            this.paymentProcessing = true
             var {data} = await axios.post('/api/payment/paypal/checkout/send', {
                 email: this.email,
                 price: this.category.price
             })
-            this.loading = false
+            this.paymentProcessing = false
         },
         async transfer_payment_post() {
-            this.loading = true
+            this.paymentProcessing = true
             var {data} = await axios.post('/api/payment/transfer/checkout/send', {
                 email: this.email,
                 price: this.category.price
             })
-            this.loading = false
+            this.paymentProcessing = false
         },
         async furikomi_payment_post() {
-            this.loading = true
+            this.paymentProcessing = true
             var {data} = await axios.post('/api/payment/furikomi/checkout/send', {
-                email: this.email,
+                email: this.customer.email,
                 price: this.category.price
             })
-            this.loading = false
+            this.paymentProcessing = false
         }
     },
     created() {
         var app_id = this.$route.query.app_id;
         var cat_id = this.$route.query.cat_id;
         this.getCategorydata(app_id, cat_id)
-        this.email = this.user.email
+        this.customer.name = this.user.name
+        this.customer.email = this.user.email
         this.locale = this.$root.$i18n.locale
     },
     computed: mapGetters({

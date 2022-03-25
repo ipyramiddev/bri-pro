@@ -38,7 +38,8 @@ class Contact_send extends Mailable
      */
     public function build()
     {
-        return $this->view('email.contact_email_view')
+        return $this->from($this->contact->email, $this->contact->name)
+                        ->view('email.contact_email_view')
                         ->with([
                             'contact_name' => $this->contact->name,
                             'contact_email' => $this->contact->email,

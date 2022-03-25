@@ -400,5 +400,6 @@
   "must_login_content": "返信するには、ログインする必要があります。",  
   "post_comment": "コメントを投稿",
   "comment": "コメント",
-  "comment_title": "コメント"
+  "comment_title": "コメント",
+  "card_info": "Credit Card Infomation"
 }

@@ -9,10 +9,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Laravel\Cashier\Billable;
+use App\Models\Order;
 
 class User extends Authenticatable implements JWTSubject//, MustVerifyEmail
 {
-    use Notifiable,
+    use Billable,
+        Notifiable,
         HasFactory;
 
     /**
@@ -117,5 +120,9 @@ class User extends Authenticatable implements JWTSubject//, MustVerifyEmail
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function orders() {
+        return $this->hasMany(Order::class);
     }
 }
