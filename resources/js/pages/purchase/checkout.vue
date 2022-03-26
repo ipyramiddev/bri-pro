@@ -40,7 +40,7 @@
                         <div v-if="locale=='jp'" class="col-md-4">
                             <label class="col-form-label text-md-end">
                             <input type="radio" id="furikomi" name="payment_method" v-model="form_display" value="furikomi" />
-                                <img src="images/furikomi-payment-logo.png" />
+                                <img src="images/komoju-payment-logo.png" />
                             </label>
                         </div>
                     </div>
@@ -211,7 +211,7 @@ export default {
     methods: {
         //paypal button
         setLoaded: function() {
-            paypal_sdk.Buttons({
+            window.paypal.Buttons({
                 createOrder: async function(data, actions) {
                     await axios.post('/api/payment/paypal/order/create', {
                         user_id: this.user.id,
