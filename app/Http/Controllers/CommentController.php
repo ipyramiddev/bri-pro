@@ -10,12 +10,12 @@ use DB;
 class CommentController extends Controller
 {
     public function get_comments_by_infoid($id) {
-        $data = DB::table('comments')->where('info_id', $id)->leftJoin('users', 'comments.user_id', '=', 'users.id')->select('comments.*', 'users.name', 'users.email', 'users.photo_url', 'users.phone')->get();
+        $data = DB::table('comments')->where('info_id', $id)->leftJoin('users', 'comments.user_id', '=', 'users.id')->select('comments.*', 'users.name', 'users.nikename', 'users.email', 'users.photo_url', 'users.phone')->get();
         return response()->json($data);
     }
 
     public function get_answers_get_commentid($id) {
-        $data = DB::table('comment_answers')->where('comment_id', $id)->leftJoin('users', 'comment_answers.user_id', '=', 'users.id')->select('comment_answers.*', 'users.name', 'users.email', 'users.photo_url', 'users.phone')->get();
+        $data = DB::table('comment_answers')->where('comment_id', $id)->leftJoin('users', 'comment_answers.user_id', '=', 'users.id')->select('comment_answers.*', 'users.name', 'users.nikename', 'users.email', 'users.photo_url', 'users.phone')->get();
         return response()->json($data);
     }
 
@@ -40,7 +40,7 @@ class CommentController extends Controller
     public function delete_comment_byid($info, $id) {
         $check = Comment::find($id)->delete();
         if($check) {            
-            $data = DB::table('comments')->where('info_id', $info)->leftJoin('users', 'comments.user_id', '=', 'users.id')->select('comments.*', 'users.name', 'users.email', 'users.photo_url', 'users.phone')->get();
+            $data = DB::table('comments')->where('info_id', $info)->leftJoin('users', 'comments.user_id', '=', 'users.id')->select('comments.*', 'users.name', 'users.nikename', 'users.email', 'users.photo_url', 'users.phone')->get();
         }
         return response()->json($data);
     }

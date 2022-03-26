@@ -13,21 +13,21 @@
                     <div class="pannel">
                         <div class="info_title">
                             <h5>
-                                <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.name}}">
+                                <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.nikename?info.nikename:info.name}}">
                                     {{info.title != null && info.title.length>80 ? info.title.slice(0,80)+'...' : info.title}}
                                 </router-link>
                             </h5>
                         </div>
                         <div class="info_date">
                             <span>{{info.created_at}}</span><br/>
-                            <span>Author: <a href="#"><i>{{info.name}}</i></a></span>
+                            <span>Author: <a href="#"><i>{{ info.nikename ? info.nikename : info.name }}</i></a></span>
                         </div>
                         <div class="info_content">
                             <h6>{{info.content != null && info.content.length>120 ? info.content.slice(0,120)+'...' : info.content}}</h6>
                         </div>
                         <div class="info_readmore">
                             <h6>
-                                <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.name}}">
+                                <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.nikename?info.nikename:info.name}}">
                                     read details
                                 </router-link>
                             </h6>

@@ -8,7 +8,7 @@
                 <div class="information_list_pan col-md-12 row">
                     <div v-for="j in informations[i-1].length" :key="j">
                         <b-card>
-                            <h6 @click="selectInfo(informations[i-1][j-1].id, informations[i-1][j-1].name)">
+                            <h6 @click="selectInfo(informations[i-1][j-1].id, informations[i-1][j-1].nikename?informations[i-1][j-1].nikename:informations[i-1][j-1].name)">
                                 {{informations[i-1][j-1].title != null && informations[i-1][j-1].title.length>80 ? informations[i-1][j-1].title.slice(0,80)+'...' : informations[i-1][j-1].title}}
                             </h6>
                             <!-- <router-link :to="{name: 'information_detail_'+locale, query: {id: informations[i-1][j-1].id, author: informations[i-1][j-1].name}}">
@@ -37,7 +37,7 @@
                 var author = []
                 var store_author = ''
                 for (let i in Object.keys(new_info_datas.data)){
-                    store_author = new_info_datas.data[i].name
+                    store_author = new_info_datas.data[i].nikename?new_info_datas.data[i].nikename:new_info_datas.data[i].name
                     if (author == null) {
                         author = [store_author]
                     } else {
@@ -53,7 +53,7 @@
                 for (let j=0; j < author.length; j++) {
                     author_only_infos = []
                     for (let k in Object.keys(new_info_datas.data)) {
-                        if (new_info_datas.data[k].name == author[j]) {
+                        if (new_info_datas.data[k].nikename == author[j] || new_info_datas.data[k].name == author[j]) {
                             author_only_infos.push(new_info_datas.data[k])
                         }
                     } 

@@ -9,7 +9,7 @@ use DB;
 class NewinformationsController extends Controller
 {
     public function get_informations($lang) {
-        $data = DB::table('new_informations')->where('lang_page', $lang)->leftJoin('users', 'new_informations.user_id', '=', 'users.id')->select('new_informations.*', 'users.name', 'users.email', 'users.photo_url')->get();
+        $data = DB::table('new_informations')->where('lang_page', $lang)->leftJoin('users', 'new_informations.user_id', '=', 'users.id')->select('new_informations.*', 'users.name', 'users.nikename', 'users.email', 'users.photo_url')->get();
         
         return response()->json($data);
     }
@@ -45,7 +45,7 @@ class NewinformationsController extends Controller
     }
 
     public function get_dealer_informations($lang) {
-        $data = DB::table('new_informations')->where('display_page', 'dealer')->where('lang_page', $lang)->leftJoin('users', 'new_informations.user_id', '=', 'users.id')->select('new_informations.*', 'users.name', 'users.email')->get();
+        $data = DB::table('new_informations')->where('display_page', 'dealer')->where('lang_page', $lang)->leftJoin('users', 'new_informations.user_id', '=', 'users.id')->select('new_informations.*', 'users.name', 'users.nikename', 'users.email')->get();
         
         return response()->json($data);
     }

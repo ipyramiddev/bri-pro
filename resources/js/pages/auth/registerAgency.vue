@@ -38,6 +38,15 @@
             </div>
           </div>
 
+          <!-- Nike Name -->
+          <div class="mb-3 row">
+            <label class="col-md-3 col-form-label text-md-end">{{ $t('nike_name') }}</label>
+            <div class="col-md-7">
+              <input v-model="form.nike_name" :class="{ 'is-invalid': form.errors.has('nike_name') }" class="form-control" type="text" nike_name="nike_name" :placeholder="$t('nike_name')">
+              <has-error :form="form" field="nike_name" />
+            </div>
+          </div>
+
           <!-- Email -->
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('email') }}</label>
@@ -167,6 +176,7 @@ export default {
         company_name: '',
         seo_name: '',        
         name: '',
+        nike_name: '',
         email: '',
         address_1: '',
         deaprtment: '',

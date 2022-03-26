@@ -28,6 +28,15 @@
               <has-error :form="form" field="last_name" />
             </div>
           </div>
+          
+          <!-- Nike Name -->
+          <div class="mb-3 row">
+            <label class="col-md-3 col-form-label text-md-end">{{ $t('nike_name') }}</label>
+            <div class="col-md-7">
+              <input v-model="form.nike_name" :class="{ 'is-invalid': form.errors.has('nike_name') }" class="form-control" type="text" name="nike_name" :placeholder="$t('nike_name')">
+              <has-error :form="form" field="nike_name" />
+            </div>
+          </div>
 
           <!-- Name -->
           <div class="mb-3 row">
@@ -184,7 +193,8 @@ export default {
   data: () => ({
     form: new Form({
         first_name: '',
-        last_name: '',        
+        last_name: '',  
+        nike_name: '',      
         name: '',
         email: '',
         organization: '',

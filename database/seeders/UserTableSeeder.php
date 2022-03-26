@@ -17,6 +17,7 @@ class UserTableSeeder extends Seeder
         $data = array(
             array(
                 'name' => 'daisukekubota',
+                'nikename' => 'lifeanalytics',
                 'email' => 'daisukekubota@outlook.jp',
                 'password' => bcrypt('emjoyimaging@lifeanalytics.org'),
                 'role' => 'admin',
@@ -24,6 +25,7 @@ class UserTableSeeder extends Seeder
             ),
             array(
                 'name' => 'customer',
+                'nikename' => 'customer',
                 'email' => 'customer@gmail.com',
                 'password' => bcrypt('customer'),
                 'role' => 'customer',
@@ -31,6 +33,7 @@ class UserTableSeeder extends Seeder
             ),
             array(
                 'name' => 'agency',
+                'nikename' => 'agency',
                 'email' => 'agency@gmail.com',
                 'password' => bcrypt('agency'),
                 'role' => 'agency',

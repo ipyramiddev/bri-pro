@@ -10,7 +10,7 @@ use DB;
 class AdminController extends Controller
 {
     public function fetch_users() {
-        $users = DB::table('users')->select(['id', 'name', 'email', 'phone', 'role', 'permission','created_at'])->get();
+        $users = DB::table('users')->select(['id', 'name', 'nikename', 'email', 'phone', 'role', 'permission','created_at'])->get();
         return response()->json($users);
     }
 

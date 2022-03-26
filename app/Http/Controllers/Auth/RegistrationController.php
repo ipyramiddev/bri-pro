@@ -42,6 +42,7 @@ class RegistrationController extends Controller
 
         $check = User::create([
             'name'=>$data['name'],
+            'nikename'=>$data['nikename'],
             'email'=>$data['email'],
             'password'=>bcrypt($data['password']),
             'phone'=>$data['phone'],
@@ -89,6 +90,7 @@ class RegistrationController extends Controller
 
         $check = DB::table('users')->insert([
             'name'=>$data['name'],
+            'nikename'=>$data['nikename'],
             'email'=>$data['email'],
             'password'=>bcrypt($data['password']),
             'phone'=>$data['phone'],

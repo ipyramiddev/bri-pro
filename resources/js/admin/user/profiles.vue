@@ -41,14 +41,20 @@
                         </div>
                     </div>
                     <div class="content-flex">
+                        <!-- Nike Name -->
+                        <div class="w-30">
+                            <label class="col-form-label text-md-end">{{ $t('nike_name') }}</label>
+                            <input class="form-control" type="text" name="nike_name" :value="profiledata.nikename" disabled>
+                        </div>
+
                         <!-- Organization -->
-                        <div class="w-50">
+                        <div class="w-30">
                             <label class="col-form-label text-md-end">{{ $t('organization') }}</label>
                             <input class="form-control" type="text" name="organization" :value="profiledata.organization" disabled>
                         </div>
 
                         <!-- Department -->                        
-                        <div class="w-50">
+                        <div class="w-30">
                             <label class="col-form-label text-md-end">{{ $t('deaprtment') }}</label>
                             <input class="form-control" type="text" name="deaprtment" :value="profiledata.deaprtment" disabled>
                         </div>

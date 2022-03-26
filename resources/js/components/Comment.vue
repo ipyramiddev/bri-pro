@@ -10,7 +10,7 @@
                 <template #header>
                     <div class="text-md-start" style="display:flex;">
                         <img :src="'/upload/users/'+comment.photo_url" class="rounded-circle profile-photo me-1">
-                        <h5 class="mb-0 text-md-start" style="padding-left: 10px;">{{comment.name}}</h5>
+                        <h5 class="mb-0 text-md-start" style="padding-left: 10px;">{{comment.nikename ? comment.nikename : comment.name }}</h5>
                     </div>
                     <div class="text-md-end">
                         <b-button @click="reply_param(comment.info_id, comment.id)" v-b-modal="'modal_reply_'+comment.info_id+'_'+comment.id" variant="link">{{$t('reply')}}</b-button>

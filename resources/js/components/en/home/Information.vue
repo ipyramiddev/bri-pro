@@ -9,7 +9,7 @@
           <div class="pannel">
               <div class="head">
                   <h5>
-                    <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.name}}">
+                    <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.nikename?info.nikename:info.name}}">
                         {{info.title != null && info.title.length>80 ? info.title.slice(0,80)+'...' : info.title}}
                     </router-link>
                   </h5>
@@ -19,7 +19,7 @@
               </div>
               <div class="read">
                   <h6>
-                      <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.name}}">
+                      <router-link :to="{name: 'information_detail_en', query: {id: info.id, author: info.nikename?info.nikename:info.name}}">
                           read details >>
                       </router-link>
                   </h6>
