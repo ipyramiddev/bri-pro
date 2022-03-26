@@ -58,7 +58,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //payment and checkout apis
     Route::post('payment/creditcard/checkout/send', [PaymentController::class, 'creditcard_checkout']);
-    Route::post('payment/paypal/checkout/send', [PaymentController::class, 'paypal_checkout']);
+    Route::post('payment/paypal/order/create', [PaymentController::class, 'paypal_order_create']);
+    Route::post('payment/paypal/order/capture', [PaymentController::class, 'paypal_order_capture']);
     Route::post('payment/transfer/checkout/send', [PaymentController::class, 'transfer_checkout']);
     Route::post('payment/furikomi/checkout/send', [PaymentController::class, 'furikomi_checkout']);
     Route::post('payment/dealer/checkout/application/send', [PaymentController::class, 'dealer_application_checkout']);

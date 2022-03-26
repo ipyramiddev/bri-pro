@@ -89,10 +89,11 @@
                                 <div class="mb-3 row">
                                     <div class="col-md-12 d-flex">
                                         <!-- Submit Button -->
-                                        <b-button type="submit" variant="primary" :disabled="paymentProcessing">
+                                        <div ref="paypal"></div>
+                                        <!-- <b-button type="submit" variant="primary" :disabled="paymentProcessing">
                                             <b-spinner small :hidden="!paymentProcessing"></b-spinner>
                                             {{ $t('submit_paypal_checkout') }}
-                                        </b-button>
+                                        </b-button> -->
                                     </div>
                                 </div>
                             </div>
@@ -181,6 +182,8 @@ export default {
         form_display: 'stripe'
     }),
     async mounted() {
+
+        //stripe payment field
         console.log(process.env.MIX_STRIPE_KEY)
         this.stripe = await loadStripe(process.env.MIX_STRIPE_KEY)
         console.log(stripe)
@@ -195,7 +198,58 @@ export default {
 
         this.cardElement.mount('#card-element')
     },
+    mounted() {        
+        //paypal button section
+        const script = document.createElement("script")
+        const ClientID = process.env.MIX_PAYPAL_SANDBOX_CLIENT_ID
+        console.log(ClientID)
+
+        script.src = 'https://www.paypal.com/sdk/js?client-id=test&currency=USD'
+        script.addEventListener("load", this.setLoaded)
+        document.body.appendChild(script)
+    },
     methods: {
+        //paypal button
+        setLoaded: function() {
+            paypal_sdk.Buttons({
+                createOrder: async function(data, actions) {
+                    await axios.post('/api/payment/paypal/order/create', {
+                        user_id: this.user.id,
+                        amount: this.category.price
+                    }).then((response) => {
+                        console.log(response.json())
+                        return response.json()
+                    }).then((orderData) => {
+                        console.log(orderData)
+                        return orderData.id
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+                },
+                onApprove: async function(data, actions) {
+                    await axios.post('/api/payment/paypal/order/capture', {
+                        orderID: data.orderID,
+                        payment_gateway_id: document.getElementById('#paypalId').value(),
+                        user_id: this.user.id,
+                    }).then((response) => {
+                        console.log(response.json())
+                        return response.json()
+                    }).then((orderData) => {
+                        //Successful capture! For demo purchase:
+                        console.log('Capture result', orderData, Json.stringify(orderData, null, 2))
+                        var transaction = orderData.purchase_unit[0].payments.captures[0]
+                        iziToast.success({
+                            title: 'Success',
+                            message: 'Payment completed',
+                            position: 'topRight'
+                        })
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+                }
+            }).render(this.$refs.paypal)
+        },
+
         async getCategorydata(app_id, cat_id) {
             const {data} = await axios.get('/api/get/checkout/category/'+app_id+'/'+cat_id)
             this.category = data;
