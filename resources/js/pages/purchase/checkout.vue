@@ -215,14 +215,15 @@ export default {
         const ClientID = process.env.MIX_PAYPAL_SANDBOX_CLIENT_ID
         console.log(ClientID)
 
-        script.src = `https://www.paypal.com/sdk/js?client-id=${ClientID}&currency=USD`
+        script.setAttribute(`src`,`https://www.paypal.com/sdk/js?client-id=${ClientID}&currency=USD`)
+        script.setAttribute(`data-namespace`,`paypal_adk`)
         script.addEventListener("load", this.setLoaded)
         document.body.appendChild(script)
     },
     methods: {
         //paypal button
         setLoaded:function() {
-            window.paypal.Buttons({
+            paypal_sdk.Buttons({
                 createOrder: async function(data, actions) {
                     await axios.post('/api/payment/paypal/order/create', {
                         user_id: this.user.id,
