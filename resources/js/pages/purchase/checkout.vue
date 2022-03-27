@@ -204,7 +204,7 @@ export default {
         const ClientID = process.env.MIX_PAYPAL_SANDBOX_CLIENT_ID
         console.log(ClientID)
 
-        script.src = 'https://www.paypal.com/sdk/js?client-id=ClientID&currency=USD'
+        script.src = 'https://www.paypal.com/sdk/js?client-id={{ClientID}}&currency=USD'
         script.addEventListener("load", this.setLoaded)
         document.body.appendChild(script)
     },
