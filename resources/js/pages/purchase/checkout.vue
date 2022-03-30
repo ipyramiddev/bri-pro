@@ -223,7 +223,7 @@ export default {
     methods: {
         //paypal button
         setLoaded:function() {
-            paypal_sdk.Buttons({
+            paypal.Buttons({
                 createOrder: async function(data, actions) {
                     await axios.post('/api/payment/paypal/order/create', {
                         user_id: this.user.id,
