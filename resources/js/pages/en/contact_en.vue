@@ -94,6 +94,7 @@
         
         this.loading = true
         var {data} = await axios.post('/api/contact/send', form)
+        console.log(data)
         this.loading = false
       },
     }

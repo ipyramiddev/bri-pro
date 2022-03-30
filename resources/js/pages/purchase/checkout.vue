@@ -18,108 +18,46 @@
                 <div class="division"></div>
                 <div class="choose_payment_method">
                     <h4>{{$t('choose_payment_method_title')}}</h4>
-                    <div class="row" style="padding-left: 20px;">
-                        <div class="col-md-5">
-                            <label class="col-form-label text-md-end">
-                                <input type="radio" id="stripe" name="payment_method" v-model="form_display" value="stripe" />
-                                <img src="images/credit-payment-logo.png" />
-                            </label>
-                        </div>
-                        <div class="col-md-3">
+                    <div v-if="locale=='jp'" class="row" style="padding-left: 20px;">
+                        <div class="col-md-6">
                             <label class="col-form-label text-md-end">
                                 <input type="radio" id="paypal" name="payment_method" v-model="form_display" value="paypal" />
                                 <img src="images/paypal-payment-logo.png" />
                             </label>
                         </div>
-                        <div v-if="locale=='en'" class="col-md-4">
-                            <label class="col-form-label text-md-end">
-                            <input type="radio" id="transfer" name="payment_method" v-model="form_display" value="transfer" />
-                                <img src="images/transfer-payment-logo.png" />
-                            </label>
-                        </div>
-                        <div v-if="locale=='jp'" class="col-md-4">
+                        <div class="col-md-6">
                             <label class="col-form-label text-md-end">
                             <input type="radio" id="furikomi" name="payment_method" v-model="form_display" value="furikomi" />
                                 <img src="images/komoju-payment-logo.png" />
                             </label>
                         </div>
                     </div>
-                </div>
-
-                <!-- payment information form -->
-                <!-- stripe payment -->
-                <div id="stripe_payment" v-show="form_display === 'stripe'">
-                    <div class="payment_information_form" style="padding-top: 15px;">
-                        <h4>{{$t('payment_information_title')}}</h4>
-                        <div style="padding-left: 20px;">
-                            <div class="mb-3 row">
-                                <div class="col-md-12">
-                                    <label class="col-form-label">{{ $t('card_info') }}</label>
-                                    <div id="card-element"></div>
+                    <div v-else class="row" style="padding-left: 20px;">
+                        <div class="col-md-12">                            
+                            <form @submit.prevent="paypal_payment_post" method="post">
+                                <div class="payment_information_form" style="padding-top: 15px;">
+                                    <div style="padding: 0 40px;">
+                                        <div class="col-md-12 paypal-button">
+                                            <!-- Submit Button -->
+                                            <div ref="paypal"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <div class="col-md-12 d-flex">
-                                    <!-- Submit Button -->
-                                    <b-button 
-                                    @click="processPayment"
-                                    variant="primary" 
-                                    :disabled="paymentProcessing"
-                                    >
-                                        <b-spinner small :hidden="!paymentProcessing"></b-spinner>
-                                        {{ paymentProcessing ? 'Processing' : $t('submit_stripe_checkout') }}
-                                    </b-button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+
+                <!-- payment information form -->
                 <!-- paypal payment -->
-                <div id="paypal_payment"  v-show="form_display === 'paypal'">
+                <div v-if="locale=='jp'" id="paypal_payment"  v-show="form_display === 'paypal'">
                     <form @submit.prevent="paypal_payment_post" method="post">
                         <div class="payment_information_form" style="padding-top: 15px;">
                             <h4>{{$t('payment_information_title')}}</h4>
-                            <div style="padding-left: 20px;">
-                                <div class="mb-3 row">
-                                    <div class="col-md-12">
-                                        <label class="col-form-label">{{ $t('email') }}</label>
-                                        <input v-model="customer.email" class="form-control" type="email" name="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <div class="col-md-12 d-flex">
-                                        <!-- Submit Button -->
-                                        <div ref="paypal"></div>
-                                        <!-- <b-button type="submit" variant="primary" :disabled="paymentProcessing">
-                                            <b-spinner small :hidden="!paymentProcessing"></b-spinner>
-                                            {{ $t('submit_paypal_checkout') }}
-                                        </b-button> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- transfer payment -->
-                <div id="transfer_payment" v-if="locale=='en'"  v-show="form_display === 'transfer'">
-                    <form @submit.prevent="transfer_payment_post" method="post">
-                        <div class="payment_information_form" style="padding-top: 15px;">
-                            <h4>{{$t('payment_information_title')}}</h4>
-                            <div style="padding-left: 20px;">
-                                <div class="mb-3 row">
-                                    <div class="col-md-12">
-                                        <label class="col-form-label">{{ $t('email') }}</label>
-                                        <input v-model="customer.email" class="form-control" type="email" name="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <div class="col-md-12 d-flex">
-                                        <!-- Submit Button -->
-                                        <b-button type="submit" variant="primary" :disabled="paymentProcessing">
-                                            <b-spinner small :hidden="!paymentProcessing"></b-spinner>
-                                            Check out by bank transfer
-                                        </b-button>
-                                    </div>
+                            <div style="padding: 0 40px;">
+                                <div class="col-md-12 paypal-button">
+                                    <!-- Submit Button -->
+                                    <div ref="paypal"></div>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +96,6 @@
 <script>
 import axios from 'axios'
 import { mapGetters } from 'vuex'
-import { loadStripe } from '@stripe/stripe-js'
 import swal from 'sweetalert2/dist/sweetalert2.js'
 
 export default {
@@ -179,36 +116,8 @@ export default {
         category: '',
         paymentProcessing: false,
         //payment form display
-        form_display: 'stripe'
+        form_display: 'paypal'
     }),
-    async mounted() {
-
-        //stripe payment field
-        console.log(process.env.MIX_STRIPE_KEY)
-        this.stripe = await loadStripe(process.env.MIX_STRIPE_KEY)
-        console.log(stripe)
-
-        const elements = this.stripe.elements()
-        console.log(elements)
-        this.cardElement = elements.create('card', {
-            classes: {
-                base: 'bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 p-3 leading-8 transition-colors duration-200 ease-in-out'
-            }
-        })
-
-        this.cardElement.mount('#card-element')
-
-        //payapl button section
-        //let paypal
-        //const ClientID = process.env.MIX_PAYPAL_SANDBOX_CLIENT_ID
-        //console.log(ClientID)
-        //paypal = await loadScript({ "client-id": "ClientID", currency: "USD"})
-        //if (paypal) { 
-        //    this.mountpaypalbutton(paypal)
-        //} else {
-        //    console.log("error")
-        //}
-    },
     mounted() {        
         //paypal button section
         const script = document.createElement("script")
@@ -216,117 +125,54 @@ export default {
         console.log(ClientID)
 
         script.setAttribute(`src`,`https://www.paypal.com/sdk/js?client-id=${ClientID}&currency=USD`)
-        script.setAttribute(`data-namespace`,`paypal_adk`)
+        script.setAttribute(`data-namespace`,`paypal_sdk`)
         script.addEventListener("load", this.setLoaded)
         document.body.appendChild(script)
     },
     methods: {
         //paypal button
         setLoaded:function() {
-            paypal.Buttons({
-                createOrder: async function(data, actions) {
-                    await axios.post('/api/payment/paypal/order/create', {
-                        user_id: this.user.id,
-                        amount: this.category.price
-                    }).then((response) => {
-                        console.log(response.json())
-                        return response.json()
-                    }).then((orderData) => {
-                        console.log(orderData)
-                        return orderData.id
-                    }).catch((error) => {
-                        console.log(error)
-                    })
+            var user_id = this.user.id
+            var amount = this.category.price
+            paypal_sdk.Buttons({
+                style: {
+                    shape: 'pill',
+                    label: 'checkout'
                 },
-                onApprove: async function(data, actions) {
-                    await axios.post('/api/payment/paypal/order/capture', {
-                        orderID: data.orderID,
-                        payment_gateway_id: document.getElementById('#paypalId').value(),
-                        user_id: this.user.id,
-                    }).then((response) => {
-                        console.log(response.json())
-                        return response.json()
-                    }).then((orderData) => {
-                        //Successful capture! For demo purchase:
-                        console.log('Capture result', orderData, Json.stringify(orderData, null, 2))
-                        var transaction = orderData.purchase_unit[0].payments.captures[0]
-                        iziToast.success({
-                            title: 'Success',
-                            message: 'Payment completed',
-                            position: 'topRight'
-                        })
-                    }).catch((error) => {
-                        console.log(error)
-                    })
+
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{"amount":{"currency_code":"USD","value":amount}}]
+                    });
+                    console.log(data)
+                },
+
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(orderData) {
+                        
+                        // Full available details
+                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                        // Show a success message within this page, e.g.
+                        const element = document.getElementById('paypal-button-container');
+                        element.innerHTML = '';
+                        element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                        // Or go to another URL:  actions.redirect('thank_you.html');
+                        
+                    });
+                },
+
+                onError: function(err) {
+                console.log(err);
                 }
+
             }).render(this.$refs.paypal)
         },
 
         async getCategorydata(app_id, cat_id) {
             const {data} = await axios.get('/api/get/checkout/category/'+app_id+'/'+cat_id)
             this.category = data;
-        },
-        
-        //card stripe payment
-        async processPayment() {
-            this.paymentProcessing = true
-
-            const {paymentMethod, error} = await this.stripe.createPaymentMethod(
-                'card', this.cardElement, {
-                    billing_details: {
-                        name: this.customer.name,
-                        email: this.customer.email
-                    }
-                }
-            )
-
-            if (error) {
-                this.paymentProcessing = false
-                console.error(error)
-                swal.fire({
-                    icon: 'warning',
-                    title: this.$t('warningTitle'),
-                    text: this.$t('warningText'),
-                    reverseButtons: true,
-                    confirmButtonText: this.$t('ok'),
-                    cancelButtonText: this.$t('cancel')
-                })
-            } else {
-                console.log(paymentMethod);
-                this.customer.payment_method_id = paymentMethod.id;
-                this.customer.amount = this.category.price
-
-                axios.post('/api/payment/creditcard/checkout/send', this.customer)
-                    .then((response) => {
-                        this.paymentProcessing = false;
-                        console.log(response);
-
-                        //this.$store.commit('updateOrder', response.data);
-                        //this.$store.dispatch('clearCart');
-
-                        //this.$router.push({ name: 'order.summary' });
-                    })
-                    .catch((error) => {
-                        this.paymentProcessing = false;
-                        console.error(error);
-                    });
-            }
-        },
-        async paypal_payment_post() {
-            this.paymentProcessing = true
-            var {data} = await axios.post('/api/payment/paypal/checkout/send', {
-                email: this.email,
-                price: this.category.price
-            })
-            this.paymentProcessing = false
-        },
-        async transfer_payment_post() {
-            this.paymentProcessing = true
-            var {data} = await axios.post('/api/payment/transfer/checkout/send', {
-                email: this.email,
-                price: this.category.price
-            })
-            this.paymentProcessing = false
         },
         async furikomi_payment_post() {
             this.paymentProcessing = true
@@ -397,6 +243,13 @@ export default {
         padding-left: 10px;
         display: inline;
         height: 55px;
+    }
+    .content .payment_information_form .paypal-button {
+        display: flex;
+        justify-content: space-around;
+    }
+    .content .payment_information_form .paypal-button div {
+        width: 50%;
     }
 
 </style>
