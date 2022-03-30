@@ -45,9 +45,6 @@ class Contact_send extends Mailable
                             'contact_email' => $this->contact->email,
                             'contact_phone' => $this->contact->phone,
                             'contact_message' => $this->contact->message,
-                        ])
-                        ->attach('../upload/contact/', [
-                            'as' => $this->contact->file,
                         ]);
     }
 }
