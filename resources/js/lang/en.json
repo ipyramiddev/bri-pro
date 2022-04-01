@@ -421,5 +421,22 @@
   "confirm_transaction_id_description": "Transaction ID",
   "confirm_transaction_create_date_description": "Created Date",
   "confirm_transaction_price_description": "Application Price",
-  "request": "Request"
+  "request": "Request",
+  "transaction" : {    
+    "title": "Transaction History",
+    "text": "Transaction History",
+    "url": "transaction_history"
+  },
+  "filter": "Filter",
+  "clear": "Clear",
+  "filter_on": "Filter On",
+  "transaction_id": "Transaction ID",
+  "status": "Status",
+  "price": "Price",
+  "per_page": "Per page",
+  "billing_from": "Billing Form",
+  "billing_to": "Billing To",
+  "created_date": "Created Date",
+  "show_a_lot": "Show a lot",
+  "type_to_search": "Type to Search"
 }

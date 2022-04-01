@@ -48,6 +48,7 @@ export default [
   { path: '/checkout', name: 'checkout', component: page('purchase/checkout.vue') },
   { path: '/agency/checkout', name: 'agency_checkout', component: page('purchase/agency_checkout.vue') },
   { path: '/checkout/confirmation', name: 'confirmation', component: page('purchase/confirmation.vue') },
+  { path: '/transaction_history', name: 'transaction_history', component: page('purchase/transaction_history.vue') },
 
 
   { path: '/login', name: 'login', component: page('auth/login.vue') },

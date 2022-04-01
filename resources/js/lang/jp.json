@@ -417,5 +417,22 @@
   "confirm_transaction_id_description": "トランザクションID",
   "confirm_transaction_create_date_description": "作成日",
   "confirm_transaction_price_description": "アプリケーション価格",
-  "request": "リクエスト"
+  "request": "リクエスト",
+  "transaction" : {
+    "title": "取引履歴",    
+    "text": "取引履歴",
+    "url": "transaction_history"
+  },
+  "filter": "フィルター",
+  "clear": "クリア",
+  "filter_on": "フィルターオン",
+  "transaction_id": "トランザクションID",
+  "status": "ステータス",
+  "price": "価格",
+  "per_page": "1ページあたり",
+  "billing_from": "請求フォーム",
+  "billing_to": "請求先",
+  "created_date": "作成日",
+  "show_a_lot": "たくさん表示",
+  "type_to_search": "検索するタイプ"
 }

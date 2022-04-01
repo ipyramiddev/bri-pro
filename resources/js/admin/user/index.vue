@@ -179,6 +179,7 @@
             async getUsers () {
                 const { data } = await axios.get('/api/get/users')
                 this.items = data
+                this.totalRows = this.items.length
             },
             removeRow(index) {
                 this.items.splice(index, 1)

@@ -64,8 +64,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     //routes after checkout    
     Route::post('payment/checkout/transaction/save', [PaymentController::class,  'transaction_save']);
 
-    //paymen confirm data get route
+    //payment confirm data get route
     Route::get('get/checkout/confirmData/{id}', [PaymentController::class,  'get_payment_confirmData']);
+
+    //route transaction history get by user id    
+    Route::get('get/purchase/customer/transaction/{id}', [FrontendController::class,  'get_customer_transaction_by_userid']);
 
 
     //dealer page new informations get

@@ -51,7 +51,18 @@
               </div>
             </li>
 
-            <li class="nav-item">
+            <li v-if="user && user.role == 'customer'" class="nav-item dropdown" @mouseover="purchaseOver" @mouseleave="purchaseLeave">
+              <router-link :to="{ name: $t('purchase.url') }"  class="nav-link dropdown-toggle" active-class="active">
+                {{ $t('purchase.text') }}
+              </router-link>
+              <div class="dropdown-menu" :style="{ display: purchaseShow ? 'block' : 'none' } ">
+                <router-link :to="{ name: $t('transaction.url') }" class="nav-link dropdown-item">
+                  {{ $t('transaction.text') }}
+                </router-link>
+              </div>
+            </li>
+
+            <li v-else class="nav-item">
               <router-link :to="{ name: $t('purchase.url') }" class="nav-link" active-class="active">
                 {{ $t('purchase.text') }}
               </router-link>
@@ -115,7 +126,8 @@ export default {
   data: () => ({
     logo: Logo,
     fixed: false,
-    productShow: false
+    productShow: false,
+    purchaseShow: false
   }),
 
   computed: mapGetters({
@@ -138,6 +150,12 @@ export default {
     },
     productLeave() {
       this.productShow = false;
+    },
+    purchaseOver() {
+      this.purchaseShow = true;
+    },
+    purchaseLeave() {
+      this.purchaseShow = false;
     },
     profileOver() {
       this.$refs.dropdown.visible = true;

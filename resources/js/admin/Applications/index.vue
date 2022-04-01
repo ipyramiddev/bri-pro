@@ -140,10 +140,15 @@
                 pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }]
             }
         },
+        mounted() {
+            // Set the initial number of items
+            this.totalRows = this.items.length
+        },
         methods: {
             async getApplications () {
                 const { data } = await axios.get('/api/get/applications')
                 this.items=data
+                this.totalRows = this.items.length
             }
         },        
         created() {

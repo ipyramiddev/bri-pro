@@ -35,4 +35,9 @@ class FrontendController extends Controller
         $category_data = DB::table('applications')->where('app_name', $app_name)->where('cat_id', $cat_id)->first();
         return response()->json($category_data);
     }
+    
+    public function get_customer_transaction_by_userid($id) {
+        $data = DB::table('transactions')->where('user_id', $id)->get();
+        return response()->json($data);
+    }
 }
