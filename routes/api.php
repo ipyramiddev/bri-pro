@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('application/create', [AdminController::class, 'application_create']);
     Route::post('application/update', [AdminController::class, 'application_update']);
 
-    Route::post('user/role_update/{id}', [AdminController::class, 'user_role_update']);
+    Route::post('user/role_update', [AdminController::class, 'user_role_update']);
 
     //Get others Datas
     Route::get('get/ias/cat_id', [FrontendController::class, 'get_ias_cat_id']);
@@ -58,17 +58,22 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //payment and checkout apis
     Route::post('payment/creditcard/checkout/send', [PaymentController::class, 'creditcard_checkout']);
-    Route::post('payment/paypal/order/create', [PaymentController::class, 'paypal_order_create']);
-    Route::post('payment/paypal/order/capture', [PaymentController::class, 'paypal_order_capture']);
-    Route::post('payment/transfer/checkout/send', [PaymentController::class, 'transfer_checkout']);
     Route::post('payment/furikomi/checkout/send', [PaymentController::class, 'furikomi_checkout']);
     Route::post('payment/dealer/checkout/application/send', [PaymentController::class, 'dealer_application_checkout']);
+
+    //routes after checkout    
+    Route::post('payment/checkout/transaction/save', [PaymentController::class,  'transaction_save']);
+
+    //paymen confirm data get route
+    Route::get('get/checkout/confirmData/{id}', [PaymentController::class,  'get_payment_confirmData']);
+
 
     //dealer page new informations get
     Route::get('get/new_informations/dealer/{lang}', [NewinformationsController::class, 'get_dealer_informations']);
 
     //new information post route    
     Route::post('new_information/create', [NewinformationsController::class, 'new_information_create']);
+    Route::post('post/information/update', [NewinformationsController::class, 'information_update']);
 
     //comment routes
     Route::post('comment/post', [CommentController::class, 'comment_post']);

@@ -133,7 +133,9 @@ export default {
         //paypal button
         setLoaded:function() {
             var user_id = this.user.id
+            var app_id = this.category.id
             var amount = this.category.price
+            var router = this.$router
             paypal_sdk.Buttons({
                 style: {
                     shape: 'pill',
@@ -144,7 +146,6 @@ export default {
                     return actions.order.create({
                         purchase_units: [{"amount":{"currency_code":"USD","value":amount}}]
                     });
-                    console.log(data)
                 },
 
                 onApprove: function(data, actions) {
@@ -153,18 +154,27 @@ export default {
                         // Full available details
                         console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
 
-                        // Show a success message within this page, e.g.
-                        const element = document.getElementById('paypal-button-container');
-                        element.innerHTML = '';
-                        element.innerHTML = '<h3>Thank you for your payment!</h3>';
-
+                        //Save transaction history  
+                        if(orderData.status == 'COMPLETED')  {
+                            axios.post('/api/payment/checkout/transaction/save/', {
+                                transaction: orderData.purchase_units[0].payments.captures[0],
+                                payer: orderData.payer,
+                                payee: orderData.purchase_units[0].payee,
+                                user_id: user_id,
+                                app_id: app_id
+                            }).then((res) => {
+                                const data = res.data
+                                router.push({name: 'confirmation', query: {transaction_id: res.data}})
+                            })
+                        }
+                        
                         // Or go to another URL:  actions.redirect('thank_you.html');
                         
                     });
                 },
 
                 onError: function(err) {
-                console.log(err);
+                    console.log(err);
                 }
 
             }).render(this.$refs.paypal)

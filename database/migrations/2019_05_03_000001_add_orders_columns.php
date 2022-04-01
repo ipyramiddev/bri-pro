@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->string('payment_method')->nullabel();
-            $table->string('vendor_order_id')->nullable();
+            $table->string('vendor_order_id')->nullable();           
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->string('status')->nullabel();
         });
     }

@@ -24,8 +24,21 @@ class AdminController extends Controller
         return response()->json($user);
     }
 
-    public function user_role_update(Request $request, $id) {
-        print_r($request->all());
+    public function user_role_update(Request $request) {
+        $input = $request->all();
+        print_r($input);
+        $check = DB::table('users')->where('id', $input['user_id'])->update(['role' => $input['role'], 'permission' => $input['permission']]);
+        if($check) {
+            $user = DB::table('users')->where('id', $input['user_id'])->first();
+            $user = json_decode(json_encode($user), true);
+            $usermetas = DB::table('usermetas')-> where('user_id', $input['user_id'])->get();
+            foreach($usermetas as $usermeta) {
+                $user[$usermeta->key] = $usermeta->value;
+            }
+            return response()->json($user);
+        } else {
+            return response()->json(['message' => 'update is faild.']);
+        }
     }
 
     public function fetch_applications() {

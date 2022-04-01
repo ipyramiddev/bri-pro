@@ -62,15 +62,15 @@
   <div class="flex-center position-ref full-height">
     <div class="content">
       <div class="title">
-        Contact request E-mail
+        Thank you for your payment.<br />
+        Below are details about your Application data.
       </div>
       <div class="email_content">
-        <div> Name: {{ $contact_name }} </div>
-        <div> E-mail: {{ $contact_email }} </div>
-        <div> Phone: {{ $contact_phone }} </div>
-      </div>
-      <div class="email_message">
-        {{ $contact_message }}    
+        <div> Application Name: {{ $app_name }} </div>
+        <div> Category Name: {{ $cat_tab }} </div>
+        <div> Expiration period: {{ $period_data }}days </div>
+        <div> Data Capacity: {{ $capacity }}{{$capacity_unit}} </div>
+        <div> Application price: {{ $price }} </div>
       </div>
     </div>
   </div>

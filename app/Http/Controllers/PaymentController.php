@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Srmklive\PayPal\Services\PayPal as PayPalClinet;
 use App\Models\User;
 use App\Models\Order;
+use Mail;
+use App\Mail\payment_confirm_send;
+use App\Models\Transaction;
 use DB;
 
 class PaymentController extends Controller
@@ -33,60 +37,45 @@ class PaymentController extends Controller
         }
     }
 
-    public function paypal_order_create(Request $request) {
-        $data = $request->all();
-        $user = User::where('id', $input['user_id'])->first();
-
-        $this->paypalClient->setApiCredentials(config('paypal'));
-        $taken = $this->paypalClient->getAccessToken();
-        $this->paypalClient->setAccessToken($token);
-        $order = $this->paypalClient->createOrder([
-            "intent" => "CAPTURE",
-            "purchase_unit" => [
-                [
-                    "amount" => [
-                        "currency_code" => "USD",
-                        "value" => $data['amount']
-                    ],
-                    "description" => "test"
-                ],
-            ],
+    public function transaction_save(Request $request) {
+        $input = $request->all();
+        $transaction = Transaction::create([
+            'user_id' => $input['user_id'],
+            'app_id' => $input['app_id'],
+            'transaction_id' => $input['transaction']['id'],
+            'transaction_status' => $input['transaction']['status'],
+            'transaction_price' => $input['transaction']['amount']['value'],
+            'payee_email' => $input['payee']['email_address'],
+            'payee_id' => $input['payee']['merchant_id'],
+            'payer_email' => $input['payer']['email_address'],
+            'payer_id' => $input['payer']['payer_id'],
+            'created_at' => date('Y-m-d h:i:s', strtotime($input['transaction']['create_time'])),
+            'updated_at' => date('Y-m-d h:i:s', strtotime($input['transaction']['update_time'])),
         ]);
-        $mergeData = array_merge($data, ['status' => TransactionStatus::PENDING, 'vender_order_id' => $order['id']]);
-        $order_table = $user->orders()
-            ->create($mergeData);
-        return response()->json($order);
+
+        if($transaction) {
+            $user = DB::table('users')->where('id', $input['user_id'])->select('email', 'name')->first();
+            $application = DB::table('applications')->where('id', $transaction->app_id)->select('app_name', 'category_tab', 'period_date', 'capacity', 'capacity_unit')->first();
+            $payment_email_data['app_name'] = $application->app_name;
+            $payment_email_data['cat_tab'] = $application->category_tab;
+            $payment_email_data['period_date'] = $application->period_date;
+            $payment_email_data['capacity'] = $application->capacity;
+            $payment_email_data['capacity_unit'] = $application->capacity_unit;
+            $payment_email_data['price'] = $transaction->transaction_price; 
+
+            //web app send data has to be noted in here
+
+            $payment_email_check = Mail::to($user->email, $user->name)
+            ->send(new payment_confirm_send($payment_email_data));
+            return response()->json($transaction->transaction_id);
+
+        } else {
+            return false;
+        }
     }
 
-    public function paypal_order_capture(Request $request) {
-        $data = $request->all();
-        $user = User::where('id', $input['user_id'])->first();
-        $orderId = $data['orderId'];
-        $this->paypalClient->setApiCredentials(config('paypal'));
-        $token = $this->paypalClient->getAccessToken();
-        $this->paypalClient->setAccessToken($token);
-        $result = $this->paypalClient->capturePaymentOrder($orderId);
-
-        try {
-            DB::beginTransaction();
-            if($result['status'] == "COMPLETED") {
-                $transaction = new Transaction;
-                $transaction->vendor_payment_id = $orderId;
-                $transaction->payment_gateway_id = $data['payment_gatewat_id'];
-                $transaction->user_id = $data['user_id'];
-                $transaction->status = TransactionStatus::COMPLETED;
-                $transaction->save();
-                $order = Order::where('vendor_order_id', $orderId)->first();
-                $order->transaction_id = $transaction->id;
-                $order->status = Transactions::COMPLETED;
-                $order->save();
-                DB::commit();
-            }
-        } catch (Exception $e) {
-            DB::rollBack();
-            dd($e);
-        }
-        return response()->json($result);
+    public function paypal_checkout(Request $request) {
+        $input = $request->all();
     }
 
     public function transfer_checkout(Request $request) {
@@ -99,5 +88,10 @@ class PaymentController extends Controller
 
     public function dealer_application_checkout(Request $request) {
         print_r($request->all());
+    }
+
+    public function get_payment_confirmData($id) {
+        $data = DB::table('transactions')->where('transaction_id', $id)->join('users', 'transactions.user_id', '=', 'users.id')->join('applications', 'transactions.app_id', '=', 'applications.id')->select('transactions.*', 'users.name', 'users.nikename', 'users.email', 'users.photo_url', 'users.phone', 'applications.app_name', 'applications.category_tab', 'applications.period_date', 'applications.capacity', 'applications.capacity_unit')->first();
+        return response()->json($data);
     }
 }

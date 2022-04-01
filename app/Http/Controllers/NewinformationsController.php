@@ -44,6 +44,20 @@ class NewinformationsController extends Controller
         return $check;
     }
 
+    public function information_update(Request $request) {
+        $input = $request->all();
+
+        $check = DB::table('new_informations')->where('id', $input['info_id'])->update([
+            'title' => $input['title'],
+            'content' => $input['content']
+        ]); 
+        
+        if($check) {
+            $data = DB::table('new_informations')->where('id', $input['info_id'])->first();
+            return response()->json($data);
+        }
+    }
+
     public function get_dealer_informations($lang) {
         $data = DB::table('new_informations')->where('display_page', 'dealer')->where('lang_page', $lang)->leftJoin('users', 'new_informations.user_id', '=', 'users.id')->select('new_informations.*', 'users.name', 'users.nikename', 'users.email')->get();
         

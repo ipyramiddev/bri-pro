@@ -42,9 +42,12 @@ export default [
   { path: '/informations', name: 'informations_jp', component: page('jp/informations_jp.vue') },
   { path: '/information/detail', name: 'information_detail_jp', component: page('jp/information_detail_jp.vue') },
 
+
+
   //Purchase routes
   { path: '/checkout', name: 'checkout', component: page('purchase/checkout.vue') },
   { path: '/agency/checkout', name: 'agency_checkout', component: page('purchase/agency_checkout.vue') },
+  { path: '/checkout/confirmation', name: 'confirmation', component: page('purchase/confirmation.vue') },
 
 
   { path: '/login', name: 'login', component: page('auth/login.vue') },

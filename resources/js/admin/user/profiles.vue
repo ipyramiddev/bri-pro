@@ -2,9 +2,9 @@
     <div>        
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">profile</h1>
+            <h1 class="h3 mb-0 text-gray-800">{{$t('profile')}}</h1>
             <router-link class="btn btn-secondary btn-icon-split" :to="{name: 'admin.users'}">
-              <span class="text">Back</span>
+              <span class="text">{{$t('back')}}</span>
               <span class="icon text-white-50">
                 <i class="fas fa-arrow-right"></i>
               </span>
@@ -18,7 +18,7 @@
                 <div class="profile_pan">
                     <div class="header-flex">
                         <div class="profile_header">
-                            <h5>User profile</h5>
+                            <h5>{{$t('profile')}}</h5>
                         </div>
                     </div>
                     <div class="content-flex">
@@ -126,31 +126,30 @@
                         <div class="content-flex">
                             <div class="w-100">
                                 <label class="col-form-label text-md-end">{{ $t('role') }}</label>
-                                <select class="form-control" name="role" :v-model="form.role">
-                                    <option>{{profiledata.role}}</option>
-                                    <option value="admin">{{$t('Admin')}}</option>
-                                    <option value="customer">{{$t('Customer')}}</option>
-                                    <option value="agency">{{$t('Agency')}}</option>
+                                <select class="form-control" name="role" v-model="role">
+                                    <option value="admin">{{$t('admin')}}</option>
+                                    <option value="customer">{{$t('customer')}}</option>
+                                    <option value="agency">{{$t('agency')}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="content-flex">
                             <div class="w-100">
                                 <label class="col-form-label text-md-end">{{ $t('permission') }}</label>
-                                <select class="form-control" name="permission" :v-model="form.permission">
-                                    <option>{{profiledata.permission}}</option>
-                                    <option value="approved">{{$t('Approve')}}</option>
-                                    <option value="suspend">{{$t('Suspend')}}</option>
-                                    <option value="deny">{{$t('Deny')}}</option>
+                                <select class="form-control" name="permission" v-model="permission">
+                                    <option value="approved">{{$t('approved')}}</option>
+                                    <option value="suspend">{{$t('suspend')}}</option>
+                                    <option value="deny">{{$t('deny')}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="content-flex">
                             <div class="w-100" style="text-align:center;">
                             <!-- Submit Button -->
-                            <v-button :loading="form.busy">
-                                {{ $t('update') }}
-                            </v-button>
+                                <b-button type="submit" variant="primary" :disabled="loading">
+                                <b-spinner small :hidden="!loading"></b-spinner>
+                                {{$t('update')}}
+                                </b-button>
                             </div>
                         </div>
                     </form>
@@ -162,9 +161,9 @@
 
 
 <script>
-import Form from 'vform'
 import axios from 'axios'
 import user_image from '/images/default-avatar.png'
+import swal from 'sweetalert2/dist/sweetalert2.js'
 export default {
   props: {
     dataBackgroundColor: {
@@ -173,27 +172,53 @@ export default {
     },
   },
   data() {
-    return {
-            form: new Form({
-                role: '',
-                permission: ''
-            }),
+    return {            
+            role: '',
+            permission: '',
+            user_id: '',
             user_image: user_image,
-            profiledata: ''
+            profiledata: '',
+            loading: false
         };
   },
   created() {
-        var user_id=this.$route.params.id
-        this.getUserById(user_id)
+        this.user_id=this.$route.params.id
+        this.getUserById(this.user_id)
   },
   methods: {      
     async getUserById (user_id) {
         const { data } = await axios.get('/api/get/user/'+user_id)
         this.profiledata = data
+        this.role = data.role
+        this.permission = data.permission
     },
     async role_update () {
-        var user_id=this.$route.params.id
-        const {result} = await axios.post('/api/user/role_update/'+user_id)
+        this.loading = true
+        const {data} = await axios.post('/api/user/role_update', {
+            role: this.role,
+            permission: this.permission,
+            user_id: this.user_id
+        })
+        this.loading = false
+        if (data) {
+            swal.fire({
+                icon: 'success',
+                title: this.$t('successTitle'),
+                text: this.$t('successText'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            })
+        } else {                
+            swal.fire({
+                icon: 'warning',
+                title: this.$t('warningTitle'),
+                text: this.$t('warningText'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            })
+        }
     }
   }
 };

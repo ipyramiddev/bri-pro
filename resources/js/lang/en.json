@@ -355,14 +355,14 @@
   "flowcal_250server": "250BG server",
   "flowcal_2Tserver": "2TB server",
   "flowcal_chat": "Chat support",
-  "Admin": "Administrator",
-  "Customer": "Customer",
-  "Agency": "Agency",
+  "admin": "Administrator",
+  "customer": "Customer",
+  "agency": "Agency",
   "role": "Role",
   "permission": "Permission",
-  "Approve": "approved",
-  "Suspend": "suspend",
-  "Deny": "deny",
+  "approved": "approved",
+  "suspend": "suspend",
+  "deny": "deny",
   "change": "Change",
   "days": "Days",
 
@@ -406,8 +406,20 @@
   "post_comment": "Post comment",
   "comment": "Comment",
   "comment_title": "Comments",
-  "card_info": "Credit Card Infomation"
-  
-
-
+  "card_info": "Credit Card Infomation",
+  "confirmation_title": "Confirmation",
+  "confirm_description": "Thank you for your payment. You can use Application from now. Below are details about your Application information that you purchased.",
+  "application_information": "Application information",
+  "confirm_application_url_description": "Application ULR: ",
+  "confirm_application_email_pass_description": "Application's your email ID and password sent to your email. If you want to receive it again, please click this button. ",
+  "confirm_application_name_description": "Application Name",
+  "confirm_application_categorytab_description": "Application's Category name",
+  "confirm_application_capacity_description": "Server Capacity",
+  "confirm_application_period_description": "Expiration Date",
+  "transaction_information": "Transaction Information",
+  "confirm_transaction_url_description": "You can see your transaction histories about all application purchase. please click this button.",
+  "confirm_transaction_id_description": "Transaction ID",
+  "confirm_transaction_create_date_description": "Created Date",
+  "confirm_transaction_price_description": "Application Price",
+  "request": "Request"
 }
