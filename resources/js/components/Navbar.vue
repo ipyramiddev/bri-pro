@@ -59,6 +59,9 @@
                 <router-link :to="{ name: $t('transaction.url') }" class="nav-link dropdown-item">
                   {{ $t('transaction.text') }}
                 </router-link>
+                <router-link :to="{ name: $t('purchase_list.url') }" class="nav-link dropdown-item">
+                  {{ $t('purchase_list.text') }}
+                </router-link>
               </div>
             </li>
 

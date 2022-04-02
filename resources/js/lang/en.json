@@ -438,5 +438,10 @@
   "billing_to": "Billing To",
   "created_date": "Created Date",
   "show_a_lot": "Show a lot",
-  "type_to_search": "Type to Search"
+  "type_to_search": "Type to Search",
+  "purchase_list" : {    
+    "title": "Purchase List",
+    "text": "Purchase List",
+    "url": "purchase_list"
+  }
 }

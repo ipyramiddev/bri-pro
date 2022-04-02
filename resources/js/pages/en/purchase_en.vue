@@ -38,5 +38,8 @@ export default {
     computed: mapGetters({
         user: 'auth/user'
     }),
+    mounted() {
+        window.scrollTo(0,0)
+    }
 }
 </script>

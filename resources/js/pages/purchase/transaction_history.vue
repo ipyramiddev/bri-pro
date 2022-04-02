@@ -186,9 +186,15 @@
             },
             async getTransactionById(id){
                 const {data} = await axios.get('/api/get/purchase/customer/transaction/'+id)
+                for (let i = 0; i < data.length; i++) {
+                    let created_date = new Date(data[i].created_at)
+                    let createdyear = created_date.getFullYear()
+                    let createdmonth = created_date.getMonth()+1
+                    let createddate = created_date.getDate()
+                    data[i].created_at = createdyear + '-' + createdmonth + '-' + createddate
+                }
                 this.items = data                
                 this.totalRows = this.items.length
-                console.log(data)
             }
         },
         computed: mapGetters({

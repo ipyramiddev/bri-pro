@@ -434,5 +434,10 @@
   "billing_to": "請求先",
   "created_date": "作成日",
   "show_a_lot": "たくさん表示",
-  "type_to_search": "検索するタイプ"
+  "type_to_search": "検索するタイプ",
+  "purchase_list" : {    
+    "title": "購入リスト",
+    "text": "購入リスト",
+    "url": "purchase_list"
+  }
 }

@@ -9,6 +9,7 @@ use App\Models\Order;
 use Mail;
 use App\Mail\payment_confirm_send;
 use App\Models\Transaction;
+use App\Models\Customer_purchase;
 use DB;
 
 class PaymentController extends Controller
@@ -56,14 +57,41 @@ class PaymentController extends Controller
         if($transaction) {
             $user = DB::table('users')->where('id', $input['user_id'])->select('email', 'name')->first();
             $application = DB::table('applications')->where('id', $transaction->app_id)->select('app_name', 'category_tab', 'period_date', 'capacity', 'capacity_unit')->first();
+
             $payment_email_data['app_name'] = $application->app_name;
             $payment_email_data['cat_tab'] = $application->category_tab;
             $payment_email_data['period_date'] = $application->period_date;
             $payment_email_data['capacity'] = $application->capacity;
             $payment_email_data['capacity_unit'] = $application->capacity_unit;
-            $payment_email_data['price'] = $transaction->transaction_price; 
+            $payment_email_data['price'] = $transaction->transaction_price;            
 
             //web app send data has to be noted in here
+            //$payment_email_data['app_url'] = $transaction->transaction_price;  
+            //$payment_email_data['user_email'] = $transaction->transaction_price;  
+            //$payment_email_data['user_pass'] = $transaction->transaction_price; 
+            
+            //if web app request and response is success, save some data on customer_purchases table
+            if (DB::table('customer_purchases')->where('user_id', $input['user_id'])->where('app_name', $application->app_name)->first()) {
+                $period_date = DB::table('customer_purchases')->where('user_id', $input['user_id'])->where('app_name', $application->app_name)->value('period_date');
+                $payment_email_data['period_date'] = $application->period_date + $period_date;
+                Customer_purchase::where('user_id', $input['user_id'])->where('app_name', $application->app_name)->update([
+                    'period_date' => $payment_email_data['period_date']
+                ]);
+            } else {
+                Customer_purchase::create([
+                    'user_id' => $input['user_id'],
+                    //'app_url' => $payment_email_data['app_url'],
+                    'app_name' => $payment_email_data['app_name'],
+                    'cat_tab' => $payment_email_data['cat_tab'],
+                    'period_date' => $payment_email_data['period_date'],
+                    'capacity' => $payment_email_data['capacity'],
+                    'capacity_unit' => $payment_email_data['capacity_unit']
+                ]);
+            }            
+            
+            //if customer_purchase table save is success, send email to customer
+            //sending data is payment_data, web_app url, user_email and user_pass
+
 
             $payment_email_check = Mail::to($user->email, $user->name)
             ->send(new payment_confirm_send($payment_email_data));

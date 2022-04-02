@@ -70,6 +70,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     //route transaction history get by user id    
     Route::get('get/purchase/customer/transaction/{id}', [FrontendController::class,  'get_customer_transaction_by_userid']);
 
+    //route purchase list get by user id    
+    Route::get('get/purchase/customer/purchase_list/{id}', [FrontendController::class,  'get_customer_purchaselist_by_userid']);
+
 
     //dealer page new informations get
     Route::get('get/new_informations/dealer/{lang}', [NewinformationsController::class, 'get_dealer_informations']);

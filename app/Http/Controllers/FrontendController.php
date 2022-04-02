@@ -40,4 +40,9 @@ class FrontendController extends Controller
         $data = DB::table('transactions')->where('user_id', $id)->get();
         return response()->json($data);
     }
+
+    public function get_customer_purchaselist_by_userid($id) {
+        $data = DB::table('customer_purchases')->where('user_id', $id)->get();
+        return response()->json($data);
+    }
 }
