@@ -12,6 +12,7 @@ use App\Mail\payment_confirm_send;
 use App\Models\Transaction;
 use App\Models\Customer_purchase;
 use DB;
+use GuzzleHttp\Client;
 
 class PaymentController extends Controller
 {
@@ -121,19 +122,8 @@ class PaymentController extends Controller
         $send_to_app_data['price'] = $input['transaction_price'];
 
         //web app send data has to be noted in here 
-        // $web_app_pass = $this->transfer_email_pass($send_to_app_data);
+        $web_app_pass = $this->transfer_email_pass($send_to_app_data);
         //$send_to_app_data['user_pass'] = $transaction->transaction_price; 
-
-        $period_date = DB::table('customer_purchases')->where('user_id', $input['user_id'])->where('app_name', $input['app_name'])->value('period_date');
-
-        $send_to_app_data['period_date'] = $application->period_date + $period_date;
-
-        Customer_purchase::where('user_id', $input['user_id'])->where('app_name', $input['app_name'])->update([
-            'cat_tab' => $send_to_app_data['cat_tab'],
-            'period_date' => $send_to_app_data['period_date'],
-            'capacity' => $send_to_app_data['capacity'],
-            'capacity_unit' => $send_to_app_data['capacity_unit']
-        ]);
         
         //if customer_purchase table save is success, send email to customer
         //sending data is payment_data, web_app url, user_email and user_pass
@@ -165,8 +155,12 @@ class PaymentController extends Controller
         return response()->json($data);
     }
 
-    // protected function transfer_email_pass(array $payment_email_data) {
-    //     $response = Http::post('https://localhost:8000', $payment_email_data);
-    //     return $response;
-    // }
+    protected function transfer_email_pass(array $payment_email_data) {
+        print_r($payment_email_data);
+        // $response = Http::get('https://www.guru.com');
+        // return $response;
+        $client = new Client();
+        $res = $client->request('GET', 'https//www.guru.com');
+        print_r($res->getBody());
+    }
 }
