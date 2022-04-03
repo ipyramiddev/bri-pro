@@ -45,4 +45,10 @@ class FrontendController extends Controller
         $data = DB::table('customer_purchases')->where('user_id', $id)->get();
         return response()->json($data);
     }
+
+    public function get_purchaseID_by_userID($id) {
+        $purchased_data = DB::table('customer_purchases')->where('user_id', $id)->leftJoin('applications', 'customer_purchases.cat_tab', '=', 'applications.category_tab')->select('customer_purchases.*', 'applications.cat_id')->get();
+
+        return response()->json($purchased_data);
+    }
 }

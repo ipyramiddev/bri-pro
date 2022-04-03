@@ -56,6 +56,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('get/checkout/category/{app_id}/{cat_id}', [FrontendController::class, 'get_checkout_category']);
     Route::get('get/dealer_checkout/category/{app_id}/{cat_id}', [FrontendController::class, 'get_dealer_checkout_category']);
 
+    //get purchase appID and catID by user_id
+    Route::get('get/purchase/appID_catID/{id}', [FrontendController::class, 'get_purchaseID_by_userID']);
+
     //payment and checkout apis
     Route::post('payment/creditcard/checkout/send', [PaymentController::class, 'creditcard_checkout']);
     Route::post('payment/furikomi/checkout/send', [PaymentController::class, 'furikomi_checkout']);

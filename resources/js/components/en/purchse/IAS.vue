@@ -5,13 +5,14 @@
         </div>
         <div class="body row">
             <div class="body-pannel col-md-3 col-sm-12">
-                <div class="pannel">
+                
+                <div class="pannel" :style="{'border': ias_name == true && ias_cat_id == 1 ? '#007FED 2px solid' : ''}">
                     <div class="head">
                         <h4>{{$t('ias_1_month')}}</h4>
                         <h6>500G</h6>
                     </div>
                     <div class="cost">
-                        <h2>{{$t('360')}}</h2>
+                        <h2 style="display: false;">{{$t('360')}}</h2>
                     </div>
                     <div class="content">
                         <ul>
@@ -26,7 +27,7 @@
                 </div>
             </div>
             <div class="body-pannel col-md-3 col-sm-12">
-                <div class="pannel">
+                <div class="pannel" :style="{'border': ias_name == true && ias_cat_id == 2 ? '#007FED 2px solid' : ''}">
                     <div class="head">
                         <h4>{{$t('ias_3_month')}}</h4>
                         <h6>500G</h6>
@@ -47,7 +48,7 @@
                 </div>
             </div>
             <div class="body-pannel col-md-3 col-sm-12">
-                <div class="pannel">
+                <div class="pannel" :style="{'border': ias_name == true && ias_cat_id == 3 ? '#007FED 2px solid' : ''}">
                     <div class="head">
                         <h4>{{$t('ias_1_year')}}</h4>
                         <h6>500G</h6>
@@ -68,7 +69,7 @@
                 </div>
             </div>
             <div class="body-pannel col-md-3 col-sm-12">
-                <div class="pannel">
+                <div class="pannel" :style="{'border': ias_name == true && ias_cat_id == 4 ? '#007FED 2px solid' : ''}">
                     <div class="head">
                         <h4>{{$t('ias_1_year_special')}}</h4>
                         <h6>2T</h6>
@@ -96,6 +97,34 @@
 </template>
 
 <script>
+    import axios from 'axios'
+    import { mapGetters } from 'vuex'
+    export default {
+        data: () => ({
+            ias_name: false,
+            ias_cat_id: ''
+        }),
+        computed: mapGetters({
+            user: 'auth/user'
+        }),
+        created() {
+            var user_id = this.user.id
+            this.getpurchaseIdByUserid(user_id)
+        },
+        methods: {
+            async getpurchaseIdByUserid(id) {
+                const {data} = await axios.get('/api/get/purchase/appID_catID/'+id)
+                if(data) {
+                    for (let i = 0; i < data.length; i++) {
+                        if(data[i].app_name == 'IAS') {
+                            this.ias_name = true
+                            this.ias_cat_id = data[i].cat_id
+                        }
+                    }
+                }              
+            }
+        }
+    }
 </script>
 
 <style scoped>
@@ -142,6 +171,9 @@
     .ias .body .body-pannel .pannel .content {
     line-height: 2rem;
     padding: 1rem;
+    }
+    .ias .body .body-pannel .pannel .content ul {
+    padding-left: 0;
     }
     .ias .body .body-pannel .pannel .content li {
     list-style-type: none;
