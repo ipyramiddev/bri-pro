@@ -70,6 +70,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     //payment confirm data get route
     Route::get('get/checkout/confirmData/{id}', [PaymentController::class,  'get_payment_confirmData']);
 
+    //Request to application again for password
+    Route::post('post/requestToApp', [PaymentController::class, 'request_to_app']);
+
     //route transaction history get by user id    
     Route::get('get/purchase/customer/transaction/{id}', [FrontendController::class,  'get_customer_transaction_by_userid']);
 

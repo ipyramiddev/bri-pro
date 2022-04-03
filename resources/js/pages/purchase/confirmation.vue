@@ -13,16 +13,16 @@
                     <div style="padding-left: 20px;">
                         <h6>{{$t('confirm_application_url_description')}}
                             <span class="category">
-                                <router-link to="#">
-                                    url
+                                <router-link :to="confirmData.app_url">
+                                    {{confirmData.app_name}}
                                 </router-link>
                             </span>.
                         </h6>
                         <h6>{{$t('confirm_application_email_pass_description')}}
                             <span class="category">
-                                <router-link to="#" class="change">
+                                <b-button variant="link" class="change" @click = "request_to_app">
                                     {{$t('request')}}
-                                </router-link>
+                                </b-button>
                             </span>.
                         </h6>
                         <h6>{{$t('confirm_application_name_description')}} <span class="category">{{confirmData.app_name}}</span>.</h6>
@@ -37,8 +37,8 @@
                     <div style="padding-left: 20px;">
                         <h6>{{$t('confirm_transaction_url_description')}}
                             <span class="category">
-                                <router-link to="#">
-                                    url
+                                <router-link :to="{ name: $t('transaction.url') }">
+                                    {{ $t('transaction.text') }}
                                 </router-link>
                             </span>.
                         </h6>
@@ -68,6 +68,18 @@
                 const {data} = await axios.get('/api/get/checkout/confirmData/'+id)
                 console.log(data)
                 this.confirmData = data
+            },
+            async request_to_app() {
+                await axios.post('/api/post/requestToApp', this.confirmData).then(()=> {
+                    swal.fire({
+                        icon: 'success',
+                        title: this.$t('successTitle'),
+                        text: this.$t('successEmailText'),
+                        reverseButtons: true,
+                        confirmButtonText: this.$t('ok'),
+                        cancelButtonText: this.$t('cancel')
+                    })
+                })
             }
         },
         computed: mapGetters({

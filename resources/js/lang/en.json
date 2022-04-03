@@ -11,6 +11,7 @@
   "customeralertText": "In order to see this page, you have to register with Customer",  
   "successTitle": "Success!",
   "successText": "successfully",
+  "successEmailText": "Email sent to you successfully.",
   "warningTitle": "Warning!",
   "warningText": "Please again",
   

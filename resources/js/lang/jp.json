@@ -11,6 +11,7 @@
   "customeralertText": "このページを表示するには、お客様に登録する必要があります",  
   "successTitle": "成功!",
   "successText": "正常に",
+  "successEmailText": "メールが正常に送信されました。",
   "warningTitle": "警告!",
   "warningText": "もう一度お願いします",
 
