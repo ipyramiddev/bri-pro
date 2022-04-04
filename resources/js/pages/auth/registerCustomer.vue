@@ -221,13 +221,21 @@ export default {
         this.mustVerifyEmail = true
       } else {
         // Log in the user.
-        const { data: { token } } = await this.form.post('/api/login')
+        //const { data: { token } } = await this.form.post('/api/login')
+        const { data } = await this.form.post('/api/login')
 
         // Save the token.
-        this.$store.dispatch('auth/saveToken', { token })
+        //this.$store.dispatch('auth/saveToken', { token })
+        this.$store.dispatch('auth/saveToken', {
+          token: data.token,
+          remember: this.remember
+        })
 
         // Update the user.
-        await this.$store.dispatch('auth/updateUser', { user: data })
+        //await this.$store.dispatch('auth/updateUser', { user: data })
+
+        // Fetch the user.
+        await this.$store.dispatch('auth/fetchUser')
 
         // Redirect home.
         this.$router.push({ name: 'home' })
