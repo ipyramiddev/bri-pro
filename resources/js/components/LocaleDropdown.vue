@@ -1,10 +1,19 @@
 <template>
   <li v-if="Object.keys(locales).length > 1" class="nav-item dropdown bottom" @mouseover="languageOver" @mouseleave="languageLeave">
-    <a class="nav-link dropdown-toggle" href="#" role="button"
-       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+    <a v-if="mobile" class="nav-link" href="#" role="button"
+       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline"
     >
       {{ $t('language') }}
     </a>
+    <a v-else class="nav-link dropdown-toggle" href="#" role="button"
+       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+    >
+      {{ $t('language')}}
+    </a>
+    <div class="toggle-button-icon" :style="{display: mobile ? 'inline' : 'none'}" @click="langMenuClick">
+        <b-icon v-if="langShow" icon="chevron-bar-up"></b-icon>
+        <b-icon v-else icon="chevron-bar-down"></b-icon>
+    </div>
     <div class="dropdown-menu" :style="{ display: langShow ? 'block' : 'none' }">
       <a v-for="(value, key) in locales" :key="key" class="dropdown-item" href="#"
          @click.prevent="setLocale(key)"
@@ -26,8 +35,17 @@ export default {
   }),
 
   data: () => ({
-    langShow: false
+    langShow: false,
+    mobile: ''
   }),
+
+  mounted() {
+    if(screen.width <= 991) {
+      this.mobile = true
+    } else {
+      this.mobile = false
+    }
+  },
 
   methods: {
     setLocale (locale) {
@@ -43,6 +61,13 @@ export default {
     },
     languageLeave() {
       this.langShow = false;
+    },
+    langMenuClick() {
+      if(this.langShow == true) {
+        this.langShow = false;
+      } else {
+        this.langShow = true;
+      }
     }
   }
 }
@@ -64,5 +89,10 @@ export default {
 }
 .nav-item .dropdown-menu {
   margin-top: -5px;
+}
+.toggle-button-icon {
+  position: relative;
+  float: right;
+  color: #007FED;
 }
 </style>

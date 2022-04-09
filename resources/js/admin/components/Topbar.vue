@@ -257,7 +257,7 @@ export default {
       // Redirect to login.
       window.location.href='/'
     },
-  },
+  }
 };
 </script>
 

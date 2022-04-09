@@ -49,6 +49,7 @@
 
             <!-- Main table element -->
             <b-table
+            responsive
             striped hover
             :items="items"
             :fields="fields"

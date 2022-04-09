@@ -19,7 +19,19 @@
                 <div class="choose_payment_method">
                     <h4>{{$t('choose_payment_method_title')}}</h4>
                     <div v-if="locale=='jp'" class="row" style="padding-left: 20px;">
-                        <div class="col-md-6">
+                        <div class="col-md-12">                            
+                            <form @submit.prevent="paypal_payment_post" method="post">
+                                <div class="payment_information_form" style="padding-top: 15px;">
+                                    <div style="padding: 0 40px;">
+                                        <div class="col-md-12 paypal-button">
+                                            <!-- Submit Button -->
+                                            <div ref="paypal"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- <div class="col-md-6">
                             <label class="col-form-label text-md-end">
                                 <input type="radio" id="paypal" name="payment_method" v-model="form_display" value="paypal" />
                                 <img src="images/paypal-payment-logo.png" />
@@ -30,7 +42,7 @@
                             <input type="radio" id="furikomi" name="payment_method" v-model="form_display" value="furikomi" />
                                 <img src="images/komoju-payment-logo.png" />
                             </label>
-                        </div>
+                        </div> -->
                     </div>
                     <div v-else class="row" style="padding-left: 20px;">
                         <div class="col-md-12">                            
@@ -50,21 +62,20 @@
 
                 <!-- payment information form -->
                 <!-- paypal payment -->
-                <div v-if="locale=='jp'" id="paypal_payment"  v-show="form_display === 'paypal'">
+                <!-- <div v-if="locale=='jp'" id="paypal_payment"  v-show="form_display === 'paypal'">
                     <form @submit.prevent="paypal_payment_post" method="post">
                         <div class="payment_information_form" style="padding-top: 15px;">
                             <h4>{{$t('payment_information_title')}}</h4>
                             <div style="padding: 0 40px;">
                                 <div class="col-md-12 paypal-button">
-                                    <!-- Submit Button -->
                                     <div ref="paypal"></div>
                                 </div>
                             </div>
                         </div>
                     </form>
-                </div>
+                </div> -->
                 <!-- furikomi payment -->
-                <div id="furikomi_payment" v-if="locale=='jp'"  v-show="form_display === 'furikomi'">
+                <!-- <div id="furikomi_payment" v-if="locale=='jp'"  v-show="form_display === 'furikomi'">
                     <form @submit.prevent="furikomi_payment_post" method="post">
                         <div class="payment_information_form" style="padding-top: 15px;">
                             <h4>{{$t('payment_information_title')}}</h4>
@@ -77,7 +88,6 @@
                                 </div>
                                 <div class="mb-3 row">
                                     <div class="col-md-12 d-flex">
-                                        <!-- Submit Button -->
                                         <b-button type="submit" variant="primary" :disabled="paymentProcessing">
                                             <b-spinner small :hidden="!paymentProcessing"></b-spinner>
                                             フリコミによるチェックアウト
@@ -87,7 +97,7 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
@@ -116,7 +126,7 @@ export default {
         category: '',
         paymentProcessing: false,
         //payment form display
-        form_display: 'paypal'
+        form_display: 'komoju'
     }),
     mounted() {        
         //paypal button section

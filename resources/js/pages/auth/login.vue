@@ -16,7 +16,11 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('password') }}</label>
             <div class="col-md-7">
-              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" type="password" name="password">
+              <div style="display: flex">
+                <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" :type="passwordType" name="password">
+                <b-icon v-if="passwordType=='password'" icon="eye-fill" class="border rounded password-display" @click="passwordTypeChange"></b-icon>
+                <b-icon v-else icon="eye-slash-fill" class="border rounded password-display" @click="passwordTypeChange"></b-icon>
+              </div>
               <has-error :form="form" field="password" />
             </div>
           </div>
@@ -74,10 +78,18 @@ export default {
       email: '',
       password: ''
     }),
-    remember: false
+    remember: false,
+    passwordType: 'password'
   }),
 
   methods: {
+    passwordTypeChange() {
+      if(this.passwordType == 'password') {
+        this.passwordType = 'text'
+      } else {
+        this.passwordType = 'password'
+      }
+    },
     async login () {
       // Submit the form.
       const { data } = await this.form.post('/api/login')
@@ -102,9 +114,13 @@ export default {
         Cookies.remove('intended_url')
         this.$router.push({ path: intendedUrl })
       } else {
-        this.$router.push({ name: 'home' })
+        this.$router.push({ name: this.locale })
       }
     }
+  },
+
+  created() {
+    this.locale = Cookies.get('locale')
   },
 
   props: {
@@ -119,5 +135,10 @@ export default {
 }
 .d-flex {
   justify-content: space-between;
+}
+.password-display {
+  width: 38px;
+  height: 38px;
+  padding: 5px;
 }
 </style>

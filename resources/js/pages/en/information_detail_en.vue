@@ -1,7 +1,10 @@
 <template>
     <div>
         <div class="header">
-            <div class="container title">
+            <div v-if="mobile" class="title" style="padding: 0 10px;">
+                <h3>{{detail_data.title}}</h3>
+            </div>
+            <div v-else class="container title">
                 <h1>{{detail_data.title}}</h1>
             </div>
         </div>
@@ -98,6 +101,13 @@
            InformationSection,
            CommentSection
         },
+        mounted() {
+            if(screen.width <= 991) {
+            this.mobile = true
+            } else {
+            this.mobile = false
+            }
+        },
         methods: {
             edit_information(title, content) {
                 this.editable_title = title
@@ -119,6 +129,9 @@
                         confirmButtonText: this.$t('ok'),
                         cancelButtonText: this.$t('cancel')
                     }).then(() => {
+                        console.log(updated_info_detail_data.data.content)
+                        updated_info_detail_data.data.content = btoa(updated_info_detail_data.data.content)
+                        console.log(updated_info_detail_data.data.content)
                         this.detail_data = updated_info_detail_data.data
                         this.info_id = updated_info_detail_data.data.id
                     })
@@ -161,7 +174,8 @@
         width: 100%;
         background-color: #211F40;
     }
-    .header .title h1 {
+    .header .title h1,
+    .header .title h3 {
         padding: 3rem 0;
         text-align: center;
         color: #fff;

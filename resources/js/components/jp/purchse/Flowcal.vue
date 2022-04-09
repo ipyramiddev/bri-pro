@@ -21,13 +21,14 @@
   min-height: 30rem;
 }
 .flowcal .title {
-  padding: 40px 0 20px 0;
+  padding: 40px 5px 20px 5px;
 }
 .flowcal .body {
   padding: 20px 0;
 }
 .flowcal .body .text h1{
   font-weight: 600;
+  padding: 0 5px;
 }
 .flowcal .body .text h5{
   padding-top: 20px;

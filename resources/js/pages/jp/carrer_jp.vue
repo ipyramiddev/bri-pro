@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="header">
-            <h6>{{$t('carrer.job')}}</h6>
+            <h6 :style="{padding: mobile ? '1rem 0 0 0' : ''}">{{$t('carrer.job')}}</h6>
             <h1>{{$t('carrer.title')}}</h1>
         </div>
         <div class="container">
@@ -37,13 +37,23 @@
 </template>
 
 <script>
-import Associatesection from '~/components/jp/carrer/Associate'
-import Apllysection from '~/components/jp/carrer/Apply'
+import Associatesection from '~/components/en/carrer/Associate'
+import Apllysection from '~/components/en/carrer/Apply'
 
 export default {
+    data:() => ({
+        mobile: ''
+    }),
     components: {
         Associatesection,
         Apllysection
+    },
+    mounted() {
+        if(screen.width <= 991) {
+            this.mobile = true
+        } else {
+            this.mobile = false
+        }
     }
 }
 </script>

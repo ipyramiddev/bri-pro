@@ -27,6 +27,7 @@ import Flowcal from '~/components/en/purchse/Flowcal'
 import Loginsection from '~/pages/auth/login'
 import Alertsection from '~/components/Alert'
 import { mapGetters } from 'vuex'
+import Cookies from 'js-cookie'
 
 export default {
     components: {
@@ -40,6 +41,9 @@ export default {
     }),
     mounted() {
         window.scrollTo(0,0)
+    },
+    created() {
+        Cookies.set('intended_url', this.$route.path)
     }
 }
 </script>

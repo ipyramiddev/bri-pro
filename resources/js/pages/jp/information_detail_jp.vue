@@ -1,7 +1,10 @@
 <template>
     <div>
         <div class="header">
-            <div class="container title">
+            <div v-if="mobile" class="title" style="padding: 0 10px;">
+                <h3>{{detail_data.title}}</h3>
+            </div>
+            <div v-else class="container title">
                 <h1>{{detail_data.title}}</h1>
             </div>
         </div>
@@ -97,6 +100,13 @@
         components: {
            InformationSection,
            CommentSection
+        },
+        mounted() {
+            if(screen.width <= 991) {
+            this.mobile = true
+            } else {
+            this.mobile = false
+            }
         },
         methods: {
             edit_information(title, content) {

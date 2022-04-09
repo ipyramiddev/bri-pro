@@ -139,7 +139,11 @@
               
             <label class="col-md-3 col-form-label text-md-end">{{ $t('password') }}</label>
             <div class="col-md-7">
-              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" :placeholder="$t('password')">
+              <div style="display: flex">
+                <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" :type="passwordType" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" :placeholder="$t('password')">
+                <b-icon v-if="passwordType=='password'" icon="eye-fill" class="border rounded password-display" @click="passwordTypeChange"></b-icon>
+                <b-icon v-else icon="eye-slash-fill" class="border rounded password-display" @click="passwordTypeChange"></b-icon>
+              </div>
               <span class="password_validate">{{ $t('password_pattern') }}</span>
               <has-error :form="form" field="password" />
             </div>
@@ -149,7 +153,11 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('confirm_password') }}</label>
             <div class="col-md-7">
-              <input v-model="form.password_confirmation" :class="{ 'is-invalid': form.errors.has('password_confirmation') }" class="form-control" type="password" name="password_confirmation">
+              <div style="display: flex">
+                <input v-model="form.password_confirmation" :class="{ 'is-invalid': form.errors.has('password_confirmation') }" class="form-control" :type="passwordType" name="password_confirmation">
+                <b-icon v-if="passwordType=='password'" icon="eye-fill" class="border rounded password-display" @click="passwordTypeChange"></b-icon>
+                <b-icon v-else icon="eye-slash-fill" class="border rounded password-display" @click="passwordTypeChange"></b-icon>
+              </div>
               <has-error :form="form" field="password_confirmation" />
             </div>
           </div>
@@ -209,10 +217,18 @@ export default {
     }),
     selectedCountry: "",
     stateList: [],
-    mustVerifyEmail: false
+    mustVerifyEmail: false,
+    passwordType: 'password'
   }),
 
   methods: {
+    passwordTypeChange() {
+      if(this.passwordType == 'password') {
+        this.passwordType = 'text'
+      } else {
+        this.passwordType = 'password'
+      }
+    },
     async register () {
       // Register the user.
       const { data } = await this.form.post('/api/customerregister')
@@ -264,5 +280,10 @@ export default {
 .password_validate {
   font-size: 12px;
   color: red;
+}
+.password-display {
+  width: 38px;
+  height: 38px;
+  padding: 5px;
 }
 </style>

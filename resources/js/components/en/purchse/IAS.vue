@@ -132,7 +132,7 @@
     padding: 20px 0;
     }
     .ias .title {
-    padding: 40px 0 20px 0;
+    padding: 40px 5px 20px 5px;
     }
     .ias .description {
     padding: 10px 0 10px 30px;

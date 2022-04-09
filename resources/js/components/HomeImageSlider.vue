@@ -5,12 +5,14 @@
             fade
             indicators
         >
-            <div class="welcome">
+            <div class="welcome" :style="{padding: mobile ? '3% 0' : ''}">
                 <div class="title">
-                    <h1>{{ $t('welcome_to_lifeanalytics' )}}</h1>
+                    <h1 v-if="!mobile">{{ $t('welcome_to_lifeanalytics' )}}</h1>
+                    <h3 v-if="mobile">{{ $t('welcome_to_lifeanalytics' )}}</h3>
                 </div>
                 <div class="content">
-                    <h5>{{ $t('welcome_description') }}</h5>
+                    <h5 v-if="!mobile">{{ $t('welcome_description') }}</h5>
+                    <h6 v-if="mobile">{{ $t('welcome_description') }}</h6>
                 </div>
                 <div class="button">
                     <b-button variant="outline-primary" :to="{ name: $t('products.url') }">{{ $t('products.text') }}</b-button>
@@ -31,6 +33,7 @@
 export default {
     data() {
         return {
+            mobile: '',
             carouselItems: [
                 {
                     id: 1,
@@ -53,6 +56,13 @@ export default {
                 },
             ]
         }
+    },
+    mounted() {
+        if (screen.width <=991) {
+            this.mobile = true
+        } else {
+            this.mobile = false
+        }
     }
 }
 
@@ -69,14 +79,16 @@ export default {
 .welcome .title {
     padding: 10px 0;
 }
-.welcome .title h1 {
+.welcome .title h1,
+.welcome .title h3 {
     color: white;
     font-weight: 600;
 }
 .welcome .content {
     padding: 5px 0;
 }
-.welcome .content h5 {
+.welcome .content h5,
+.welcome .content h6 {
     color: white;
 }
 .welcome .button {

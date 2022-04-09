@@ -25,7 +25,7 @@
           <img :src="logo" />
         </router-link>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" >
           <span class="navbar-toggler-icon" />
         </button>
 
@@ -38,9 +38,16 @@
             </li>
 
             <li class="nav-item dropdown" @mouseover="productOver" @mouseleave="productLeave">
-              <router-link :to="{ name: $t('products.url') }"  class="nav-link dropdown-toggle" active-class="active">
-                {{ $t('products.text') }}
+              <router-link v-if="mobile" :to="{ name: $t('products.url') }"  class="nav-link" active-class="active" style="display: inline">
+                {{ $t('products.text') }}                
               </router-link>
+              <router-link v-else :to="{ name: $t('products.url') }"  class="nav-link dropdown-toggle" active-class="active">
+                {{ $t('products.text') }}                
+              </router-link>
+              <div class="toggle-button-icon" :style="{display: mobile ? 'inline' : 'none'}" @click="productMenuClick">
+                  <b-icon v-if="productShow" icon="chevron-bar-up"></b-icon>
+                  <b-icon v-else icon="chevron-bar-down"></b-icon>
+              </div>
               <div class="dropdown-menu" :style="{ display: productShow ? 'block' : 'none' } ">
                 <router-link :to="{ name: $t('ias.url') }" class="nav-link dropdown-item">
                   {{ $t('ias.text') }}
@@ -52,9 +59,16 @@
             </li>
 
             <li v-if="user && user.role == 'customer'" class="nav-item dropdown" @mouseover="purchaseOver" @mouseleave="purchaseLeave">
-              <router-link :to="{ name: $t('purchase.url') }"  class="nav-link dropdown-toggle" active-class="active">
+              <router-link v-if="mobile" :to="{ name: $t('purchase.url') }"  class="nav-link" active-class="active" style="display: inline">
                 {{ $t('purchase.text') }}
               </router-link>
+              <router-link v-else :to="{ name: $t('purchase.url') }"  class="nav-link dropdown-toggle" active-class="active">
+                {{ $t('purchase.text') }}
+              </router-link>
+              <div class="toggle-button-icon" :style="{display: mobile ? 'inline' : 'none'}" @click="purchaseMenuClick">
+                  <b-icon v-if="purchaseShow" icon="chevron-bar-up"></b-icon>
+                  <b-icon v-else icon="chevron-bar-down"></b-icon>
+              </div>
               <div class="dropdown-menu" :style="{ display: purchaseShow ? 'block' : 'none' } ">
                 <router-link :to="{ name: $t('transaction.url') }" class="nav-link dropdown-item">
                   {{ $t('transaction.text') }}
@@ -119,6 +133,7 @@ import { VueScrollFixedNavbar } from "vue-scroll-fixed-navbar"
 import { mapGetters } from 'vuex'
 import LocaleDropdown from './LocaleDropdown'
 import Logo from '~/assets/images/logo.png'
+import Cookies from 'js-cookie'
 
 export default {
   components: {
@@ -130,12 +145,26 @@ export default {
     logo: Logo,
     fixed: false,
     productShow: false,
-    purchaseShow: false
+    purchaseShow: false,
+    togglebuttonShow: false,
+    mobile: ''
   }),
 
   computed: mapGetters({
     user: 'auth/user'
   }),
+
+  mounted() {
+    if(screen.width <= 991) {
+      this.mobile = true
+    } else {
+      this.mobile = false
+    }
+  },
+
+  created() {
+    this.locale = Cookies.get('locale')
+  },
 
   methods: {
     async logout () {
@@ -143,10 +172,10 @@ export default {
       await this.$store.dispatch('auth/logout')
 
       // Redirect to login.
-      //this.$router.push({ name: 'home' })
+      this.$router.push({ name: this.locale })
 
       // Redirect to login.
-      window.location.href='/'
+      //window.location.href='/'
     },
     productOver() {
       this.productShow = true;
@@ -169,6 +198,20 @@ export default {
     adminDashboardShow() {
       this.$emit("user_admin", false);
       this.$router.push({name: 'dashboard'})
+    },
+    productMenuClick() {
+      if (this.productShow == true) {
+        this.productShow = false;
+      } else {
+        this.productShow = true;
+      }
+    },
+    purchaseMenuClick() {
+      if (this.purchaseShow == true) {
+        this.purchaseShow = false;
+      } else {
+        this.purchaseShow = true;
+      }
     }
   }
 }
@@ -222,6 +265,12 @@ export default {
 .kRFLgj .nav-item .dropdown-menu,
 .kRFLgj .sticky .nav-item .dropdown-menu {
   margin-top: -5px;
+  padding: 0 5px;
+}
+.toggle-button-icon {
+  position: relative;
+  float: right;
+  color: #007FED;
 }
 </style>
 

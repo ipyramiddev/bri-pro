@@ -5,9 +5,10 @@
             fade
             indicators
         >
-            <div class="flowcal_welcome">
+            <div class="flowcal_welcome" :style="{padding: mobile ? '3% 0' : ''}">
                 <div class="title">
-                    <h1>{{$t('flowcal.title')}}</h1>
+                    <h3 v-if="mobile">{{$t('flowcal.title')}}</h3>
+                    <h1 v-else>{{$t('flowcal.title')}}</h1>
                 </div>
                 <div class="button">
                     <b-button variant="outline-primary" :to="{ name: $t('purchase.url') }" class="purchase">{{$t('purchase.text')}}</b-button>
@@ -44,12 +45,22 @@ import Contactsection from '~/components/en/Flowcal/Contact'
 import Customersection from '~/components/en/Flowcal/Customer'
 
 export default {
+    data: () => ({
+        mobile: ''
+    }),
     components: {
         Descriptionsection,
         Subscriptionsection,
         Functionsection,
         Contactsection,
         Customersection
+    },
+    mounted() {
+        if(screen.width <= 991) {
+            this.mobile = true
+        } else {
+            this.mobile = false
+        }
     }
 }
 </script>
@@ -69,7 +80,8 @@ export default {
 .flowcal_welcome .title {
     padding: 10px 0;
 }
-.flowcal_welcome .title h1 {
+.flowcal_welcome .title h1,
+.flowcal_welcome .title h3 {
     color: white;
     font-weight: 600;
     text-transform: uppercase;

@@ -82,6 +82,7 @@ import Loginsection from '~/pages/auth/login'
 import Alertsection from '~/components/Alert'
 import {mapGetters } from 'vuex'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 export default {
     data: () => ({
@@ -105,6 +106,7 @@ export default {
     created() {
         var lang = 'jp'
         this.getDealerInformations(lang)
+        Cookies.set('intended_url', this.$route.path)
     }
 }
 </script>
