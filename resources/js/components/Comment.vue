@@ -9,7 +9,7 @@
             <b-card v-for="comment in comments_data" :key="comment.id">
                 <template #header>
                     <div class="text-md-start" style="display:flex;">
-                        <img :src="'/upload/users/'+comment.photo_url" class="rounded-circle profile-photo me-1">
+                        <img :src="comment.photo_url" class="rounded-circle profile-photo me-1">
                         <h5 class="mb-0 text-md-start" style="padding-left: 10px;">{{comment.nikename ? comment.nikename : comment.name }}</h5>
                     </div>
                     <div class="text-md-end">
@@ -149,9 +149,11 @@
             sendId: {
                 immediate: true,
                 deep: true,
-                handler(newValue, oldValue) {                    
-                    this.getComments(newValue)
-                    this.new_comment_info_id = newValue
+                handler(newValue, oldValue) {  
+                    if(newValue && oldValue ) {
+                        this.getComments(newValue)
+                        this.new_comment_info_id = newValue
+                    }
                 }
             }
         },
@@ -180,8 +182,15 @@
         },
         methods: {
             async getComments(id) {
-                var commentsData = await axios.get('/api/get/comments/'+id)
-                this.comments_data = commentsData.data
+                const {data} = await axios.get('/api/get/comments/'+id)
+                for (let i=0 ; i < data.length ; i++) {
+                    if (data[i]['photo_url'] == null) {
+                        data[i]['photo_url'] = "https://www.gravatar.com/avatar/%s.jpg?s=200&d=https://ui-avatars.com/api/"+data[i]['name']
+                    } else {
+                        data[i]['photo_url'] = "/upload/users/"+data[i]['photo_url']
+                    }
+                }
+                this.comments_data = data
             },
 
             //comment post
