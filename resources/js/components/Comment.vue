@@ -152,8 +152,8 @@
                 handler(newValue, oldValue) {  
                     if(newValue && oldValue ) {
                         this.getComments(newValue)
-                        this.new_comment_info_id = newValue
                     }
+                    this.new_comment_info_id = newValue
                 }
             }
         },
