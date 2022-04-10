@@ -95,7 +95,8 @@
             info_id: '',
             editable_title: '',
             editable_content: '',
-            loading: false
+            loading: false,
+            mobile: ''
         }),
         components: {
            InformationSection,

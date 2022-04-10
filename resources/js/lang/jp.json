@@ -286,6 +286,8 @@
     "subscription_highly_secure": " セキュリティの高いデータ管理" 
   },
   "applications": {
+    "title": "アプリケーション",
+    "create_new_application": "Create New Application",
     "create_title": "アプリケーションの作成",
     "update_title": "アプリケーションを更新する",
     "app_id": "アプリケーションID",
@@ -440,5 +442,8 @@
     "title": "購入リスト",
     "text": "購入リスト",
     "url": "purchase_list"
-  }
+  },
+  "title_users": "ユーザー",
+  "title_dashboard": "ダッシュボード",
+  "purchase_information": "購入情報"
 }

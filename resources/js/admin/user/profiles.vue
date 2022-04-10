@@ -23,31 +23,37 @@
                     </div>
                     <div class="content-flex">
                         <!-- First Name -->
-                        <div class="w-30">
+                        <div class="w-25">
                             <label class="col-form-label text-md-end">{{ $t('first_name') }}</label>
                             <input class="form-control" type="text" name="first_name" :value="profiledata.first_name" disabled>
                         </div>
 
                         <!-- Last Name -->                        
-                        <div class="w-30">
+                        <div class="w-25">
                             <label class="col-form-label text-md-end">{{ $t('last_name') }}</label>
                             <input class="form-control" type="text" name="last_name" :value="profiledata.last_name" disabled>
                         </div>
 
                         <!-- Name -->                        
-                        <div class="w-30">
+                        <div class="w-25">
                             <label class="col-form-label text-md-end">{{ $t('name') }}</label>
                             <input class="form-control" type="text" name="name" :value="profiledata.name" disabled>
                         </div>
-                    </div>
-                    <div class="content-flex">
+
                         <!-- Nike Name -->
-                        <div class="w-30">
+                        <div class="w-25">
                             <label class="col-form-label text-md-end">{{ $t('nike_name') }}</label>
                             <input class="form-control" type="text" name="nike_name" :value="profiledata.nikename" disabled>
                         </div>
-
+                    </div>
+                    <div class="content-flex">
                         <!-- Organization -->
+                        <!-- Email -->
+                        <div class="w-30">
+                            <label class="col-form-label text-md-end">{{ $t('email') }}</label>
+                            <input class="form-control" type="text" name="email" :value="profiledata.email" disabled>
+                        </div>
+
                         <div class="w-30">
                             <label class="col-form-label text-md-end">{{ $t('organization') }}</label>
                             <input class="form-control" type="text" name="organization" :value="profiledata.organization" disabled>
@@ -60,16 +66,22 @@
                         </div>
                     </div>
                     <div class="content-flex">
-                        <!-- Email -->
-                        <div class="w-50">
-                            <label class="col-form-label text-md-end">{{ $t('email') }}</label>
-                            <input class="form-control" type="text" name="email" :value="profiledata.email" disabled>
-                        </div>
-
                         <!-- Moblie Phone -->                        
-                        <div class="w-50">
+                        <div class="w-30">
                             <label class="col-form-label text-md-end">{{ $t('phone') }}</label>
                             <input class="form-control" type="text" name="phone" :value="profiledata.phone" disabled>
+                        </div>
+
+                        <!-- Address 1 -->
+                        <div class="w-30">
+                            <label class="col-form-label text-md-end">{{ $t('address_1') }}</label>
+                            <input class="form-control" type="text" name="address_1" :value="profiledata.address_1" disabled>
+                        </div>
+                        
+                        <!-- Address 2 -->
+                        <div class="w-30">
+                            <label class="col-form-label text-md-end">{{ $t('address_2') }}</label>
+                            <input class="form-control" type="text" name="address_2" :value="profiledata.address_2" disabled>
                         </div>
                     </div>
                     <div class="content-flex">
@@ -96,20 +108,6 @@
                         <div class="w-50">
                             <label class="col-form-label text-md-end">{{ $t('city') }}</label>
                             <input class="form-control" type="text" name="city" :value="profiledata.city" disabled>
-                        </div>
-                    </div>
-                    <div class="content-flex">
-                        <!-- Address 1 -->
-                        <div class="w-100">
-                            <label class="col-form-label text-md-end">{{ $t('address_1') }}</label>
-                            <input class="form-control" type="text" name="address_1" :value="profiledata.address_1" disabled>
-                        </div>
-                    </div>
-                    <div class="content-flex">
-                        <!-- Address 2 -->
-                        <div class="w-100">
-                            <label class="col-form-label text-md-end">{{ $t('address_2') }}</label>
-                            <input class="form-control" type="text" name="address_2" :value="profiledata.address_2" disabled>
                         </div>
                     </div>
                 </div>
@@ -153,6 +151,104 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <div class="profile_pan">
+                <div class="header-flex">
+                    <div class="profile_header">
+                        <h5>{{$t('purchase_information')}}</h5>
+                    </div>
+                </div>
+                <div class="content-flex">
+                    <!-- First Name -->
+                    <div class="w-25">
+                        <label class="col-form-label text-md-end">{{ $t('first_name') }}</label>
+                        <input class="form-control" type="text" name="first_name" :value="profiledata.first_name" disabled>
+                    </div>
+
+                    <!-- Last Name -->                        
+                    <div class="w-25">
+                        <label class="col-form-label text-md-end">{{ $t('last_name') }}</label>
+                        <input class="form-control" type="text" name="last_name" :value="profiledata.last_name" disabled>
+                    </div>
+
+                    <!-- Name -->                        
+                    <div class="w-25">
+                        <label class="col-form-label text-md-end">{{ $t('name') }}</label>
+                        <input class="form-control" type="text" name="name" :value="profiledata.name" disabled>
+                    </div>
+
+                    <!-- Nike Name -->
+                    <div class="w-25">
+                        <label class="col-form-label text-md-end">{{ $t('nike_name') }}</label>
+                        <input class="form-control" type="text" name="nike_name" :value="profiledata.nikename" disabled>
+                    </div>
+                </div>
+                <div class="content-flex">
+                    <!-- Organization -->
+                    <!-- Email -->
+                    <div class="w-30">
+                        <label class="col-form-label text-md-end">{{ $t('email') }}</label>
+                        <input class="form-control" type="text" name="email" :value="profiledata.email" disabled>
+                    </div>
+
+                    <div class="w-30">
+                        <label class="col-form-label text-md-end">{{ $t('organization') }}</label>
+                        <input class="form-control" type="text" name="organization" :value="profiledata.organization" disabled>
+                    </div>
+
+                    <!-- Department -->                        
+                    <div class="w-30">
+                        <label class="col-form-label text-md-end">{{ $t('deaprtment') }}</label>
+                        <input class="form-control" type="text" name="deaprtment" :value="profiledata.deaprtment" disabled>
+                    </div>
+                </div>
+                <div class="content-flex">
+                    <!-- Moblie Phone -->                        
+                    <div class="w-30">
+                        <label class="col-form-label text-md-end">{{ $t('phone') }}</label>
+                        <input class="form-control" type="text" name="phone" :value="profiledata.phone" disabled>
+                    </div>
+
+                    <!-- Address 1 -->
+                    <div class="w-30">
+                        <label class="col-form-label text-md-end">{{ $t('address_1') }}</label>
+                        <input class="form-control" type="text" name="address_1" :value="profiledata.address_1" disabled>
+                    </div>
+                    
+                    <!-- Address 2 -->
+                    <div class="w-30">
+                        <label class="col-form-label text-md-end">{{ $t('address_2') }}</label>
+                        <input class="form-control" type="text" name="address_2" :value="profiledata.address_2" disabled>
+                    </div>
+                </div>
+                <div class="content-flex">
+                    <!-- Country -->
+                    <div class="w-50">
+                        <label class="col-form-label text-md-end">{{ $t('country') }}</label>
+                        <input class="form-control" type="text" name="country" :value="profiledata.country" disabled>
+                    </div>
+
+                    <!-- Zip Code -->                        
+                    <div class="w-50">
+                        <label class="col-form-label text-md-end">{{ $t('zip') }}</label>
+                        <input class="form-control" type="text" name="zip" :value="profiledata.zip" disabled>
+                    </div>
+                </div>
+                <div class="content-flex">
+                    <!-- State/County -->
+                    <div class="w-50">
+                        <label class="col-form-label text-md-end">{{ $t('state') }}</label>
+                        <input class="form-control" type="text" name="state" :value="profiledata.state" disabled>
+                    </div>
+
+                    <!-- Country City/Town -->                        
+                    <div class="w-50">
+                        <label class="col-form-label text-md-end">{{ $t('city') }}</label>
+                        <input class="form-control" type="text" name="city" :value="profiledata.city" disabled>
+                    </div>
                 </div>
             </div>
         </div>
@@ -263,6 +359,10 @@ export default {
 }
 .profile_pan .content-flex label {
     font-size: 13px;
+}
+.w-25 {
+    width: 25%;
+    padding: 0 10px;
 }
 .w-30 {
     width: 33%;

@@ -20,29 +20,20 @@
                     <h4>{{$t('choose_payment_method_title')}}</h4>
                     <div v-if="locale=='jp'" class="row" style="padding-left: 20px;">
                         <div class="col-md-12">                            
-                            <form @submit.prevent="paypal_payment_post" method="post">
+                            <form id="komoju-form" @submit.prevent="komoju_purchase" method="post">
                                 <div class="payment_information_form" style="padding-top: 15px;">
                                     <div style="padding: 0 40px;">
+                                    <input type="hidden" v-model="komojuToken" name="komojuToken" />
                                         <div class="col-md-12 paypal-button">
-                                            <!-- Submit Button -->
-                                            <div ref="paypal"></div>
+                                            <b-button id="komojuButton" variant="primary" :disabled="paymentProcessing">
+                                                <b-spinner small :hidden="!paymentProcessing"></b-spinner>
+                                                フリコミによるチェックアウト
+                                            </b-button>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <!-- <div class="col-md-6">
-                            <label class="col-form-label text-md-end">
-                                <input type="radio" id="paypal" name="payment_method" v-model="form_display" value="paypal" />
-                                <img src="images/paypal-payment-logo.png" />
-                            </label>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="col-form-label text-md-end">
-                            <input type="radio" id="furikomi" name="payment_method" v-model="form_display" value="furikomi" />
-                                <img src="images/komoju-payment-logo.png" />
-                            </label>
-                        </div> -->
                     </div>
                     <div v-else class="row" style="padding-left: 20px;">
                         <div class="col-md-12">                            
@@ -59,45 +50,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- payment information form -->
-                <!-- paypal payment -->
-                <!-- <div v-if="locale=='jp'" id="paypal_payment"  v-show="form_display === 'paypal'">
-                    <form @submit.prevent="paypal_payment_post" method="post">
-                        <div class="payment_information_form" style="padding-top: 15px;">
-                            <h4>{{$t('payment_information_title')}}</h4>
-                            <div style="padding: 0 40px;">
-                                <div class="col-md-12 paypal-button">
-                                    <div ref="paypal"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div> -->
-                <!-- furikomi payment -->
-                <!-- <div id="furikomi_payment" v-if="locale=='jp'"  v-show="form_display === 'furikomi'">
-                    <form @submit.prevent="furikomi_payment_post" method="post">
-                        <div class="payment_information_form" style="padding-top: 15px;">
-                            <h4>{{$t('payment_information_title')}}</h4>
-                            <div style="padding-left: 20px;">
-                                <div class="mb-3 row">
-                                    <div class="col-md-12">
-                                        <label class="col-form-label">{{ $t('email') }}</label>
-                                        <input v-model="customer.email" class="form-control" type="email" name="email">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <div class="col-md-12 d-flex">
-                                        <b-button type="submit" variant="primary" :disabled="paymentProcessing">
-                                            <b-spinner small :hidden="!paymentProcessing"></b-spinner>
-                                            フリコミによるチェックアウト
-                                        </b-button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>-->
             </div>
         </div>
     </div>
@@ -126,22 +78,62 @@ export default {
         category: '',
         paymentProcessing: false,
         //payment form display
-        form_display: 'komoju'
+        form_display: 'komoju',
+        komojuToken: ''
     }),
     mounted() {        
         //paypal button section
-        const script = document.createElement("script")
+        const script_paypal = document.createElement("script")
         const ClientID = process.env.MIX_PAYPAL_SANDBOX_CLIENT_ID
         console.log(ClientID)
 
-        script.setAttribute(`src`,`https://www.paypal.com/sdk/js?client-id=${ClientID}&currency=USD`)
-        script.setAttribute(`data-namespace`,`paypal_sdk`)
-        script.addEventListener("load", this.setLoaded)
-        document.body.appendChild(script)
+        script_paypal.setAttribute(`src`,`https://www.paypal.com/sdk/js?client-id=${ClientID}&currency=USD`)
+        script_paypal.setAttribute(`data-namespace`,`paypal_sdk`)
+        script_paypal.addEventListener("load", this.setLoaded)
+        document.body.appendChild(script_paypal)
+
+        //komoju payment button
+        const script_komoju = document.createElement("script")
+
+        script_komoju.setAttribute(`src`, `https://multipay.komoju.com`)
+        document.body.appendChild(script_komoju)
+
+        console.log(script_komoju)
+
+        console.log("komoju_button") 
+
+        var payForm = document.getElementById("komoju-form") 
+        var amount = this.category.price  
+        const komoju_pu_key = 'pk_9e17c1ee95a8ca65eafbca819189907a6d0ebd0c'
+
+        console.log(komoju_pu_key)
+
+        var handler = Komoju.multipay.configure({
+            key: komoju_pu_key,
+            token: function(token) {
+                this.komojuToken = token.id
+                payForm.komojuToken.value = token.id
+                this.komoju_purchase()
+            }
+        })
+
+        document.getElementById("komojuButton").addEventListener("click", function(e) {
+            console.log("komoju button click")
+            handler.open({
+                amount: amount,
+                endpoint: "https://komoju.com",
+                currency: "JPY",
+                methods: [
+                    "credit_card","konbini","bank_transfer","pay_easy","web_money","bit_cash","net_cash","japan_mobile","paypay","linepay","merpay","nanaco","dospara","steam_prepaid_card"
+                    ],
+            });
+            e.preventDefault();
+        });
     },
     methods: {
         //paypal button
         setLoaded:function() {
+            console.log("paypal_button")
             var user_id = this.user.id
             var app_id = this.category.id
             var amount = this.category.price
@@ -188,6 +180,46 @@ export default {
                 }
 
             }).render(this.$refs.paypal)
+        },
+
+        async komoju_purchase() {  
+            var user_id = this.user.id
+            var app_id = this.category.id
+            var amount = this.category.price
+            var router = this.$router
+            var token = this.komojuToken
+
+            var querystring = require('querystring')
+            //var https = require('https')
+            var secret_key = 'sk_123456'
+            var auth = 'Basic ' + Buffer.from(secret_key + ':').toString('base64')
+
+            var komoju_post_data = querystring.stringify({
+                'amount': amount,
+                'currency': 'JPY',
+                'payment_details': token
+            })
+
+            console.log(komoju_post_data)
+
+            var post_options = {
+                host: 'komoju.com',
+                port: '443',
+                path: '/api/v1/payments',
+                method: 'POST',
+                headers: {
+                    'Authorization': auth,
+                    'Content-Length': Buffer.byteLength(komoju_post_data)
+                }
+            }
+            console.log("komoju post option success")
+
+            var post_req = axios.request(post_options, function(res) {
+                res.setEncoding('utf8')
+                res.on('data', function (chunk) {
+                    console.log(chunk)
+                })
+            })          
         },
 
         async getCategorydata(app_id, cat_id) {

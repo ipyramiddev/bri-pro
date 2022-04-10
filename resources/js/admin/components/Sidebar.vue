@@ -21,7 +21,7 @@
       <li class="nav-item active">
         <router-link class="nav-link" to="/admin/dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span>
+          <span>{{$t('title_dashboard')}}</span>
           </router-link>
       </li>
 
@@ -35,14 +35,14 @@
       <li class="nav-item">
         <router-link class="nav-link" to="/admin/users">
           <i class="fas fa-fw fa-user"></i>
-          <span>users</span>
+          <span>{{$t('title_users')}}</span>
         </router-link>
       </li>
 
       <li class="nav-item">
         <router-link class="nav-link" to="/admin/applications">
           <i class="fas fa-list fa-sm fa-fw"></i>
-          <span>Appllications</span>
+          <span>{{$t('applications.title')}}</span>
         </router-link>
       </li>
 

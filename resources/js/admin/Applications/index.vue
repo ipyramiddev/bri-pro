@@ -2,11 +2,11 @@
     <div>
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Applications</h1>
+            <h1 class="h3 mb-0 text-gray-800">{{$t('applications.title')}}</h1>
             <router-link
             :to="{name: 'admin.application.create'}"
             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-            >Create New Application</router-link>
+            >{{$t('applications.create_new_application')}}</router-link>
         </div>
 
         <!-- Page Content -->
@@ -15,9 +15,9 @@
             <!-- User Interface controls -->
             <b-row>
 
-                <b-col md="3" class="my-1">
+                <b-col md="4" class="my-1">
                     <b-form-group
-                    label="Per page"
+                    :label="$t('per_page')"
                     label-for="per-page-select"
                     label-cols-lg="4"
                     label-align-sm="center"
@@ -33,7 +33,7 @@
                     </b-form-group>
                 </b-col>
 
-                <b-col md="6"></b-col>
+                <b-col md="5"></b-col>
 
                 <b-col md="3" class="my-1">
                     <b-pagination
@@ -83,9 +83,9 @@
             </b-table>
 
             <b-row> 
-                <b-col md="3" class="my-1">
+                <b-col md="4" class="my-1">
                     <b-form-group
-                    label="Per page"
+                    :label="$t('per_page')"
                     label-for="per-page-select"
                     label-cols-lg="4"
                     label-align-sm="center"
@@ -101,7 +101,7 @@
                     </b-form-group>
                 </b-col>
 
-                <b-col md="6"></b-col>
+                <b-col md="4"></b-col>
 
                 <b-col md="3" class="my-1">
                     <b-pagination
@@ -126,14 +126,14 @@
                 items: '',
                 fields: [
                 { key: 'index', label: ''},
-                { key: 'app_name', label: 'App Name'},
-                { key: 'cat_id', label: 'Cat ID'},
-                { key: 'category_tab', label: 'Category_tab'},
-                { key: 'price', label: 'Price'},
-                { key: 'discount', label: 'Discount'},
-                { key: 'discount_price', label: 'Discount Price'},
-                { key: 'period_date', label: 'Period Date'},
-                { key: 'capacity', label: 'Capacity'}
+                { key: 'app_name', label: this.$root.$i18n.tc('applications.app_name')},
+                { key: 'cat_id', label: this.$root.$i18n.tc('applications.cat_id')},
+                { key: 'category_tab', label: this.$root.$i18n.tc('applications.cat_tab')},
+                { key: 'price', label: this.$root.$i18n.tc('applications.price')},
+                { key: 'discount', label: this.$root.$i18n.tc('applications.discount')},
+                { key: 'discount_price', label: this.$root.$i18n.tc('applications.discount_price')},
+                { key: 'period_date', label: this.$root.$i18n.tc('expire_date')},
+                { key: 'capacity', label: this.$root.$i18n.tc('applications.capacity')}
                 ],
                 totalRows: 1,
                 currentPage: 1,

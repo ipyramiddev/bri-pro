@@ -289,6 +289,8 @@
     "subscription_highly_secure": "Highly secure data management" 
   },
   "applications": {
+    "title": "Applications",
+    "create_new_application": "Create New Application",
     "create_title": "Create Application",
     "update_title": "Update Application",
     "app_id": "Application ID",
@@ -444,5 +446,8 @@
     "title": "Purchase List",
     "text": "Purchase List",
     "url": "purchase_list"
-  }
+  },
+  "title_users": "Users",
+  "title_dashboard": "Dashboard",
+  "purchase_information": "Purchase Information"
 }

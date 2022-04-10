@@ -70,6 +70,7 @@
                 this.confirmData = data
             },
             async request_to_app() {
+                console.log("this is request to app message.")
                 await axios.post('/api/post/requestToApp', this.confirmData).then(()=> {
                     swal.fire({
                         icon: 'success',

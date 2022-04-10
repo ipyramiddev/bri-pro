@@ -2,14 +2,14 @@
     <div>
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Users</h1>
+        <h1 class="h3 mb-0 text-gray-800">{{$t('title_users')}}</h1>
         </div>
         <b-container fluid>
             <!-- User Interface controls -->
             <b-row>
                 <b-col lg="4" class="my-1">
                     <b-form-group
-                    label="Filter"
+                    :label="$t('filter')"
                     label-for="filter-input"
                     label-cols-sm="2"
                     label-align-sm="right"
@@ -25,7 +25,7 @@
                             ></b-form-input>
 
                             <b-input-group-append>
-                            <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                            <b-button :disabled="!filter" @click="filter = ''">{{$t('clear')}}</b-button>
                             </b-input-group-append>
                         </b-input-group>
                     </b-form-group>
@@ -33,7 +33,7 @@
 
                 <b-col lg="8" class="my-1">
                     <b-form-group
-                    label="Filter On"
+                    :label="$t('filter_on')"
                     label-cols-sm="2"
                     label-align-sm="right"
                     label-size="sm"
@@ -45,18 +45,18 @@
                         :aria-describedby="ariaDescribedby"
                         class="mt-1"
                     >
-                        <b-form-checkbox value="name">Name</b-form-checkbox>
-                        <b-form-checkbox value="email">Email Address</b-form-checkbox>
-                        <b-form-checkbox value="phone">Phone</b-form-checkbox>
-                        <b-form-checkbox value="role">Role</b-form-checkbox>
-                        <b-form-checkbox value="permission">Permission</b-form-checkbox>
+                        <b-form-checkbox value="name">{{$t('name')}}</b-form-checkbox>
+                        <b-form-checkbox value="email">{{$t('email')}}</b-form-checkbox>
+                        <b-form-checkbox value="phone">{{$t('phone')}}</b-form-checkbox>
+                        <b-form-checkbox value="role">{{$t('role')}}</b-form-checkbox>
+                        <b-form-checkbox value="permission">{{$t('permission')}}</b-form-checkbox>
                     </b-form-checkbox-group>
                     </b-form-group>
                 </b-col>
 
-                <b-col md="3" class="my-1">
+                <b-col md="4" class="my-1">
                     <b-form-group
-                    label="Per page"
+                    :label="$t('per_page')"
                     label-for="per-page-select"
                     label-cols-lg="4"
                     label-align-sm="center"
@@ -72,7 +72,7 @@
                     </b-form-group>
                 </b-col>
 
-                <b-col md="6"></b-col>
+                <b-col md="5"></b-col>
 
                 <b-col md="3" class="my-1">
                     <b-pagination
@@ -107,12 +107,18 @@
                 <template #cell(email)="data">
                     <router-link :to="{name: 'user-profile', params: {id: data.item.id}}">{{data.value}}</router-link>
                 </template>
+                <template #cell(role)="data">
+                    {{$t(data.value)}}
+                </template>
+                <template #cell(permission)="data">
+                    {{$t(data.value)}}
+                </template>
             </b-table>
 
             <b-row> 
-                <b-col md="3" class="my-1">
+                <b-col md="4" class="my-1">
                     <b-form-group
-                    label="Per page"
+                    :label="$t('per_page')"
                     label-for="per-page-select"
                     label-cols-lg="4"
                     label-align-sm="center"
@@ -128,7 +134,7 @@
                     </b-form-group>
                 </b-col>
 
-                <b-col md="6"></b-col>
+                <b-col md="5"></b-col>
 
                 <b-col md="3" class="my-1">
                     <b-pagination
@@ -153,16 +159,16 @@
                 items: '',
                 fields: [
                 { key: 'index', label: ''},
-                { key: 'name', label: 'Name'},
-                { key: 'email', label: 'Email Address'},
-                { key: 'role', label: 'Role'},
-                { key: 'permission', label: 'Permission'},
-                { key: 'phone', label: 'Phone'}
+                { key: 'name', label: this.$root.$i18n.tc('name')},
+                { key: 'email', label: this.$root.$i18n.tc('email')},
+                { key: 'role', label: this.$root.$i18n.tc('role')},
+                { key: 'permission', label: this.$root.$i18n.tc('permission')},
+                { key: 'phone', label: this.$root.$i18n.tc('phone')}
                 ],
                 totalRows: 1,
                 currentPage: 1,
                 perPage: 5,
-                pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
+                pageOptions: [5, 10, 15, { value: 100, text: this.$root.$i18n.tc('show_a_lot') }],
                 filter: null,
                 filterOn: []
             }
