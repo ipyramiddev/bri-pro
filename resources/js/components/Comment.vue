@@ -199,7 +199,7 @@
                 if (this.$refs.comment.value == "") {
                     this.$refs.comment.focus()
                 } else {
-                    var {data} = await axios.post('/api/comment/post/', {
+                    var {data} = await axios.post('/api/comment/post', {
                         user_id: this.user.id,
                         info_id: this.new_comment_info_id,
                         comment: this.comment
@@ -247,7 +247,7 @@
                     })
                 } else {
                     this.loading = true
-                    var {data} = await axios.post('/api/reply/post/', {
+                    var {data} = await axios.post('/api/reply/post', {
                         user_id: this.user.id,
                         info_id: this.reply_info_id,
                         comment_id: this.reply_comment_id,

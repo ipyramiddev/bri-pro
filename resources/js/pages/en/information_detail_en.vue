@@ -116,7 +116,7 @@
             },
             async update_information() {
                 this.loading = true
-                var updated_info_detail_data = await axios.post('/api/post/information/update/', {
+                var updated_info_detail_data = await axios.post('/api/post/information/update', {
                     title: this.editable_title,
                     content: this.editable_content,
                     info_id: this.info_id
