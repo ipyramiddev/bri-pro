@@ -37,8 +37,8 @@
 </template>
 
 <script>
-import Associatesection from '~/components/en/carrer/Associate'
-import Apllysection from '~/components/en/carrer/Apply'
+import Associatesection from '~/components/jp/carrer/Associate'
+import Apllysection from '~/components/jp/carrer/Apply'
 
 export default {
     data:() => ({

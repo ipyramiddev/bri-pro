@@ -79,7 +79,8 @@ export default {
         paymentProcessing: false,
         //payment form display
         form_display: 'komoju',
-        komojuToken: ''
+        komojuToken: '',
+        amount: ''
     }),
     mounted() {        
         //paypal button section
@@ -103,10 +104,11 @@ export default {
         console.log("komoju_button") 
 
         var payForm = document.getElementById("komoju-form") 
-        var amount = this.category.price  
+        var amount = this.amount
         const komoju_pu_key = 'pk_9e17c1ee95a8ca65eafbca819189907a6d0ebd0c'
 
         console.log(komoju_pu_key)
+        console.log(amount)
 
         var handler = Komoju.multipay.configure({
             key: komoju_pu_key,
@@ -182,7 +184,10 @@ export default {
             }).render(this.$refs.paypal)
         },
 
-        async komoju_purchase() {  
+        async komoju_purchase() { 
+            
+            console.log("komoju button successful pass") 
+
             var user_id = this.user.id
             var app_id = this.category.id
             var amount = this.category.price
@@ -238,6 +243,7 @@ export default {
     created() {
         var app_id = this.$route.query.app_id;
         var cat_id = this.$route.query.cat_id;
+        this.amount = this.$route.query.amount;
         this.getCategorydata(app_id, cat_id)
         this.customer.name = this.user.name
         this.customer.email = this.user.email

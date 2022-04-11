@@ -38,11 +38,11 @@
 </template>
 
 <script>
-import Descriptionsection from '~/components/en/IAS/Description'
-import Subscriptionsection from '~/components/en/IAS/Subscription_sale'
-import Functionsection from '~/components/en/IAS/Function'
-import Contactsection from '~/components/en/IAS/Contact'
-import Customersection from '~/components/en/IAS/Customer'
+import Descriptionsection from '~/components/jp/IAS/Description'
+import Subscriptionsection from '~/components/jp/IAS/Subscription_sale'
+import Functionsection from '~/components/jp/IAS/Function'
+import Contactsection from '~/components/jp/IAS/Contact'
+import Customersection from '~/components/jp/IAS/Customer'
 
 export default {
     data: () => ({

@@ -38,11 +38,11 @@
 </template>
 
 <script>
-import Descriptionsection from '~/components/en/Flowcal/Description'
-import Subscriptionsection from '~/components/en/Flowcal/Subscription_sale'
-import Functionsection from '~/components/en/Flowcal/Function'
-import Contactsection from '~/components/en/Flowcal/Contact'
-import Customersection from '~/components/en/Flowcal/Customer'
+import Descriptionsection from '~/components/jp/Flowcal/Description'
+import Subscriptionsection from '~/components/jp/Flowcal/Subscription_sale'
+import Functionsection from '~/components/jp/Flowcal/Function'
+import Contactsection from '~/components/jp/Flowcal/Contact'
+import Customersection from '~/components/jp/Flowcal/Customer'
 
 export default {
     data: () => ({

@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import IAS from '~/components/en/purchse/IAS'
-import Flowcal from '~/components/en/purchse/Flowcal'
+import IAS from '~/components/jp/purchse/IAS'
+import Flowcal from '~/components/jp/purchse/Flowcal'
 import Loginsection from '~/pages/auth/login'
 import Alertsection from '~/components/Alert'
 import { mapGetters } from 'vuex'
