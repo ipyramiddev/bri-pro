@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       
       <div class="container">
-        <router-link :to="{ name: $t('home.url') }" class="navbar-brand">
+        <router-link :to="{ name: $t('home.url') }" class="navbar-brand" @click.native="scrollToTop">
           <img :src="logo" />
         </router-link>
 
@@ -212,6 +212,9 @@ export default {
       } else {
         this.purchaseShow = true;
       }
+    },
+    scrollToTop() {
+      window.scrollTo(0,0);
     }
   }
 }
