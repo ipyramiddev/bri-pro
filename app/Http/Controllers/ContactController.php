@@ -44,7 +44,7 @@ class ContactController extends Controller
 
         //Send mail to admin
         try{
-            $mail_check = Mail::to('support@lifeanalytics.com', 'Daisukekubota')
+            $mail_check = Mail::to('support@lifeanalytics.org', 'Daisukekubota')
                 ->send(new contact_send($contact));
 
         }
