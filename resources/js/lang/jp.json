@@ -219,7 +219,10 @@
     "your_email": "あなたのEメール",
     "phone_number": "電話番号",
     "your_text": "あなたのテキスト",
-    "attach_file": "添付ファイルを選択してください..."
+    "attach_file": "添付ファイルを選択してください...",
+
+    "email_success": "メールが正常に送信されました。",  
+    "email_error": "メールの送信に失敗しました。"
   },
   "dealer": {
     "text": "代理店用",

@@ -52,7 +52,7 @@
   }
 
   .email_message {
-      font_size: 13px;
+      font-size: 13px;
       padding: 20px;
       word-break: break-all;
   }
