@@ -99,10 +99,18 @@ class PaymentController extends Controller
             //if customer_purchase table save is success, send email to customer
             //sending data is payment_data, web_app url, user_email and user_pass
 
-            // $payment_email_check = Mail::to($user->email, $user->name)
-            // ->send(new payment_confirm_send($payment_email_data));
-
-            return response()->json($transaction->transaction_id);
+            try{
+                $payment_email_check = Mail::to($user->email, $user->name)
+                    ->send(new payment_confirm_send($payment_email_data));
+           
+                return response()->json($transaction->transaction_id);
+            }
+            catch(\Exception $e){
+                echo ($e->getMessage());
+                return response()->json([
+                    'error' => $e->getMessage(),
+                ]);
+            }
 
         } else {
             return false;

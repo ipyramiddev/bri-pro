@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Mail\Register_confirm_mail_send;
 use DB;
+use Exception;
+use Mail;
 
 class RegistrationController extends Controller
 {
@@ -62,8 +65,18 @@ class RegistrationController extends Controller
                     ]);
                 }
             }
+            //Send mail to admin and customer
+            try{
+                Mail::to('support@lifeanalytics.org', 'Daisukekubota')
+                    ->send(new Register_confirm_mail_send($data));
+            }
+            catch(\Exception $e){
+                echo ($e->getMessage());
+                return response()->json([
+                    'error' => $e->getMessage(),
+                ]);
+            }
         }
-
     }
     /**
      * Agency Registration Function
