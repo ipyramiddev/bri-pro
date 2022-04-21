@@ -7,6 +7,7 @@ use App\Models\Contact;
 use Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\Contact_send;
+use Exception;
 
 class ContactController extends Controller
 {
@@ -42,10 +43,21 @@ class ContactController extends Controller
         }
 
         //Send mail to admin
+        try{
+            $mail_check = \Mail::to('support@lifeanalytics.org', 'Daisukekubota')
+                ->send(new Contact_send($contact));
 
-        $mail_check = Mail::to('support@lifeanalytics.com', 'Daisukekubota')
-            ->send(new contact_send($contact));
-
-        return $mail_check;
+            return response()->json([
+                'success' => true,
+                'mail' => $mail_check,
+            ]);
+        }
+        catch(\Exception $e){
+            echo ($e->getMessage());
+            return response()->json([
+                'success' => false,
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 }

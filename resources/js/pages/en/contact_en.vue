@@ -58,6 +58,7 @@
 
 <script>
   import axios from 'axios'
+  import swal from 'sweetalert2/dist/sweetalert2.js'
   export default {
     data: () => ({
       name: '',
@@ -93,9 +94,32 @@
         form.set('file', this.file);
         
         this.loading = true
-        var {data} = await axios.post('/api/contact/send', form)
-        console.log(data)
-        this.loading = false
+        try {
+          const {data} = await axios.post('/api/contact/send', form)
+          console.log(data)
+          if (data?.success) {
+            swal.fire({
+                icon: 'success',
+                title: this.$t('contact.title'),
+                text: this.$t('contact.email_success'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            })
+          } else {
+            swal.fire({
+                icon: 'error',
+                title: this.$t('contact.title'),
+                text: this.$t('contact.email_error'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            })
+          }
+        } catch (err) {
+          console.error(err);
+        }
+        this.loading = false;
       },
     }
 

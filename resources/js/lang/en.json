@@ -219,7 +219,10 @@
     "your_email": "Your E-mail",
     "phone_number": "Phone Number",
     "your_text": "Your Text",
-    "attach_file": "Choose your attach file..."
+    "attach_file": "Choose your attach file...",
+
+    "email_success": "Email has been successfully sent.",  
+    "email_error": "Failed to send email."
   },
   "dealer": {
     "text": "Dealer order",
