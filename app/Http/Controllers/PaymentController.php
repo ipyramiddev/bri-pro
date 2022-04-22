@@ -87,7 +87,7 @@ class PaymentController extends Controller
             } else {
                 Customer_purchase::create([
                     'user_id' => $input['user_id'],
-                    //'app_url' => $payment_email_data['app_url'],
+                    'app_url' => $payment_email_data['app_url'],
                     'app_name' => $payment_email_data['app_name'],
                     'cat_tab' => $payment_email_data['cat_tab'],
                     'period_date' => $payment_email_data['period_date'],
@@ -130,7 +130,7 @@ class PaymentController extends Controller
         $send_to_app_data['price'] = $input['transaction_price'];
 
         //web app send data has to be noted in here 
-        $web_app_pass = $this->transfer_email_pass($send_to_app_data);
+        // $web_app_pass = $this->transfer_email_pass($send_to_app_data);
         //$send_to_app_data['user_pass'] = $transaction->transaction_price; 
         
         //if customer_purchase table save is success, send email to customer
@@ -138,6 +138,23 @@ class PaymentController extends Controller
 
         // $payment_email_check = Mail::to($user->emailinput['email'], $input['user_name'])
         // ->send(new payment_confirm_send($send_to_app_data));
+        try{
+            $payment_email_check = Mail::to($input['email'])
+                ->send(new payment_confirm_send($send_to_app_data));
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Your information formatted successfully.'
+            ])
+       
+            return response()->json($transaction->transaction_id);
+        }
+        catch(\Exception $e){
+            echo ($e->getMessage());
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+        }
 
         return true;
     }

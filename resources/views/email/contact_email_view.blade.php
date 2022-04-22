@@ -62,12 +62,12 @@
   <div class="flex-center position-ref full-height">
     <div class="content">
       <div class="title">
-        Contact request E-mail
+        連絡先リクエストEメール
       </div>
       <div class="email_content">
-        <div> Name: {{ $contact_name }} </div>
-        <div> E-mail: {{ $contact_email }} </div>
-        <div> Phone: {{ $contact_phone }} </div>
+        <div> 名前: {{ $contact_name }} </div>
+        <div> Eメール: {{ $contact_email }} </div>
+        <div> 電話: {{ $contact_phone }} </div>
       </div>
       <div class="email_message">
         {{ $contact_message }}    
