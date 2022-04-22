@@ -30,8 +30,8 @@ class Register_confirm_mail_send extends Mailable
     {
         if($this->data['role']=='customer') {
             return $this->view('email.customer_register_email_view')
-                ->with('message', 'New customer registered.')
-                ->with('cutomer_email', $this->data['email'])
+                ->with('message', '新規顧客登録。')
+                ->with('customer_email', $this->data['email'])
                 ->with('customer_phone', $this->data['phone']);
         }
     }

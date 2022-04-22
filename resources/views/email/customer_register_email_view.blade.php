@@ -62,11 +62,11 @@
   <div class="flex-center position-ref full-height">
     <div class="content">
       <div class="title">
-        {{message}}
+        {{ $message }}
       </div>
       <div class="email_content">
-        <div> Cutomer: {{ $cutomer_email }} </div>
-        <div> Phone: {{ $cutomer_phone }} </div>
+        <div> お客様: {{ $customer_email }} </div>
+        <div> 電話: {{ $customer_phone }} </div>
       </div>
     </div>
   </div>
