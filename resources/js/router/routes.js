@@ -50,6 +50,7 @@ export default [
   { path: '/checkout/confirmation', name: 'confirmation', component: page('purchase/confirmation.vue') },
   { path: '/transaction_history', name: 'transaction_history', component: page('purchase/transaction_history.vue') },
   { path: '/purchase_list', name: 'purchase_list', component: page('purchase/purchase_list.vue') },
+  { path: '/registered_customers', name: 'registered_customers', component: page('purchase/registered_customers.vue') },
 
 
   { path: '/login', name: 'login', component: page('auth/login.vue') },

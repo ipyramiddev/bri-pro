@@ -23,7 +23,7 @@
                             <form id="komoju-form" @submit.prevent="komoju_purchase" method="post">
                                 <div class="payment_information_form" style="padding-top: 15px;">
                                     <div style="padding: 0 40px;">
-                                    <input type="hidden" v-model="komojuToken" name="komojuToken" />
+                                    <input id="komojuToken" type="hidden" v-model="komojuToken" name="komojuToken" />
                                         <div class="col-md-12 paypal-button">
                                             <b-button id="komojuButton" variant="primary" :disabled="paymentProcessing">
                                                 <b-spinner small :hidden="!paymentProcessing"></b-spinner>
@@ -109,12 +109,13 @@ export default {
 
         console.log(komoju_pu_key)
         console.log(amount)
-
+        
         var handler = Komoju.multipay.configure({
             key: komoju_pu_key,
             token: function(token) {
+                console.log("this is komoju token")
+                console.log(token.id)
                 this.komojuToken = token.id
-                payForm.komojuToken.value = token.id
                 this.komoju_purchase()
             }
         })
@@ -190,7 +191,7 @@ export default {
 
             var user_id = this.user.id
             var app_id = this.category.id
-            var amount = this.category.price
+            var amount = this.amount
             var router = this.$router
             var token = this.komojuToken
 

@@ -79,6 +79,24 @@
               </div>
             </li>
 
+            <li v-if="user && user.role == 'admin'" class="nav-item dropdown" @mouseover="purchaseOver" @mouseleave="purchaseLeave">
+              <router-link v-if="mobile" :to="{ name: $t('purchase.url') }"  class="nav-link" active-class="active" style="display: inline">
+                {{ $t('purchase.text') }}
+              </router-link>
+              <router-link v-else :to="{ name: $t('purchase.url') }"  class="nav-link dropdown-toggle" active-class="active">
+                {{ $t('purchase.text') }}
+              </router-link>
+              <div class="toggle-button-icon" :style="{display: mobile ? 'inline' : 'none'}" @click="purchaseMenuClick">
+                  <b-icon v-if="purchaseShow" icon="chevron-bar-up"></b-icon>
+                  <b-icon v-else icon="chevron-bar-down"></b-icon>
+              </div>
+              <div class="dropdown-menu" :style="{ display: purchaseShow ? 'block' : 'none' } ">
+                <router-link :to="{ name: 'registered_customers' }" class="nav-link dropdown-item">
+                  {{ $t('customers') }}
+                </router-link>
+              </div>
+            </li>
+
             <li v-else class="nav-item">
               <router-link :to="{ name: $t('purchase.url') }" class="nav-link" active-class="active">
                 {{ $t('purchase.text') }}

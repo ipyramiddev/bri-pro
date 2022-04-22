@@ -51,4 +51,10 @@ class FrontendController extends Controller
 
         return response()->json($purchased_data);
     }
+
+    public function get_registered_customers() {
+        $data = DB::table('customer_purchases')->leftJoin('users', 'customer_purchases.user_id', '=', 'users.id')->leftJoin('applications', 'customer_purchases.cat_tab', '=', 'applications.category_tab')->get();
+
+        return response()->json($data);
+    }
 }
