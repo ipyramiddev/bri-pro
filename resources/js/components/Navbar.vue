@@ -79,7 +79,7 @@
               </div>
             </li>
 
-            <li v-if="user && user.role == 'admin'" class="nav-item dropdown" @mouseover="purchaseOver" @mouseleave="purchaseLeave">
+            <li v-else-if="user && user.role == 'admin'" class="nav-item dropdown" @mouseover="purchaseOver" @mouseleave="purchaseLeave">
               <router-link v-if="mobile" :to="{ name: $t('purchase.url') }"  class="nav-link" active-class="active" style="display: inline">
                 {{ $t('purchase.text') }}
               </router-link>
