@@ -39,6 +39,21 @@
                         </h6>
                     </div>
                 </div>
+
+                <!-- Your Information -->                
+                <div class="your_information_detail">
+                    <h4>{{$t('your_information_details')}}</h4>
+                    <div style="padding-left: 20px;">
+                        <h6>
+                            {{$t('your_email_address_des')}} 
+                            <span class="information_detail">{{user.email}}</span>.
+                        </h6>
+                        <h6>
+                            {{$t('your_deposit_amount')}} 
+                            <span class="information_detail"></span>.
+                        </h6>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
