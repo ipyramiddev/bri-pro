@@ -54,6 +54,30 @@
                         </h6>
                     </div>
                 </div>
+                <!-- application information form -->
+                <div>
+                    <form @submit.prevent="dealer_application_send" method="post">
+                        <div class="dealer_application_form" style="padding-top: 15px;">
+                            <h4>{{$t('dealer_application_information_title')}}</h4>
+                            <div style="padding-left: 20px;">
+                                <div class="mb-3 row">
+                                    <div class="col-md-12">
+                                        <label class="col-form-label">{{ $t('applicant_email') }}</label>
+                                        <input v-model="applicant_email" class="form-control" type="email" name="applicant_email">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row" style="padding-top: 10px;">
+                                    <div class="col-md-12 d-flex">
+                                        <!-- Submit Button -->
+                                        <b-button type="submit" variant="primary" :disabled="loading">
+                                            <b-spinner small :hidden="!loading"></b-spinner>
+                                            {{ $t('application_button') }}
+                                        </b-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
