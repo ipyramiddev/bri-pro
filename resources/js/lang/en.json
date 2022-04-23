@@ -453,5 +453,8 @@
   "title_users": "Users",
   "title_dashboard": "Dashboard",
   "purchase_information": "Purchase Information",
-  "customers": "Customers"
+  "customers": "Customers",
+  "rejection": "Rejection",
+  "approval": "Approval",
+  "pending": "Pending"
 }
