@@ -82,7 +82,7 @@ export default {
         komojuToken: '',
         amount: ''
     }),
-    mounted() {        
+    mounted() {      
         //paypal button section
         const script_paypal = document.createElement("script")
         const ClientID = process.env.MIX_PAYPAL_SANDBOX_CLIENT_ID
@@ -134,13 +134,26 @@ export default {
         });
     },
     methods: {
+        async getCategorydata(app_id, cat_id) {
+            const {data} = await axios.get('/api/get/checkout/category/'+app_id+'/'+cat_id)
+            this.category = data;
+
+            console.log(this.category)
+        },
+
         //paypal button
         setLoaded:function() {
             console.log("paypal_button")
             var user_id = this.user.id
-            var app_id = this.category.id
-            var amount = this.category.price
+            var app_id = this.$route.query.app_id;
+            var cat_id = this.$route.query.cat_id;
+            var amount = this.amount
             var router = this.$router
+            
+            console.log(app_id)
+            console.log(cat_id)
+            console.log(amount)
+
             paypal_sdk.Buttons({
                 style: {
                     shape: 'pill',
@@ -154,6 +167,7 @@ export default {
                 },
 
                 onApprove: function(data, actions) {
+                    console.log(data)
                     return actions.order.capture().then(function(orderData) {
                         
                         // Full available details
@@ -166,8 +180,10 @@ export default {
                                 payer: orderData.payer,
                                 payee: orderData.purchase_units[0].payee,
                                 user_id: user_id,
-                                app_id: app_id
+                                app_id: app_id,
+                                cat_id: cat_id,
                             }).then((res) => {
+                                console.log(res)
                                 const data = res.data
                                 router.push({name: 'confirmation', query: {transaction_id: res.data}})
                             })
@@ -228,10 +244,6 @@ export default {
             })          
         },
 
-        async getCategorydata(app_id, cat_id) {
-            const {data} = await axios.get('/api/get/checkout/category/'+app_id+'/'+cat_id)
-            this.category = data;
-        },
         async furikomi_payment_post() {
             this.paymentProcessing = true
             var {data} = await axios.post('/api/payment/furikomi/checkout/send', {

@@ -42,9 +42,15 @@ class PaymentController extends Controller
 
     public function transaction_save(Request $request) {
         $input = $request->all();
+        switch ($input['app_id']) {
+            case '1':
+                $app_name = 'IAS';
+                break;
+        }
+        $application_id = DB::table('applications')->where('app_name', $app_name)->where('cat_id', $input['cat_id'])->value('id');
         $transaction = Transaction::create([
             'user_id' => $input['user_id'],
-            'app_id' => $input['app_id'],
+            'app_id' => $application_id,
             'transaction_id' => $input['transaction']['id'],
             'transaction_status' => $input['transaction']['status'],
             'transaction_price' => $input['transaction']['amount']['value'],
@@ -145,9 +151,7 @@ class PaymentController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Your information formatted successfully.'
-            ])
-       
-            return response()->json($transaction->transaction_id);
+            ]);
         }
         catch(\Exception $e){
             echo ($e->getMessage());
