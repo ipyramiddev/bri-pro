@@ -65,10 +65,12 @@ class RegistrationController extends Controller
                     ]);
                 }
             }
-            //Send mail to admin and customer
+            //Send mail to admin
             try{
                 Mail::to('support@lifeanalytics.org', 'Daisukekubota')
                     ->send(new Register_confirm_mail_send($data));
+
+                return $check;
             }
             catch(\Exception $e){
                 echo ($e->getMessage());
@@ -123,6 +125,25 @@ class RegistrationController extends Controller
                         'value'=>$data[$key],
                     ]);
                 }
+            }       
+                 
+            $data['id'] = $lastInsertedID;
+
+            //Send mail to admin
+            try{
+                Mail::to('support@lifeanalytics.org', 'Daisukekubota')
+                    ->send(new Register_confirm_mail_send($data));
+
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Your registration request sent to administrator. Please wait approval of administrator.'
+                ]);
+            }
+            catch(\Exception $e){
+                echo ($e->getMessage());
+                return response()->json([
+                    'error' => $e->getMessage(),
+                ]);
             }
             return true;
         }

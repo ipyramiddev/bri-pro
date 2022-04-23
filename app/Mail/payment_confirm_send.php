@@ -29,11 +29,11 @@ class payment_confirm_send extends Mailable
     public function build()
     {
         return $this->view('email.transaction_email_view')
-            ->with('app_name', $this->data['app_name'])
-            ->with('cat_tab', $this->data['cat_tab'])
-            ->with('period_data', $this->data['period_date'])
-            ->with('capacity', $this->data['capacity'])
-            ->with('capacity_unit', $this->data['capacity_unit'])
-            ->with('price', $this->data['price']);
+            ->with('app_name', $this->data->app_name)
+            ->with('cat_tab', $this->data->cat_tab)
+            ->with('period_data', $this->data->period_date)
+            ->with('capacity', $this->data->capacity)
+            ->with('capacity_unit', $this->data->capacity_unit)
+            ->with('price', $this->data->price);
     }
 }

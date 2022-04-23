@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Contact Email</title>
+  <title>Registered Notification Email</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -63,18 +63,22 @@
 </style>
 </head>
 <body>
-<div class="container flex-center">
+  <div class="container flex-center">
     <div class="content">
       <div class="title">
-        Thank you for your payment.<br />
-        Below are details about your Application data.
+        {{ $message }}
       </div>
       <div class="email_content">
-        <div> Application Name: {{ $app_name }} </div>
-        <div> Category Name: {{ $cat_tab }} </div>
-        <div> Expiration period: {{ $period_data }}days </div>
-        <div> Data Capacity: {{ $capacity }}{{$capacity_unit}} </div>
-        <div> Application price: {{ $price }} </div>
+        <div> 会社名: {{ $company }} </div>
+        <div> 会社のメール: {{ $agency_email }} </div>
+        <div> 会社の住所: {{ $company_address }} </div>
+        <div> 会社の電話番号: {{ $company_phone }} </div>
+        <div> 会社のサイトのURL: <a href="https://{{ $company_website }}">{{ $company_website }} </a></div>
+        <div> 取引条件:<br/>
+            {{ $transaction_condition }}
+        </div>
+        <div style="padding-top: 10px;"> 入金額: {{ $deposit_amount }} </div>
+        <div style="padding-top: 10px;">詳細を表示するには、をクリックしてください: <a href="/admin/user-profile/{{$id}}"> 詳細</div>
       </div>
     </div>
   </div>

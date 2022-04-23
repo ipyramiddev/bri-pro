@@ -10,6 +10,8 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+  <!-- bootstrap -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
   <!-- Styles -->
   <style>
@@ -30,6 +32,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    padding-top: 30px;
   }
 
   .position-ref {
@@ -37,18 +40,19 @@
   }
 
   .content {
-    text-align: center;
+    text-align: left;
   }
 
   .title {
     font-size: 26px;
     padding: 20px;
+    text-align: center;
   }
 
   .email_content {
       font-size: 15px;
       padding: 20px;
-      line-height: 1.5;
+      line-height: 1.8;
   }
 
   .email_message {
@@ -59,7 +63,7 @@
 </style>
 </head>
 <body>
-  <div class="flex-center position-ref full-height">
+<div class="container flex-center">
     <div class="content">
       <div class="title">
         {{ $message }}

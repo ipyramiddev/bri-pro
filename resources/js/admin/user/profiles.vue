@@ -24,14 +24,14 @@
                     <div class="content-flex">
                         <!-- First Name -->
                         <div class="w-25">
-                            <label class="col-form-label text-md-end">{{ $t('first_name') }}</label>
-                            <input class="form-control" type="text" name="first_name" :value="profiledata.first_name" disabled>
+                            <label class="col-form-label text-md-end">{{ role=='agency' ? $t('company_name') : $t('first_name') }}</label>
+                            <input class="form-control" type="text" :name="role=='agency' ? 'company_name' : 'first_name'" :value="role=='agency' ? profiledata.company_name : profiledata.first_name" disabled>
                         </div>
 
                         <!-- Last Name -->                        
                         <div class="w-25">
-                            <label class="col-form-label text-md-end">{{ $t('last_name') }}</label>
-                            <input class="form-control" type="text" name="last_name" :value="profiledata.last_name" disabled>
+                            <label class="col-form-label text-md-end">{{ role=='agency' ? $t('seo_name') : $t('last_name') }}</label>
+                            <input class="form-control" type="text" :name="role=='agency' ? 'seo_name' : 'last_name'" :value="role=='agency' ? profiledata.seo_name : profiledata.first_name" disabled>
                         </div>
 
                         <!-- Name -->                        
@@ -47,16 +47,16 @@
                         </div>
                     </div>
                     <div class="content-flex">
-                        <!-- Organization -->
                         <!-- Email -->
                         <div class="w-30">
                             <label class="col-form-label text-md-end">{{ $t('email') }}</label>
                             <input class="form-control" type="text" name="email" :value="profiledata.email" disabled>
                         </div>
 
+                        <!-- Organization -->
                         <div class="w-30">
-                            <label class="col-form-label text-md-end">{{ $t('organization') }}</label>
-                            <input class="form-control" type="text" name="organization" :value="profiledata.organization" disabled>
+                            <label class="col-form-label text-md-end">{{ role=='agency' ? $t('company_site') : $t('organization') }}</label>
+                            <input class="form-control" type="text" :name="role=='agency' ? 'company_site' : 'organization'" :value="role=='agency' ? profiledata.company_site : profiledata.organization" disabled>
                         </div>
 
                         <!-- Department -->                        
@@ -80,11 +80,11 @@
                         
                         <!-- Address 2 -->
                         <div class="w-30">
-                            <label class="col-form-label text-md-end">{{ $t('address_2') }}</label>
-                            <input class="form-control" type="text" name="address_2" :value="profiledata.address_2" disabled>
+                            <label class="col-form-label text-md-end">{{ role=='agency' ? $t('zip') : $t('address_2') }}</label>
+                            <input class="form-control" type="text" :name="role=='agency' ? 'zip' : 'address_2'" :value="role=='agency' ? profiledata.zip : profiledata.address_2" disabled>
                         </div>
                     </div>
-                    <div class="content-flex">
+                    <div v-if="role!='agency'" class="content-flex">
                         <!-- Country -->
                         <div class="w-50">
                             <label class="col-form-label text-md-end">{{ $t('country') }}</label>
@@ -97,7 +97,7 @@
                             <input class="form-control" type="text" name="zip" :value="profiledata.zip" disabled>
                         </div>
                     </div>
-                    <div class="content-flex">
+                    <div v-if="role!='agency'" class="content-flex">
                         <!-- State/County -->
                         <div class="w-50">
                             <label class="col-form-label text-md-end">{{ $t('state') }}</label>
@@ -109,6 +109,34 @@
                             <label class="col-form-label text-md-end">{{ $t('city') }}</label>
                             <input class="form-control" type="text" name="city" :value="profiledata.city" disabled>
                         </div>
+                    </div>
+                    <div v-if="role=='agency'" class="content-flex">
+                        <!-- Transaction Condition -->
+                        <div class="w-100">
+                            <label class="col-form-label text-md-end">{{ $t('transaction_con') }}</label>
+                            <textarea v-model="transaction_con" class="form-control" type="text" name="transaction_con">{{profiledata.transaction_con}}</textarea>
+                        </div>
+                    </div>
+                    <div v-if="role=='agency'" class="content-flex">
+                        <!-- Deposit amount -->
+                        <div class="w-100">
+                            <label class="col-form-label text-md-end">{{ $t('deposit_amount') }}</label>
+                            <input v-model="deposit_amount" class="form-control" type="number" name="deposit_amount">
+                        </div>
+                    </div>
+                    <div v-if="role=='agency'" class="content-flex button">
+                        <b-button variant="danger" @click="agency_rejection()" :disabled="rejection_loading">
+                            <b-spinner small :hidden="!rejection_loading"></b-spinner>
+                            {{$t('rejection')}}
+                        </b-button>
+                        <b-button variant="success" @click="agency_approval()" :disabled="approval_loading">
+                            <b-spinner small :hidden="!approval_loading"></b-spinner>
+                            {{$t('approval')}}
+                        </b-button>
+                        <b-button variant="primary" @click="agency_pending()" :disabled="pending_loading">
+                            <b-spinner small :hidden="!pending_loading"></b-spinner>
+                            {{$t('pending')}}
+                        </b-button>
                     </div>
                 </div>
             </div>
@@ -154,104 +182,6 @@
                 </div>
             </div>
         </div>
-        <div style="margin-bottom: 20px;">
-            <div class="profile_pan">
-                <div class="header-flex">
-                    <div class="profile_header">
-                        <h5>{{$t('purchase_information')}}</h5>
-                    </div>
-                </div>
-                <div class="content-flex">
-                    <!-- First Name -->
-                    <div class="w-25">
-                        <label class="col-form-label text-md-end">{{ $t('first_name') }}</label>
-                        <input class="form-control" type="text" name="first_name" :value="profiledata.first_name" disabled>
-                    </div>
-
-                    <!-- Last Name -->                        
-                    <div class="w-25">
-                        <label class="col-form-label text-md-end">{{ $t('last_name') }}</label>
-                        <input class="form-control" type="text" name="last_name" :value="profiledata.last_name" disabled>
-                    </div>
-
-                    <!-- Name -->                        
-                    <div class="w-25">
-                        <label class="col-form-label text-md-end">{{ $t('name') }}</label>
-                        <input class="form-control" type="text" name="name" :value="profiledata.name" disabled>
-                    </div>
-
-                    <!-- Nike Name -->
-                    <div class="w-25">
-                        <label class="col-form-label text-md-end">{{ $t('nike_name') }}</label>
-                        <input class="form-control" type="text" name="nike_name" :value="profiledata.nikename" disabled>
-                    </div>
-                </div>
-                <div class="content-flex">
-                    <!-- Organization -->
-                    <!-- Email -->
-                    <div class="w-30">
-                        <label class="col-form-label text-md-end">{{ $t('email') }}</label>
-                        <input class="form-control" type="text" name="email" :value="profiledata.email" disabled>
-                    </div>
-
-                    <div class="w-30">
-                        <label class="col-form-label text-md-end">{{ $t('organization') }}</label>
-                        <input class="form-control" type="text" name="organization" :value="profiledata.organization" disabled>
-                    </div>
-
-                    <!-- Department -->                        
-                    <div class="w-30">
-                        <label class="col-form-label text-md-end">{{ $t('deaprtment') }}</label>
-                        <input class="form-control" type="text" name="deaprtment" :value="profiledata.deaprtment" disabled>
-                    </div>
-                </div>
-                <div class="content-flex">
-                    <!-- Moblie Phone -->                        
-                    <div class="w-30">
-                        <label class="col-form-label text-md-end">{{ $t('phone') }}</label>
-                        <input class="form-control" type="text" name="phone" :value="profiledata.phone" disabled>
-                    </div>
-
-                    <!-- Address 1 -->
-                    <div class="w-30">
-                        <label class="col-form-label text-md-end">{{ $t('address_1') }}</label>
-                        <input class="form-control" type="text" name="address_1" :value="profiledata.address_1" disabled>
-                    </div>
-                    
-                    <!-- Address 2 -->
-                    <div class="w-30">
-                        <label class="col-form-label text-md-end">{{ $t('address_2') }}</label>
-                        <input class="form-control" type="text" name="address_2" :value="profiledata.address_2" disabled>
-                    </div>
-                </div>
-                <div class="content-flex">
-                    <!-- Country -->
-                    <div class="w-50">
-                        <label class="col-form-label text-md-end">{{ $t('country') }}</label>
-                        <input class="form-control" type="text" name="country" :value="profiledata.country" disabled>
-                    </div>
-
-                    <!-- Zip Code -->                        
-                    <div class="w-50">
-                        <label class="col-form-label text-md-end">{{ $t('zip') }}</label>
-                        <input class="form-control" type="text" name="zip" :value="profiledata.zip" disabled>
-                    </div>
-                </div>
-                <div class="content-flex">
-                    <!-- State/County -->
-                    <div class="w-50">
-                        <label class="col-form-label text-md-end">{{ $t('state') }}</label>
-                        <input class="form-control" type="text" name="state" :value="profiledata.state" disabled>
-                    </div>
-
-                    <!-- Country City/Town -->                        
-                    <div class="w-50">
-                        <label class="col-form-label text-md-end">{{ $t('city') }}</label>
-                        <input class="form-control" type="text" name="city" :value="profiledata.city" disabled>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -268,14 +198,19 @@ export default {
     },
   },
   data() {
-    return {            
-            role: '',
-            permission: '',
-            user_id: '',
-            user_image: user_image,
-            profiledata: '',
-            loading: false
-        };
+    return {
+        transaction_con: '',
+        deposit_amount: '',
+        role: '',
+        permission: '',
+        user_id: '',
+        user_image: user_image,
+        profiledata: '',
+        loading: false,
+        rejection_loading: false,
+        approval_loading: false,
+        pending_loading: false
+    };
   },
   created() {
         this.user_id=this.$route.params.id
@@ -287,6 +222,11 @@ export default {
         this.profiledata = data
         this.role = data.role
         this.permission = data.permission
+        if(data.role == 'agency' && data.transaction_con && data.deposit_amount) {          
+            this.transaction_con = data.transaction_con
+            this.deposit_amount = data.deposit_amount
+        }
+        console.log(data)
     },
     async role_update () {
         this.loading = true
@@ -304,6 +244,92 @@ export default {
                 reverseButtons: true,
                 confirmButtonText: this.$t('ok'),
                 cancelButtonText: this.$t('cancel')
+            })
+        } else {                
+            swal.fire({
+                icon: 'warning',
+                title: this.$t('warningTitle'),
+                text: this.$t('warningText'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            })
+        }
+    },
+    async agency_rejection () {
+        this.rejection_loading = true
+        const {data} = await axios.post('/api/user/agency/rejection', {
+            user_id: this.user_id
+        })
+        this.rejection_loading = false
+        if (data) {
+            swal.fire({
+                icon: 'success',
+                title: this.$t('successTitle'),
+                text: this.$t('successText'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            }).then(() => {
+                this.$router.push({ name: 'admin.users' })
+            })
+        } else {                
+            swal.fire({
+                icon: 'warning',
+                title: this.$t('warningTitle'),
+                text: this.$t('warningText'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            })
+        }
+    },
+    async agency_approval () {
+        this.approval_loading = true
+        const {data} = await axios.post('/api/user/agency/approve', {
+            user_id: this.user_id
+        })
+        this.approval_loading = false
+        if (data) {
+            swal.fire({
+                icon: 'success',
+                title: this.$t('successTitle'),
+                text: this.$t('successText'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            }).then(() => {
+                this.$router.push({ name: 'admin.users' })
+            })
+        } else {                
+            swal.fire({
+                icon: 'warning',
+                title: this.$t('warningTitle'),
+                text: this.$t('warningText'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            })
+        }
+    },
+    async agency_pending () {
+        this.pending_loading = true
+        const {data} = await axios.post('/api/user/agency/pending', {
+            user_id: this.user_id,
+            transaction_con: this.transaction_con,
+            deposit_amount: this.deposit_amount
+        })
+        this.pending_loading = false
+        if (data) {
+            swal.fire({
+                icon: 'success',
+                title: this.$t('successTitle'),
+                text: this.$t('successText'),
+                reverseButtons: true,
+                confirmButtonText: this.$t('ok'),
+                cancelButtonText: this.$t('cancel')
+            }).then(() => {
+                this.$router.push({ name: 'admin.users' })
             })
         } else {                
             swal.fire({
