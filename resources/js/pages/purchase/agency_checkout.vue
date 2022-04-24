@@ -100,6 +100,14 @@ export default {
             const {data} = await axios.get('/api/get/dealer_checkout/category/'+app_id+'/'+cat_id)
             this.category = data;
         },
+        async dealer_application_send() {
+            this.loading = true
+            var {data} = await axios.post('/api/payment/dealer/checkout/application/send', {
+                applicant_email: this.applicant_email,
+                category_id: this.category.id
+            })
+            this.loading = false
+        }
     },
     created() {
         var app_id = this.$route.query.app_id;
