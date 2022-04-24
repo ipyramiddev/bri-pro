@@ -40,6 +40,8 @@
                     </div>
                 </div>
 
+                <div class="division"></div>
+
                 <!-- Your Information -->                
                 <div class="your_information_detail">
                     <h4>{{$t('your_information_details')}}</h4>
@@ -54,6 +56,9 @@
                         </h6>
                     </div>
                 </div>
+
+                <div class="division"></div>
+
                 <!-- application information form -->
                 <div>
                     <form @submit.prevent="dealer_application_send" method="post">
