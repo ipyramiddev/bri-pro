@@ -156,5 +156,33 @@ export default {
     .content .your_information_detail h6 {
         padding: 10px 0;
     }
+    .content .category_level .change {
+        display: inline;
+        font-size: 12px;
+        color: #007FED;
+    }
+    .content .your_information_detail .information_detail {
+        display: inline;
+        font-size: 15px;
+        font-weight: 700;
+    }
+    .content .category_level .category,
+    .content .your_information_detail .information_detail {
+        display: inline;
+        font-size: 15px;
+        font-weight: 700;
+    }
+    .content .division {
+        border-bottom: 1px solid #0000006e;
+        padding: 15px 0;
+    }
+    .content .choose_payment_method label {
+        display: flex;
+    }
+    .content .choose_payment_method label img {
+        padding-left: 10px;
+        display: inline;
+        height: 55px;
+    }
 
 </style>
