@@ -99,5 +99,31 @@ export default {
 </script>
 
 <style scoped>
+    .header {
+        width: 100%;
+        background-color: #211F40;
+        height: 150px;
+    }
+    .header h1 {
+        padding-top: 3rem;
+        text-align: center;
+        color: #fff;
+        font-weight: 600;
+    }
+    .content {
+        width: 100%;
+        padding-top: 50px;
+    }
+    .content .category_level h4,
+    .content .your_information_detail h4,
+    .content .choose_payment_method h4,
+    .content .dealer_application_form h4 {
+        font-weight: 700;
+        padding: 15px 0;
+    }
+    .content .category_level h6,
+    .content .your_information_detail h6 {
+        padding: 10px 0;
+    }
 
 </style>
