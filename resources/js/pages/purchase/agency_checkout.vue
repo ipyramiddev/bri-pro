@@ -95,6 +95,12 @@ export default {
         cvc: '',
         loading: false,
     }),
+    computed: mapGetters({
+        user: 'auth/user'
+    }),
+    mounted() {
+        this.email = user.email
+    }
 }
 </script>
 
