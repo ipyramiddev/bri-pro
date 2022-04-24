@@ -95,6 +95,18 @@ export default {
         cvc: '',
         loading: false,
     }),
+    methods: {
+        async getCategorydata(app_id, cat_id) {
+            const {data} = await axios.get('/api/get/dealer_checkout/category/'+app_id+'/'+cat_id)
+            this.category = data;
+        },
+    },
+    created() {
+        var app_id = this.$route.query.app_id;
+        var cat_id = this.$route.query.cat_id;
+        this.getCategorydata(app_id, cat_id)
+        this.email = this.user.email
+    },
     computed: mapGetters({
         user: 'auth/user'
     }),
