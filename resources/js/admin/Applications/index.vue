@@ -80,6 +80,9 @@
                 <template #cell(capacity)="data">
                     {{data.item.capacity}}{{data.item.capacity_unit}}
                 </template>
+                <template #cell(active)="data">
+                    <b-icon icon="trash" variant="primary" @click="delete_application(data.item.id)"></b-icon>
+                </template>
             </b-table>
 
             <b-row> 
@@ -133,7 +136,8 @@
                 { key: 'discount', label: this.$root.$i18n.tc('applications.discount')},
                 { key: 'discount_price', label: this.$root.$i18n.tc('applications.discount_price')},
                 { key: 'period_date', label: this.$root.$i18n.tc('expire_date')},
-                { key: 'capacity', label: this.$root.$i18n.tc('applications.capacity')}
+                { key: 'capacity', label: this.$root.$i18n.tc('applications.capacity')},
+                { key: 'active', label: this.$root.$i18n.tc('action')}
                 ],
                 totalRows: 1,
                 currentPage: 1,
@@ -150,6 +154,34 @@
                 const { data } = await axios.get('/api/get/applications')
                 this.items=data
                 this.totalRows = this.items.length
+            },
+            async delete_application(id) {
+                console.log(id)
+                const { data } = await axios.post('/api/post/delete_application', {
+                    app_id: id
+                })
+                console.log(data)
+                if(data.status == 'success') {
+                    swal.fire({
+                        icon: 'success',
+                        title: this.$t('successTitle'),
+                        text: this.$t('successText'),
+                        reverseButtons: true,
+                        confirmButtonText: this.$t('ok'),
+                        cancelButtonText: this.$t('cancel')
+                    }).then(() => {
+                        this.getApplications()
+                    })
+                } else {
+                    swal.fire({
+                        icon: 'warning',
+                        title: this.$t('warningTitle'),
+                        text: this.$t('warningText'),
+                        reverseButtons: true,
+                        confirmButtonText: this.$t('ok'),
+                        cancelButtonText: this.$t('cancel')
+                    })
+                }
             }
         },        
         created() {

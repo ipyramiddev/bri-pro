@@ -452,5 +452,7 @@
   "customers": "顧客",
   "rejection": "拒否",
   "approval": "承認",
-  "pending": "保留中"
+  "pending": "保留中",
+  "action": "アクション",
+  "dealers": "ディーラー"
 }

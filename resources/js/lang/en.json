@@ -456,5 +456,7 @@
   "customers": "Customers",
   "rejection": "Rejection",
   "approval": "Approval",
-  "pending": "Pending"
+  "pending": "Pending",
+  "action": "Action",
+  "dealers": "Dealers"
 }
