@@ -67,7 +67,7 @@ class RegistrationController extends Controller
             }
             //Send mail to admin
             try{
-                Mail::to('support@lifeanalytics.org', 'Daisukekubota')
+                \Mail::to('support@lifeanalytics.org', 'Daisukekubota')
                     ->send(new Register_confirm_mail_send($data));
 
                 return $check;
@@ -131,7 +131,7 @@ class RegistrationController extends Controller
 
             //Send mail to admin
             try{
-                Mail::to('support@lifeanalytics.org', 'Daisukekubota')
+                \Mail::to('support@lifeanalytics.org', 'Daisukekubota')
                     ->send(new Register_confirm_mail_send($data));
 
                 return response()->json([

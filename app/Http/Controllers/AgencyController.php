@@ -19,7 +19,7 @@ class AgencyController extends Controller
             $emailData['status'] = 'reject';
             $emailData['message'] = 'Your registration request rejected';
 
-            Mail::to($user_email)
+            \Mail::to($user_email)
                     ->send(new Agency_email_send($emailData));
 
             return response()->json([
@@ -43,7 +43,7 @@ class AgencyController extends Controller
             $emailData['status'] = 'approve';
             $emailData['message'] = 'Your registration request approved.';
 
-            Mail::to($user_email)
+            \Mail::to($user_email)
                     ->send(new Agency_email_send($emailData));
 
             return response()->json([
@@ -70,7 +70,7 @@ class AgencyController extends Controller
             $emailData['deposit_amount'] = $input['deposit_amount'];
             $emailData['user_id'] = $input['user_id'];
 
-            Mail::to($user_email)
+            \Mail::to($user_email)
                     ->send(new Agency_email_send($emailData));
 
             return response()->json([
@@ -93,7 +93,7 @@ class AgencyController extends Controller
             $emailData['status'] = 'accept';
             $emailData['message'] = 'Agency agreed new transaction condition.';
 
-            Mail::to('support@lifeanalytics.org')
+            \Mail::to('support@lifeanalytics.org')
                     ->send(new Agency_email_send($emailData));
 
             return true;
@@ -114,7 +114,7 @@ class AgencyController extends Controller
             $emailData['status'] = 'cancel';
             $emailData['message'] = 'Your registration request approved.';
 
-            Mail::to('support@lifeanalytics.org')
+            \Mail::to('support@lifeanalytics.org')
                     ->send(new Agency_email_send($emailData));
             
             return true;
