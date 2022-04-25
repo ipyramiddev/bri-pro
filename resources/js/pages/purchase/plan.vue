@@ -95,6 +95,18 @@ export default {
             e.preventDefault();
         });
     },
+    created() {
+        var app_id = this.$route.query.app_id;
+        var cat_id = this.$route.query.cat_id;
+        this.amount = this.$route.query.amount;
+        this.getCategorydata(app_id, cat_id)
+        this.customer.name = this.user.name
+        this.customer.email = this.user.email
+        this.locale = this.$root.$i18n.locale
+    },
+    computed: mapGetters({
+        user: 'auth/user'
+    })
 }
 </script>
 
