@@ -95,6 +95,16 @@ export default {
             e.preventDefault();
         });
     },
+    methods: {
+        async furikomi_payment_post() {
+            this.paymentProcessing = true
+            var {data} = await axios.post('/api/payment/furikomi/checkout/send', {
+                email: this.customer.email,
+                price: this.category.price
+            })
+            this.paymentProcessing = false
+        }
+    },
     created() {
         var app_id = this.$route.query.app_id;
         var cat_id = this.$route.query.cat_id;
