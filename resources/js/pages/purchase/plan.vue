@@ -55,6 +55,32 @@ export default {
         script_paypal.addEventListener("load", this.setLoaded)
         document.body.appendChild(script_paypal)
 
+        //komoju payment button
+        const script_komoju = document.createElement("script")
+
+        script_komoju.setAttribute(`src`, `https://multipay.komoju.com`)
+        document.body.appendChild(script_komoju)
+
+        console.log(script_komoju)
+
+        console.log("komoju_button") 
+
+        var payForm = document.getElementById("komoju-form") 
+        var amount = this.amount
+        const komoju_pu_key = 'pk_9e17c1ee95a8ca65eafbca819189907a6d0ebd0c'
+
+        console.log(komoju_pu_key)
+        console.log(amount)
+        
+        var handler = Komoju.multipay.configure({
+            key: komoju_pu_key,
+            token: function(token) {
+                console.log("this is komoju token")
+                console.log(token.id)
+                this.komojuToken = token.id
+                this.komoju_purchase()
+            }
+        })
 
         document.getElementById("credit_card").addEventListener("click", function(e) {
             console.log("komoju button click")
