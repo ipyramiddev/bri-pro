@@ -44,6 +44,31 @@ export default {
         category: '',
         paymentProcessing: false,
     }),
+    mounted() {      
+        //paypal button section
+        const script_paypal = document.createElement("script")
+        const ClientID = process.env.MIX_PAYPAL_SANDBOX_CLIENT_ID
+        console.log(ClientID)
+
+        script_paypal.setAttribute(`src`,`https://www.paypal.com/sdk/js?client-id=${ClientID}&currency=USD`)
+        script_paypal.setAttribute(`data-namespace`,`paypal_sdk`)
+        script_paypal.addEventListener("load", this.setLoaded)
+        document.body.appendChild(script_paypal)
+
+
+        document.getElementById("credit_card").addEventListener("click", function(e) {
+            console.log("komoju button click")
+            handler.open({
+                amount: amount,
+                endpoint: "https://komoju.com",
+                currency: "JPY",
+                methods: [
+                    "credit_card"
+                    ],
+            });
+            e.preventDefault();
+        });
+    },
 }
 </script>
 
