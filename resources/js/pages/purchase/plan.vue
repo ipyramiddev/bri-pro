@@ -39,6 +39,10 @@ import swal from 'sweetalert2/dist/sweetalert2.js'
 
 export default {
     data: () => ({
+        stripe: {},
+        cardElement: {},
+        category: '',
+        paymentProcessing: false,
     }),
 }
 </script>
