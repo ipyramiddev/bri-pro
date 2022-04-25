@@ -99,5 +99,16 @@ export default {
 </script>
 
 <style scoped>
+    .header {
+        width: 100%;
+        background-color: #211F40;
+        height: 150px;
+    }
+    .header h1 {
+        padding-top: 3rem;
+        text-align: center;
+        color: #fff;
+        font-weight: 600;
+    }
 
 </style>
