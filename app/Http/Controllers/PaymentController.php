@@ -106,7 +106,7 @@ class PaymentController extends Controller
             //sending data is payment_data, web_app url, user_email and user_pass
 
             try{
-                $payment_email_check = Mail::to($user->email, $user->name)
+                $payment_email_check = \Mail::to($user->email, $user->name)
                     ->send(new payment_confirm_send($payment_email_data));
            
                 return response()->json($transaction->transaction_id);
@@ -145,7 +145,7 @@ class PaymentController extends Controller
         // $payment_email_check = Mail::to($user->emailinput['email'], $input['user_name'])
         // ->send(new payment_confirm_send($send_to_app_data));
         try{
-            $payment_email_check = Mail::to($input['email'])
+            $payment_email_check = \Mail::to($input['email'])
                 ->send(new payment_confirm_send($send_to_app_data));
 
             return response()->json([

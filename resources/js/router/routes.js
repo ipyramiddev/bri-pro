@@ -51,6 +51,7 @@ export default [
   { path: '/transaction_history', name: 'transaction_history', component: page('purchase/transaction_history.vue') },
   { path: '/purchase_list', name: 'purchase_list', component: page('purchase/purchase_list.vue') },
   { path: '/registered_customers', name: 'registered_customers', component: page('purchase/registered_customers.vue') },
+  { path: '/registered_dealers', name: 'registered_dealers', component: page('purchase/registered_dealers.vue') },
 
 
   { path: '/login', name: 'login', component: page('auth/login.vue') },
