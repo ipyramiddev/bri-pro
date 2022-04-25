@@ -96,6 +96,38 @@ export default {
         });
     },
     methods: {
+        async komoju_purchase() { 
+            
+            console.log("komoju button successful pass") 
+
+            var user_id = this.user.id
+            var app_id = this.category.id
+            var amount = this.amount
+            var router = this.$router
+            var token = this.komojuToken
+
+            var querystring = require('querystring')
+            //var https = require('https')
+            var secret_key = 'sk_123456'
+            var auth = 'Basic ' + Buffer.from(secret_key + ':').toString('base64')
+
+            var komoju_post_data = querystring.stringify({
+                'amount': amount,
+                'currency': 'JPY',
+                'payment_details': token
+            })
+
+            console.log(komoju_post_data)
+
+
+            var post_req = axios.request(post_options, function(res) {
+                res.setEncoding('utf8')
+                res.on('data', function (chunk) {
+                    console.log(chunk)
+                })
+            })          
+        },
+
         async furikomi_payment_post() {
             this.paymentProcessing = true
             var {data} = await axios.post('/api/payment/furikomi/checkout/send', {
