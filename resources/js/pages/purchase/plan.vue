@@ -129,6 +129,31 @@ export default {
                 },
 
                 onApprove: function(data, actions) {
+                    console.log(data)
+                    return actions.order.capture().then(function(orderData) {
+                        
+                        // Full available details
+                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                        //Save transaction history  
+                        if(orderData.status == 'COMPLETED')  {
+                            axios.post('/api/payment/checkout/transaction/save/', {
+                                transaction: orderData.purchase_units[0].payments.captures[0],
+                                payer: orderData.payer,
+                                payee: orderData.purchase_units[0].payee,
+                                user_id: user_id,
+                                app_id: app_id,
+                                cat_id: cat_id,
+                            }).then((res) => {
+                                console.log(res)
+                                const data = res.data
+                                router.push({name: 'confirmation', query: {transaction_id: res.data}})
+                            })
+                        }
+                        
+                        // Or go to another URL:  actions.redirect('thank_you.html');
+                        
+                    });
                 },
 
                 onError: function(err) {
