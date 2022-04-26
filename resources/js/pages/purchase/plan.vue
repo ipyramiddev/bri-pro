@@ -96,6 +96,48 @@ export default {
         });
     },
     methods: {
+        async getCategorydata(app_id, cat_id) {
+            const {data} = await axios.get('/api/get/checkout/category/'+app_id+'/'+cat_id)
+            this.category = data;
+
+            console.log(this.category)
+        },
+
+        //paypal button
+        setLoaded:function() {
+            console.log("paypal_button")
+            var user_id = this.user.id
+            var app_id = this.$route.query.app_id;
+            var cat_id = this.$route.query.cat_id;
+            var amount = this.amount
+            var router = this.$router
+            
+            console.log(app_id)
+            console.log(cat_id)
+            console.log(amount)
+
+            paypal_sdk.Buttons({
+                style: {
+                    shape: 'pill',
+                    label: 'checkout'
+                },
+
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{"amount":{"currency_code":"USD","value":amount}}]
+                    });
+                },
+
+                onApprove: function(data, actions) {
+                },
+
+                onError: function(err) {
+                    console.log(err);
+                }
+
+            }).render(this.$refs.paypal)
+        },
+
         async komoju_purchase() { 
             
             console.log("komoju button successful pass") 
