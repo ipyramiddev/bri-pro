@@ -94,6 +94,18 @@ export default {
             });
             e.preventDefault();
         });
+        document.getElementById("bank_transfer").addEventListener("click", function(e) {
+            console.log("komoju button click")
+            handler.open({
+                amount: amount,
+                endpoint: "https://komoju.com",
+                currency: "JPY",
+                methods: [
+                    "bank_transfer"
+                    ],
+            });
+            e.preventDefault();
+        });
     },
     methods: {
         async getCategorydata(app_id, cat_id) {
