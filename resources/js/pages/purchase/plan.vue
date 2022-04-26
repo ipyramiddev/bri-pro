@@ -41,8 +41,23 @@ export default {
     data: () => ({
         stripe: {},
         cardElement: {},
+        customer: {
+            name : '',
+            email: '',
+            //first_name: '',
+            //last_name: '',
+            //email: '',
+            //address: '',
+            //city: '',
+            //state: '',
+            //zip_code: ''
+        },
         category: '',
         paymentProcessing: false,
+        //payment form display
+        form_display: 'komoju',
+        komojuToken: '',
+        amount: ''
     }),
     mounted() {      
         //paypal button section
