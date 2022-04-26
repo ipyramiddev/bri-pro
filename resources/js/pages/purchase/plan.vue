@@ -242,5 +242,33 @@ export default {
         color: #fff;
         font-weight: 600;
     }
+    .content {
+        width: 100%;
+        padding-top: 50px;
+    }
+    .content .category_level h4,
+    .content .payment_method h4,
+    .content .payment_information_form h4 {
+        font-weight: 700;
+        padding: 15px 0;
+    }
+    .content .category_level h6 {
+        padding: 10px 0;
+    }
+    .content .payment_method label {
+        display: flex;
+    }
+    .content .payment_method label img {
+        padding-left: 10px;
+        display: inline;
+        height: 55px;
+    }
+    .content .payment_information_form .paypal-button {
+        display: flex;
+        justify-content: space-around;
+    }
+    .content .payment_information_form .paypal-button div {
+        width: 50%;
+    }
 
 </style>
