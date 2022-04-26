@@ -119,6 +119,17 @@ export default {
 
             console.log(komoju_post_data)
 
+            var post_options = {
+                host: 'komoju.com',
+                port: '443',
+                path: '/api/v1/payments',
+                method: 'POST',
+                headers: {
+                    'Authorization': auth,
+                    'Content-Length': Buffer.byteLength(komoju_post_data)
+                }
+            }
+            console.log("komoju post option success")
 
             var post_req = axios.request(post_options, function(res) {
                 res.setEncoding('utf8')
