@@ -117,7 +117,7 @@
     "3_month": "3 month",
     "annual": "Annual",
     "annual_special": "Annual special",
-    "plan": "plan",
+    "plan": "Plan",
     "user": "1 user",
     "500server": "500GB server",
     "2Tserver": "2TB server",
@@ -161,7 +161,7 @@
     "1_month": "1 month",
     "3_month": "3 month",
     "annual": "Annual amount",
-    "plan": "plan",
+    "plan": "Plan",
     "user": "1 user",
     "500server": "500GB server",
     "chat": "Chat support"
@@ -307,6 +307,7 @@
     "capacity": "Capacity"
   },
   "back": "Back",
+  "next": "Next",
   "create": "Create",
   "comming_soon": "Coming Soon",
   "researcher": "Researcher",
@@ -473,5 +474,16 @@
   "title_users": "Users",
   "title_dashboard": "Dashboard",
   "purchase_information": "Purchase Information",
-  "customers": "Customers"
+  "customers": "Customers",
+  "rejection": "Rejection",
+  "approval": "Approval",
+  "pending": "Pending",
+  "action": "Action",
+  "dealers": "Dealers",
+  "here": "Here",
+  "terms_and_conditions": "Terms and Conditions",
+  "contracted_payment_terms_title": "Contracted payment terms",
+  "contracted_payment_terms_description1": "Closed on the",
+  "contracted_payment_terms_description2": "day of current month Cash transfer on the",
+  "contracted_payment_terms_description3": "day of the following month"
 }
