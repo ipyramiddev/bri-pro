@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'agency_checkout', query: {app_id: '1', cat_id: '1'}}">{{$t('order_button')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'agency_plan', query: {app_id: '1', cat_id: '1'}}">{{$t('order_button')}}</b-button>
                     </div>
                     <div class="discount">
                         <h4>{{$t('15%_discount')}}</h4>
@@ -47,7 +47,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'agency_checkout', query: {app_id: '1', cat_id: '2'}}">{{$t('order_button')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'agency_plan', query: {app_id: '1', cat_id: '2'}}">{{$t('order_button')}}</b-button>
                     </div>
                     <div class="discount">
                         <h4>{{$t('15%_discount')}}</h4>
@@ -72,7 +72,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'agency_checkout', query: {app_id: '1', cat_id: '3'}}">{{$t('order_button')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'agency_plan', query: {app_id: '1', cat_id: '3'}}">{{$t('order_button')}}</b-button>
                     </div>
                     <div class="discount">
                         <h4>{{$t('15%_discount')}}</h4>
@@ -97,7 +97,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'agency_checkout', query: {app_id: '1', cat_id: '4'}}">{{$t('order_button')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'agency_plan', query: {app_id: '1', cat_id: '4'}}">{{$t('order_button')}}</b-button>
                     </div>
                     <div class="discount">
                         <h4>{{$t('15%_discount')}}</h4>

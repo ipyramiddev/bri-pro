@@ -46,7 +46,9 @@ export default [
 
   //Purchase routes
   { path: '/checkout', name: 'checkout', component: page('purchase/checkout.vue') },
+  { path: '/plan', name: 'plan', component: page('purchase/plan.vue') },
   { path: '/agency/checkout', name: 'agency_checkout', component: page('purchase/agency_checkout.vue') },
+  { path: '/agency/plan', name: 'agency_plan', component: page('purchase/agency_plan.vue') },
   { path: '/checkout/confirmation', name: 'confirmation', component: page('purchase/confirmation.vue') },
   { path: '/transaction_history', name: 'transaction_history', component: page('purchase/transaction_history.vue') },
   { path: '/purchase_list', name: 'purchase_list', component: page('purchase/purchase_list.vue') },
