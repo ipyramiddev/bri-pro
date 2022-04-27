@@ -113,6 +113,9 @@
                 <template #cell(permission)="data">
                     {{$t(data.value)}}
                 </template>
+                <template #cell(action)="data">
+                    <b-icon icon="trash" variant="primary" @click="delete_user(data.item.id)"></b-icon>
+                </template>
             </b-table>
 
             <b-row> 
@@ -153,6 +156,7 @@
 
 <script>
     import axios from 'axios'
+    import swal from 'sweetalert2/dist/sweetalert2.js'
     export default {
         data() {
             return {
@@ -163,7 +167,8 @@
                 { key: 'email', label: this.$root.$i18n.tc('email')},
                 { key: 'role', label: this.$root.$i18n.tc('role')},
                 { key: 'permission', label: this.$root.$i18n.tc('permission')},
-                { key: 'phone', label: this.$root.$i18n.tc('phone')}
+                { key: 'phone', label: this.$root.$i18n.tc('phone')},
+                { key: 'action', label: this.$root.$i18n.tc('action')}
                 ],
                 totalRows: 1,
                 currentPage: 1,
@@ -190,6 +195,34 @@
             },
             removeRow(index) {
                 this.items.splice(index, 1)
+            },
+            async delete_user(id) {
+                console.log(id)
+                const { data } = await axios.post('/api/post/delete_user', {
+                    user_id: id
+                })
+                console.log(data)
+                if(data.status == 'success') {
+                    swal.fire({
+                        icon: 'success',
+                        title: this.$t('successTitle'),
+                        text: this.$t('successText'),
+                        reverseButtons: true,
+                        confirmButtonText: this.$t('ok'),
+                        cancelButtonText: this.$t('cancel')
+                    }).then(() => {
+                        this.getUsers()
+                    })
+                } else {
+                    swal.fire({
+                        icon: 'warning',
+                        title: this.$t('warningTitle'),
+                        text: this.$t('warningText'),
+                        reverseButtons: true,
+                        confirmButtonText: this.$t('ok'),
+                        cancelButtonText: this.$t('cancel')
+                    })
+                }
             }
         },        
         created() {
@@ -197,3 +230,10 @@
         }
     }
 </script>
+
+<style>
+.b-icon:hover {
+    cursor: pointer;
+    font-size: 20px;
+}
+</style>

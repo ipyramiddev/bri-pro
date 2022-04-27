@@ -42,9 +42,15 @@ class PaymentController extends Controller
 
     public function transaction_save(Request $request) {
         $input = $request->all();
+        switch ($input['app_id']) {
+            case '1':
+                $app_name = 'IAS';
+                break;
+        }
+        $application_id = DB::table('applications')->where('app_name', $app_name)->where('cat_id', $input['cat_id'])->value('id');
         $transaction = Transaction::create([
             'user_id' => $input['user_id'],
-            'app_id' => $input['app_id'],
+            'app_id' => $application_id,
             'transaction_id' => $input['transaction']['id'],
             'transaction_status' => $input['transaction']['status'],
             'transaction_price' => $input['transaction']['amount']['value'],
@@ -100,7 +106,7 @@ class PaymentController extends Controller
             //sending data is payment_data, web_app url, user_email and user_pass
 
             try{
-                $payment_email_check = Mail::to($user->email, $user->name)
+                $payment_email_check = \Mail::to($user->email, $user->name)
                     ->send(new payment_confirm_send($payment_email_data));
            
                 return response()->json($transaction->transaction_id);
@@ -139,15 +145,13 @@ class PaymentController extends Controller
         // $payment_email_check = Mail::to($user->emailinput['email'], $input['user_name'])
         // ->send(new payment_confirm_send($send_to_app_data));
         try{
-            $payment_email_check = Mail::to($input['email'])
+            $payment_email_check = \Mail::to($input['email'])
                 ->send(new payment_confirm_send($send_to_app_data));
 
             return response()->json([
                 'status' => 'success',
                 'message' => 'Your information formatted successfully.'
-            ])
-       
-            return response()->json($transaction->transaction_id);
+            ]);
         }
         catch(\Exception $e){
             echo ($e->getMessage());

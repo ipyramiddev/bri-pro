@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use DB;
+use Exception;
 
 class AdminController extends Controller
 {
@@ -107,5 +108,39 @@ class AdminController extends Controller
         ]);
 
         return $check;
+    }
+
+    public function delete_user_id(Request $request) {
+        $input = $request->all();
+        try {
+            DB::table('users')->where('id', $input['user_id'])->delete();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'user deleted successfully.'
+            ]);
+        } catch (\Exception $e) {
+            echo ($e->getMessage());
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function delete_application_id(Request $request) {
+        $input = $request->all();
+        try {
+            DB::table('applications')->where('id', $input['app_id'])->delete();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'application deleted successfully.'
+            ]);
+        } catch (\Exception $e) {
+            echo ($e->getMessage());
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+        }
     }
 }

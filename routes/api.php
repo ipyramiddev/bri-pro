@@ -16,6 +16,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\NewinformationsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AgencyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -95,6 +96,12 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('comment/edit', [CommentController::class, 'comment_edit_post']);
     Route::post('reply/post', [CommentController::class, 'reply_post']);
     Route::get('comment/delete/{info_id}/{comment_id}', [CommentController::class, 'delete_comment_byid']);
+
+    //registered agency manage routes
+    Route::post('user/agency/rejection', [AgencyController::class, 'agency_rejection']);
+    Route::post('user/agency/approve', [AgencyController::class, 'agency_approve']);
+    Route::post('user/agency/pending', [AgencyController::class, 'agency_pending']);
+
 });
 
 Route::group(['middleware' => 'guest:api'], function () {

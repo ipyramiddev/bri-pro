@@ -53,7 +53,13 @@ class FrontendController extends Controller
     }
 
     public function get_registered_customers() {
-        $data = DB::table('customer_purchases')->leftJoin('users', 'customer_purchases.user_id', '=', 'users.id')->leftJoin('applications', 'customer_purchases.cat_tab', '=', 'applications.category_tab')->get();
+        $data = DB::table('customer_purchases')->leftJoin('users', 'customer_purchases.user_id', '=', 'users.id')->leftJoin('applications', 'customer_purchases.cat_tab', '=', 'applications.category_tab')->select('customer_purchases.*', 'users.name', 'users.nikename', 'users.email', 'users.phone', 'users.role', 'users.permission', 'applications.id')->get();
+
+        return response()->json($data);
+    }
+
+    public function get_registered_dealers() {
+        $data = DB::table('customer_purchases')->leftJoin('users', 'customer_purchases.user_id', '=', 'users.id')->leftJoin('applications', 'customer_purchases.cat_tab', '=', 'applications.category_tab')->select('customer_purchases.*', 'users.name', 'users.nikename', 'users.email', 'users.phone', 'users.role', 'users.permission', 'applications.id')->get();
 
         return response()->json($data);
     }

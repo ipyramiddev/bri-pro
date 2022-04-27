@@ -79,7 +79,7 @@
               </div>
             </li>
 
-            <li v-if="user && user.role == 'admin'" class="nav-item dropdown" @mouseover="purchaseOver" @mouseleave="purchaseLeave">
+            <li v-else-if="user && user.role == 'admin'" class="nav-item dropdown" @mouseover="purchaseOver" @mouseleave="purchaseLeave">
               <router-link v-if="mobile" :to="{ name: $t('purchase.url') }"  class="nav-link" active-class="active" style="display: inline">
                 {{ $t('purchase.text') }}
               </router-link>
@@ -115,7 +115,25 @@
               </router-link>
             </li>
 
-            <li class="nav-item">
+            <li v-if="user && user.role == 'admin'" class="nav-item dropdown" @mouseover="dealerOver" @mouseleave="dealerLeave">
+              <router-link v-if="mobile" :to="{ name: $t('dealer.url') }"  class="nav-link" active-class="active" style="display: inline">
+                {{ $t('dealer.text') }}
+              </router-link>
+              <router-link v-else :to="{ name: $t('dealer.url') }"  class="nav-link dropdown-toggle" active-class="active">
+                {{ $t('dealer.text') }}
+              </router-link>
+              <div class="toggle-button-icon" :style="{display: mobile ? 'inline' : 'none'}" @click="dealerMenuClick">
+                  <b-icon v-if="dealerShow" icon="chevron-bar-up"></b-icon>
+                  <b-icon v-else icon="chevron-bar-down"></b-icon>
+              </div>
+              <div class="dropdown-menu" :style="{ display: dealerShow ? 'block' : 'none' } ">
+                <router-link :to="{ name: 'registered_dealers' }" class="nav-link dropdown-item">
+                  {{ $t('dealers') }}
+                </router-link>
+              </div>
+            </li>
+
+            <li v-else class="nav-item">
               <router-link :to="{ name: $t('dealer.url') }" class="nav-link" active-class="active">
                 {{ $t('dealer.text') }}
               </router-link>
@@ -164,6 +182,7 @@ export default {
     fixed: false,
     productShow: false,
     purchaseShow: false,
+    dealerShow: false,
     togglebuttonShow: false,
     mobile: ''
   }),
@@ -207,6 +226,12 @@ export default {
     purchaseLeave() {
       this.purchaseShow = false;
     },
+    dealerOver() {
+      this.dealerShow = true;
+    },
+    dealerLeave() {
+      this.dealerShow = false;
+    },
     profileOver() {
       this.$refs.dropdown.visible = true;
     },
@@ -229,6 +254,13 @@ export default {
         this.purchaseShow = false;
       } else {
         this.purchaseShow = true;
+      }
+    },
+    dealerMenuClick() {
+      if (this.dealerShow == true) {
+        this.dealerShow = false;
+      } else {
+        this.dealerShow = true;
       }
     },
     scrollToTop() {
