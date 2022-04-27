@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'checkout', query: {app_id: '1', cat_id: '1', amount: '36000'}}">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '1', amount: '36000'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'checkout', query: {app_id: '1', cat_id: '2', amount: '100000'}}">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '2', amount: '100000'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'checkout', query: {app_id: '1', cat_id: '3', amount: '360000'}}">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '3', amount: '360000'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'checkout', query: {app_id: '1', cat_id: '4', amount: '1440000'}}">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '4', amount: '1440000'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>
