@@ -479,11 +479,11 @@
   "approval": "Approval",
   "pending": "Pending",
   "action": "Action",
+  "dealers": "Dealers",
   "here": "Here",
   "terms_and_conditions": "Terms and Conditions",
   "contracted_payment_terms_title": "Contracted payment terms",
   "contracted_payment_terms_description1": "Closed on the",
   "contracted_payment_terms_description2": "day of current month Cash transfer on the",
-  "contracted_payment_terms_description3": "day of the following month",
-  "dealers": "Dealers"
+  "contracted_payment_terms_description3": "day of the following month"
 }
