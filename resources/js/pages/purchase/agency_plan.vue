@@ -17,43 +17,43 @@
                         <div id="step-1">
                             <div class="form-group">
                                 <label for="order_number">{{$t('order_number')}}</label>
-                                <input type="text" class="form-control" id="order_number" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="order_number" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="dealer_name">{{$t('dealer_name')}}</label>
-                                <input type="text" class="form-control" id="dealer_name" name="dealer_name"/>
+                                <b-form-input type="text" class="form-control" id="dealer_name" name="dealer_name"/>
                             </div>
                             <div class="form-group">
                                 <label for="dealer_charge_surname">{{$t('dealer_charge_surname')}}</label>
-                                <input type="text" class="form-control" id="dealer_charge_surname" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="dealer_charge_surname" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="middle_name_in_charge_of_dealer">{{$t('middle_name_in_charge_of_dealer')}}</label>
-                                <input type="text" class="form-control" id="middle_name_in_charge_of_dealer" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="middle_name_in_charge_of_dealer" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_name">{{$t('customer_name')}}</label>
-                                <input type="text" class="form-control" id="customer_name" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_name" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_surname">{{$t('customer_surname')}}</label>
-                                <input type="text" class="form-control" id="customer_surname" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_surname" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_middle_name">{{$t('customer_middle_name')}}</label>
-                                <input type="text" class="form-control" id="customer_middle_name" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_middle_name" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_facility">{{$t('customer_facility')}}</label>
-                                <input type="text" class="form-control" id="customer_facility" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_facility" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_department">{{$t('customer_department')}}</label>
-                                <input type="text" class="form-control" id="customer_department" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_department" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_address">{{$t('customer_address')}}</label>
-                                <input type="text" class="form-control" id="customer_address" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_address" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_city">{{$t('customer_city')}}</label>
@@ -61,15 +61,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="customer_prefecture">{{$t('customer_prefecture')}}</label>
-                                <input type="text" class="form-control" id="customer_prefecture" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_prefecture" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_country">{{$t('customer_country')}}</label>
-                                <input type="text" class="form-control" id="customer_country" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_country" name="order_number"/>
                             </div>
                             <div class="form-group float-right">
-                                <b-button variant="outline-secondary" style="margin: 5px" :to="{name: $t('dealer.url')}">{{$t('back')}}</b-button>
-                                <b-button id="next" style="margin: 5px" variant="outline-secondary">{{$t('next')}}</b-button>
+                                <b-button variant="outline-primary" style="margin: 5px" :to="{name: $t('dealer.url')}">{{$t('back')}}</b-button>
+                                <b-button id="next" style="margin: 5px" variant="outline-primary">{{$t('next')}}</b-button>
                             </div>
                         </div>
                         <div id="step-2" class="d-none">
