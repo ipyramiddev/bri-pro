@@ -74,7 +74,7 @@
                         </div>
                         <div id="step-2" class="d-none">
                             <div style="padding-left: 20px">
-                                <h5>{{$t('terms_and_conditions')}} <b-button variant="outline-secondary">{{$t('here')}}</b-button></h5>
+                                <router-link :to="{name: 'terms_and_conditions'}"><h5>{{$t('terms_and_conditions')}}</h5></router-link>
                             </div>
                             <div class="payment_method">
                                 <h4>{{$t('contracted_payment_terms_title')}}</h4>
@@ -85,8 +85,8 @@
                                 </div>
                             </div>
                             <div class="form-group float-right">
-                                <b-button id="back" style="margin: 5px" variant="outline-secondary">{{$t('back')}}</b-button>
-                                <b-button id="subscribe" style="margin: 5px" variant="outline-secondary">{{$t('subscribe')}}</b-button>
+                                <b-button id="back" style="margin: 5px" variant="outline-primary">{{$t('back')}}</b-button>
+                                <b-button id="subscribe" style="margin: 5px" variant="outline-primary">{{$t('subscribe')}}</b-button>
                             </div>
                         </div>
                     </form>
@@ -351,6 +351,9 @@ export default {
     .form-group .form-control {
       width: 30%;
       float: left;
+    }
+    .btn-outline-primary {
+        border-radius: 10px;
     }
     
 </style>
