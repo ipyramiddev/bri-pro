@@ -8,6 +8,14 @@
             <div class="article mt-3">
                 <h5 class="subtitle">{{$t("terms.part1.title")}}</h5>
                 <ol>
+                    <li>
+                        <h6 class="subtitle">{{$t("terms.part1.text1.title")}}</h6>
+                        <p class="text">{{$t("terms.part1.text1.description")}}</p>
+                    </li>
+                    <li>
+                        <h6 class="subtitle">{{$t("terms.part1.text2.title")}}</h6>
+                        <p class="text">{{$t("terms.part1.text2.description")}}</p>
+                    </li>
                 </ol>
             </div>
             <div class="article">
@@ -20,6 +28,21 @@
             <div class="article">
             </div>
             <div class="article">
+                <h5 class="subtitle">{{$t("terms.part4.title")}}</h5>
+                <ol>
+                    <li class="text">{{$t("terms.part4.text1")}}</li>
+                    <li class="text">{{$t("terms.part4.text2")}}</li>
+                    <li class="text">{{$t("terms.part4.text3")}}</li>
+                    <li class="text">{{$t("terms.part4.text4")}}</li>
+                </ol>
+            </div>
+            <div class="article">
+                <h5 class="subtitle">{{$t("terms.part5.title")}}</h5>
+                <p class="text">
+                    {{$t("terms.part5.description1")}}<br/>
+                    {{$t("terms.part5.description2")}}
+                </p>
+            </div>
             </div>
     </div>
 </template>
