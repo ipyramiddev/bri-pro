@@ -9,12 +9,14 @@
                     <h3>
                         {{category.app_name}} {{$t('ias.plan')}}
                         <span style="padding-left: 20px; font-size: 24px">{{$t(category.price)}}</span>
-                        <span class="float-right">{{$t(category.price)}}</span>
+                        <span class="float-right pr-5">{{$t(category.price)}}</span>
                     </h3>
+                   
                 </div>
-                <div style="padding-left: 20px; padding-top: 30px">
+                <div class="pl-4 pt-5" style="position: relative">
                     <form id="plan-form" method="POST">
                         <div id="step-1">
+                            <div v-if="locale=='en'" style="position: absolute; right: 0; top: -10px">include tax</div>
                             <div class="form-group">
                                 <label for="order_number">{{$t('order_number')}}</label>
                                 <b-form-input type="text" class="form-control" id="order_number" name="order_number"/>
