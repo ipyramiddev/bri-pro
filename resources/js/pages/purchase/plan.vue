@@ -156,7 +156,14 @@ export default {
 
                 createOrder: function(data, actions) {
                     return actions.order.create({
-                        purchase_units: [{"amount":{"currency_code":"USD","value":amount}}]
+                        purchase_units: [
+                            {
+                                amount:{
+                                    currency_code:"USD",
+                                    value:amount
+                                }
+                            }
+                            ]
                     });
                 },
 
@@ -192,7 +199,7 @@ export default {
                     console.log(err);
                 }
 
-            }).render(this.$refs.paypal)
+            }).render("#paypal_button")
         },
 
         async komoju_purchase() { 
@@ -301,6 +308,9 @@ export default {
     }
     .content .payment_information_form .paypal-button div {
         width: 50%;
+    }
+    .btn-outline-primary {
+        border-radius: 10px;
     }
 
 </style>
