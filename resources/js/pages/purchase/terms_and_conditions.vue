@@ -26,6 +26,25 @@
                 </p>
             </div>
             <div class="article">
+                <h5 class="subtitle">{{$t("terms.part3.title")}}</h5>
+                <ol>
+                    <li>
+                        <h6 class="subtitle">{{$t("terms.part3.text1.title")}}</h6>
+                        <p class="text">{{$t("terms.part3.text1.description")}}</p>
+                    </li>
+                    <li>
+                        <h6 class="subtitle">{{$t("terms.part3.text2.title")}}</h6>
+                        <p class="text">{{$t("terms.part3.text2.description")}}</p>
+                    </li>
+                    <li>
+                        <h6 class="subtitle">{{$t("terms.part3.text3.title")}}</h6>
+                        <p class="text">{{$t("terms.part3.text3.description")}}</p>
+                    </li>
+                    <li>
+                        <h6 class="subtitle">{{$t("terms.part3.text4.title")}}</h6>
+                        <p class="text">{{$t("terms.part3.text3.description")}}</p>
+                    </li>
+                </ol>
             </div>
             <div class="article">
                 <h5 class="subtitle">{{$t("terms.part4.title")}}</h5>
@@ -43,7 +62,26 @@
                     {{$t("terms.part5.description2")}}
                 </p>
             </div>
+            <div class="article">
+                <h5 class="subtitle">{{$t("terms.part6.title")}}</h5>
+                <p class="text">{{$t("terms.part6.description")}}</p>
             </div>
+            <div class="article">
+                <h5 class="subtitle">{{$t("terms.part7.title")}}</h5>
+                <p class="text">
+                    {{$t("terms.part7.description1")}}<br/>
+                    {{$t("terms.part7.description2")}}
+                </p>
+            </div>
+            <div class="article">
+                <h5 class="subtitle">{{$t("terms.part8.title")}}</h5>
+                <p class="text">{{$t("terms.part8.description")}}</p>
+            </div>
+            <div class="article">
+                <h5 class="subtitle">{{$t("terms.part9.title")}}</h5>
+                <p class="text">{{$t("terms.part9.description")}}</p>
+            </div>
+        </div>
     </div>
 </template>
 
