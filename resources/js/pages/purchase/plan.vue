@@ -24,8 +24,8 @@
                     </div>
                 </div>
                 <div class="form-group float-right">
-                    <b-button variant="outline-secondary" :to="{name: $t('purchase.url')}">{{$t('back')}}</b-button>
-                    <b-button variant="outline-secondary" id="subscribe">{{$t('subscribe')}}</b-button>
+                    <b-button variant="outline-primary" :to="{name: $t('purchase.url')}">{{$t('back')}}</b-button>
+                    <b-button variant="outline-primary" id="subscribe">{{$t('subscribe')}}</b-button>
                 </div>
             </div>
         </div>
@@ -67,7 +67,8 @@ export default {
 
         script_paypal.setAttribute(`src`,`https://www.paypal.com/sdk/js?client-id=${ClientID}&currency=USD`)
         script_paypal.setAttribute(`data-namespace`,`paypal_sdk`)
-        script_paypal.addEventListener("load", this.setLoaded)
+        script_paypal.setAttribute(`data-sdk-integration-source`, `button-factory`)
+        script_paypal.addEventListener("load", () => this.setLoaded())
         document.body.appendChild(script_paypal)
 
         //komoju payment button
@@ -109,6 +110,7 @@ export default {
             });
             e.preventDefault();
         });
+
         document.getElementById("bank_transfer").addEventListener("click", function(e) {
             console.log("komoju button click")
             handler.open({
@@ -143,10 +145,13 @@ export default {
             console.log(cat_id)
             console.log(amount)
 
-            paypal_sdk.Buttons({
+            paypal.Buttons({
                 style: {
                     shape: 'pill',
-                    label: 'checkout'
+                    label: 'checkout',
+                    size: 'small',
+                    color: 'gold',
+                    layout: 'vertical'
                 },
 
                 createOrder: function(data, actions) {
