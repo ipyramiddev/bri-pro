@@ -7,8 +7,9 @@
             <div class="content">
                 <div class="category_level">
                     <h3>
-                        {{category.app_name}} {{$t('ias.plan')}}<span style="padding-left: 20px; font-size: 24px">{{$t(category.price)}}</span><span class="float-right">{{$t(category.price)}}</span>
+                        {{category.app_name}} {{$t('ias.plan')}}<span style="padding-left: 20px; font-size: 24px">{{$t(category.price)}}</span><span class="float-right pr-5">{{$t(category.price)}}</span>
                     </h3>
+                    <div v-if="locale=='en'" class="float-right">include tax</div>
                 </div>
                 <div style="padding-left: 20px; padding-top: 30px">
                     <router-link :to="{name: 'terms_and_conditions'}"><h5>{{$t('terms_and_conditions')}}</h5></router-link>
@@ -16,8 +17,6 @@
                 <div class="payment_method">
                     <h4>{{$t('payment_method')}}</h4>
                     <div class="form-group">
-                        <b-button variant="outline-secondary" id="bank_transfer">{{$t('bank_transfer')}}</b-button>
-                        <b-button variant="outline-secondary" id="david_card">{{$t('david_card')}}</b-button>
                         <b-button variant="outline-secondary" id="paypal">{{$t('paypal')}}</b-button>
                         <b-button variant="outline-secondary" id="amazon_pay">{{$t('amazon_pay')}}</b-button>
                         <b-button variant="outline-secondary" id="credit_card">{{$t('credit_card')}}</b-button>
