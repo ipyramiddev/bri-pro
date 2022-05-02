@@ -16,10 +16,29 @@
                 </div>
                 <div class="payment_method">
                     <h4>{{$t('payment_method')}}</h4>
-                    <div class="form-group">
-                        <b-button variant="outline-secondary" id="paypal">{{$t('paypal')}}</b-button>
-                        <b-button variant="outline-secondary" id="amazon_pay">{{$t('amazon_pay')}}</b-button>
-                        <b-button variant="outline-secondary" id="credit_card">{{$t('credit_card')}}</b-button>
+                    <div v-if="locale=='jp'" class="row" style="padding-left: 20px">
+                        <div class="form-group">
+                            <form id="komoju-form" method="post">
+                                <input id="komojuToken" type="hidden" v-model="komojuToken" name="komojuToken" />
+                                <b-button variant="outline-primary" id="bank_transfer">{{$t('bank_transfer')}}</b-button>
+                                <b-button variant="outline-primary" id="david_card">{{$t('david_card')}}</b-button>
+                                <b-button variant="outline-primary" id="paypal" ref="paypal">{{$t('paypal')}}</b-button>
+                                <b-button variant="outline-primary" id="amazon_pay">{{$t('amazon_pay')}}</b-button>
+                                <b-button variant="outline-primary" id="credit_card">{{$t('credit_card')}}</b-button>
+                            </form>
+                        </div>
+                    </div>
+                    <div v-else class="row" style="padding-left: 20px">
+                        <div class="form-group">
+                            <form @submit.prevent="paypal_payment_post" method="post">
+                                <div id="paypal_button"></div>
+                                <b-button variant="outline-primary" id="bank_transfer">{{$t('bank_transfer')}}</b-button>
+                                <b-button variant="outline-primary" id="david_card">{{$t('david_card')}}</b-button>
+                                <b-button variant="outline-primary" id="paypal">{{$t('paypal')}}</b-button>
+                                <b-button variant="outline-primary" id="amazon_pay">{{$t('amazon_pay')}}</b-button>
+                                <b-button variant="outline-primary" id="credit_card">{{$t('credit_card')}}</b-button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group float-right">
