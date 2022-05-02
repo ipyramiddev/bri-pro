@@ -11,7 +11,7 @@
                     </h3>
                 </div>
                 <div style="padding-left: 20px; padding-top: 30px">
-                    <h5>{{$t('terms_and_conditions')}} <b-button variant="outline-secondary">{{$t('here')}}</b-button></h5>
+                    <router-link :to="{name: 'terms_and_conditions'}"><h5>{{$t('terms_and_conditions')}}</h5></router-link>
                 </div>
                 <div class="payment_method">
                     <h4>{{$t('payment_method')}}</h4>
