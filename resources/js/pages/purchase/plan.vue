@@ -22,7 +22,7 @@
                                 <input id="komojuToken" type="hidden" v-model="komojuToken" name="komojuToken" />
                                 <b-button variant="outline-primary" id="bank_transfer">{{$t('bank_transfer')}}</b-button>
                                 <b-button variant="outline-primary" id="david_card">{{$t('david_card')}}</b-button>
-                                <b-button variant="outline-primary" id="paypal" ref="paypal">{{$t('paypal')}}</b-button>
+                                <b-button variant="outline-primary" id="paypal">{{$t('paypal')}}</b-button>
                                 <b-button variant="outline-primary" id="amazon_pay">{{$t('amazon_pay')}}</b-button>
                                 <b-button variant="outline-primary" id="credit_card">{{$t('credit_card')}}</b-button>
                             </form>
@@ -31,13 +31,17 @@
                     <div v-else class="row" style="padding-left: 20px">
                         <div class="form-group">
                             <form @submit.prevent="paypal_payment_post" method="post">
-                                <div id="paypal_button"></div>
                                 <b-button variant="outline-primary" id="bank_transfer">{{$t('bank_transfer')}}</b-button>
                                 <b-button variant="outline-primary" id="david_card">{{$t('david_card')}}</b-button>
                                 <b-button variant="outline-primary" id="paypal">{{$t('paypal')}}</b-button>
                                 <b-button variant="outline-primary" id="amazon_pay">{{$t('amazon_pay')}}</b-button>
                                 <b-button variant="outline-primary" id="credit_card">{{$t('credit_card')}}</b-button>
                             </form>
+                        </div>
+                    </div>
+                    <div class="modal" id="paypal-modal">
+                        <div class="modal-content">
+                            <div id="paypal-container"></div>
                         </div>
                     </div>
                 </div>
@@ -53,6 +57,7 @@
 <script>
 import axios from 'axios'
 import { mapGetters } from 'vuex'
+import $ from 'jquery'
 import swal from 'sweetalert2/dist/sweetalert2.js'
 
 export default {
@@ -81,9 +86,10 @@ export default {
         //paypal button section
         const script_paypal = document.createElement("script")
         const ClientID = process.env.MIX_PAYPAL_SANDBOX_CLIENT_ID
+        const currency = this.$route.query.currency
         console.log(ClientID)
 
-        script_paypal.setAttribute(`src`,`https://www.paypal.com/sdk/js?client-id=${ClientID}&currency=USD`)
+        script_paypal.setAttribute(`src`,`https://www.paypal.com/sdk/js?client-id=${ClientID}&currency=${currency}`)
         script_paypal.setAttribute(`data-namespace`,`paypal_sdk`)
         script_paypal.setAttribute(`data-sdk-integration-source`, `button-factory`)
         script_paypal.addEventListener("load", () => this.setLoaded())
@@ -114,9 +120,21 @@ export default {
                 this.komojuToken = token.id
                 this.komoju_purchase()
             }
-        })
+        });
 
-        document.getElementById("credit_card").addEventListener("click", function(e) {
+        
+
+        $("#paypal").on("click", function() {
+            $("#paypal-modal").css({"display": "block"});
+        });
+
+        $("#paypal-modal").on("click", function(event) {
+            if (event.target !== $("#paypal-modal .modal-content")) {
+                $("#paypal-modal").css({"display": "none"})
+            };
+        });
+
+        $("#credit_card").on("click", function(e) {
             console.log("komoju button click")
             handler.open({
                 amount: amount,
@@ -129,7 +147,7 @@ export default {
             e.preventDefault();
         });
 
-        document.getElementById("bank_transfer").addEventListener("click", function(e) {
+        $("#bank_transfer").on("click", function(e) {
             console.log("komoju button click")
             handler.open({
                 amount: amount,
@@ -158,12 +176,13 @@ export default {
             var cat_id = this.$route.query.cat_id;
             var amount = this.amount
             var router = this.$router
+            var currency = this.$route.query.currency;
             
             console.log(app_id)
             console.log(cat_id)
             console.log(amount)
 
-            paypal.Buttons({
+            paypal_sdk.Buttons({
                 style: {
                     shape: 'pill',
                     label: 'checkout',
@@ -177,7 +196,7 @@ export default {
                         purchase_units: [
                             {
                                 amount:{
-                                    currency_code:"USD",
+                                    currency_code:currency,
                                     value:amount
                                 }
                             }
@@ -217,7 +236,7 @@ export default {
                     console.log(err);
                 }
 
-            }).render("#paypal_button")
+            }).render("#paypal-container")
         },
 
         async komoju_purchase() { 
@@ -328,6 +347,17 @@ export default {
         width: 50%;
     }
     .btn-outline-primary {
+        border-radius: 10px;
+    }
+    #paypal-modal {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    #paypal-modal .modal-content {
+        width: 400px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
         border-radius: 10px;
     }
 
