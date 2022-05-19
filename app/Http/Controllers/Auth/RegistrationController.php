@@ -27,15 +27,6 @@ class RegistrationController extends Controller
     public function customerRegister(Request $request) {
         $data = $request->all();
         Validator::make($data, [
-            'first_name' => 'required|max:50',
-            'last_name' => 'required|max:50',
-            'name' => 'required|max:50',
-            'organization' => 'required',
-            'deaprtment' => 'required',
-            'phone' => 'required',
-            'zip' => 'required',
-            'address_1' => 'required',
-            'address_2' => 'required',
             'email' => 'required|email:filter|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ])->validate();
@@ -44,11 +35,11 @@ class RegistrationController extends Controller
         $data['permission'] = 'approved';
 
         $check = User::create([
-            'name'=>$data['name'],
-            'nikename'=>$data['nike_name'],
+            'name'=>$data['name'] ?? '',
+            'nikename'=>$data['nike_name'] ?? '',
             'email'=>$data['email'],
             'password'=>bcrypt($data['password']),
-            'phone'=>$data['phone'],
+            'phone'=>$data['phone'] ?? null,
             'role'=>$data['role'],
             'permission'=>$data['permission']
         ]);
@@ -86,16 +77,6 @@ class RegistrationController extends Controller
     public function agencyRegister(Request $request) {
         $data = $request->all();
         Validator::make($data, [
-            'company_name' => 'required|max:50',
-            'seo_name' => 'required|max:50',
-            'name' => 'required|max:50',
-            'address_1' => 'required',
-            'deaprtment' => 'required',
-            'phone' => 'required',
-            'zip' => 'required',
-            'company_site' => 'required',
-            'transaction_con' => 'required',
-            'deposit_amount' => 'numeric|required',
             'email' => 'required|email:filter|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ])->validate();
@@ -104,11 +85,11 @@ class RegistrationController extends Controller
         $data['permission'] = 'suspend';
 
         $check = DB::table('users')->insert([
-            'name'=>$data['name'],
+            'name'=>$data['name'] ?? '',
             'nikename'=>$data['nike_name'],
             'email'=>$data['email'],
             'password'=>bcrypt($data['password']),
-            'phone'=>$data['phone'],
+            'phone'=>$data['phone'] ?? null,
             'role'=>$data['role'],
             'permission'=>$data['permission']
         ]);

@@ -15,8 +15,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('company_name') }}</label>
             <div class="col-md-7">
-              <input v-model="form.company_name" :class="{ 'is-invalid': form.errors.has('company_name') }" class="form-control" type="text" name="company_name" :placeholder="$t('company_name')">
-              <has-error :form="form" field="company_name" />
+              <input v-model="form.company_name" class="form-control" type="text" name="company_name" :placeholder="$t('company_name')">
             </div>
           </div>
 
@@ -24,8 +23,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('seo_name') }}</label>
             <div class="col-md-7">
-              <input v-model="form.seo_name" :class="{ 'is-invalid': form.errors.has('seo_name') }" class="form-control" type="text" name="seo_name" :placeholder="$t('seo_name')">
-              <has-error :form="form" field="seo_name" />
+              <input v-model="form.seo_name" class="form-control" type="text" name="seo_name" :placeholder="$t('seo_name')">
             </div>
           </div>
 
@@ -42,8 +40,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('nike_name') }}</label>
             <div class="col-md-7">
-              <input v-model="form.nike_name" :class="{ 'is-invalid': form.errors.has('nike_name') }" class="form-control" type="text" nike_name="nike_name" :placeholder="$t('nike_name')">
-              <has-error :form="form" field="nike_name" />
+              <input v-model="form.nike_name" class="form-control" type="text" nike_name="nike_name" :placeholder="$t('nike_name')">
             </div>
           </div>
 
@@ -60,8 +57,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('address_1') }}</label>
             <div class="col-md-7">
-              <input v-model="form.address_1" :class="{ 'is-invalid': form.errors.has('address_1') }" class="form-control" type="text" name="address_1" :placeholder="$t('address_1')">
-              <has-error :form="form" field="address_1" />
+              <input v-model="form.address_1" class="form-control" type="text" name="address_1" :placeholder="$t('address_1')">
             </div>
           </div>
 
@@ -69,8 +65,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('phone') }}</label>
             <div class="col-md-7">
-              <input v-model="form.phone" :class="{ 'is-invalid': form.errors.has('phone') }" class="form-control" type="tel" name="phone" pattern="^(\W|\d){9,15}" placeholder="(+)000-000-0000">
-              <has-error :form="form" field="phone" />
+              <input v-model="form.phone" class="form-control" type="tel" name="phone" pattern="^(\W|\d){9,15}" placeholder="(+)000-000-0000">
             </div>
           </div>
 
@@ -78,8 +73,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('zip') }}</label>
             <div class="col-md-7">
-              <input v-model="form.zip" :class="{ 'is-invalid': form.errors.has('zip') }" class="form-control" type="text" name="zip" pattern="[0-9]{3,7}" placeholder="12345">
-              <has-error :form="form" field="zip" />
+              <input v-model="form.zip" class="form-control" type="text" name="zip" pattern="[0-9]{3,7}" placeholder="12345">
             </div>
           </div>
 
@@ -87,8 +81,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('company_site') }}</label>
             <div class="col-md-7">
-              <input v-model="form.company_site" :class="{ 'is-invalid': form.errors.has('company_site') }" class="form-control" type="text" name="company_site" :placeholder="$t('company_site')">
-              <has-error :form="form" field="company_site" />
+              <input v-model="form.company_site" class="form-control" type="text" name="company_site" :placeholder="$t('company_site')">
             </div>
           </div>
 
@@ -96,8 +89,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('transaction_con') }}</label>
             <div class="col-md-7">
-              <textarea v-model="form.transaction_con" :class="{ 'is-invalid': form.errors.has('transaction_con') }" class="form-control" type="text" name="transaction_con" :placeholder="$t('transaction_con_des')"></textarea>
-              <has-error :form="form" field="transaction_con" />
+              <textarea v-model="form.transaction_con" class="form-control" type="text" name="transaction_con" :placeholder="$t('transaction_con_des')"></textarea>
             </div>
           </div>
 
@@ -105,8 +97,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('deposit_amount') }}</label>
             <div class="col-md-7">
-              <input v-model="form.deposit_amount" :class="{ 'is-invalid': form.errors.has('deposit_amount') }" class="form-control" type="number" name="deposit_amount" :placeholder="$t('deposit_amount')">
-              <has-error :form="form" field="deposit_amount" />
+              <input v-model="form.deposit_amount" class="form-control" type="number" name="deposit_amount" :placeholder="$t('deposit_amount')">
             </div>
           </div>
 
@@ -114,8 +105,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('deaprtment') }}</label>
             <div class="col-md-7">
-              <input v-model="form.deaprtment" :class="{ 'is-invalid': form.errors.has('deaprtment') }" class="form-control" type="text" name="deaprtment" :placeholder="$t('deaprtment')">
-              <has-error :form="form" field="deaprtment" />
+              <input v-model="form.deaprtment" class="form-control" type="text" name="deaprtment" :placeholder="$t('deaprtment')">
             </div>
           </div>
 

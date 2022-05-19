@@ -15,8 +15,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('first_name') }}</label>
             <div class="col-md-7">
-              <input v-model="form.first_name" :class="{ 'is-invalid': form.errors.has('first_name') }" class="form-control" type="text" name="first_name" :placeholder="$t('first_name')">
-              <has-error :form="form" field="first_name" />
+              <input v-model="form.first_name" class="form-control" type="text" name="first_name" :placeholder="$t('first_name')">
             </div>
           </div>
 
@@ -24,8 +23,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('last_name') }}</label>
             <div class="col-md-7">
-              <input v-model="form.last_name" :class="{ 'is-invalid': form.errors.has('last_name') }" class="form-control" type="text" name="last_name" :placeholder="$t('last_name')">
-              <has-error :form="form" field="last_name" />
+              <input v-model="form.last_name" class="form-control" type="text" name="last_name" :placeholder="$t('last_name')">
             </div>
           </div>
           
@@ -33,8 +31,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('nike_name') }}</label>
             <div class="col-md-7">
-              <input v-model="form.nike_name" :class="{ 'is-invalid': form.errors.has('nike_name') }" class="form-control" type="text" name="nike_name" :placeholder="$t('nike_name')">
-              <has-error :form="form" field="nike_name" />
+              <input v-model="form.nike_name" class="form-control" type="text" name="nike_name" :placeholder="$t('nike_name')">
             </div>
           </div>
 
@@ -60,8 +57,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('organization') }}</label>
             <div class="col-md-7">
-              <input v-model="form.organization" :class="{ 'is-invalid': form.errors.has('organization') }" class="form-control" type="text" name="organization" :placeholder="$t('organization')">
-              <has-error :form="form" field="organization" />
+              <input v-model="form.organization" class="form-control" type="text" name="organization" :placeholder="$t('organization')">
             </div>
           </div>
 
@@ -69,8 +65,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('deaprtment') }}</label>
             <div class="col-md-7">
-              <input v-model="form.deaprtment" :class="{ 'is-invalid': form.errors.has('deaprtment') }" class="form-control" type="text" name="deaprtment" :placeholder="$t('deaprtment')">
-              <has-error :form="form" field="deaprtment" />
+              <input v-model="form.deaprtment" class="form-control" type="text" name="deaprtment" :placeholder="$t('deaprtment')">
             </div>
           </div>
 
@@ -78,8 +73,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('phone') }}</label>
             <div class="col-md-7">
-              <input v-model="form.phone" :class="{ 'is-invalid': form.errors.has('phone') }" class="form-control" type="tel" name="phone" pattern="^(\W|\d){9,15}" placeholder="(+)000-000-0000">
-              <has-error :form="form" field="phone" />
+              <input v-model="form.phone" class="form-control" type="tel" name="phone" pattern="^(\W|\d){9,15}" placeholder="(+)000-000-0000">
             </div>
           </div>
 
@@ -87,8 +81,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('zip') }}</label>
             <div class="col-md-7">
-              <input v-model="form.zip" :class="{ 'is-invalid': form.errors.has('zip') }" class="form-control" type="text" name="zip" pattern="[0-9]{3,7}" placeholder="12345">
-              <has-error :form="form" field="zip" />
+              <input v-model="form.zip" class="form-control" type="text" name="zip" pattern="[0-9]{3,7}" placeholder="12345">
             </div>
           </div>
 
@@ -120,8 +113,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('address_1') }}</label>
             <div class="col-md-7">
-              <input v-model="form.address_1" :class="{ 'is-invalid': form.errors.has('address_1') }" class="form-control" type="text" name="address_1" :placeholder="$t('address_1')">
-              <has-error :form="form" field="address_1" />
+              <input v-model="form.address_1" class="form-control" type="text" name="address_1" :placeholder="$t('address_1')">
             </div>
           </div>
 
@@ -129,8 +121,7 @@
           <div class="mb-3 row">
             <label class="col-md-3 col-form-label text-md-end">{{ $t('address_2') }}</label>
             <div class="col-md-7">
-              <input v-model="form.address_2" :class="{ 'is-invalid': form.errors.has('address_2') }" class="form-control" type="text" name="address_2" :placeholder="$t('address_2')">
-              <has-error :form="form" field="address_2" />
+              <input v-model="form.address_2" class="form-control" type="text" name="address_2" :placeholder="$t('address_2')">
             </div>
           </div>
 
