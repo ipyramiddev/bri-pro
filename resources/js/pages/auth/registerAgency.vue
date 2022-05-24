@@ -136,6 +136,19 @@
             </div>
           </div>
 
+          <!-- Subscribe Checkbox -->
+          <div class="mb-3 row">
+            <div class="col-md-7 offset-md-3 d-flex">
+
+              <!-- Subscribe Checkbox -->
+              <checkbox v-model="subscribe" name="subscribe">
+                {{ $t('Subscribe to Newsletter') }}
+              </checkbox>
+
+
+            </div>
+          </div>
+          
           <div class="mb-3 row">
             <div class="col-md-7 offset-md-3 d-flex">
               <!-- Submit Button -->
