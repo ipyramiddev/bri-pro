@@ -41,6 +41,10 @@
                                 <div class="payment_information_form" style="padding-top: 15px;">
                                     <div style="padding: 0 40px;">
                                         <div class="col-md-12 paypal-button">
+                                            <b-button id="komojuButton" variant="primary" :disabled="paymentProcessing">
+                                                <b-spinner small :hidden="!paymentProcessing"></b-spinner>
+                                                Pay
+                                            </b-button>
                                             <!-- Submit Button -->
                                             <div ref="paypal"></div>
                                         </div>

@@ -9,51 +9,53 @@
                     <h3>
                         {{category.app_name}} {{$t('ias.plan')}}
                         <span style="padding-left: 20px; font-size: 24px">{{$t(category.price)}}</span>
-                        <span class="float-right">{{$t(category.price)}}</span>
+                        <span class="float-right pr-5">{{$t(category.price)}}</span>
                     </h3>
+                   
                 </div>
-                <div style="padding-left: 20px; padding-top: 30px">
+                <div class="pl-4 pt-5" style="position: relative">
                     <form id="plan-form" method="POST">
                         <div id="step-1">
+                            <div v-if="locale=='en'" style="position: absolute; right: 0; top: -10px">include tax</div>
                             <div class="form-group">
                                 <label for="order_number">{{$t('order_number')}}</label>
-                                <input type="text" class="form-control" id="order_number" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="order_number" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="dealer_name">{{$t('dealer_name')}}</label>
-                                <input type="text" class="form-control" id="dealer_name" name="dealer_name"/>
+                                <b-form-input type="text" class="form-control" id="dealer_name" name="dealer_name"/>
                             </div>
                             <div class="form-group">
                                 <label for="dealer_charge_surname">{{$t('dealer_charge_surname')}}</label>
-                                <input type="text" class="form-control" id="dealer_charge_surname" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="dealer_charge_surname" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="middle_name_in_charge_of_dealer">{{$t('middle_name_in_charge_of_dealer')}}</label>
-                                <input type="text" class="form-control" id="middle_name_in_charge_of_dealer" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="middle_name_in_charge_of_dealer" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_name">{{$t('customer_name')}}</label>
-                                <input type="text" class="form-control" id="customer_name" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_name" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_surname">{{$t('customer_surname')}}</label>
-                                <input type="text" class="form-control" id="customer_surname" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_surname" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_middle_name">{{$t('customer_middle_name')}}</label>
-                                <input type="text" class="form-control" id="customer_middle_name" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_middle_name" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_facility">{{$t('customer_facility')}}</label>
-                                <input type="text" class="form-control" id="customer_facility" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_facility" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_department">{{$t('customer_department')}}</label>
-                                <input type="text" class="form-control" id="customer_department" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_department" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_address">{{$t('customer_address')}}</label>
-                                <input type="text" class="form-control" id="customer_address" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_address" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_city">{{$t('customer_city')}}</label>
@@ -61,20 +63,20 @@
                             </div>
                             <div class="form-group">
                                 <label for="customer_prefecture">{{$t('customer_prefecture')}}</label>
-                                <input type="text" class="form-control" id="customer_prefecture" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_prefecture" name="order_number"/>
                             </div>
                             <div class="form-group">
                                 <label for="customer_country">{{$t('customer_country')}}</label>
-                                <input type="text" class="form-control" id="customer_country" name="order_number"/>
+                                <b-form-input type="text" class="form-control" id="customer_country" name="order_number"/>
                             </div>
                             <div class="form-group float-right">
-                                <b-button variant="outline-secondary" style="margin: 5px" :to="{name: $t('dealer.url')}">{{$t('back')}}</b-button>
-                                <b-button id="next" style="margin: 5px" variant="outline-secondary">{{$t('next')}}</b-button>
+                                <b-button variant="outline-primary" style="margin: 5px" :to="{name: $t('dealer.url')}">{{$t('back')}}</b-button>
+                                <b-button id="next" style="margin: 5px" variant="outline-primary">{{$t('next')}}</b-button>
                             </div>
                         </div>
                         <div id="step-2" class="d-none">
                             <div style="padding-left: 20px">
-                                <h5>{{$t('terms_and_conditions')}} <b-button variant="outline-secondary">{{$t('here')}}</b-button></h5>
+                                <router-link :to="{name: 'terms_and_conditions'}"><h5>{{$t('terms_and_conditions')}}</h5></router-link>
                             </div>
                             <div class="payment_method">
                                 <h4>{{$t('contracted_payment_terms_title')}}</h4>
@@ -85,8 +87,8 @@
                                 </div>
                             </div>
                             <div class="form-group float-right">
-                                <b-button id="back" style="margin: 5px" variant="outline-secondary">{{$t('back')}}</b-button>
-                                <b-button id="subscribe" style="margin: 5px" variant="outline-secondary">{{$t('subscribe')}}</b-button>
+                                <b-button id="back" style="margin: 5px" variant="outline-primary">{{$t('back')}}</b-button>
+                                <b-button id="subscribe" style="margin: 5px" variant="outline-primary">{{$t('subscribe')}}</b-button>
                             </div>
                         </div>
                     </form>
@@ -351,6 +353,9 @@ export default {
     .form-group .form-control {
       width: 30%;
       float: left;
+    }
+    .btn-outline-primary {
+        border-radius: 10px;
     }
     
 </style>

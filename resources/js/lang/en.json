@@ -240,6 +240,7 @@
     "flowcal_des": "FlowCal is currently in beta. If there are any inquiries from users who would like to try it out, please contact us.",
     "flowcal_con": "If you are being contacted bt a user who would like to try FlowCal, please click here to contact us and provide your user information"
   },
+  "currency": "USD",
   "language": "Language",
   "English": "English",
   "Japanese": "Japanese",
@@ -485,5 +486,73 @@
   "contracted_payment_terms_title": "Contracted payment terms",
   "contracted_payment_terms_description1": "Closed on the",
   "contracted_payment_terms_description2": "day of current month Cash transfer on the",
-  "contracted_payment_terms_description3": "day of the following month"
+  "contracted_payment_terms_description3": "day of the following month",
+  "terms" : {
+    "title": "Application Terms of Use (Subscription Service)",
+    "description": "These Application Terms and Conditions ('Terms and Conditions') apply to transactions in which LifeAnalytics ('Company') grants you (either an individual or a corporation) a non-exclusive right to use this application product for a specified period of time ('Subscription'). The following terms and conditions apply to transactions in which we grant you (either an individual or a corporation) a non-exclusive right to use the Application Product for a specified period of time ('Subscription'). The following terms and conditions apply to transactions in which the Company grants to a user (whether an individual or a corporation) a non-exclusive right to use the Application Product for a limited period of time (hereinafter referred to as 'Subscription').",
+    "part1" : {
+      "title": "Article 1 (Definitions)",
+      "text1" : {
+        "title": "this application",
+        "description": "The application program and related documentation/accessories that we grant to you for use of the Subscription."
+      },
+      "text2" : {
+        "title": "form of subscription license",
+        "description": "An Internet connection is required to authenticate this application."
+      }
+    },
+    "part2": {
+      "title": "Article 2 (License)",
+      "description1": "The Application may be used by users belonging to the corporation or organization to which the Subscription Applicant belongs (hereinafter referred to as 'User') up to the number of licenses granted.",
+      "description2": "This application may only be used by the licensed user and only for the user's own business purposes."
+    },
+    "part3": {
+      "title": "Article 3 (Subscription)",
+      "text1": {
+        "title": "subscription application",
+        "description": "Users shall apply for use of the Service through the 'Application for Use' after agreeing to the Terms of Use." 
+      },
+      "text2": {
+        "title": " conclusion of contract by application",
+        "description": "A contract is considered to be formed when we confirm your application for a subscription purchase using the Subscription Purchase Application Form."
+      },
+      "text3": {
+        "title": "Cancellation in the middle of the application process",
+        "description": "If the user cancels the contract for his/her own reason within the contract period, the usage fees already paid shall not be refunded."
+      },
+      "text4": {
+        "title": "Contracts through sales agents",
+        "description": "When a user applies for a contract through an agent, the formation or termination of the contract shall be determined separately by the Company and the agent."
+      }
+    },
+    "part4": {
+      "title": "Article 4 (Term of Contract)",
+      "text1": "The term of the contract shall begin on the date the license is registered on our license server.",
+      "text2": "The number of days of the contract period shall be the number of days for each plan.",
+      "text3": "Unless you request 'contract cancellation' during the contract period, the contract will automatically continue with the same plan.",
+      "text4": "To cancel a subscription, click 'Cancel Subscription' during the subscription period and request cancellation."
+    },
+    "part5": {
+      "title": "Article 5 (Fees)",
+      "description1": "Fees shall be in accordance with the 'Application Price List' separately determined by the Company. However, the 'Application Price List' is subject to change without notice.",
+      "description2": "The separately determined periodic fee shall apply only to the initial contract period and the consecutive contract periods."
+    },
+    "part6": {
+      "title": "Article 6 (Scope of Warranty)",
+      "description": "The User has the right to use the latest version of the contracted application and its successor products during the term of the contract."
+    },
+    "part7": {
+      "title": "Article 7 (Cancellation of Contract)",
+      "description1": " We may terminate this License Agreement if the User violates these Terms of Use or the Application License Agreement. In such case, the User's access to the Application will be immediately restricted and the User will not be able to use the Application thereafter.",
+      "description2": "In the above cases, fees already paid shall not be refunded."
+    },
+    "part8": {
+      "title": "Article 8 (Consultation)",
+      "description": "Any matter not stipulated in these Terms of Use or any question that may arise shall be resolved through consultation between the user and the Company."
+    },
+    "part9": {
+      "title": "Article 9 (Jurisdiction)",
+      "description": "The Yokohama District Court shall be the court of jurisdiction for any disputes related to these Terms of Use."
+    }
+  }
 }

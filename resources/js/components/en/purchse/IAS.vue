@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '1', amount: '360'}}">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '1', amount: '360', currency: 'USD'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '2', amount: '1000'}}">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '2', amount: '1000', currency: 'USD'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '3', amount: '3600'}}">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '3', amount: '3600', currency: 'USD'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                         </ul>
                     </div>
                     <div class="foot">
-                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '4', amount: '14400'}}">{{$t('subscribe')}}</b-button>
+                        <b-button variant="outline-primary" :to="{name: 'plan', query: {app_id: '1', cat_id: '4', amount: '14400', currency: 'USD'}}">{{$t('subscribe')}}</b-button>
                     </div>
                 </div>
             </div>
