@@ -238,6 +238,10 @@
     "flowcal_des": "現在FlowCalはベータ版です。ユーザーから試してみたいお問い合わせがあった場合は、弊社へお問い合わせください。",
     "flowcal_con": "FlowCalを試用してみたいユーザーがいらっしゃいましたらこちらのお問い合わせボタンからユーザー情報も記入してお問い合わせください。"
   },
+  "about": {
+    "text": "について",
+    "url": "about"
+  },
   "currency": "JPY",
   "language": "言語", 
   "English": "英語",
@@ -248,7 +252,7 @@
   "welcome_description": "全ての研究開発にリモートで解析を",  
   "subscribe": "購入する",
   "homepage": {
-    "about": "A B O U T",
+    "about": "について",
     "about_des": "新しい働き方にマッチした研究検査で使われるクラウド型解析Webアプリケーションを開発販売しています。",
 
     "contact_title": "お手伝いできることはありますか？",

@@ -20,7 +20,8 @@ export default [
   { path: '/en/carrer-en', name: 'carrer_en', component: page('en/carrer_en.vue') },
   { path: '/en/contact-en', name: 'contact_en', component: page('en/contact_en.vue') },
   { path: '/en/dealer-en', name: 'dealer_en', component: page('en/dealer_en.vue') },
-
+  { path: '/en/about', name: 'about', component: page('en/about.vue') },
+  
   //information routes
   { path: '/en/informations-en', name: 'informations_en', component: page('en/informations_en.vue') },
   { path: '/en/information-en/detail-en', name: 'information_detail_en', component: page('en/information_detail_en.vue') },
