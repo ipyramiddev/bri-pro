@@ -240,6 +240,10 @@
     "flowcal_des": "FlowCal is currently in beta. If there are any inquiries from users who would like to try it out, please contact us.",
     "flowcal_con": "If you are being contacted bt a user who would like to try FlowCal, please click here to contact us and provide your user information"
   },
+  "about": {
+    "text": "About",
+    "url": "about"
+  },
   "currency": "USD",
   "language": "Language",
   "English": "English",
