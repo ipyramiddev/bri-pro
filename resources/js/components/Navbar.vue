@@ -139,11 +139,18 @@
               </router-link>
             </li>
 
-            <!--<li class="nav-item">
+            <li class="nav-item">
+              <router-link :to="{ name: $t('about.url') }" class="nav-link" active-class="active">
+                {{ $t('about.text') }}
+              </router-link>
+            </li>
+
+
+            <!-- <li class="nav-item">
               <router-link :to="{ name: 'login' }" class="nav-link" active-class="active">
                 {{ $t('login') }}
               </router-link>
-            </li>-->
+            </li> -->
 
             <!-- <li class="nav-item">
               <router-link :to="{ name: 'register' }" class="nav-link" active-class="active">
