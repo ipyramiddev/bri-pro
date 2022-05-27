@@ -20,7 +20,7 @@ export default [
   { path: '/en/carrer-en', name: 'carrer_en', component: page('en/carrer_en.vue') },
   { path: '/en/contact-en', name: 'contact_en', component: page('en/contact_en.vue') },
   { path: '/en/dealer-en', name: 'dealer_en', component: page('en/dealer_en.vue') },
-  { path: '/en/about_en', name: 'about_en', component: page('en/about_en.vue') },
+  { path: '/en/about-en', name: 'about_en', component: page('en/about_en.vue') },
   
   //information routes
   { path: '/en/informations-en', name: 'informations_en', component: page('en/informations_en.vue') },
@@ -38,6 +38,7 @@ export default [
   { path: '/carrer-jp', name: 'carrer_jp', component: page('jp/carrer_jp.vue') },
   { path: '/contact-jp', name: 'contact_jp', component: page('jp/contact_jp.vue') },
   { path: '/dealer-jp', name: 'dealer_jp', component: page('jp/dealer_jp.vue') },
+  { path: '/about-jp', name: 'about_jp', component: page('jp/about_jp.vue') },
 
   //information routes
   { path: '/informations-jp', name: 'informations_jp', component: page('jp/informations_jp.vue') },

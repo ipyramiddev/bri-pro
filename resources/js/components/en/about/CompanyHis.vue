@@ -4,6 +4,10 @@
             <div class="col-md-6 col-sm-12">
                 <h3 class="about intro main-text">{{$t("about.title1")}}</h3>
                 <table class="company-data">
+                    <colgroup>
+                        <col class="twenty" />
+                        <col class="eighty" />
+                    </colgroup>
                     <tr>
                         <td>{{$t("about.company_name1")}}</td>
                         <td>{{$t("about.company_name2")}}</td>
@@ -89,6 +93,7 @@
     text-align: center;
 }
 .company-data, td {
+    
     border: collapse;
     border: 2px solid #D9D9D9;
     font-size: 15px;
@@ -97,5 +102,19 @@
 td {
     /* border-spacing: 10px; */
     padding: 3px;
+}
+tr:nth-child(even) {
+    text-align: justify;
+    text-justify: inter-word;
+}
+.table {
+    width: 100%;
+    table-layout: fixed;
+}
+.twenty {
+    width: 20%;
+}
+.eighty {
+    width: 80%;
 }
 </style>
