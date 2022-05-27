@@ -65,10 +65,6 @@
                         <td>{{$t("about.his3_key")}}</td>
                         <td>{{$t("about.his3_val")}}</td>
                     </tr>
-                    <tr>
-                        <td>{{$t("about.his4_key")}}</td>
-                        <td>{{$t("about.his4_val")}}</td>
-                    </tr>
                 </table>
             </div>
         </div>
