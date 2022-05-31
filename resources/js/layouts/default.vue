@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Navbar from '~/components/Navbar'
+import navbar from '~/components/Navbar'
 import footerbar from '~/components/Foot'
 import dashboard from '~/admin/layout'
 
@@ -26,7 +26,7 @@ export default {
   name: 'MainLayout',
 
   components: {
-    Navbar,
+    navbar,
     footerbar,
     dashboard
   },
