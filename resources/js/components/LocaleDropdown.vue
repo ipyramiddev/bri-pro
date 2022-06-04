@@ -15,9 +15,7 @@
         <b-icon v-else icon="chevron-bar-down"></b-icon>
     </div>
     <div class="dropdown-menu" :style="{ display: langShow ? 'block' : 'none' }">
-      <a v-for="(value, key) in locales" :key="key" class="dropdown-item" href="#"
-         @click.prevent="setLocale(key)"
-      >
+      <a v-for="(value, key) in locales" :key="key" class="dropdown-item" href="#" @click.prevent="setLocale(key)">
         {{ $t(value) }}
       </a>
     </div>
@@ -54,7 +52,7 @@ export default {
 
         this.$store.dispatch('lang/setLocale', { locale })
       }
-      this.$router.push({ name: locale  })
+      // this.$router.push({ name: locale })
     },
     languageOver() {
       this.langShow = true;
