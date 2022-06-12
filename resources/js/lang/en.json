@@ -436,7 +436,7 @@
   "payment_information_title":"Payment Information",
   "bank_transfer":"Bank Transfer",
   "payment_method": "Payment Method",
-  "david_card":"David Card",
+  "debit_card":"Debit Card",
   "credit_card":"Credit Card",
   "amazon_pay":"Amazon pay",
   "paypal":"Paypal",

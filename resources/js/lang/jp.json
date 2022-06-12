@@ -433,7 +433,7 @@
   "payment_information_title":"支払情報",
   "payment_method":"支払い方法",
   "bank_transfer":"銀行振り込み",
-  "david_card":"David Card",
+  "debit_card":"Debit Card",
   "credit_card":"Credit Card",
   "amazon_pay":"Amazon pay",
   "paypal":"Paypal",
