@@ -59,6 +59,7 @@ import axios from 'axios'
 import { mapGetters } from 'vuex'
 import $ from 'jquery'
 import swal from 'sweetalert2/dist/sweetalert2.js'
+import process from 'process'
 
 export default {
     data: () => ({
@@ -94,23 +95,26 @@ export default {
         script_paypal.setAttribute(`data-sdk-integration-source`, `button-factory`)
         script_paypal.addEventListener("load", () => this.setLoaded())
         document.body.appendChild(script_paypal)
-
+        console.log(script_paypal)
         //komoju payment button
-        const script_komoju = document.createElement("script")
+        /**
+         * Payment script has to be inserted at the head of page so they can detect any illegal actions of payment
+         */
+        // const script_komoju = document.createElement("script")
 
-        script_komoju.setAttribute(`src`, `https://multipay.komoju.com`)
-        document.body.appendChild(script_komoju)
+        // script_komoju.setAttribute(`src`, `https://multipay.komoju.com`)
+        // document.body.appendChild(script_komoju)
 
-        console.log(script_komoju)
+        // console.log(script_komoju)
 
-        console.log("komoju_button") 
+        // console.log("komoju_button") 
 
         var payForm = document.getElementById("komoju-form") 
         var amount = this.amount
         const komoju_pu_key = 'pk_9e17c1ee95a8ca65eafbca819189907a6d0ebd0c'
 
-        console.log(komoju_pu_key)
-        console.log(amount)
+        // console.log(komoju_pu_key)
+        // console.log(amount)
         
         var handler = Komoju.multipay.configure({
             key: komoju_pu_key,
@@ -121,6 +125,23 @@ export default {
                 this.komoju_purchase()
             }
         });
+
+        //stripe payment button
+        // const script_stripe = document.createElement("script")
+        // const stripe_id_key = process.env.MIX_STRIPE_CLIENT_ID
+        // const stripe_sec_key = process.env.MIX_STRIPE_CLIENT_SECRET 
+        // console.log(stripe_id_key)
+        // console.log(stripe_sec_key)
+        // script_stripe.setAttribute(`src`, `https://js.stripe.com/v3`)
+        // document.body.appendChild(script_stripe)
+
+        // console.log(script_stripe)
+
+        // var stripe = Stripe(`${stripe_id_key }`)
+        // var elements = stripe.elements({
+        //     clientSecret: `${stripe_id_key}_secret_${stripe_sec_key}`,
+        // });
+
 
         
 
