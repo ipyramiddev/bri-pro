@@ -18,6 +18,9 @@ $appCss = mix('dist/css/app.css');
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <script src="https://multipay.komoju.com" async></script>
+  <script src="https://js.stripe.com/v3" async></script>
+
   <title>{{ config('app.name') }}</title>
 
   <link rel="stylesheet" href="{{ (str_starts_with($appCss, '//') ? 'http:' : '').$appCss }}">
